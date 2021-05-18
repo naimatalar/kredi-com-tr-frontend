@@ -1,13 +1,426 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+* ,body * {
+  font-family:  "neris";
+  color:#077a68;
 }
-
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+body{
+  background: #f6f6f6;
+}
+
+.navlink-dsk {
+  max-width: 1200px;
+   margin: 0 auto
+}
+.navlink-dsk  * {
+ font-weight: bold;
+ font-size: 19px;
+}
+.pcontent{
+  background: white;
+  border-bottom: 1px solid rgb(161, 161, 161); box-shadow: black -2px -1px 9px -1px;}
+.ccbanner{
+  width: 100%;
+    opacity: .5;
+    position: absolute;
+    right: 0;
+}
+.cart-type-nav{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid #9c9c9c;
+}
+.cart-type-nav li{
+  list-style: none;
+  padding-bottom: 6px;
+  margin-bottom: -1px;
+
+}
+.cart-type-nav li img{
+  list-style: none;
+  padding-bottom: 6px;
+  margin-bottom: -1px;
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+}
+.cart-type-nav li.active img{
+  
+  -webkit-filter: grayscale(0%);
+  filter: grayscale(0%);
+}
+.cart-type-nav li.active{
+  background: #f6f6f6;
+  border: 1px solid #9c9c9c;
+  border-bottom: none;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+
+}
+.cart-type-nav li.active a{
+  color: #077a68;
+}
+
+
+.cart-type-nav li a{
+  color: #636363;
+  text-decoration: none;
+  padding: 12px 20px 0 19px;
+  display: block;
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.drop-nav-ul{
+  margin-top: -1px;
+  position: absolute;
+  width: 200px;
+  padding: 10px;
+  border: 1px solid #077a68;
+  background: white;
+  box-shadow: 0px 1px 7px -2px #077a68;
+    margin-left: -58px;
+    z-index: 9;
+  
+}
+.master-content{
+  max-width: 1200px; margin: 0 auto; padding: 20px; min-height: 400px
+}
+.loan-list-content{
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid #ada2a2;
+}
+.loan-tabs{
+  list-style: none;
+  float: left;
+  padding: 9px;
+  color: #151515;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 14px;
+  margin-right: 11px;
+}
+.active-loan-tab{
+  border: 1px solid #ada2a2;
+  border-radius: 6px;
+  border-bottom: none;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  background: #ffffff;
+  color: #151515;
+}
+.bank-label{
+  box-shadow: 0px 5px 9px -3px #00000047;
+  background: #f2f5f4;
+}
+.drop-nav-ul>.drop-item{
+
+  text-align: center;
+  
+}
+.credit-cart-head{
+  width: 100%;
+  background: linear-gradient( 
+    180deg
+     ,#7a250714 1% ,#dbb0dc1f 43%,transparent);
+}
+.credit-cart-item{
+  background: #e0e3ff;
+  margin: 0px;
+    padding-top: 17px;
+    padding-bottom: 0;
+    border-radius: 8px;
+    box-shadow: 1px 1px 4px 1px black;
+}
+.drop-nav-ul>.drop-item:hover{
+  background: #e5e5e5;
+}
+
+
+.drop-nav-ul>.drop-item a{
+text-decoration: none;
+padding: 8px;
+display: block;
+font-size: 14px;
+}
+.nav-link{
+cursor: pointer;
+}
+.drop-content::before{
+  content: "";
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 8.5px 9px 8.5px;
+  border-color: transparent transparent #077a68 transparent;
+  position: absolute;
+  margin: -9px 0 0 30px;
+}
+a:active{
+  color: #0056b3;
+}
+.loan-search-container{
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 2px 2px 6px 0px black;
+  background-image: url('./assets/images/krediArat.png');
+}
+.populer-loan-container{
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 2px 2px 6px 0px black;
+  background-color: white;
+  align-content: center;
+  padding: 6px 3px 14px 5px;
+
+}
+.loan-rate-container{
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 2px 2px 6px 0px black;
+  background-color: white;
+  align-content: center;
+  padding: 6px 3px 14px 5px;
+
+}
+.fast-loan-container{
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 2px 2px 6px 0px black;
+  background-color: white;
+  align-content: center;
+  padding: 6px 3px 14px 5px;
+}
+.fast-loan-item{
+  background: #e4e4e4;
+    margin-bottom: 15px;
+}
+
+
+
+.loan-rate-container .row-container *{
+ color:black;
+font-size: 15px;
+text-align: center;
+align-self: center;
+}
+.labelbackground{
+  background-color: #e4e4e4;
+}
+.drowpdownControlFastLoan{
+  padding: 3px;
+}
+.populer-loan-container .row-container *{
+ color:black;
+font-size: 12px;
+text-align: center;
+}
+.fast-loan-container .row-container *{
+  color:black;
+ font-size: 12px;
+ text-align: left;
+ }
+.populer-loan-container .row-container {
+  padding: 20;
+}
+ .row-container .loan-item {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+ .loan-rate-container  .loan-item {
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+
+.loan-search-content{
+  margin: 35px;
+  background: #ffffffb5;
+  padding: 50px 0 50px 0;
+  width: 100%;
+  border-radius: 5px;
+  box-shadow: 1px 1px 3px 0px black;
+
+}
+.loan-search-container *{
+  font-size: 13px;
+}
+.debit-buttons button{
+width: 100%;
+margin-bottom: 10px;
+padding: 5px;
+border-radius: 5px;
+border:1px solid rgb(83, 83, 83);
+font-size: 14px;
+}
+.middle-menu-item>div{
+  display: block;
+  background: #077a68;
+  padding: 4px;
+  border-radius: 50%;
+  box-shadow: 2px 1px 4px 1px black;
+  text-align: center;
+}
+.bank-loan-content{
+  padding: 45px 0 59px 0px;
+  border-radius: 6px;
+  box-shadow: 0px 2px 5px 1px black;
+  background-image: url('./assets/images/krediArat.png');
+}
+.middle-menu-text{
+  color:white;
+  font-weight: bold;
+}
+.bank-loan-tab-link{
+  background: #ffffff6e;
+  padding-top: 6px;
+}
+.bank-loan-lightview{
+  background: #f7f7f752;
+  width: 90%;
+  margin: 0 auto;
+  padding-bottom: 80px;
+  border-top-right-radius: 7px;
+  border-top-left-radius: 7px;
+  overflow: hidden;
+}
+.bank-loan-text{
+  text-align: center;
+  width: 90%;
+  margin: 0 auto;
+  margin-bottom: 25px;
+  border-bottom: 1px solid #ffffffde;
+}
+.bank-loan-text>h4{
+  color: white;
+  text-shadow: 1px 1px 1px black;
+}
+
+.dropdownArrow{
+  border-color: #077a68 transparent transparent;
+}
+input[type="text"]{
+  padding: 8px;
+    border: 1px solid #cccccc;
+}
+::-webkit-input-placeholder { /* Edge */
+  color: #077a68 ;
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: #077a68 ;
+}
+
+::placeholder {
+  color: #077a68 ;
+}
+.default-button{
+  background-color: rgb(7, 122, 104);
+  border: 1px solid black;
+  color: white;
+  padding: 5px;
+  width: 100%;
+}
+.fast-loan-warning{
+  position: absolute;
+    top: 112%;
+    background: white;
+    display: block;
+    z-index: 99;
+    border: 1px solid #d63e3e;
+    padding: 3px;
+    width: 156px;
+    text-align: center;
+    border-radius: 6px;
+    color: red;
+}
+.fast-loan-warning::before{
+  content: "";
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 4.5px 7px 4.5px;
+  border-color: transparent transparent #d63e3e transparent;
+  position: absolute;
+  margin: -11px 0 0 -7px;
+}
+.home-title{
+  font-size: 31px;
+  color: #5e5e5e;
+  margin: 37px 0 19px 1px; 
+}
+.carosel-row{
+  margin-top: 70px;
+    box-shadow: 1px 1px 4px 1px black;
+    border-radius: 5px;
+    overflow: hidden;
+}
+.each-fade .fadeImage{
+  height: 100%;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+.slider-content{
+  padding: 4px;
+    box-shadow: 0px 0px 2px 0px black;
+    margin: 70px 0 70px 0px;
+}
+.middle-menu-content{
+  background: white;
+    padding: 39px 0 95px 0px;
+}
+.about-content{
+  padding-top: 20px;
+    padding-bottom: 50px;
+  
+    margin-bottom: 50px;
+
+}
+.footer-copyright{
+  font-size: 12px;
+    background: #0a564b;
+    padding: 0;
+}
+.footer *{
+  color:white
+}
+.footer a{
+  font-size: 13px;
+
+}
+.footer {
+  background: #077a68;
+    margin-top: 100px;
+}
+.banklist img{
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+  opacity: .7;
+}
+.banklist img:hover{
+  -webkit-filter: none; /* Safari 6.0 - 9.0 */
+  filter: none; 
+   opacity: 1;
+}
+.banklist{
+  padding: 13px;
+  margin: 6px;
+  background: #dedede;
+
+}
+@media  (max-width: 900px) {
+  .debit-buttons button span {
+    font-size: 11px;
+  } 
+  .middle-menu-text {
+    font-size: 11px;
+  }
+  .home-title{
+    font-size: 20px;
+  }
+
 }
