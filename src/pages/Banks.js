@@ -7,7 +7,7 @@ export const Banks = (props) => {
     const [bank, setBank] = useState(bankdemodata[0])
     const [activeLoanType, setActiveLoanType] = useState({ id: null })
     const [selectedLoanOptions, setSelectedLoanOptions] = useState({ rate: null, amount: null, term: null })
-
+  
 
 
     useEffect(() => {
