@@ -16,7 +16,7 @@ const EmailPost = () => {
             <div className="row" style={{ padding: 14 ,paddingBottom:0}}>
                 <h5>Gelişmelerden Haberdar Olun</h5>
                 <p style={{ color: "black" }}>Dünyayı takip ediyoruz, sizde finans dünyasından haber almak ilmak ister misiniz ? </p>
-
+ 
             </div>
             <div className="row" >
                 <div className="col-6">
