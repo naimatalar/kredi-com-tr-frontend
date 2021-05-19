@@ -160,9 +160,9 @@ export const CreditCart = (props) => {
                                                         padding: 3,
                                                         fontSize: 13,
                                                         marginTop: 14,
-                                                        background: "#67106d",
+                                                        background: "#585858",
                                                     }} type="submit">DETAY</button>
-                                                    <div>{item.bank}</div>
+                                                   
                                                 </div>
                                                 <div style={{ width: "100%" }}><hr style={{ margin: "7px 0 2px 0" }}></hr></div>
                                                 <div className="col-12" style={{

@@ -44,7 +44,7 @@ export const kredicartdata = [{
     name: "Pegasus Bol Bol Classic Kart",
     type: ["miles"],
     bankLogo:require("./assets/images/logo500/ing.png").default,
-    yearlyUsingAmount: 0,
+    yearlyUsingAmount:200,
     campaingCount: 5,
     campaing: [{
         title: "İlk Kez Akbanklı Olan Axesslilere Toplam 900 TL’ye Varan Chip Para!",
@@ -63,7 +63,7 @@ export const kredicartdata = [{
     name: "Pegasus Bol Bol Premium Kart",
     type: ["corporate"],
     bankLogo:require("./assets/images/logo500/ing.png").default,
-    yearlyUsingAmount: 0,
+    yearlyUsingAmount: 150,
     campaingCount: 5,
     campaing: [{
         title: "İlk Kez Akbanklı Olan Axesslilere Toplam 900 TL’ye Varan Chip Para!",
@@ -83,7 +83,7 @@ export const kredicartdata = [{
     type: ["miles","point"],
     bankLogo:require("./assets/images/logo500/enpara.PNG").default,
 
-    yearlyUsingAmount: 0,
+    yearlyUsingAmount: 190,
     campaingCount: 5,
     campaing: [{
         title: "İlk Kez Akbanklı Olan Axesslilere Toplam 900 TL’ye Varan Chip Para!",
@@ -103,7 +103,7 @@ export const kredicartdata = [{
     type: ["miles"],
     bankLogo:require("./assets/images/logo500/garanti.png").default,
 
-    yearlyUsingAmount: 0,
+    yearlyUsingAmount: 200,
     campaingCount: 5,
     campaing: [{
         title: "İlk Kez Akbanklı Olan Axesslilere Toplam 900 TL’ye Varan Chip Para!",
@@ -124,7 +124,7 @@ export const kredicartdata = [{
     type: ["miles","point"],
     bankLogo:require("./assets/images/logo500/qnbfinansbank.png").default,
 
-    yearlyUsingAmount: 0,
+    yearlyUsingAmount: 300,
     campaingCount: 5,
     campaing: [{
         title: "İlk Kez Akbanklı Olan Axesslilere Toplam 900 TL’ye Varan Chip Para!",

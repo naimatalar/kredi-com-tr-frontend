@@ -417,6 +417,20 @@ input[type="text"]{
   background: #dedede;
 
 }
+.default-nav {
+  padding: 0;
+}
+.slide-container{
+  cursor: grab;
+}
+.cnts{
+  align-self: center;
+}
+.react-slideshow-container .default-nav{
+ 
+  box-shadow: 0px 0px 5px 1px black;
+  background: white !important;
+}
 @media  (max-width: 900px) {
   .debit-buttons button span {
     font-size: 11px;
