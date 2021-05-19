@@ -42,7 +42,7 @@ export const Banks = (props) => {
                     </div>
                 </div>
             </div>
-            <div className="master-content fff">
+            <div className="master-content ">
 
                 <div className="row">
                     <div className="col-12 col-lg-6 col-md-6 bank-loan-content">

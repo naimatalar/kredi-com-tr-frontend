@@ -1,8 +1,4 @@
-@font-face {
-  font-family: 'neris';
-  src: url('./assets//font/neris.otf'),
-  format('opentype');
-}
+
 
 * ,body {
   font-family:  "neris";

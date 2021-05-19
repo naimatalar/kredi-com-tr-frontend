@@ -1,3 +1,8 @@
+@font-face {
+  font-family: 'neris';
+  src: url('./assets/fonts/nersis.otf') 
+  format('opentype');
+}
 * ,body * {
   font-family:  "neris";
   color:#077a68;
