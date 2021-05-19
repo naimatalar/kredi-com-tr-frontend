@@ -8,7 +8,7 @@ export const Banks = (props) => {
     const [activeLoanType, setActiveLoanType] = useState({ id: null })
     const [selectedLoanOptions, setSelectedLoanOptions] = useState({ rate: null, amount: null, term: null })
   
-
+ 
 
     useEffect(() => {
         let bankData = bankdemodata.find(x => { return x.id == props.BankId })
