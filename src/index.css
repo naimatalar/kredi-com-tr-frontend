@@ -102,7 +102,7 @@ body{
   list-style: none;
   float: left;
   padding: 9px;
-  color: #151515;
+  color: #fff6f6;
   cursor: pointer;
   font-weight: bold;
   font-size: 14px;
@@ -275,16 +275,20 @@ font-size: 14px;
   box-shadow: 0px 2px 5px 1px black;
   background-image: url('./assets/images/krediArat.png');
 }
+.bankbackground{
+    background-image: url('./assets/images/kredibanka.png');
+
+}
 .middle-menu-text{
   color:white;
   font-weight: bold;
 }
 .bank-loan-tab-link{
-  background: #ffffff6e;
+  background: #1f1f1f6e;
   padding-top: 6px;
 }
 .bank-loan-lightview{
-  background: #f7f7f752;
+  background: #08080857;
   width: 90%;
   margin: 0 auto;
   padding-bottom: 80px;
@@ -299,9 +303,10 @@ font-size: 14px;
   margin-bottom: 25px;
   border-bottom: 1px solid #ffffffde;
 }
-.bank-loan-text>h4{
-  color: white;
-  text-shadow: 1px 1px 1px black;
+.bank-loan-text>h4,.bank-loan-text>span{
+  color: #c30808;
+  text-shadow: 1px 1px 1px #c58206;
+
 }
 
 .dropdownArrow{

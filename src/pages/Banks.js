@@ -8,6 +8,9 @@ import 'react-slideshow-image/dist/styles.css'
 import { kredicartdata } from "../kredicartdata";
 import { LoanRate } from "../Components/containers/LoanRate";
 import { FastLoan } from "../Components/containers/FastLoan";
+import HowMuchLoan from "../Components/containers/HowMuchLoan";
+import EmailPost from "../Components/containers/EmailPost";
+import { BankContainer } from "../Components/containers/BankContainer";
 
 export const Banks = (props) => {
     const [bank, setBank] = useState(bankdemodata[0])
@@ -53,7 +56,7 @@ export const Banks = (props) => {
             <div className="master-content ">
 
                 <div className="row">
-                    <div className="col-12 col-lg-6 col-md-6 bank-loan-content">
+                    <div className="col-12 col-lg-6 col-md-6 bank-loan-content mt-5 bankbackground">
                         <div className="bank-loan-text">  <h4>Bankaya Ait <span style={{ textDecoration: "underline", color: "white" }}>{selectedLoanOptions.rate} </span>Kredi Faiz Oranı İle Hemen Kredinizi Hesaplayıp Başvurun </h4> </div>
 
                         <div className="bank-loan-lightview">
@@ -124,7 +127,7 @@ export const Banks = (props) => {
                             </div>
                         </div>
                     </div>
-                    <div className="col-lg-6 col-md-6 row">
+                    <div className="col-12 col-lg-6 col-md-6 row mt-5">
                         <div className="col-12">
                             <h4 style={{ color: "#464646", borderBottom: "1px solid #464646" }} className="text-center"> Bankaya Ait <b title={bank.bankName + "kredi kartı"}>{creditCarts.length} Adet Kredi Kartı</b> Bulunuyor</h4>
 
@@ -233,13 +236,30 @@ export const Banks = (props) => {
                     </div>
                 </div>
                 <div className="row mt-5">
-                    <div className="col-6">
+                    <div className="col-12 col-lg-6 col-md-6 mt-5">
                         <LoanRate />
                     </div>
-                    <div className="col-6">
+                    <div className="col-12 col-lg-6 col-md-6 mt-5">
                         <FastLoan />
                     </div>
                 </div>
+                <div className="row mt-5">
+
+
+                    <div className="row">
+
+                        <div className="col-12 col-lg-6 col-md-6 mt-5" >
+                            <HowMuchLoan></HowMuchLoan>
+                        </div>
+                        <div className="col-12 col-lg-6 col-md-6 mt-5" >
+                            <EmailPost></EmailPost>
+                        </div>
+                    </div>
+                </div>
+                <div className="row mt-7" style={{ justifyContent: "center", marginTop: 100 }}>
+                    <BankContainer></BankContainer>
+                </div>
+
             </div>
         </div>
 
