@@ -5,23 +5,31 @@ import {
   Route,
 } from "react-router-dom";
 import bankdemodata from "./bankdemodata";
+import loantypedemodata from "./loantypedemodata";
+
 import Footer from "./Components/Footer";
 
 import NavigationTree from "./Components/navigationTree";
 import { Banks } from "./pages/Banks";
 import CreditCart from "./pages/CreditCart";
 import { Home } from "./pages/Home";
-export default function App() {
+import { LoanBank } from "./pages/LoanBank";
+import Loan from "./pages/Loan";
+
+export default function App(props) {
   const [bankNavigation, setBankNavigation] = useState([]);
+  const [loanNavigation, setLoanNavigation] = useState([]);
+
   useEffect(() => {
     setBankNavigation(bankdemodata)
+    setLoanNavigation(loantypedemodata)
 
-  }, [])
+  }, [props])
 
   return (
     <Router>
 
-      <NavigationTree BankNavigation={bankNavigation}></NavigationTree>
+      <NavigationTree BankNavigation={bankNavigation} LoanNavigation={loanNavigation}></NavigationTree>
       <div>
         <Switch>
           <Route exact path="/">
@@ -30,6 +38,15 @@ export default function App() {
             </div>
           </Route>
 
+          {loanNavigation.map((item, key) => {
+            return (
+              <Route Key={key} path={"/" + item.urlName} render={(props) => <Loan {...props} LoanId={item.id}></Loan>}>
+
+              </Route>
+            )
+
+
+          })}
 
           <Route path="/kredi-karti/ticari-kredi-kartlari">
             <CreditCart cartType="corporate" />
@@ -49,12 +66,26 @@ export default function App() {
           {
             bankNavigation.map((item, key) => {
               return (
-                <Route key={key} path={'/bankalar/' + item.bankUrlName}>
-                  <Banks BankId={item.id}></Banks>
+                <Route key={key} path={'/bankalar/' + item.bankUrlName} render={(props) => <Banks {...props} BankId={item.id}></Banks>}>
+
                 </Route>
               )
             })
           }
+
+
+          {
+            bankNavigation.map((item, key) => {
+              return (
+
+                <Route key={key} path={'/bankalar/' + item.bankUrlName + "-kredi-hesaplama-ve-basvuru"}
+                  render={(props) => <LoanBank  {...props} BankId={item.id}></LoanBank>} >
+
+                </Route>
+              )
+            })
+          }
+
 
           <Route exact path="/bankalar">
             <Banks BankId=""></Banks>

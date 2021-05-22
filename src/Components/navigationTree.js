@@ -65,25 +65,24 @@ const NavigationTree = (props) => {
                                             <div className="drop-content ">
 
                                                 <Nav className="row drop-nav-ul" style={{}}>
-                                                    <NavItem title="İhtiyaç Kredisi" className="drop-item col-12">
-                                                        <Link to="/">İhtiyaç Kredisi</Link>
-                                                    </NavItem>
-                                                    <NavItem title="Taşıt Kredisi" className="drop-item col-12" >
-                                                        <Link to="/">Taşıt Kredisi</Link>
-                                                    </NavItem>
-                                                    <NavItem title="Konut Kredisi" className="drop-item col-12">
-                                                        <Link to="/">Konut Kredisi</Link>
-                                                    </NavItem>
-                                                    <NavItem title="Kobi Kredisi" className="drop-item col-12">
-                                                        <Link to="/">Kobi Kredisi</Link>
-                                                    </NavItem>
+
+                                                    {props.LoanNavigation.map((item, key) => {
+                                                        return (
+                                                            <NavItem key={key} title={item.loanName} className="drop-item col-12">
+                                                                <Link to={"/" + item.urlName}>{item.loanName}</Link>
+                                                            </NavItem>
+                                                        )
+
+
+                                                    })}
+
                                                 </Nav>
                                             </div>
                                         }
                                     </NavItem>
                                     <NavItem>
                                         <Link title="Kredi Kartı" className="nav-link" to="/kredi-karti">Kredi Kartı</Link>
-                                         
+
                                     </NavItem>
                                     <NavItem onMouseLeave={toggleBank} onMouseEnter={toggleBank}>
 

@@ -11,6 +11,7 @@ import { FastLoan } from "../Components/containers/FastLoan";
 import HowMuchLoan from "../Components/containers/HowMuchLoan";
 import EmailPost from "../Components/containers/EmailPost";
 import { BankContainer } from "../Components/containers/BankContainer";
+import { LoanBank } from "./LoanBank";
 
 export const Banks = (props) => {
     const [bank, setBank] = useState(bankdemodata[0])
@@ -39,6 +40,15 @@ export const Banks = (props) => {
         selectedLoanOptions.term = (term != null ? term : selectedLoanOptions.term)
         setSelectedLoanOptions(selectedLoanOptions)
     }
+
+    const redirectLoanBank = (rate = null, amount = null, term = null) => {
+
+        let prm = new URLSearchParams(props.location.search)
+        prm.set("amount", selectedLoanOptions.amount)
+        prm.set("term", selectedLoanOptions.term)
+        prm.set("loanId", activeLoanType.id)
+        window.location.replace("/bankalar/" + bank.bankUrlName + "-kredi-hesaplama-ve-basvuru?" + prm)
+    }
     return (
         <div className="container-fluid">
             <Helmet>
@@ -57,7 +67,7 @@ export const Banks = (props) => {
 
                 <div className="row">
                     <div className="col-12 col-lg-6 col-md-6 bank-loan-content mt-5 bankbackground">
-                        <div className="bank-loan-text">  <h4>Bankaya Ait <span style={{ textDecoration: "underline", color: "white" }}>{selectedLoanOptions.rate} </span>Kredi Faiz Oranı İle Hemen Kredinizi Hesaplayıp Başvurun </h4> </div>
+                        <div className="bank-loan-text">  <h4>Bankaya Ait <span style={{ textDecoration: "underline", color: "black" }}>{selectedLoanOptions.rate} </span>Kredi Faiz Oranı İle Hemen Kredinizi Hesaplayıp Başvurun </h4> </div>
 
                         <div className="bank-loan-lightview">
                             <div className="col-12 bank-loan-tab-link">
@@ -118,7 +128,7 @@ export const Banks = (props) => {
 
                                     </div>
                                     <div className="justify-content col-5 mt-3">
-                                        <button className="default-button justify-content-center" type="submit">Hesapla</button>
+                                        <button onClick={() => { redirectLoanBank() }} className="default-button justify-content-center" type="submit">Hesapla</button>
 
 
                                     </div>

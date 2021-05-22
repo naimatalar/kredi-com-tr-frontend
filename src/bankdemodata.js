@@ -12,7 +12,7 @@ export const bankdemodata = [
             maxTerm: 36,
             minAmount: 200,
             maxAmunt: 90000,
-            rate: 1.45,
+            rate: 1.65,
             terms: [
                 { label: "3", value: 3 },
                 { label: "6", value: 6 },

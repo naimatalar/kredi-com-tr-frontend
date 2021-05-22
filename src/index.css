@@ -7,6 +7,37 @@
   font-family:  "neris";
   color:#077a68;
 }
+.div-table {
+  width: 100%;
+  display: grid;                
+  background-color: white;         
+  border: 1px solid #666666;         
+  border-spacing: 5px; /* cellspacing:poor IE support for  this */
+}
+.div-table-row {
+  display: table-row;
+  width: auto;
+  clear: both;
+}
+
+
+.div-table-col {
+  float: left; /* fix for  buggy browsers */
+  display: table-column;         
+  width: 18%;         
+  padding: 10px 0 10px 0px;
+}
+.div-table-row *{
+color: black;
+}
+.div-table-header *{ 
+  font-weight: bold;
+color: white;
+font-size: 18;
+}
+.div-table-header{
+  background: #0f8f9c;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -294,7 +325,7 @@ font-size: 14px;
   padding-bottom: 80px;
   border-top-right-radius: 7px;
   border-top-left-radius: 7px;
-  overflow: hidden;
+
 }
 .bank-loan-text{
   text-align: center;
@@ -436,6 +467,13 @@ input[type="text"]{
   box-shadow: 0px 0px 5px 1px black;
   background: white !important;
 }
+
+.loan-info-grid *{
+  color: black;
+  border-color: #151515;
+  background-color: white;
+}
+
 @media  (max-width: 900px) {
   .debit-buttons button span {
     font-size: 11px;
@@ -446,5 +484,12 @@ input[type="text"]{
   .home-title{
     font-size: 20px;
   }
+  .div-table-col {
+    width: 16%;         
+  }
+  .div-table-row * {
+    font-size: 10px;        
+  }
 
 }
+
