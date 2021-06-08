@@ -200,7 +200,6 @@ a:active{
 }
 .loan-search-container{
   border-radius: 5px;
-  overflow: hidden;
   box-shadow: 2px 2px 6px 0px black;
   background-image: url('./assets/images/krediArat.png');
 }

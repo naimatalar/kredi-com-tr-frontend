@@ -5,6 +5,7 @@ import {
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, DropdownItem, Dropdown, DropdownToggle, DropdownMenu } from 'reactstrap';
 import { bankdemodata } from "../bankdemodata";
+import { apiurl } from "../datacrud/datacrud";
 const NavigationTree = (props) => {
     const [collapsed, setCollapsed] = useState(true);
     const toggleNavbar = () => setCollapsed(!collapsed);
@@ -96,7 +97,7 @@ const NavigationTree = (props) => {
                                                 <Nav className="row drop-nav-ul" style={{}}>
                                                     {props.BankNavigation.map((item, key) => {
                                                         return (
-                                                            <NavItem key={key} title={item.bankName} className="drop-item col-12"><Link to={"/bankalar/" + item.bankUrlName} >{item.bankName}</Link></NavItem>
+                                                            <NavItem key={key} title={item.bankName} className="drop-item col-12"><Link to={"/bankalar/" + item.bankUrlName} ><img style={{width:"80%",padding:3,marginBottom:5}} src={apiurl+item.logoUrl}></img> </Link></NavItem>
 
                                                         )
 

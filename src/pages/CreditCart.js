@@ -1,37 +1,46 @@
 import React, { useEffect, useState } from "react"
 import { Link } from "react-router-dom";
 import { NavItem } from "reactstrap";
+import { apiurl, GetNoneToken } from "../datacrud/datacrud";
 import { kredicartdata } from "../kredicartdata";
 
 export const CreditCart = (props) => {
     const [mainKrediKartData, setMainKrediKartData] = useState([])
     const [banklistFilter, setBanklistFilter] = useState([{ name: "", logoUrl: "" }])
     const [krediKartData, setKrediKartData] = useState([])
-   debugger
+    
+    
     useEffect(() => {
+        start()
 
-        if (props.cartType == "all") {
-            setMainKrediKartData(kredicartdata)
+    }, [props.cartType])
+    const start = async () => {
 
-            setKrediKartData(kredicartdata)
-            bankListFill(kredicartdata);
+
+        if (props.cartType == "all" ) {
+            
+            let ccDAta = await GetNoneToken("CreditCarts/GetAllSiteByCode/"+null).then(x => { return x.data }).catch(x => { return false })
+
+            setMainKrediKartData(ccDAta)
+
+            setKrediKartData(ccDAta)
+            bankListFill(ccDAta);
 
         } else {
-            let fakeData = kredicartdata.filter(x => { return x.type.includes(props.cartType) });
-            setMainKrediKartData(fakeData)
-            setKrediKartData(fakeData)
-            bankListFill(fakeData);
+            
+            let ccDAta = await GetNoneToken("CreditCarts/GetAllSiteByCode/"+props.cartType).then(x => { return x.data }).catch(x => { return false })
+            setMainKrediKartData(ccDAta)
+            setKrediKartData(ccDAta)
+            bankListFill(ccDAta);
         }
         var bnk = document.getElementsByClassName("bankCheckbox")
 
-      
+
         for (let key of bnk) {
             key.checked = false
 
         }
-
-    }, [props])
-
+    }
     const bankListFill = (data) => {
         let bankList = [{ name: "", logoUrl: "" }]
         for (let key of data) {
@@ -53,7 +62,7 @@ export const CreditCart = (props) => {
             }
         }
         let selected = mainKrediKartData.filter((x) => { return bnks.includes(x.bank) });
-        debugger
+        
         if (bnks == 0) {
             setKrediKartData(mainKrediKartData)
 
@@ -118,7 +127,7 @@ export const CreditCart = (props) => {
 
                                             <label style={{ marginBottom: 0, cursor: "pointer" }}>
                                                 <input value={item.name} className="bankCheckbox" onChange={(element) => changeFilter(element)} style={{ width: 22, height: 22 }} type="checkbox"></input>
-                                                <img style={{ width: 120, marginLeft: 10, marginTop: -13 }} src={item.logoUrl}></img>
+                                                <img style={{ width: 120, marginLeft: 10, marginTop: -13 }} src={apiurl+ item.logoUrl}></img>
                                             </label>
 
                                         </div>
@@ -144,7 +153,7 @@ export const CreditCart = (props) => {
 
                                                 <div className="col-8">
                                                     <h6 style={{ marginLeft: 10, color: "#ce2312" }}>{item.name}</h6>
-                                                    <img src={item.logo} style={{ width: "100%" }}></img>
+                                                    <img src={apiurl+item.logo} style={{ width: "100%" }}></img>
                                                 </div>
                                                 <div className="col-4" >
                                                     <b style={{
@@ -162,7 +171,7 @@ export const CreditCart = (props) => {
                                                         marginTop: 14,
                                                         background: "#585858",
                                                     }} type="submit">DETAY</button>
-                                                   
+
                                                 </div>
                                                 <div style={{ width: "100%" }}><hr style={{ margin: "7px 0 2px 0" }}></hr></div>
                                                 <div className="col-12" style={{

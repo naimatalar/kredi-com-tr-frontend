@@ -12,9 +12,10 @@ import HowMuchLoan from "../Components/containers/HowMuchLoan";
 import EmailPost from "../Components/containers/EmailPost";
 import { BankContainer } from "../Components/containers/BankContainer";
 import { LoanBank } from "./LoanBank";
+import { apiurl, GetNoneToken } from "../datacrud/datacrud";
 
 export const Banks = (props) => {
-    const [bank, setBank] = useState(bankdemodata[0])
+    const [bank, setBank] = useState([])
     const [activeLoanType, setActiveLoanType] = useState({ id: null })
     const [selectedLoanOptions, setSelectedLoanOptions] = useState({ rate: null, amount: null, term: null })
     const [creditCarts, setCreditCarts] = useState([])
@@ -22,13 +23,26 @@ export const Banks = (props) => {
 
 
     useEffect(() => {
-        let bankData = bankdemodata.find(x => { return x.id == props.BankId })
-        setBank(bankData)
-        setActiveLoanType(bankData.loans[0])
-        updateSelectedLoanOption(bankData.loans[0].rate, null, null)
-        setCreditCarts(kredicartdata.slice(0, 6))
+        start()
     }, [props])
+    const start = async () => {
+        let bankData = await GetNoneToken("Banks/GetAllBankSiteById/" + props.BankId).then(x => { return x.data }).catch(x => { return false })
+
+
+        setBank(bankData)
+        debugger
+        setActiveLoanType(bankData.loans[0] || [])
+        if (bankData.loans.length > 0) {
+            updateSelectedLoanOption(bankData.loans[0]?.rate, null, null)
+        } else {
+            updateSelectedLoanOption(0, null, null)
+
+        }
+        setCreditCarts(kredicartdata.slice(0, 6))
+    }
+
     const selectLoanType = (loanId) => {
+
         let selectedLoant = bank.loans.find(x => { return x.id == loanId })
         updateSelectedLoanOption(selectedLoant.rate, null, null)
         setActiveLoanType(selectedLoant)
@@ -59,7 +73,7 @@ export const Banks = (props) => {
                 <div className="col-12">
                     <div className="row justify-content-center">
 
-                        <div className="col-md-3 col-lg-3 col-sm-6 col-8"><img src={bank.logoUrl} style={{ width: "100%" }}></img></div>
+                        <div className="col-md-3 col-lg-3 col-sm-6 col-8">{bank.logoUrl==undefined?"": <img src={apiurl + bank.logoUrl} style={{ width: "100%" }}></img>}</div>
                     </div>
                 </div>
             </div>
@@ -73,14 +87,14 @@ export const Banks = (props) => {
                             <div className="col-12 bank-loan-tab-link">
                                 <ul className="loan-list-content">
 
-                                    {bank.loans.map((item, key) => {
+                                    {bank?.loans?.map((item, key) => {
                                         let activeClass = ""
                                         if (item.id == activeLoanType.id) {
                                             activeClass = "active-loan-tab"
                                         }
                                         return (
 
-                                            <li onClick={() => { selectLoanType(item.id) }} className={"loan-tabs " + activeClass} key={key}>
+                                            <li key={key} onClick={() => { selectLoanType(item.id) }} className={"loan-tabs " + activeClass} key={key}>
 
                                                 {item.loanName}
 
@@ -99,7 +113,7 @@ export const Banks = (props) => {
 
                                     <div className="col-5 ">
                                         <Dropdown
-                                            options={activeLoanType.terms}
+                                            options={activeLoanType.terms || []}
                                             onChange={(val) => updateSelectedLoanOption(null, null, val.value)}
                                             placeholder="Vade"
                                             arrowClassName="dropdownArrow"
@@ -267,7 +281,7 @@ export const Banks = (props) => {
                     </div>
                 </div>
                 <div className="row mt-7" style={{ justifyContent: "center", marginTop: 100 }}>
-                    <BankContainer></BankContainer>
+                    <BankContainer Banks={props.Banks}></BankContainer>
                 </div>
 
             </div>

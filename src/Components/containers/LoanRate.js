@@ -1,16 +1,18 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { apiConstant, GetNoneToken } from "../../datacrud/datacrud";
 export const LoanRate = () => {
+    const [data, setData] = useState([])
 
-    const data = [
-        { logo: require("../../assets/images/a1.png").default, bank: "Akbank", loanType: "Taşıt Kredisi", rate: "1.20" },
-        { logo: require("../../assets/images/a5.jpg").default, bank: "QNB Finansbank", loanType: "İhtiyaç Kredisi", rate: "1.10" },
-        { logo: require("../../assets/images/a3.png").default, bank: "ING Bank", loanType: "İhtiyaç Kredisi", rate: "1.15" },
-        { logo: require("../../assets/images/a4.png").default, bank: "Garanti BBVA", loanType: "Konut Kredisi", rate: "1.25" },
-        { logo: require("../../assets/images/a4.png").default, bank: "Garanti BBVA", loanType: "Araç Kredisi", rate: "1.10" },
-        { logo: require("../../assets/images/a1.png").default, bank: "Akbank", loanType: "Kobi Kredisi", rate: "0.95" },
-        { logo: require("../../assets/images/a3.png").default, bank: "Garanti BBVA", loanType: "Araç Kredisi", rate: "1.25" },
-    ]
+
+
+    useEffect(() => {
+        start()
+    }, [])
+    const start = async () => {
+        var data = await GetNoneToken("BankLoanRates/GetAllSite").then(x => { return x.data }).catch(x => { return false })
+        setData(data)
+    }
 
     return (
 
@@ -28,7 +30,7 @@ export const LoanRate = () => {
                             return (
                                 <div key={index} className={"row loan-item " + rowLabel} >
                                     <div className="col-3 ">
-                                        <img src={item.logo} style={{ width: "80%", height: 15 }}></img>
+                                        <img src={apiConstant + "/StaticF" + item.logo} style={{ width: "80%", height: 15 }}></img>
                                     </div>
                                     <div className="col-5 ">
                                         <b>{item.loanType}</b><br/>

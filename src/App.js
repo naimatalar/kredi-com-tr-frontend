@@ -15,16 +15,27 @@ import CreditCart from "./pages/CreditCart";
 import { Home } from "./pages/Home";
 import { LoanBank } from "./pages/LoanBank";
 import Loan from "./pages/Loan";
+import { GetNoneToken, PostNoneToken } from "./datacrud/datacrud";
 
 export default function App(props) {
   const [bankNavigation, setBankNavigation] = useState([]);
   const [loanNavigation, setLoanNavigation] = useState([]);
 
   useEffect(() => {
-    setBankNavigation(bankdemodata)
-    setLoanNavigation(loantypedemodata)
+
+    start();
 
   }, [props])
+
+  const start = async () => {
+    var Bank = await GetNoneToken("Banks/GetAllBankSite").then(x => { return x.data }).catch(x => { return false })
+   
+    var loanType = await GetNoneToken("LoanTypes/GetAllSite").then(x => { return x.data }).catch(x => { return false })
+    setLoanNavigation(loanType)
+
+
+    setBankNavigation(Bank)
+  }
 
   return (
     <Router>
@@ -32,15 +43,13 @@ export default function App(props) {
       <NavigationTree BankNavigation={bankNavigation} LoanNavigation={loanNavigation}></NavigationTree>
       <div>
         <Switch>
-          <Route exact path="/">
-            <div className="master-content">
-              <Home />
-            </div>
+          <Route  exact path="/" render={(props)=>   <div className="master-content"> <Home Loans={loanNavigation} {...props} Banks={bankNavigation}  /></div>}>
+         
           </Route>
 
           {loanNavigation.map((item, key) => {
             return (
-              <Route Key={key} path={"/" + item.urlName} render={(props) => <Loan {...props} LoanId={item.id}></Loan>}>
+              <Route key={key} path={"/" + item.urlName} render={(props) => <Loan {...props} LoanId={item.id}></Loan>}>
 
               </Route>
             )
@@ -66,7 +75,7 @@ export default function App(props) {
           {
             bankNavigation.map((item, key) => {
               return (
-                <Route key={key} path={'/bankalar/' + item.bankUrlName} render={(props) => <Banks {...props} BankId={item.id}></Banks>}>
+                <Route key={key} path={'/bankalar/' + item.bankUrlName} render={(props) => <Banks {...props} Banks={bankNavigation} BankId={item.id}></Banks>}>
 
                 </Route>
               )

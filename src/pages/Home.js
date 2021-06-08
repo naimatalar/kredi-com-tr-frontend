@@ -1,4 +1,5 @@
 import React from "react";
+import { propTypes } from "react-currency-input";
 import { BankContainer } from "../Components/containers/BankContainer";
 import EmailPost from "../Components/containers/EmailPost";
 import { FastLoan } from "../Components/containers/FastLoan";
@@ -10,7 +11,7 @@ import MiddleMenu from "../Components/containers/MiddleMenu";
 import { PopulerLoans } from "../Components/containers/PopulerLoans";
 import Slider from "../Components/containers/Slider";
 
-export const Home = () => {
+export const Home = (props) => {
 
     return (<>
         <div className="row">
@@ -19,7 +20,7 @@ export const Home = () => {
 
             </div>
             <div style={{ paddingRight: 5, marginBottom: 20 }} className="col-lg-5 col-md-6">
-                <LoanSearch></LoanSearch>
+                <LoanSearch Loans={props.Loans}></LoanSearch>
 
             </div>
             <div style={{ paddingRight: 5, marginBottom: 20 }} className="col-lg-5 col-md-6" >
@@ -148,7 +149,7 @@ export const Home = () => {
             </div>
         </div>
         <div className="row" style={{justifyContent:"center",marginTop:100}}>
-            <BankContainer ></BankContainer>
+            <BankContainer Banks={props.Banks}></BankContainer>
         </div>
     </>)
 }

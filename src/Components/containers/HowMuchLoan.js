@@ -7,7 +7,7 @@ const HowMuchLoan = () => {
 
     return (
 
-        <div className="container" style={{
+        <div  className="container" style={{
             paddingTop: 20,
             paddingBottom: 45,
             background: "white",

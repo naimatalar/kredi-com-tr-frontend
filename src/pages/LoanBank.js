@@ -4,10 +4,11 @@ import bankdemodata from "../bankdemodata"
 import calculator from "../Components/calculator"
 import Dropdown from 'react-dropdown';
 import { Link } from "react-router-dom";
+import { apiurl, GetNoneToken } from "../datacrud/datacrud";
 
 export const LoanBank = (props) => {
-    const [bank, setBank] = useState(bankdemodata[0])
-    const [loanType, setLoanType] = useState(bankdemodata[0].loans[0])
+    const [bank, setBank] = useState([])
+    const [loanType, setLoanType] = useState([])
     const [calcuateResult, setCalculateResult] = useState({
         totalpayment: 0,
         totalVergi: 0,
@@ -27,23 +28,28 @@ export const LoanBank = (props) => {
     let loanId = new URLSearchParams(props.location.search).get("loanId")
 
     useEffect(() => {
-        let bankData = bankdemodata.find(x => { return x.id == props.BankId })
-        let lt = bankData.loans.find((x) => { return x.id == loanId })
 
-        setLoanType(lt)
-        setBank(bankData)
-        var plan = calculator(parseFloat(lt.rate), parseInt(amount), parseInt(term), 5, 15)
-        setCalculateResult(plan)
         setTableHeaderWidth(tableHeader.current.offsetWidth);
         function handleResize() {
             if (tableHeader != null) {
                 setTableHeaderWidth(tableHeader.current.offsetWidth);
             }
         }
-
+        start()
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
     }, [])
+
+    const start = async () => {
+        let bankData = await GetNoneToken("Banks/GetAllBankSiteById/" + props.BankId).then(x => { return x.data }).catch(x => { return false })
+        let lt = bankData.loans.find((x) => { return x.id == loanId })
+        
+        setLoanType(lt)
+        setBank(bankData)
+        var plan = calculator(parseFloat(lt.rate), parseInt(amount), parseInt(term), 5, 15)
+        setCalculateResult(plan)
+    }
+
     const calculate = () => {
         var plan = calculator(parseFloat(loanType.rate), parseInt(amount), parseInt(term), 5, 15)
         setCalculateResult(plan)
@@ -63,13 +69,14 @@ export const LoanBank = (props) => {
 
 
     return (
+        
         <div>
             <div className="master-content">
                 <div className="row  mb-5" style={{ background: "white" }} >
                     <div className="col-12 col-lg-4 col-md-4" style={{ borderRight: "1px solid #b1b1b1" }}>
                         <div className="row">
                             <div className="col-12">
-                                <img style={{ width: "100%" }} src={bank.logoUrl}></img>
+                                <img style={{ width: "100%" }} src={apiurl+ bank.logoUrl}></img>
                             </div>
 
                         </div>
@@ -95,7 +102,7 @@ export const LoanBank = (props) => {
                                 />
                                 <div> <b style={{ color: "black" }}>Vade</b></div>
                                 <Dropdown
-                                    options={loanType.terms}
+                                    options={loanType.terms||[]}
                                     onChange={(val) => updateSelectedLoanOption(null, null, val.value)}
                                     placeholder="Vade"
                                     value={term}
@@ -282,7 +289,7 @@ export const LoanBank = (props) => {
 
                                         if (item.odenen != 0) {
                                             return (
-                                                <div className="div-table-row" style={color}>
+                                                <div key={key} className="div-table-row" style={color}>
                                                     <div className="div-table-col pl-2" style={{ width: 50 }}>{key + 1}</div>
                                                     <div className="div-table-col">
                                                         <CurrencyInput style={{
