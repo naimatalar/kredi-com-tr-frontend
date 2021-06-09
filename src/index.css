@@ -472,6 +472,18 @@ input[type="text"]{
   border-color: #151515;
   background-color: white;
 }
+.loan-search-list-item{
+  border: 1px solid #077a68;
+  border-radius: 11px;
+  padding: 15px 5px 15px 5px;
+}
+.loan-search-list-item-button{
+
+  background: white;
+    color: #077a68;
+    border-color: #077a68;
+    font-weight: bold;
+}
 
 @media  (max-width: 900px) {
   .debit-buttons button span {

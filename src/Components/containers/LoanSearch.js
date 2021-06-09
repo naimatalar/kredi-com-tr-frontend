@@ -10,6 +10,7 @@ export const LoanSearch = (props) => {
 
     const [amount, setAmount] = useState(null)
     const [loanType, setLoanType] = useState()
+    const [propsLoan, setPropsLoan] = useState([])
 
 
     useEffect(() => {
@@ -28,7 +29,7 @@ export const LoanSearch = (props) => {
         setLoanType(id)
     }
     const termListOnChange = async (val) => {
-        debugger
+
         setTermsValue(val)
 
     }
@@ -36,12 +37,17 @@ export const LoanSearch = (props) => {
     const calculate = async () => {
         var data = {
             loanTypeId: loanType,
-            amount: (amount!=null?amount.replace("₺","").replace(".",""):""),
+            amount: (amount != null ? amount.replace("₺", "").replace(".", "") : ""),
             term: termsValue
         }
-        
-        var terms = await PostNoneToken("InterestRates/GetLoanSearchResult", data).then(x => { return x.data }).catch(x => { return false })
-
+        if (data.loanTypeId) {
+            var urlName = propsLoan.find(x => x.id == data.loanTypeId)?.urlName
+            debugger
+            let prm = new URLSearchParams()
+            prm.set("amount", data.amount)
+            prm.set("term", data.term)
+            window.location.replace("/" + urlName + "-arama-hesaplama?" + prm)
+        }
     }
 
 
@@ -53,12 +59,12 @@ export const LoanSearch = (props) => {
 
             ln.push({ label: item.loanName, value: item.id })
         })
-
+        setPropsLoan(props.Loans)
         setLoanOption(ln)
 
     }
     return (
- 
+
         <div >
             <div className="loan-search-container">
                 <div className="container">
@@ -99,8 +105,7 @@ export const LoanSearch = (props) => {
                                             onChange={(d) => { termListOnChange(d.value) }}
                                             placeholder="Vade"
                                             arrowClassName="dropdownArrow"
-
-                                            // value={termsValue}
+                                        
                                         />
                                     </div>
 

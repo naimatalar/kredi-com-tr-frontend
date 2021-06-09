@@ -16,6 +16,7 @@ import { Home } from "./pages/Home";
 import { LoanBank } from "./pages/LoanBank";
 import Loan from "./pages/Loan";
 import { GetNoneToken, PostNoneToken } from "./datacrud/datacrud";
+import { SearchLoanPage } from "./pages/SearchLoanPage";
 
 export default function App(props) {
   const [bankNavigation, setBankNavigation] = useState([]);
@@ -29,7 +30,7 @@ export default function App(props) {
 
   const start = async () => {
     var Bank = await GetNoneToken("Banks/GetAllBankSite").then(x => { return x.data }).catch(x => { return false })
-   
+
     var loanType = await GetNoneToken("LoanTypes/GetAllSite").then(x => { return x.data }).catch(x => { return false })
     setLoanNavigation(loanType)
 
@@ -43,13 +44,21 @@ export default function App(props) {
       <NavigationTree BankNavigation={bankNavigation} LoanNavigation={loanNavigation}></NavigationTree>
       <div>
         <Switch>
-          <Route  exact path="/" render={(props)=>   <div className="master-content"> <Home Loans={loanNavigation} {...props} Banks={bankNavigation}  /></div>}>
-         
+          <Route exact path="/" render={(props) => <div className="master-content"> <Home Loans={loanNavigation} {...props} Banks={bankNavigation} /></div>}>
+
           </Route>
 
           {loanNavigation.map((item, key) => {
             return (
               <Route key={key} path={"/" + item.urlName} render={(props) => <Loan {...props} LoanId={item.id}></Loan>}>
+
+              </Route>
+            )
+          })}
+
+          {loanNavigation.map((item, key) => {
+            return (
+              <Route key={key} path={"/" + item.urlName + "-arama-hesaplama"} render={(props) => <SearchLoanPage Loan={item} Loans={loanNavigation} {...props} ></SearchLoanPage>}>
 
               </Route>
             )
