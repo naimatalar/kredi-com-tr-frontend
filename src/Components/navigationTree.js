@@ -12,12 +12,12 @@ const NavigationTree = (props) => {
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const [mobilDropdownOpen, setMobilDropdownOpen] = useState(false);
     const toggle = () => setDropdownOpen(!dropdownOpen);
-    const toggleMobil = () => setMobilDropdownOpen(!mobilDropdownOpen);
+    const toggleMobil = () => { setMobilDropdownOpen(!mobilDropdownOpen); setMobilDropdownOpenBank(false); }
 
     const [dropdownOpenBank, setDropdownOpenBank] = useState(false);
     const [mobilDropdownOpenBank, setMobilDropdownOpenBank] = useState(false);
-    const toggleBank = () => setDropdownOpenBank(!dropdownOpenBank);
-    const toggleMobilBank = () => setMobilDropdownOpenBank(!mobilDropdownOpenBank);
+    const toggleBank = () => { setDropdownOpenBank(!dropdownOpenBank); }
+    const toggleMobilBank = () => { setMobilDropdownOpenBank(!mobilDropdownOpenBank); setMobilDropdownOpen(false) }
 
 
     const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
@@ -47,15 +47,15 @@ const NavigationTree = (props) => {
                     {windowDimensions.width > 800 &&
                         <div className="row" style={{ height: 90, alignItems: "center" }}>
                             <div className="col-lg-3 col-md-2" style={{ paddingBottom: 6 }}>
-                                <Link title="kredi.com.tr" to="/">
-                                    <img alt="kredi.com.tr logo" src={require("../assets/images/lg.png").default} style={{ width: "100%" }}></img>
+                                <a title="kredi.com.tr" href="/">
+                                    <img alt="kredi.com.tr logo" src={require("../assets/images/lg2.png").default} style={{ width: "100%" }}></img>
 
-                                </Link>
+                                </a>
 
                             </div>
                             <div className="col-lg-9 col-md-10 " style={{ float: "right" }}>
                                 <div style={{ display: "flex", justifyContent: "flex-end" }}>
-                                    <Link style={{ fontSize: 13, fontWeight: "normal", textDecoration: "underline" }} className="nav-link" to="/">Aylık Ne Kadar Kredi Ödeyebilirim?</Link>
+                                    <a style={{ fontSize: 13, fontWeight: "normal", textDecoration: "underline" }} className="nav-link" href="/">Aylık Ne Kadar Kredi Ödeyebilirim?</a>
                                 </div>
                                 <Nav style={{ float: "right" }}>
                                     <NavItem onMouseLeave={toggle} onMouseEnter={toggle}>
@@ -70,7 +70,7 @@ const NavigationTree = (props) => {
                                                     {props.LoanNavigation.map((item, key) => {
                                                         return (
                                                             <NavItem key={key} title={item.loanName} className="drop-item col-12">
-                                                                <Link to={"/" + item.urlName}>{item.loanName}</Link>
+                                                                <a href={"/" + item.urlName}>{item.loanName}</a>
                                                             </NavItem>
                                                         )
 
@@ -82,7 +82,7 @@ const NavigationTree = (props) => {
                                         }
                                     </NavItem>
                                     <NavItem>
-                                        <Link title="Kredi Kartı" className="nav-link" to="/kredi-karti">Kredi Kartı</Link>
+                                        <a title="Kredi Kartı" className="nav-link" href="/kredi-karti">Kredi Kartı</a>
 
                                     </NavItem>
                                     <NavItem onMouseLeave={toggleBank} onMouseEnter={toggleBank}>
@@ -97,7 +97,7 @@ const NavigationTree = (props) => {
                                                 <Nav className="row drop-nav-ul" style={{}}>
                                                     {props.BankNavigation.map((item, key) => {
                                                         return (
-                                                            <NavItem key={key} title={item.bankName} className="drop-item col-12"><Link to={"/bankalar/" + item.bankUrlName} ><img style={{width:"80%",padding:3,marginBottom:5}} src={apiurl+item.logoUrl}></img> </Link></NavItem>
+                                                            <NavItem key={key} title={item.bankName} className="drop-item col-12"><a href={"/bankalar/" + item.bankUrlName} ><img style={{ width: "80%", padding: 3, marginBottom: 5 }} src={apiurl + item.logoUrl}></img> </a></NavItem>
 
                                                         )
 
@@ -108,14 +108,14 @@ const NavigationTree = (props) => {
                                     </NavItem>
 
                                     <NavItem>
-                                        <Link title="Kredi Hesaplama" className="nav-link" to="/">Hesaplama</Link>
+                                        <a title="Kredi Hesaplama" className="nav-link" href="/">Hesaplama</a>
 
                                     </NavItem>
                                     <NavItem>
-                                        <Link title="Kredi Notu" className="nav-link" to="/users">Kredi Notu</Link>
+                                        <a title="Kredi Notu" className="nav-link" href="/users">Kredi Notu</a>
                                     </NavItem>
                                     <NavItem>
-                                        <Link title="blog" className="nav-link" to="/About">Blog</Link>
+                                        <a title="blog" className="nav-link" href="/About">Blog</a>
                                     </NavItem>
                                 </Nav>
                             </div>
@@ -139,45 +139,61 @@ const NavigationTree = (props) => {
                             <NavbarToggler onClick={toggleNavbar} className="mr-2" />
 
                             <Collapse isOpen={!collapsed} navbar>
-                                <Nav navbar>
-                                    <Dropdown nav isOpen={mobilDropdownOpen} onMouseLeave={toggleMobil} onMouseEnter={toggleMobil}>
-                                        <DropdownToggle nav caret>
+                                <Nav navbar className="mobil-nav-bar">
+                                    <NavItem>
+                                        <a className="mobil-nav-link arrow-bottom" onClick={toggleMobil} >
                                             Kredi
-                                     </DropdownToggle>
-                                        <DropdownMenu style={{ marginTop: -5 }}>
-                                            <DropdownItem ><Link to="/users">İhtiyaç Kredisi</Link></DropdownItem>
-                                            <DropdownItem ><Link to="/users">Taşıt Kredisi</Link></DropdownItem>
-                                            <DropdownItem><Link to="/users">Konut Kredisi</Link></DropdownItem>
-                                            <DropdownItem><Link to="/users">Kobi Kredisi</Link></DropdownItem>
+                                     </a>
+                                    </NavItem>
+                                    <NavItem>
+                                        <Collapse isOpen={mobilDropdownOpen} >
 
-                                        </DropdownMenu>
-                                    </Dropdown>
+                                            <>
 
-                                    <NavItem>
-                                        <Link to="/users">Kredi Kartı</Link>
-                                    </NavItem>
-                                    <NavItem>
-                                        <Dropdown nav isOpen={mobilDropdownOpenBank} onMouseLeave={toggleMobilBank} onMouseEnter={toggleMobilBank}>
-                                            <DropdownToggle nav caret>
-                                                Bankalar
-                                     </DropdownToggle>
-                                            <DropdownMenu style={{ marginTop: -5 }}>
-                                                <DropdownItem ><Link to="/users">İhtiyaç Kredisi</Link></DropdownItem>
-                                                <DropdownItem ><Link to="/users">Taşıt Kredisi</Link></DropdownItem>
-                                                <DropdownItem><Link to="/users">Konut Kredisi</Link></DropdownItem>
-                                                <DropdownItem><Link to="/users">Kobi Kredisi</Link></DropdownItem>
+                                                {props.LoanNavigation.map((item, key) => {
+                                                    return (
+                                                        <div key={key} >
+                                                            <a href={"/" + item.urlName}>{item.loanName}</a>
+                                                        </div>
 
-                                            </DropdownMenu>
-                                        </Dropdown>
+                                                    )
+                                                })}
+
+                                            </>
+                                        </Collapse>
                                     </NavItem>
                                     <NavItem>
-                                        <Link to="/">Hesaplama</Link>
+                                        <a className="mobil-nav-link" href="/kredi-karti">Kredi Kartı</a>
                                     </NavItem>
                                     <NavItem>
-                                        <Link to="/users">Kredi Notu</Link>
+                                        <a className="mobil-nav-link arrow-bottom" onClick={toggleMobilBank} >
+                                            Banka
+                                     </a>
                                     </NavItem>
                                     <NavItem>
-                                        <Link to="/about">Blog</Link>
+                                        <Collapse isOpen={mobilDropdownOpenBank} >
+
+                                            <>
+
+                                                {props.BankNavigation.map((item, key) => {
+                                                    return (
+                                                        <div key={key} >
+                                                            <a href={"/bankalar/" + item.bankUrlName} ><img style={{ width: 170, padding: 3, marginBottom: 5 }} src={apiurl + item.logoUrl}></img> </a>                                                        </div>
+
+                                                    )
+                                                })}
+
+                                            </>
+                                        </Collapse>
+                                    </NavItem>
+                                    <NavItem>
+                                        <a className="mobil-nav-link" href="/">Hesaplama</a>
+                                    </NavItem>
+                                    <NavItem>
+                                        <a className="mobil-nav-link" href="/users">Kredi Notu</a>
+                                    </NavItem>
+                                    <NavItem>
+                                        <a className="mobil-nav-link" href="/about">Blog</a>
                                     </NavItem>
                                 </Nav>
                             </Collapse>

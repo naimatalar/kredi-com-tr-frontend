@@ -66,7 +66,7 @@ export const LoanSearch = (props) => {
     return (
 
         <div >
-            <div className="loan-search-container">
+            <div className="loan-search-container" style={props.backgroundStyle||{borderRadius:5}}>
                 <div className="container">
                     <div className="row" >
                         <div className="loan-search-content">

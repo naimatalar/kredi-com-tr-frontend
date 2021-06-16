@@ -50,7 +50,7 @@ export default function App(props) {
 
           {loanNavigation.map((item, key) => {
             return (
-              <Route key={key} path={"/" + item.urlName} render={(props) => <Loan {...props} LoanId={item.id}></Loan>}>
+              <Route key={key} path={"/" + item.urlName} render={(props) => <Loan {...props} Loan={item} LoanId={item.id}></Loan>}>
 
               </Route>
             )
@@ -110,8 +110,11 @@ export default function App(props) {
           </Route>
 
         </Switch>
+        <div style={{textAlign:"center",color:"red",textDecoration:"underline"}}>Platformumuz yapım aşamasındadır.<br></br>Faiz oranları, vadeler, kredi kartı fırsatları şu anlık <b style={{color:"red"}}>gerçek bilgiler değildir.</b><br></br>Gerçek bilgiler için bankanın web sitelerini ziyaret edebilirsiniz.</div>
       </div>
+     
       <div className="footer">
+      
         <Footer></Footer>
         <div className="footer-copyright text-center py-2" style={{ fontSize: 12 }}>© 2020 Copyright:
                <a href="/"> kredi.com.tr</a>

@@ -2,7 +2,7 @@ import React from 'react'
 import Axios from 'axios'
 
 
-export const apiConstant = "http://localhost:65062";
+export const apiConstant = "https://api.kredi.com.tr";
 export const apiurl =  apiConstant+"/StaticF" ;
 
 const apiUrl = apiConstant+"/api/";

@@ -145,9 +145,7 @@ export const SearchLoanPage = (props) => {
               />
             </div>
 
-            {/* <div className="col-6 col-md-1">
-              &nbsp;
-                                    </div> */}
+        
             <div className="col-6 col-md-3" style={{ justifyontent: "flex-end", }}>
               <button onClick={(x) => { calculate() }} className="default-button" type="submit">TEKRAR ARA</button>
             </div>
@@ -158,7 +156,7 @@ export const SearchLoanPage = (props) => {
 
 
       </div>
-      <div className="col-12 col-md-4">
+      <div className="col-12 col-md-4 d-none d-lg-flex d-md-flex">
         <LoanRate></LoanRate>
 
       </div>
@@ -236,13 +234,13 @@ export const SearchLoanPage = (props) => {
                       value={(item.calculatorInfo.aylikOdeme) * parseInt(termsValue).toFixed(0)} />
                   </div>
                 </div>
-                <div className="col-2">
+                <div className="col-2 row m-0 justify-content-center align-content-space-between" style={{height: 80}}>
                   <div className="">
                    <button className="loan-search-list-item-button default-button">BAŞVUR</button>
                   </div>
 
                   <div className="mb-2" style={{textAlign: "center"}}>
-                   <a href="" style={{fontWeight:"bold"}} style={{color: "#6f6f6f"}} >Detay</a>
+                   <a href="" style={{fontWeight:"bold",color:"rgb(85 0 195)",textDecoration:"underline"}}  >Detay</a>
                   </div>
                 </div>
 

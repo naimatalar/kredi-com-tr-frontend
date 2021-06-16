@@ -72,7 +72,7 @@ export const Home = (props) => {
         </div>
 
         <div className="row " style={{
-           
+
         }}>
             <div className="container">
 
@@ -148,7 +148,7 @@ export const Home = (props) => {
 
             </div>
         </div>
-        <div className="row" style={{justifyContent:"center",marginTop:100}}>
+        <div className="row" style={{ justifyContent: "center", marginTop: 100 }}>
             <BankContainer Banks={props.Banks}></BankContainer>
         </div>
     </>)
