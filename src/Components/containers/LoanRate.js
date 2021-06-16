@@ -12,6 +12,8 @@ export const LoanRate = () => {
     const start = async () => {
         var data = await GetNoneToken("BankLoanRates/GetAllSite").then(x => { return x.data }).catch(x => { return false })
         setData(data)
+        console.log(data)
+
     }
 
     return (
@@ -37,7 +39,7 @@ export const LoanRate = () => {
                                         <span style={    {fontSize: 11}}>{item.bank}</span>
                                     </div>
                                     <div className="col-4 ">
-                                        <Link to="/" style={{ textDecoration: "none", fontWeight: "bold" }}><b>{item.rate}</b><br /><span>incle</span></Link>
+                                        <a href={"/bankalar/"+item.bankUrlName} style={{ textDecoration: "none", fontWeight: "bold" }}><b>{item.rate}</b><br /><span className="popularLoanDetail">incele</span></a>
                                     </div>
                                 </div>
 
