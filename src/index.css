@@ -223,7 +223,7 @@ a:active{
 }
 .fast-loan-container{
   border-radius: 5px;
-  overflow: hidden;
+
   box-shadow: 2px 2px 6px 0px black;
   background-color: white;
   align-content: center;
@@ -296,12 +296,17 @@ text-decoration: none;
 }
 .middle-menu-item>div{
   display: block;
-  background: #077a68;
   padding: 4px;
   border-radius: 50%;
-  box-shadow: 2px 1px 4px 1px black;
+  box-shadow: 2px 1px 4px -1px #000000;
   text-align: center;
+  border: 1px solid #077a68;
 }
+.middle-menu-item{
+  text-decoration: none !important;
+}
+
+
 .bank-loan-content{
   padding: 45px 0 59px 0px;
   border-radius: 6px;
@@ -313,7 +318,7 @@ text-decoration: none;
 
 }
 .middle-menu-text{
-  color:white;
+  color: #077a68;
   font-weight: bold;
 }
 .bank-loan-tab-link{

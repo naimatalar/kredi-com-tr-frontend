@@ -1,37 +1,61 @@
 import React from "react";
 
-const MiddleMenu = () => {
+const MiddleMenu = (props) => {
 
     return (
         <div className="row">
-            <a href="#" className="middle-menu-item col-3">
-                <div>
-                    <img style={{ width: "50%" }} src={require("../../assets/images/moneywhite.png").default}></img>
-                    <p className="middle-menu-text">İhtiyaç Kredisi</p>
+            {
+                props.Loans.map((item, key) => {
+                    if (item.urlName.includes("ihtiyac")) {
+                        return (
+                            <a href={item.urlName} key={key}   className="middle-menu-item col-3">
+                                <div>
+                                    <img style={{ width: "50%" }} src={require("../../assets/images/moneycolor.png").default}></img>
+                                    <p className="middle-menu-text">İhtiyaç Kredisi</p>
 
-                </div>
-            </a>
+                                </div>
+                            </a>
+                        )
+                    } if (item.urlName.includes("tasit")) {
+                        return (
+                            <a href={item.urlName} key={key}   className="middle-menu-item col-3">
+                                <div>
+                                    <img style={{ width: "50%" }} src={require("../../assets/images/carColor.png").default}></img>
+                                    <p className="middle-menu-text">Taşıt Kredisi</p>
 
-            <a href="#" className="middle-menu-item col-3">
-                <div>
-                    <img style={{ width: "50%" }} src={require("../../assets/images/carWhite.png").default}></img>
-                    <p className="middle-menu-text">Taşıt Kredisi</p>
+                                </div>
+                            </a>)
+                    } if (item.urlName.includes("konut")) {
+                        return (
+                            <a  href={item.urlName} key={key}   className="middle-menu-item col-3">
+                                <div>
+                                    <img style={{ width: "50%" }} src={require("../../assets/images/homecolor.png").default}></img>
+                                    <p className="middle-menu-text">Konut Kredisi</p>
 
-                </div>            </a>
-            <a href="#" className="middle-menu-item col-3">
-                <div>
-                    <img style={{ width: "50%" }} src={require("../../assets/images/homewhite.png").default}></img>
-                    <p className="middle-menu-text">Konut Kredisi</p>
+                                </div>
+                            </a>
+                        )
 
-                </div>
-            </a>
-            <a href="#" className="middle-menu-item col-3">
-                <div>
-                    <img style={{ width: "33%" }} src={require("../../assets/images/corporate.png").default}></img>
-                    <p className="middle-menu-text">Kobi Kredisi</p>
+                    } if (item.urlName.includes("kobi")) {
+                        return (
+                            <a  href={item.urlName} key={key}  className="middle-menu-item col-3">
+                                <div>
+                                    <img style={{ width: "33%" }} src={require("../../assets/images/corporatecolor.png").default}></img>
+                                    <p className="middle-menu-text">Kobi Kredisi</p>
 
-                </div>
-            </a>
+                                </div>
+                            </a>
+                        )
+
+                    }
+
+
+                })
+            }
+
+
+
+
         </div>
 
     )

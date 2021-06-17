@@ -3,6 +3,8 @@ import Axios from 'axios'
 
 
 export const apiConstant = "https://api.kredi.com.tr";
+// export const apiConstant = "http://localhost:65062";
+
 export const apiurl =  apiConstant+"/StaticF" ;
 
 const apiUrl = apiConstant+"/api/";

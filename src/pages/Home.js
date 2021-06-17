@@ -61,8 +61,7 @@ export const Home = (props) => {
                 <p className="home-title" >Düzinelerce <span style={{ fontWeight: "bold" }}>kredi ödeme seçenekleri </span> ve bol kazandırıp çok uçuran <span style={{ fontWeight: "bold" }}>kredi kartları </span> parmaklarınızın ucunda </p>
             </div>
             <div className="container">
-
-                <MiddleMenu></MiddleMenu>
+                <MiddleMenu Loans={props.Loans}></MiddleMenu>
             </div>
         </div>
         <div className="container slider-content">

@@ -12,7 +12,7 @@ export const LoanRate = () => {
     const start = async () => {
         var data = await GetNoneToken("BankLoanRates/GetAllSite").then(x => { return x.data }).catch(x => { return false })
         setData(data)
-        console.log(data)
+      
 
     }
 

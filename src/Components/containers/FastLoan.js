@@ -5,6 +5,7 @@ import CurrencyInput from 'react-currency-input';
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
 import calculator from "../calculator";
+import { apiurl, GetNoneToken } from "../../datacrud/datacrud";
 export const FastLoan = () => {
     const [selectedLoan, setSelectedLoan] = useState({ bankId: null, amount: null, interestRateId: null, term: null })
     const [loanOptions, setLoanOptions] = useState(
@@ -32,69 +33,27 @@ export const FastLoan = () => {
             orderBy: null,
             alertShow: false,
             alert: null,
-            totalPay: null,
-            mountlyPay: null,
+            totalPayment: null,
+            mountlyPayment: null,
+            loanTerms:[],
             maxLoan: null,
             minLoan: 200,
         }])
     useEffect(() => {
-        let dd = [
-            {
-                id: 1,
-                logo: require("../../assets/images/a1.png").default,
-                loanType: "Taşıt Kredisi",
-                amount: 30000,
-                term: 36,
-                interestRateId: 1,
-                rate: 1.45,
-                orderBy: 1,
-                alertShow: false,
-                alert: "",
-                totalPay: null,
-                mountlyPay: null,
-                maxLoan: 80000,
-                minLoan: 200,
-            },
-            {
-                id: 2,
-                logo: require("../../assets/images/a5.jpg").default,
-                loanType: "İhtiyaç Kredisi",
-                amount: 30000,
-                term: 36,
-                interestRateId: 2,
-                rate: 1.45,
-                orderBy: 2,
-                alertShow: false,
-                alert: "",
-                totalPay: null,
-                mountlyPay: null,
-                maxLoan: 80000,
-                minLoan: 200,
-            },
-            {
-                id: 3,
-                logo: require("../../assets/images/a3.png").default,
-                loanType: "İhtiyaç Kredisi",
-                amount: 30000,
-                term: 36,
-                interestRateId: 1,
-                rate: 1.45,
-                orderBy: 3,
-                alertShow: false,
-                alert: "",
-                totalPay: null,
-                mountlyPay: null,
-                maxLoan: 80000,
-                minLoan: 200,
-            },
-        ]
 
-        setFastLoadnData(dd)
+
+        start()
 
 
 
     }, [])
+    const start = async () => {
+        var data = await GetNoneToken("FastLoans/GetAllSite").then(x => { return x.data }).catch(x => { return false })
+        setFastLoadnData(data)
+        
+    
 
+    }
 
     const chanheVals = (id, term, amount) => {
 
@@ -106,7 +65,7 @@ export const FastLoan = () => {
 
         findLoan.alertShow = false;
         findLoan.alert = null;
-
+debugger
         if (amount < findLoan.minLoan) {
             findLoan.alertShow = true;
             findLoan.alert = "En düşük kredi tutarı " + findLoan.minLoan + " olabilir";
@@ -118,8 +77,8 @@ export const FastLoan = () => {
         }
         if (!findLoan.alertShow) {
             var calculateResult = calculator(findLoan.rate, amount, term, 5, 15)
-            findLoan.totalPay = (calculateResult.totalpayment * term).toFixed(2).replace(".", ",");
-            findLoan.mountlyPay = calculateResult.totalpayment.toFixed(2).replace(".", ",");
+            findLoan.totalPayment = (calculateResult.totalpayment * term).toFixed(2).replace(".", ",");
+            findLoan.mountlyPayment = calculateResult.totalpayment.toFixed(2).replace(".", ",");
         }
         findLoan.amount = amount;
         findLoan.term = term;
@@ -140,7 +99,7 @@ export const FastLoan = () => {
                     </p>
                 </div>
                 <div className="container" style={{padding:0}}>
-                    <div className="row row-container" style={{padding: "0px 13px 0 5px"}}>
+                    <div className="row row-container" style={{padding: "0px 12px 0px 10px"}}>
                         {
 
                             fastLoanData.sort((a, b) => { return a.orderBy - b.orderBy }).map((item, index) => {
@@ -167,8 +126,8 @@ export const FastLoan = () => {
                                             <div className="col-4 ">
                                                 <div className="col-12" style={{ padding: 0 }}><b>Vade</b></div>
                                                 <Dropdown
-                                                    options={loanOptions}
-                                                    value="Seçiniz"
+                                                    options={item.loanTerms}
+                                                    value={item.term.toString()}
                                                     onChange={(val) => { chanheVals(item.id, val.value, item.amount) }}
                                                     arrowClassName="dropdownArrow"
                                                     controlClassName="drowpdownControlFastLoan"
@@ -188,7 +147,7 @@ export const FastLoan = () => {
                                         </div>
                                         <div className="row" style={{paddingBottom:8}}>
                                             <div className="col-4">
-                                                <img src={item.logo} style={{ width: "80%", height: 15 }}></img>
+                                                <img src={apiurl+item.logo} style={{ width: "100%"}}></img>
 
                                             </div>
                                             <div className="col-4">
@@ -213,7 +172,7 @@ export const FastLoan = () => {
                                                     precision="2"
                                                     disabled
                                                     prefix="₺"
-                                                    value={item.mountlyPay} />
+                                                    value={item.mountlyPayment} />
 
                                                 <br />
                                                 <div className="col-5" style={{
@@ -234,7 +193,7 @@ export const FastLoan = () => {
                                                     precision="2"
                                                     disabled
                                                     prefix="₺"
-                                                    value={item.totalPay} />
+                                                    value={item.totalPayment} />
 
                                             </div>
                                         </div>
