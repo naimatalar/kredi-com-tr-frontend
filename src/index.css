@@ -581,3 +581,46 @@ input[type="text"]{
     border: 1px solid #077a68;
     border-radius: 5px;
 }
+
+.adds-first-big{
+  padding: 0px;
+    margin: 0px;
+    height: 100%;
+    border: 1px solid #b7b7b7;
+    margin-left: 10px;
+    align-items: center;
+    justify-content: center;
+}
+.lv-master{
+  position: fixed;
+    z-index: 99999;
+    background: white;
+    width: 50%;
+    padding: 30px;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    border: 1px solid #077a68;
+    border-radius: 6px;
+}
+.lv-shadow{
+  position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #00000070;
+    z-index: 99;
+}
+.lv-close-button{
+  position: absolute;
+    border: 1px solid red;
+    color: red;
+    border-radius: 50%;
+    width: 29px;
+    top: -9px;
+    right: -10px;
+}
+.add-contetns *{
+  color: #000000;
+}

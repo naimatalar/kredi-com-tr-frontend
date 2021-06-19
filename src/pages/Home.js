@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { propTypes } from "react-currency-input";
 import { BankContainer } from "../Components/containers/BankContainer";
 import EmailPost from "../Components/containers/EmailPost";
@@ -13,7 +13,48 @@ import Slider from "../Components/containers/Slider";
 
 export const Home = (props) => {
 
+    const [addsPopup, setAddsPopup] = useState(false)
+
     return (<>
+        {
+            addsPopup && <> <div onClick={() => { setAddsPopup(false) }} className="lv-shadow"></div>
+                <div className="lv-master">
+                    <button onClick={() => { setAddsPopup(false) }} className="lv-close-button">X</button>
+                    <div className="col-12">
+                        <div className="row justify-content-center" >
+                            <img style={{ width: "50%", objectFit: "contain" }} src={require("../assets/images/lg.png").default}></img>
+                        </div>
+                    </div>
+                    <div className="col-12 mt-4">
+                        <div className="row justify-content-center" >
+                            <h4>
+                                Reklam Ve İşbirliğili İletişim Bilgiliri
+                            </h4>
+                        </div>
+                    </div>
+                    <div className="col-12 mt-4 add-contetns">
+                        <div className="row justify-content-center" >
+                            <div className="col-12 row justify-content-center">
+                                <b >Mail Adres 1 : &nbsp;</b><span> reklam@kredi.com.tr</span>
+                            </div>
+                            <div className="col-12 row justify-content-center">
+                                <b>Mail Adres 2 : &nbsp;</b><span> info@kredi.com.tr</span>
+
+                            </div>
+                            <div className="col-12 row justify-content-center">
+                                <b>Telefon : &nbsp;</b><span> +90 (534) 551 65 15</span>
+
+                            </div>
+
+
+
+                        </div>
+                    </div>
+
+                </div>
+            </>
+        }
+
         <div className="row">
             <div className="col-12">
                 <p className="home-title" style={{ marginTop: 0 }}>Kolayca <span style={{ fontWeight: "bold" }}>Arayın,</span> Pratik Şekilde <span style={{ fontWeight: "bold" }}>Hesaplayın,</span> Hızlıca <span style={{ fontWeight: "bold" }}>Başvurun</span>  </p>
@@ -27,10 +68,48 @@ export const Home = (props) => {
                 <PopulerLoans></PopulerLoans>
 
             </div>
-            <div className="col-lg-2 col-md-12" style={{ marginBottom: 20 }}  >
-                <img className="d-none d-lg-block" style={{ height: "100%", width: "100%" }} src={require("../assets/images/adds.png").default}></img>
-                <img className="d-lg-none d-md-block" style={{ width: "100%" }} src={require("../assets/images/addsvert.png").default}></img>
+            <div className="col-lg-2 col-md-12 p-0" style={{ marginBottom: 20 }}  >
 
+                <div className="d-none d-lg-flex row adds-first-big" >
+                    <div className="row  m-0 p-0 justify-content-center">
+
+                        <img style={{ width: "80%", objectFit: "contain" }} src={require("../assets/images/lg.png").default}></img>
+                        <b>Reklam Ve Tanıtın Alanı</b>
+                    </div>
+                    <div className="row  m-0 p-0 justify-content-center">
+
+                        <span style={{ textAlign: "center", textAlign: "center", color: " #181818", fontSize: 12 }}>Aylık 3MN web trafiğine sahip sitemizde tanıtım ve reklamlarınızı yayınlayalım. Ürün yada hizmetinizi parmakların ucuna taşıyalım. </span>
+                    </div>
+                    <div className="row  m-0 p-0 justify-content-center">
+
+                        <button onClick={() => { setAddsPopup(true) }} className="default-button">&nbsp; İLETİŞİM &nbsp;</button>
+                    </div>
+
+                </div>
+                {/* <img style={{ height: "100%", width: "100%" }} src={require("../assets/images/adds.png").default}></img> */}
+                {/* <img className="d-lg-none d-md-block" style={{ width: "100%" }} src={require("../assets/images/addsvert.png").default}></img> */}
+                <div className="d-lg-none d-md-flex row adds-first-big pt-4 pb-4" >
+                    <div className="row  m-0 p-0 justify-content-center">
+                        <div className="row justify-content-center">
+                            <img style={{ width: "50%", objectFit: "contain" }} src={require("../assets/images/lg.png").default}></img>
+                        </div>
+                        <div className="col-12" style={{ textAlign: "center" }}>
+                            <b>Reklam Ve Tanıtın Alanı</b>
+                        </div>
+                    </div>
+                    <div className="col-12 mt-2">
+                        <div className="row  m-0 p-0 justify-content-center">
+
+                            <span style={{ textAlign: "center", textAlign: "center", color: " #181818", fontSize: 12 }}>Aylık 3MN web trafiğine sahip sitemizde tanıtım ve reklamlarınızı yayınlayalım. Ürün yada hizmetinizi parmakların ucuna taşıyalım. </span>
+                        </div>
+                    </div>
+                    <div className="col-12 mt-3">
+                        <div className="row  m-0 p-0 justify-content-center">
+
+                            <button onClick={() => { setAddsPopup(true) }} style={{ width: 156 }} className="default-button">&nbsp; İLETİŞİM &nbsp;</button>
+                        </div>
+                    </div>
+                </div>
             </div>
 
 
@@ -45,16 +124,54 @@ export const Home = (props) => {
             </div>
 
             <div className="col-lg-3 d-none d-lg-block" style={{ marginBottom: 20 }}  >
-                <img style={{ height: "100%", width: "100%" }} src={require("../assets/images/adds2t.jpg").default}></img>
+
+                <div className="d-none d-lg-flex row adds-first-big" >
+                    <div className="row  m-0 p-0 justify-content-center">
+
+                        <img style={{ width: "80%", objectFit: "contain" }} src={require("../assets/images/lg.png").default}></img>
+                        <b>Reklam Ve Tanıtın Alanı</b>
+                    </div>
+                    <div className="row  m-0 p-0 justify-content-center">
+
+                        <span style={{ textAlign: "center", textAlign: "center", color: " #181818", fontSize: 12 }}>Aylık 3MN web trafiğine sahip sitemizde tanıtım ve reklamlarınızı yayınlayalım. Ürün yada hizmetinizi parmakların ucuna taşıyalım. </span>
+                    </div>
+                    <div className="row  m-0 p-0 justify-content-center">
+
+                        <button onClick={() => { setAddsPopup(true) }} className="default-button">&nbsp; İLETİŞİM &nbsp;</button>
+                    </div>
+
+                </div>
             </div>
             <div className="col-lg-4 col-md-6" style={{ marginBottom: 20 }}  >
                 <FastLoan></FastLoan>
             </div>
         </div>
         <div className="row">
-            <div className="d-lg-none d-md-block">
-                <img style={{ width: "100%" }} src={require("../assets/images/adds2.jpg").default}></img>
+
+
+            <div className="d-lg-none d-md-flex row adds-first-big pt-4 pb-4" >
+                <div className="row  m-0 p-0 justify-content-center">
+                    <div className="row justify-content-center">
+                        <img style={{ width: "50%", objectFit: "contain" }} src={require("../assets/images/lg.png").default}></img>
+                    </div>
+                    <div className="col-12" style={{ textAlign: "center" }}>
+                        <b>Reklam Ve Tanıtın Alanı</b>
+                    </div>
+                </div>
+                <div className="col-12 mt-2">
+                    <div className="row  m-0 p-0 justify-content-center">
+
+                        <span style={{ textAlign: "center", textAlign: "center", color: " #181818", fontSize: 12 }}>Aylık 3MN web trafiğine sahip sitemizde tanıtım ve reklamlarınızı yayınlayalım. Ürün yada hizmetinizi parmakların ucuna taşıyalım. </span>
+                    </div>
+                </div>
+                <div className="col-12 mt-3">
+                    <div className="row  m-0 p-0 justify-content-center">
+
+                        <button onClick={() => { setAddsPopup(true) }} style={{ width: 156 }} className="default-button">&nbsp; İLETİŞİM &nbsp;</button>
+                    </div>
+                </div>
             </div>
+
         </div>
         <div className="row middle-menu-content">
             <div className="col-12">
