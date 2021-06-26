@@ -13,40 +13,115 @@ import EmailPost from "../Components/containers/EmailPost";
 import { BankContainer } from "../Components/containers/BankContainer";
 import { LoanBank } from "./LoanBank";
 import { apiurl, GetNoneToken } from "../datacrud/datacrud";
-
+import { Nav, NavItem, NavLink, TabContent, TabPane } from "reactstrap";
+import classnames from 'classnames';
+import dispositCalculator from "../Components/dispositCalculator"
+import { PopulerLoans } from "../Components/containers/PopulerLoans";
+import { DispositContainer } from "../Components/containers/DispositContainer";
+import 'react-perfect-scrollbar/dist/css/styles.css';
+import PerfectScrollbar from 'react-perfect-scrollbar'
 export const Banks = (props) => {
     const [bank, setBank] = useState({})
     const [activeLoanType, setActiveLoanType] = useState({ id: null })
     const [selectedLoanOptions, setSelectedLoanOptions] = useState({ rate: null, amount: null, term: null })
     const [creditCarts, setCreditCarts] = useState([])
     const [disposits, setDiposits] = useState([])
+    const [activeTab, setActiveTab] = useState(0);
+    const [selectedDisposit, setSelectedDisposit] = useState()
+    const [calculateDisposit, setCalculateDisposit] = useState({ rate: 0, amount: 0, term: 0 })
+    const [calculateDispositResult, setCalculateDispositResult] = useState({ netAmount: "", totalAmount: "", term: "", id: "", rate: "" })
+    const [currencyIcon, setCurrencyIcon] = useState("")
+    const [bankContainerCount, setBankContainerCount] = useState()
 
-    const [sliderPlay, setSliderPlay] = useState(true)
-
+    let isActive = ""
 
     useEffect(() => {
         start()
     }, [props])
     const start = async () => {
+
         let bankData = await GetNoneToken("Banks/GetAllBankSiteById/" + props.BankId).then(x => { return x.data }).catch(x => { return false })
 
-
         setBank(bankData)
-console.log(bankData)
+
         setCreditCarts(bankData.creditCart)
         setDiposits(bankData.disposits)
 
         setActiveLoanType(bankData.loans[0] || [])
+        let containercnt = 0;
         if (bankData.loans.length > 0) {
+            containercnt++
             updateSelectedLoanOption(bankData.loans[0]?.rate, null, null)
         } else {
             updateSelectedLoanOption(0, null, null)
 
         }
+        if (bankData.disposits.length > 0) {
+            containercnt++
+            setSelectedDisposit(bankData.disposits[0])
+            if (bankData.disposits[0].dispositCurrency == 0) {
+                setCurrencyIcon("₺")
+            } else if (bankData.disposits[0].dispositCurrency == 1) {
+                setCurrencyIcon("$")
+            } else if (bankData.disposits[0].dispositCurrency == 2) {
+                setCurrencyIcon("€")
+            }
+        }
+        if (bankData.creditCart.length > 0) {
+            containercnt++
+        }
+        setBankContainerCount(containercnt)
+
     }
 
-    const selectLoanType = (loanId) => {
+    const currencIconChange = (c) => {
 
+
+        if (c.dispositCurrency == 0) {
+            setCurrencyIcon("₺")
+        } else if (c.dispositCurrency == 1) {
+            setCurrencyIcon("$")
+        } else if (c.dispositCurrency == 2) {
+            setCurrencyIcon("€")
+        }
+
+    }
+    const CalculateDispositFunc = (amount = 0, term = 0) => {
+        var dt = {
+
+            amount: amount != calculateDisposit.amount ? amount : calculateDisposit.amount,
+            term: term != calculateDisposit.term ? term : calculateDisposit.term,
+            rate: calculateDisposit.rate
+        }
+
+        let findResult = selectedDisposit.dispositRates.find(x => {
+
+            if (
+                x.minAmount <= dt.amount &&
+                x.maxAmount >= dt.amount &&
+                x.minTerm <= dt.term &&
+                x.maxTerm >= dt.term
+            ) {
+                return true
+            }
+
+        })
+
+        setCalculateDisposit(dt)
+
+        if (findResult != undefined) {
+            dt.rate = findResult.rate
+            var calResut = dispositCalculator(dt.amount, dt.rate, dt.term, selectedDisposit.dispositCurrency !== 0)
+            setCalculateDispositResult({ netAmount: calResut.netResult.toFixed(2).replace(".", ","), totalAmount: (calResut.netResult + dt.amount).toFixed(2).replace(".", ","), term: dt.term, id: findResult.id, rate: dt.rate })
+
+        } else {
+            setCalculateDispositResult({ netAmount: "", totalAmount: "", term: "", id: "", rate: "" })
+            isActive = ""
+        }
+
+    }
+    const selectLoanType = (loanId) => {
+        console.log(calculateDisposit)
         let selectedLoant = bank.loans.find(x => { return x.id == loanId })
         updateSelectedLoanOption(selectedLoant.rate, null, null)
         setActiveLoanType(selectedLoant)
@@ -67,6 +142,12 @@ console.log(bankData)
         prm.set("loanId", activeLoanType.id)
         window.location.replace("/bankalar/" + bank.bankUrlName + "-kredi-hesaplama-ve-basvuru?" + prm)
     }
+
+
+    const toggle = tab => {
+        if (activeTab !== tab) setActiveTab(tab);
+    }
+
     return (
         <div className="container-fluid">
             <Helmet>
@@ -74,13 +155,13 @@ console.log(bankData)
                 <meta property="og:type" content="article" />
                 <meta property="og:title" content={(bank.bankName ?? "") + ": Kredi Ve Kredi Kartı Fırsatları | kerdi.com.tr"} />
                 <meta property="og:url" content={window.location.href} />
-                <meta property="og:description" content={(bank.bankName ?? "") + " bankaya ait kredileri sorgulayabilirsiniz. Ayrıca " + (bank.bankName ?? "") + " bankasına ait kredi kartlarını listeledik  ."} />
-                <meta name="keyword" content="kredi, kredi kartı, kredi başvurusu, kredi faiz oranı, kredi kartı başvurusu" />
-                <meta name="twitter:title" content={(bank.bankName ?? "") + ": Kredi Ve Kredi Kartı Fırsatları | kerdi.com.tr"} />
-                <meta name="twitter:description" content={(bank.bankName ?? "") + " bankaya ait kredileri sorgulayabilirsiniz. Ayrıca " + (bank.bankName ?? "") + " bankasına ait kredi kartlarını listeledik  ."} />
+                <meta property="og:description" content={(bank.bankName ?? "") + " bankaya ait kredileri sorgulayabilir, vadeli mevduat hesabı oluşturabilirsiniz. Ayrıca " + (bank.bankName ?? "") + " bankasına ait kredi kartlarını listeledik  ."} />
+                <meta name="keyword" content="kredi, kredi kartı, kredi başvurusu, kredi faiz oranı, kredi kartı başvurusu, vadeli mevduat, vadeli mevduat hesabı" />
+                <meta name="twitter:title" content={(bank.bankName ?? "") + ": Kredi, Kredi Kartı ve Mevduat Fırsatları | kerdi.com.tr"} />
+                <meta name="twitter:description" content={(bank.bankName ?? "") + " bankaya ait kredileri sorgulayabilir, vadeli mevduat hesabı oluşturabilirsiniz. Ayrıca " + (bank.bankName ?? "") + " bankasına ait kredi kartlarını listeledik  ."} />
                 <meta name="description" content={(bank.bankName ?? "") + " bankaya ait kredileri sorgulayabilirsiniz. Ayrıca " + (bank.bankName ?? "") + " bankasına ait kredi kartlarını listeledik  ."} />
                 <meta name="robots" content="index,follow" />
-                <title>{(bank.bankName ?? "") + ": Kredi Ve Kredi Kartı Fırsatları | kerdi.com.tr"} </title>
+                <title>{(bank.bankName ?? "") + ": Kredi, Kredi Kartı ve Mevduat Fırsatları   | kerdi.com.tr"} </title>
 
             </Helmet>
             <div className="row bank-label">
@@ -165,9 +246,15 @@ console.log(bankData)
                             </div>
                         </div>
                     </div>
+                    {bankContainerCount == 1 &&
+                        <div className="col-12 col-lg-6 col-md-6 row mt-5 m-0">
+                            <PopulerLoans />
+
+                        </div>
+                    }
                     {creditCarts.length > 0 &&
 
-                        <div className="col-12 col-lg-6 col-md-6 row mt-5">
+                        <div className="col-12 col-lg-6 col-md-6 row mt-5 ">
                             <div className="col-12">
                                 <h4 style={{ color: "#464646", borderBottom: "1px solid #464646" }} className="text-center"> Bankaya Ait <b title={bank.bankName + "kredi kartı"}>{creditCarts.length} Adet Kredi Kartı</b> Bulunuyor</h4>
 
@@ -269,25 +356,244 @@ console.log(bankData)
                                 </div>
                             </div>
                         </div>
-                        }
-                    {disposits.length > 0 &&
-                        <div className="col-12 col-lg-6 col-md-6 row mt-5">
-                            <div className="col-12">
-                                <h4 style={{ color: "#464646", borderBottom: "1px solid #464646" }} className="text-center"> Bankaya Ait <b title={bank.bankName + "kredi kartı"}>{creditCarts.length} Adet Kredi Kartı</b> Bulunuyor</h4>
+                    }
+                     {bankContainerCount == 3 &&
+                       <h4 className="home-title mt-5" > Bütün verilerimizi analiz edip  <span style={{ fontWeight: "bold" }}>bankata ait vadeli mevduat hesaplarını </span> ve  daha nice vadeli mevduat hesaplarını sizlerle buluşturduk.   </h4>
 
+                     }
+                    {disposits.length > 0 &&
+                        <div className="col-12 col-lg-6 col-md-6 row mt-5 ml-0 mr-0">
+                            <div className="col-12 row m-0">
+                                <div className="disposit-bank-container row align-content-start">
+                                    {/* <h4 style={{ color: "#464646" }} className="text-center"> Bankaya Ait <b title={bank.bankName + " Mevduat Hesapları "}>Mevduat Hesapları</b> </h4> */}
+                                    <div className="col-12">
+                                        <Nav tabs>
+                                            {
+                                                disposits.map((item, key) => {
+
+
+                                                    return (
+                                                        <NavItem key={key}>
+                                                            <NavLink
+                                                                className={classnames({ active: activeTab === key })}
+                                                                onClick={() => { toggle(key); setSelectedDisposit(item); currencIconChange(item) }}
+                                                            >
+                                                                <b style={{ color: "#626262" }}>{item.name}</b>
+                                                            </NavLink>
+                                                        </NavItem>
+                                                    )
+                                                })
+                                            }
+
+                                        </Nav>
+                                    </div>
+                                    <div className="col-12">
+                                        <div className="row p-0 m-0">
+                                            <div className="col-12 pt-3">
+                                                <h4 style={{ textAlign: "center" }}><b style={{ color: "#626262" }}>{selectedDisposit?.name}  </b> Vadeli Mevduat Hesabı</h4>
+                                                {/* <span>{selectedDisposit.rate} </span> */}
+                                            </div>
+                                            <div className="row ">
+
+                                                <div className="col-12 p-3 row ml-0 mr-0">
+                                                    <div className="col-6">
+                                                        <i>Tutar Giriniz</i>
+                                                        <CurrencyInput style={{
+                                                            float: "left",
+                                                            width: "100%",
+                                                            maxWidt: "100%"
+                                                        }}
+                                                            placeholder="Anapara Giriniz"
+                                                            className="col-12"
+                                                            decimalSeparator=","
+                                                            thousandSeparator="."
+                                                            precision="0"
+                                                            prefix={currencyIcon}
+                                                            value={calculateDisposit.amount}
+                                                            onChange={(val) => CalculateDispositFunc(parseInt(val.replace("₺", "").replace(".", "")), calculateDisposit.term)}
+                                                        />
+                                                    </div>
+                                                    <div className="col-6">
+                                                        <i>Vade Giriniz (Gün)</i>
+                                                        <input type="text" style={{ width: "100%" }} value={calculateDisposit.term} onChange={(element) => CalculateDispositFunc(calculateDisposit.amount, parseInt(element.target.value) || "")}></input>
+
+                                                    </div>
+
+
+                                                </div>
+
+                                                <div className="col-12 row m-0 justify-content-center">
+
+                                                    <div className="col-12 row ">
+                                                        <div className="div-table disposit-table " >
+                                                            <div className="div-table-row div-table-header mb-1">
+
+                                                                <div className="div-table-col" style={{ width: "45%" }}>Tutar Aralığı</div>
+                                                                <div className="div-table-col" style={{ width: "20%" }}>Vade Aralığı</div>
+                                                                <div className="div-table-col" style={{ width: "18%" }}>Faiz</div>
+                                                            </div>
+
+
+
+                                                            {
+                                                                selectedDisposit?.dispositRates?.map((item, key) => {
+                                                                    isActive = ""
+                                                                    if (item.id == calculateDispositResult.id) {
+                                                                        isActive = "active-col"
+                                                                    } else {
+                                                                        isActive = ""
+                                                                    }
+                                                                    return (
+                                                                        <div className={"div-table-row " + isActive} key={key}>
+                                                                            <div className="div-table-col" style={{ width: "45%" }}>
+                                                                                <div className="row m-0">
+                                                                                    <CurrencyInput style={{
+                                                                                        padding: 0,
+                                                                                        border: "none",
+                                                                                        display: "inline",
+                                                                                        float: "left",
+                                                                                        background: "none",
+
+                                                                                        fontWeight: "bold"
+                                                                                    }}
+                                                                                        className="col-5"
+                                                                                        decimalSeparator=","
+                                                                                        thousandSeparator="."
+                                                                                        precision="0"
+                                                                                        disabled
+                                                                                        prefix={currencyIcon}
+                                                                                        value={item.minAmount} />
+                                                                                    <input className="col-1 p-0 m-0 " disabled value="-" style={{ border: "none", background: "none" }}></input>
+                                                                                    <CurrencyInput style={{
+                                                                                        padding: 0,
+                                                                                        border: "none",
+                                                                                        display: "inline",
+                                                                                        float: "left",
+                                                                                        background: "none",
+
+                                                                                        fontWeight: "bold",
+                                                                                        textAlign: "right"
+
+                                                                                    }}
+                                                                                        className="col-5"
+                                                                                        decimalSeparator=","
+                                                                                        thousandSeparator="."
+                                                                                        precision="0"
+                                                                                        disabled
+                                                                                        prefix={currencyIcon}
+                                                                                        value={item.maxAmount} />
+                                                                                </div>
+
+
+                                                                            </div>
+                                                                            <div className="div-table-col" style={{ width: "20%" }}> {item.minTerm} - {item.maxTerm}</div>
+                                                                            <div className="div-table-col" style={{ width: "18%" }}> {item.rate}</div>
+
+                                                                        </div>
+
+                                                                    )
+
+                                                                })
+                                                            }
+
+                                                        </div>
+                                                    </div>
+                                                    {calculateDispositResult.netAmount != "" &&
+                                                        <div className="col-12 res-disposit row mb-3">
+
+                                                            <div className="col-6 mb-2">
+                                                                Net Kazanç :
+                                                                <CurrencyInput style={{
+                                                                    padding: 0,
+                                                                    border: "none",
+                                                                    display: "inline",
+
+                                                                    background: "none",
+
+                                                                    fontWeight: "bold",
+                                                                    textAlign: "left",
+                                                                    position: "absolute",
+                                                                    margin: "2px 0px 2px 8px"
+
+                                                                }}
+                                                                    className="col-5"
+                                                                    decimalSeparator=","
+                                                                    thousandSeparator="."
+                                                                    precision="0"
+                                                                    disabled
+                                                                    prefix={currencyIcon}
+                                                                    value={calculateDispositResult.netAmount} />
+
+
+                                                            </div>
+                                                            <div className="col-6 mb-2">
+
+                                                                Faiz Oranı: <b>{calculateDispositResult.rate}</b>
+
+                                                            </div>
+                                                            <div className="col-6 disposit-total-amount">
+                                                                <span style={{ fontWeight: "bold", fontSize: 17 }}>Toplam Kazanç : </span>
+
+                                                                <CurrencyInput style={{
+                                                                    padding: 0,
+                                                                    border: "none",
+                                                                    display: "inline",
+                                                                    background: "none",
+                                                                    fontSize: 16,
+                                                                    fontWeight: "bold",
+                                                                    textAlign: "left",
+                                                                    position: "absolute",
+                                                                    margin: "2px 0px 2px 8px"
+
+                                                                }}
+                                                                    className="col-5"
+                                                                    decimalSeparator=","
+                                                                    thousandSeparator="."
+                                                                    precision="0"
+                                                                    disabled
+                                                                    prefix={currencyIcon}
+                                                                    value={calculateDispositResult.totalAmount} />
+
+
+                                                            </div>
+                                                            <div className="col-6 p-2">
+                                                                <a href="#" style={{ color: "white" }} className="default-button blue-button">Hemen Başvur</a>
+
+                                                            </div>
+
+                                                        </div>
+                                                    }
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     }
+                    {bankContainerCount == 3 &&
+                        
+                            <div className="col-12 col-lg-6 col-md-6 row mt-5 ml-0 mr-0 bank-disposit-component justify-content-center">
+                                <h4 className="pt-2 pb-4">En çok Tercih Edilen Mevduat Hesapları</h4>
+                                <PerfectScrollbar className="bank-disposit-component-scroll">
+                                    <DispositContainer Big={true}></DispositContainer>
+
+                                </PerfectScrollbar>
+                            </div>
+                      
+                    }
                     <div className="row mt-5">
                         <div className="col-12">
-                            <h4 className="home-title" > Diğer bütün bankaların <span style={{ fontWeight: "bold" }}>en çok kullanılan kredileri ve faiz oranları </span>`na göz atın.  </h4>
+                            <h4 className="home-title" > Diğer bütün bankaların <span style={{ fontWeight: "bold" }}>en çok kullanılan kredileri ve faiz oranları </span>`nı derleyip topladık. Size ise sadece sonuçlara göz atmak kalıyor.  </h4>
                         </div>
                     </div>
-                    <div className="row mt-5">
-                        <div className="col-12 col-lg-6 col-md-6 mt-5">
+                    <div className="row mt-3">
+                        <div className="col-12 col-lg-6 col-md-6" >
                             <LoanRate />
                         </div>
-                        <div className="col-12 col-lg-6 col-md-6 mt-5">
+                        <div className="col-12 col-lg-6 col-md-6 ">
                             <FastLoan />
                         </div>
                     </div>

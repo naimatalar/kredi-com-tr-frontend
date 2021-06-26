@@ -76,10 +76,10 @@ export const Home = (props) => {
             <div className="col-12">
                 <p className="home-title" style={{ marginTop: 0 }}>Kolayca <span style={{ fontWeight: "bold" }}>Arayın,</span> Pratik Şekilde <span style={{ fontWeight: "bold" }}>Hesaplayın,</span> Hızlıca <span style={{ fontWeight: "bold" }}>Başvurun</span>  </p>
             </div>
-            <div style={{ paddingRight: 5, marginBottom: 20 }} className="col-lg-5 col-md-6">
+            <div style={{ paddingRight: 5, marginBottom: 20 }} className="col-lg-5 col-md-6 loan-search-container">
                 <LoanSearch Loans={props.Loans}></LoanSearch>
             </div>
-            <div style={{ paddingRight: 5, marginBottom: 20 }} className="col-lg-5 col-md-6" >
+            <div style={{ paddingRight: 5, marginBottom: 20 }} className="col-lg-5 col-md-6 " >
                 <PopulerLoans></PopulerLoans>
             </div>
             <div className="col-lg-2 col-md-12 p-0" style={{ marginBottom: 20 }}  >

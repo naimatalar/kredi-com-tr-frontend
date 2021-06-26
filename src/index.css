@@ -308,7 +308,7 @@ text-decoration: none;
 
 
 .bank-loan-content{
-  padding: 45px 0 59px 0px;
+  padding: 36px 0 38px 0px;
   border-radius: 6px;
   box-shadow: 0px 2px 5px 1px black;
   background-image: url('./assets/images/krediArat.png');
@@ -638,4 +638,72 @@ input[type="text"]{
   top: -17px;
   left: -8px;
   background: white;
+}
+.bank-dispoist-list li{
+list-style: none;
+
+}
+.disposit-bank-label{
+  width: 100%;
+    text-align: center;
+    background: #d8d8d8;
+    padding: 6px 0 5px 0px;
+    color: #4a4a4a;
+}
+.disposit-bank-container{
+  padding: 6px;
+  border: 1px solid #a8a8a8;
+  border-radius: 7px;
+  box-shadow: 1px 1px 5px 0px black;
+}
+.disposit-table .div-table-col{
+  width: 32%;
+  padding: 2px 0 3px 15px;
+  font-size: 13px;
+}
+.disposit-table .div-table-header{
+  background: #7a7a7a;
+}
+.disposit-table *{
+  font-size: 13px;
+}
+.active-col *,.active-col input {
+  color: red;
+}
+.active-col  {
+  border: 1px solid red;
+}
+.res-disposit *,.res-disposit{
+color: black;
+font-size: 13px;
+}
+.res-disposit{
+  padding: 18px;
+  margin: 0;
+  margin-top: 13px;
+  border: 1px solid red;
+  background: #fff2f2;
+}
+.disposit-total-amount{
+  padding: 5px;
+  border: 1px solid #ffb7a7;
+  background: #fff0cf;
+}
+.blue-button{
+  padding: 8px;
+  background: #3bacd8;
+  border: 1px solid #0c6081;
+  text-decoration: none !important;
+} 
+.bank-disposit-component-scroll{
+  max-height: 404px;
+    overflow: auto;
+ 
+    width: 100%;
+}
+.bank-disposit-component{
+  background: white;
+  box-shadow: 1px 1px 1px 1px black;
+  border-radius: 6px;
+    
 }

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import CurrencyInput from "react-currency-input";
 
 import { apiConstant, apiurl, GetNoneToken } from "../../datacrud/datacrud";
-export const DispositContainer = () => {
+export const DispositContainer = (props) => {
     const [data, setData] = useState([])
 
 
@@ -27,9 +27,13 @@ export const DispositContainer = () => {
         <>
             {
                 data.map((item, key) => {
+                    let cssclass="col-12 col-md-6 col-lg-6 justify-content-around";
+                    if (props.Big) {
+                        cssclass="col-12 justify-content-around"
+                    }
                     return (
 
-                        <div key={key} className=" col-12 col-md-6 col-lg-6 justify-content-around">
+                        <div key={key} className={cssclass}>
                             <div className="disposit-item mb-4 p-3 ">
                                 <div className="row justify-content-around mb-2" style={{    padding: "3px 0 3px 0px",background:"gainsboro"}}>
                                     <img style={{ width: 150 }} src={apiurl + item.bankLogoUrl}></img>
