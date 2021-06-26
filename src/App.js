@@ -17,6 +17,7 @@ import { LoanBank } from "./pages/LoanBank";
 import Loan from "./pages/Loan";
 import { GetNoneToken, PostNoneToken } from "./datacrud/datacrud";
 import { SearchLoanPage } from "./pages/SearchLoanPage";
+import Head from "next/head";
 
 export default function App(props) {
   const [bankNavigation, setBankNavigation] = useState([]);

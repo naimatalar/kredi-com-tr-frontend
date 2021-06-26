@@ -2,14 +2,16 @@ import React, { useEffect, useState } from "react"
 import CurrencyInput from "react-currency-input";
 import Dropdown from 'react-dropdown';
 import { GetNoneToken, PostNoneToken } from "../datacrud/datacrud";
-import { PopulerLoans } from "../Components/containers/PopulerLoans"
+import { PopulerLoans } from "../Components/containers/PopulerLoans";
+import { Helmet } from "react-helmet";
+
 export const Loan = (props) => {
     const [loan, setLoan] = useState(props.Loan)
     const [amount, setAmount] = useState()
     const [terms, setTerms] = useState([])
     const [termsValue, setTermsValue] = useState()
 
-    
+
     useEffect(() => {
 
         start()
@@ -41,11 +43,12 @@ export const Loan = (props) => {
     }
     return (
         <div className="master-content">
+
             <div className="container-fluid">
                 <div className="loan-search-container-label pt-5">
                     {/* <h3 className="loan-page-title">{loan.loanName.toLocaleUpperCase()} ARA</h3> */}
                     <div className="row loan-search-content-label">
-                    <div className="col-12 col-md-7 col-lg-7 row d-flex d-lg-none d-md-none">
+                        <div className="col-12 col-md-7 col-lg-7 row d-flex d-lg-none d-md-none">
                             {getContent(loan.urlName)}
 
                         </div>
@@ -90,9 +93,9 @@ export const Loan = (props) => {
                 <div className="col-12 mt-5">
                     <p className="home-title" >
                         <span style={{ fontWeight: "bold" }}>Kredi Fırsatlarını </span>
-            parmaklarınız ucuna getiriyoruz. Birbirinden farklı ve çeşitli
-            <span style={{ fontWeight: "bold" }}>kredi türleri ve kredi kartlarını
-            </span> sizler için seçip sorguluyoruz </p>
+                        parmaklarınız ucuna getiriyoruz. Birbirinden farklı ve çeşitli
+                        <span style={{ fontWeight: "bold" }}>kredi türleri ve kredi kartlarını
+                        </span> sizler için seçip sorguluyoruz </p>
 
                 </div>
                 <div className="row">
@@ -137,6 +140,19 @@ const getContent = (data) => {
 
         return (
             <>
+                <Helmet>
+                    <meta property="og:type" content="article" />
+                    <meta property="og:title" content="Kobi Kredisi Hesaplama Ve Başvurma" />
+                    <meta property="og:url" content={window.location.href} />
+                    <meta property="og:description" content="Anlaşmalı olduğumuz bankaların içinden onlarca kobi kredisi seçeneğini sizin için hesaplayıp getiriyoruz" />
+                    <meta name="keyword" content="kobi kredisi, kobi kredi başvurusu, kobi kredisi hesablama " />
+                    <meta name="twitter:title" content="Kobi Kredisi Hesaplama Ve Başvurma" />
+                    <meta name="twitter:description" content="Anlaşmalı olduğumuz bankaların içinden onlarca kobi kredisi seçeneğini sizin için hesaplayıp getiriyoruz" />
+                    <meta name="description" content="Anlaşmalı olduğumuz bankaların içinden onlarca kobi kredisi seçeneğini sizin için hesaplayıp getiriyoruz" />
+                    <meta name="robots" content="index,follow" />
+                    <title>{"Kobi Kredisi Hesaplama Ve Başvurma | kerdi.com.tr"} </title>
+                </Helmet>
+
                 <div className="col-12 col-md-5 col-lg-5 row  align-content-center justify-content-center">
                     <div className="justify-content-center col-12 row">
                         <img style={{ width: "30%" }} src={require("../assets/images/corporatecolor.png").default}></img>
@@ -157,6 +173,19 @@ const getContent = (data) => {
         )
     } else if (data.includes("tasit")) {
         return (<>
+
+            <Helmet>
+                <meta property="og:type" content="article" />
+                <meta property="og:title" content="Araç Kredisi Hesaplama Ve Başvurma" />
+                <meta property="og:url" content={window.location.href} />
+                <meta property="og:description" content="Hayalinizdeki aracı almak için krediye ihtiyaç duyuyorsanız doğru yerdenizniz. Sizin için birsürü fırsat bulabiliriz." />
+                <meta name="keyword" content="araç kredisi, araç kredi başvurusu, araç kredisi hesablama " />
+                <meta name="twitter:title" content="Kobi Kredisi Hesaplama Ve Başvurma" />
+                <meta name="twitter:description" content="Hayalinizdeki aracı almak için krediye ihtiyaç duyuyorsanız doğru yerdenizniz. Sizin için birsürü fırsat bulabiliriz." />
+                <meta name="description" content="Hayalinizdeki aracı almak için krediye ihtiyaç duyuyorsanız doğru yerdenizniz. Sizin için birsürü fırsat bulabiliriz." />
+                <meta name="robots" content="index,follow" />
+                <title>{"Kobi Kredisi Hesaplama Ve Başvurma | kerdi.com.tr"} </title>
+            </Helmet>
             <div className="col-12 col-md-5 col-lg-5 row  align-content-center justify-content-center">
                 <div className="justify-content-center col-12 row">
                     <img style={{ width: "30%" }} src={require("../assets/images/carColor.png").default}></img>
@@ -176,6 +205,19 @@ const getContent = (data) => {
         </>)
     } else if (data.includes("konut")) {
         return (<>
+
+            <Helmet>
+                <meta property="og:type" content="article" />
+                <meta property="og:title" content="Konut Kredisi Hesaplama Ve Başvurma" />
+                <meta property="og:url" content={window.location.href} />
+                <meta property="og:description" content="Hayalini kurduğunuz yuvaya kavuşurken çorbada bizimde tuzumuz olsun. Kredinizi bulmanıza yardım edelim." />
+                <meta name="keyword" content="konut kredisi, konut kredi başvurusu, konut kredisi hesablama " />
+                <meta name="twitter:title" content="Konut Kredisi Hesaplama Ve Başvurma" />
+                <meta name="twitter:description" content="Hayalini kurduğunuz yuvaya kavuşurken çorbada bizimde tuzumuz olsun. Kredinizi bulmanıza yardım edelim." />
+                <meta name="description" content="Hayalini kurduğunuz yuvaya kavuşurken çorbada bizimde tuzumuz olsun. Kredinizi bulmanıza yardım edelim." />
+                <meta name="robots" content="index,follow" />
+                <title>{"Konut Kredisi Hesaplama Ve Başvurma | kerdi.com.tr"} </title>
+            </Helmet>
             <div className="col-12 col-md-5 col-lg-5 row  align-content-center justify-content-center">
                 <div className="justify-content-center col-12 row">
                     <img style={{ width: "30%" }} src={require("../assets/images/homecolor.png").default}></img>
@@ -195,6 +237,18 @@ const getContent = (data) => {
         </>)
     } else if (data.includes("ihtiyac")) {
         return (<>
+            <Helmet>
+                <meta property="og:type" content="article" />
+                <meta property="og:title" content="İhtiyaç Kredisi Hesaplama Ve Başvurma" />
+                <meta property="og:url" content={window.location.href} />
+                <meta property="og:description" content="İhtiyaç kredisi hayatın her anında lazım olan bir bir kredi türüdür. Bu krediyi bulmak ise kredi.com.tr nin uzmanlık alanıdır." />
+                <meta name="keyword" content="ihtiyaç kredisi, ihtiyaç kredi başvurusu, ihtiyaç kredisi hesablama " />
+                <meta name="twitter:title" content="İhtiyaç Kredisi Hesaplama Ve Başvurma" />
+                <meta name="twitter:description" content="İhtiyaç kredisi hayatın her anında lazım olan bir bir kredi türüdür. Bu krediyi bulmak ise kredi.com.tr nin uzmanlık alanıdır." />
+                <meta name="description" content="İhtiyaç kredisi hayatın her anında lazım olan bir bir kredi türüdür. Bu krediyi bulmak ise kredi.com.tr nin uzmanlık alanıdır." />
+                <meta name="robots" content="index,follow" />
+                <title>{"İhtiyaç Kredisi Hesaplama Ve Başvurma | kerdi.com.tr"} </title>
+            </Helmet>
             <div className="col-12 col-md-5 col-lg-5 row  align-content-center justify-content-center">
                 <div className="justify-content-center col-12 row">
                     <img style={{ width: "30%" }} src={require("../assets/images/moneycolor.png").default}></img>

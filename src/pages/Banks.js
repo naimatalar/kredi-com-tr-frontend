@@ -15,10 +15,12 @@ import { LoanBank } from "./LoanBank";
 import { apiurl, GetNoneToken } from "../datacrud/datacrud";
 
 export const Banks = (props) => {
-    const [bank, setBank] = useState([])
+    const [bank, setBank] = useState({})
     const [activeLoanType, setActiveLoanType] = useState({ id: null })
     const [selectedLoanOptions, setSelectedLoanOptions] = useState({ rate: null, amount: null, term: null })
     const [creditCarts, setCreditCarts] = useState([])
+    const [disposits, setDiposits] = useState([])
+
     const [sliderPlay, setSliderPlay] = useState(true)
 
 
@@ -30,7 +32,10 @@ export const Banks = (props) => {
 
 
         setBank(bankData)
-        debugger
+console.log(bankData)
+        setCreditCarts(bankData.creditCart)
+        setDiposits(bankData.disposits)
+
         setActiveLoanType(bankData.loans[0] || [])
         if (bankData.loans.length > 0) {
             updateSelectedLoanOption(bankData.loans[0]?.rate, null, null)
@@ -38,7 +43,6 @@ export const Banks = (props) => {
             updateSelectedLoanOption(0, null, null)
 
         }
-        setCreditCarts(kredicartdata.slice(0, 6))
     }
 
     const selectLoanType = (loanId) => {
@@ -66,14 +70,24 @@ export const Banks = (props) => {
     return (
         <div className="container-fluid">
             <Helmet>
-                <meta charSet="utf-8"></meta>
-                <title>Bankalar</title>
+
+                <meta property="og:type" content="article" />
+                <meta property="og:title" content={(bank.bankName ?? "") + ": Kredi Ve Kredi Kartı Fırsatları | kerdi.com.tr"} />
+                <meta property="og:url" content={window.location.href} />
+                <meta property="og:description" content={(bank.bankName ?? "") + " bankaya ait kredileri sorgulayabilirsiniz. Ayrıca " + (bank.bankName ?? "") + " bankasına ait kredi kartlarını listeledik  ."} />
+                <meta name="keyword" content="kredi, kredi kartı, kredi başvurusu, kredi faiz oranı, kredi kartı başvurusu" />
+                <meta name="twitter:title" content={(bank.bankName ?? "") + ": Kredi Ve Kredi Kartı Fırsatları | kerdi.com.tr"} />
+                <meta name="twitter:description" content={(bank.bankName ?? "") + " bankaya ait kredileri sorgulayabilirsiniz. Ayrıca " + (bank.bankName ?? "") + " bankasına ait kredi kartlarını listeledik  ."} />
+                <meta name="description" content={(bank.bankName ?? "") + " bankaya ait kredileri sorgulayabilirsiniz. Ayrıca " + (bank.bankName ?? "") + " bankasına ait kredi kartlarını listeledik  ."} />
+                <meta name="robots" content="index,follow" />
+                <title>{(bank.bankName ?? "") + ": Kredi Ve Kredi Kartı Fırsatları | kerdi.com.tr"} </title>
+
             </Helmet>
             <div className="row bank-label">
                 <div className="col-12">
                     <div className="row justify-content-center">
 
-                        <div className="col-md-3 col-lg-3 col-sm-6 col-8">{bank.logoUrl==undefined?"": <img src={apiurl + bank.logoUrl} style={{ width: "100%" }}></img>}</div>
+                        <div className="col-md-3 col-lg-3 col-sm-6 col-8">{bank.logoUrl == undefined ? "" : <img src={apiurl + bank.logoUrl} style={{ width: "100%" }}></img>}</div>
                     </div>
                 </div>
             </div>
@@ -151,139 +165,149 @@ export const Banks = (props) => {
                             </div>
                         </div>
                     </div>
-                    <div className="col-12 col-lg-6 col-md-6 row mt-5">
-                        <div className="col-12">
-                            <h4 style={{ color: "#464646", borderBottom: "1px solid #464646" }} className="text-center"> Bankaya Ait <b title={bank.bankName + "kredi kartı"}>{creditCarts.length} Adet Kredi Kartı</b> Bulunuyor</h4>
+                    {creditCarts.length > 0 &&
 
-                        </div>
-                        <div className="col-12 cnts">
-                            <div className="slide-container container">
-                                <Slide indicators={true} pauseOnHover={true} duration={2500} transitionDuration={800}>
-                                    {
+                        <div className="col-12 col-lg-6 col-md-6 row mt-5">
+                            <div className="col-12">
+                                <h4 style={{ color: "#464646", borderBottom: "1px solid #464646" }} className="text-center"> Bankaya Ait <b title={bank.bankName + "kredi kartı"}>{creditCarts.length} Adet Kredi Kartı</b> Bulunuyor</h4>
 
-                                        creditCarts.map((each, index) => {
+                            </div>
+                            <div className="col-12 cnts">
+                                <div className="slide-container container">
 
-                                            return (<div key={index}  >
-                                                <div className="each-fade" >
-                                                    <div className="row">
+                                    <Slide indicators={true} pauseOnHover={true} duration={2500} transitionDuration={800}>
+                                        {
 
-
-                                                        <div className="col-6">
-                                                            <img src={each.logo} style={{ width: "100%" }}></img>
-                                                        </div>
-                                                        <div className="col-6">
-                                                            <div className="col-12">
-                                                                <h3>{each.name}</h3>
-
-                                                                <b style={{ color: "#535656" }}> Yıllık Ücret</b>
+                                            creditCarts.map((each, index) => {
+                                                return (<div key={index}  >
+                                                    <div className="each-fade" >
+                                                        <div className="row">
 
 
-                                                     ₺{each.yearlyUsingAmount}
+                                                            <div className="col-6">
+                                                                <img src={apiurl + each.logoUrl} style={{ width: "100%" }}></img>
                                                             </div>
-                                                            <div className="container mt-3">
-                                                                <div className="row">
-                                                                    <div className="col-6">
-                                                                        <button className="default-button" style={{
-                                                                            padding: 3,
-                                                                            fontSize: 13,
-                                                                        }} type="submit">BAŞVUR</button>
-                                                                    </div>
-                                                                    <div className="col-6">
-                                                                        <button className="default-button" style={{
-                                                                            padding: 3,
-                                                                            fontSize: 13,
-                                                                            background: "#585858",
-                                                                        }} type="submit">DETAY</button>
+                                                            <div className="col-6">
+                                                                <div className="col-12">
+                                                                    <h3>{each.name}</h3>
+
+                                                                    <b style={{ color: "#535656" }}> Yıllık Ücret</b>
+
+
+                                                                    ₺{each.yearlyUsingAmount}
+                                                                </div>
+                                                                <div className="container mt-3">
+                                                                    <div className="row">
+                                                                        <div className="col-6">
+                                                                            <button className="default-button" style={{
+                                                                                padding: 3,
+                                                                                fontSize: 13,
+                                                                            }} type="submit">BAŞVUR</button>
+                                                                        </div>
+                                                                        <div className="col-6">
+                                                                            <button className="default-button" style={{
+                                                                                padding: 3,
+                                                                                fontSize: 13,
+                                                                                background: "#585858",
+                                                                            }} type="submit">DETAY</button>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
-                                                            </div>
 
-
-                                                        </div>
-                                                    </div>
-                                                    <div className="container">
-
-                                                        <div className="row">
-                                                            <div className="col-12">
-                                                                <hr></hr>
-                                                                <h5 className="text-center">Kampanyalar</h5>
-                                                                {
-                                                                    each.campaing.map((jitem, jkey) => {
-                                                                        return (
-                                                                            <div key={jkey}>
-                                                                                <img style={{
-                                                                                    width: 30,
-                                                                                    marginRight: 3,
-                                                                                    float: "left"
-
-                                                                                }} src={require("../assets/images/campaigns.png").default}></img>
-                                                                                <span key={jkey} style={{
-                                                                                    fontSize: 13,
-                                                                                    display: "block",
-                                                                                    lineHeight: "15px",
-                                                                                    marginBottom: 7,
-                                                                                    color: "black"
-                                                                                }}> {jitem.title}</span>
-
-                                                                            </div>
-                                                                        )
-                                                                    })
-                                                                }
-                                                            </div>
-                                                            <div className="col-12">
-                                                                <b style={{
-                                                                    fontSize: 14,
-                                                                    color: " #616161",
-                                                                    marginTop: -1,
-                                                                    display: "block",
-                                                                    paddingLeft: 23,
-                                                                    cursor: "pointer"
-                                                                }}> <i>Tüm Kampayaları Gör (+{each.campaing.length})</i>  </b>
 
                                                             </div>
                                                         </div>
+                                                        <div className="container">
+
+                                                            <div className="row">
+                                                                <div className="col-12">
+                                                                    <hr></hr>
+                                                                    <h5 className="text-center">Kampanyalar</h5>
+                                                                    {
+                                                                        each.creditCartCampaigns?.map((jitem, jkey) => {
+                                                                            return (
+                                                                                <div key={jkey}>
+                                                                                    <img style={{
+                                                                                        width: 30,
+                                                                                        marginRight: 3,
+                                                                                        float: "left"
+
+                                                                                    }} src={require("../assets/images/campaigns.png").default}></img>
+                                                                                    <span key={jkey} style={{
+                                                                                        fontSize: 13,
+                                                                                        display: "block",
+                                                                                        lineHeight: "15px",
+                                                                                        marginBottom: 7,
+                                                                                        color: "black"
+                                                                                    }}> {jitem.title}</span>
+
+                                                                                </div>
+                                                                            )
+                                                                        })
+                                                                    }
+                                                                </div>
+                                                                <div className="col-12">
+                                                                    <b style={{
+                                                                        fontSize: 14,
+                                                                        color: " #616161",
+                                                                        marginTop: -1,
+                                                                        display: "block",
+                                                                        paddingLeft: 23,
+                                                                        cursor: "pointer"
+                                                                    }}> <i>Tüm Kampayaları Gör (+{each.creditCartCampaigns?.length})</i>  </b>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </div>)
-                                        })
+                                                </div>)
+                                            })
 
-                                    }
+                                        }
 
-                                </Slide>
+                                    </Slide>
+                                </div>
+                            </div>
+                        </div>
+                        }
+                    {disposits.length > 0 &&
+                        <div className="col-12 col-lg-6 col-md-6 row mt-5">
+                            <div className="col-12">
+                                <h4 style={{ color: "#464646", borderBottom: "1px solid #464646" }} className="text-center"> Bankaya Ait <b title={bank.bankName + "kredi kartı"}>{creditCarts.length} Adet Kredi Kartı</b> Bulunuyor</h4>
+
+                            </div>
+                        </div>
+                    }
+                    <div className="row mt-5">
+                        <div className="col-12">
+                            <h4 className="home-title" > Diğer bütün bankaların <span style={{ fontWeight: "bold" }}>en çok kullanılan kredileri ve faiz oranları </span>`na göz atın.  </h4>
+                        </div>
+                    </div>
+                    <div className="row mt-5">
+                        <div className="col-12 col-lg-6 col-md-6 mt-5">
+                            <LoanRate />
+                        </div>
+                        <div className="col-12 col-lg-6 col-md-6 mt-5">
+                            <FastLoan />
+                        </div>
+                    </div>
+                    <div className="row mt-5">
+
+
+                        <div className="row">
+
+                            <div className="col-12 col-lg-6 col-md-6 mt-5" >
+                                <HowMuchLoan></HowMuchLoan>
+                            </div>
+                            <div className="col-12 col-lg-6 col-md-6 mt-5" >
+                                <EmailPost></EmailPost>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div className="row mt-5">
-                    <div className="col-12">
-                        <h4 className="home-title" > Diğer bütün bankaların <span style={{ fontWeight: "bold" }}>en çok kullanılan kredileri ve faiz oranları </span>`na göz atın.  </h4>
+                    <div className="row mt-7" style={{ justifyContent: "center", marginTop: 100 }}>
+                        <BankContainer Banks={props.Banks}></BankContainer>
                     </div>
                 </div>
-                <div className="row mt-5">
-                    <div className="col-12 col-lg-6 col-md-6 mt-5">
-                        <LoanRate />
-                    </div>
-                    <div className="col-12 col-lg-6 col-md-6 mt-5">
-                        <FastLoan />
-                    </div>
-                </div>
-                <div className="row mt-5">
-
-
-                    <div className="row">
-
-                        <div className="col-12 col-lg-6 col-md-6 mt-5" >
-                            <HowMuchLoan></HowMuchLoan>
-                        </div>
-                        <div className="col-12 col-lg-6 col-md-6 mt-5" >
-                            <EmailPost></EmailPost>
-                        </div>
-                    </div>
-                </div>
-                <div className="row mt-7" style={{ justifyContent: "center", marginTop: 100 }}>
-                    <BankContainer Banks={props.Banks}></BankContainer>
-                </div>
-
             </div>
         </div>
 

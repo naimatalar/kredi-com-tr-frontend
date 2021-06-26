@@ -398,7 +398,7 @@ input[type="text"]{
 .home-title{
   font-size: 31px;
   color: #5e5e5e;
-  margin: 37px 0 19px 1px; 
+  margin: 20px 0 19px 1px; 
 }
 .carosel-row{
   margin-top: 70px;
@@ -590,6 +590,7 @@ input[type="text"]{
     margin-left: 10px;
     align-items: center;
     justify-content: center;
+    background: white;
 }
 .lv-master{
   position: fixed;
@@ -623,4 +624,18 @@ input[type="text"]{
 }
 .add-contetns *{
   color: #000000;
+}
+.disposit-item{
+  border: 2px solid #9f9f9f;
+  border-radius: 4px;
+  background:  #e3fcf0f5;
+}
+.disposit-description{
+  font-weight: bold;
+  color: black;
+  text-align: center;
+  position: absolute;
+  top: -17px;
+  left: -8px;
+  background: white;
 }

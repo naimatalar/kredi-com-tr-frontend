@@ -5,17 +5,36 @@ import EmailPost from "../Components/containers/EmailPost";
 import { FastLoan } from "../Components/containers/FastLoan";
 import HowMuchLoan from "../Components/containers/HowMuchLoan";
 import { LoanRate } from "../Components/containers/LoanRate";
-
+import { Helmet } from "react-helmet";
+import { NextSeo } from 'next-seo';
+import Head from 'next/head'
 import { LoanSearch } from "../Components/containers/LoanSearch";
 import MiddleMenu from "../Components/containers/MiddleMenu";
 import { PopulerLoans } from "../Components/containers/PopulerLoans";
 import Slider from "../Components/containers/Slider";
-
+import { DispositContainer } from "../Components/containers/DispositContainer";
 export const Home = (props) => {
 
     const [addsPopup, setAddsPopup] = useState(false)
 
     return (<>
+        <Helmet>
+            <meta property="og:type" content="article" />
+            <meta property="og:title" content="Kredi Fırsatları, En İyi Kredi Kartları | kerdi.com.tr" />
+            <meta property="og:url" content={window.location.href} />
+            <meta property="og:description" content="En uygun kredi fırsatlarını kredi.com.tr ayrıcalığı ile sizlerle buluşturuyoruz. Bol puan veren ve uçuş mili kazandıran kredi kartlarını sizin için listeleyip tercihinize sunuyoruz." />
+            <meta name="keyword" content="kredi, kredi kartı, kredi başvurusu, kredi faiz oranı, kredi kartı başvurusu" />
+            <meta name="twitter:title" content="Kredi Fırsatları, En İyi Kredi Kartları | kerdi.com.tr" />
+            <meta name="twitter:description" content="Kredi.com.tr | Türkiyenin En Profesyonel Kredi Ve Kredi Kartı Başvuru Platformu" />
+            <meta name="description" content="kredi.com.tr Kolayca Arayın, Pratik Şekilde Hesaplayın, Hızlıca Başvurun" />
+            <meta name="robots" content="index,follow" />
+            <title>KREDİ.COM.TR | Türkiyenin En Profesyonel Kredi Ve Kredi Kartı Başvuru Platformu</title>
+        </Helmet>
+
+        {/* <NextSeo
+            title="Simple Usage Example"
+            description="A short description goes here."
+        /> */}
         {
             addsPopup && <> <div onClick={() => { setAddsPopup(false) }} className="lv-shadow"></div>
                 <div className="lv-master">
@@ -39,62 +58,50 @@ export const Home = (props) => {
                             </div>
                             <div className="col-12 row justify-content-center">
                                 <b>Mail Adres 2 : &nbsp;</b><span> info@kredi.com.tr</span>
-
                             </div>
                             <div className="col-12 row justify-content-center">
                                 <b>Telefon : &nbsp;</b><span> +90 (534) 551 65 15</span>
-
                             </div>
-
-
-
                         </div>
                     </div>
-
                 </div>
             </>
         }
 
         <div className="row">
+
+
+
+
             <div className="col-12">
                 <p className="home-title" style={{ marginTop: 0 }}>Kolayca <span style={{ fontWeight: "bold" }}>Arayın,</span> Pratik Şekilde <span style={{ fontWeight: "bold" }}>Hesaplayın,</span> Hızlıca <span style={{ fontWeight: "bold" }}>Başvurun</span>  </p>
-
             </div>
             <div style={{ paddingRight: 5, marginBottom: 20 }} className="col-lg-5 col-md-6">
                 <LoanSearch Loans={props.Loans}></LoanSearch>
-
             </div>
             <div style={{ paddingRight: 5, marginBottom: 20 }} className="col-lg-5 col-md-6" >
                 <PopulerLoans></PopulerLoans>
-
             </div>
             <div className="col-lg-2 col-md-12 p-0" style={{ marginBottom: 20 }}  >
-
                 <div className="d-none d-lg-flex row adds-first-big" >
                     <div className="row  m-0 p-0 justify-content-center">
-
                         <img style={{ width: "80%", objectFit: "contain" }} src={require("../assets/images/lg.png").default}></img>
-                        <b>Reklam Ve Tanıtın Alanı</b>
+                        <b style={{ textAlign: "center" }}>Reklam Ve Tanıtın Alanı</b>
                     </div>
                     <div className="row  m-0 p-0 justify-content-center">
-
                         <span style={{ textAlign: "center", textAlign: "center", color: " #181818", fontSize: 12 }}>Aylık 3MN web trafiğine sahip sitemizde tanıtım ve reklamlarınızı yayınlayalım. Ürün yada hizmetinizi parmakların ucuna taşıyalım. </span>
                     </div>
                     <div className="row  m-0 p-0 justify-content-center">
-
                         <button onClick={() => { setAddsPopup(true) }} className="default-button">&nbsp; İLETİŞİM &nbsp;</button>
                     </div>
-
                 </div>
-                {/* <img style={{ height: "100%", width: "100%" }} src={require("../assets/images/adds.png").default}></img> */}
-                {/* <img className="d-lg-none d-md-block" style={{ width: "100%" }} src={require("../assets/images/addsvert.png").default}></img> */}
                 <div className="d-lg-none d-md-flex row adds-first-big pt-4 pb-4" >
                     <div className="row  m-0 p-0 justify-content-center">
                         <div className="row justify-content-center">
                             <img style={{ width: "50%", objectFit: "contain" }} src={require("../assets/images/lg.png").default}></img>
                         </div>
                         <div className="col-12" style={{ textAlign: "center" }}>
-                            <b>Reklam Ve Tanıtın Alanı</b>
+                            <b style={{ textAlign: "center" }}>Reklam Ve Tanıtın Alanı</b>
                         </div>
                     </div>
                     <div className="col-12 mt-2">
@@ -114,8 +121,24 @@ export const Home = (props) => {
 
 
         </div>
+        <div className="col-12">
+            <p className="home-title" >En çok kazandıran <span style={{ fontWeight: "bold" }}>vadeli mevduat seçeneklerini </span> sizin için seçtik.</p>
+        </div>
+        <div className=" mb-4 bt-4">
+            <div className="mb-3" style={{
+                padding: 7,
+                background: "linear-gradient(45deg, #077a683b, transparent)"
+            }}>
+                <i style={{ color: " #505050",fontWeight:"bold" }}> En çok tercih edilen mevduat hesapları</i>
+
+            </div>
+            <div className="row">
+                <DispositContainer></DispositContainer>
+
+            </div>
+        </div>
         <div className="row">
-            <div className="col-12" style={{ marginTop: 25, marginBottom: 15 }}>
+            <div className="col-12" style={{ marginBottom: 15 }}>
                 <p className="home-title" > <span style={{ fontWeight: "bold" }}>Kredi ve kredi kartları ile ilgili en güncel verileri analiz edip, <br /></span> Çeşitli <span style={{ fontWeight: "bold" }}>Hesap Araçlarımızla </span> bütce hesabınızı kolayca yapın.  </p>
             </div>
             <div style={{ paddingRight: 5, marginBottom: 20 }} className="col-lg-5 col-md-6">
@@ -129,7 +152,7 @@ export const Home = (props) => {
                     <div className="row  m-0 p-0 justify-content-center">
 
                         <img style={{ width: "80%", objectFit: "contain" }} src={require("../assets/images/lg.png").default}></img>
-                        <b>Reklam Ve Tanıtın Alanı</b>
+                        <b style={{ textAlign: "center" }}>Reklam Ve Tanıtın Alanı</b>
                     </div>
                     <div className="row  m-0 p-0 justify-content-center">
 
@@ -155,7 +178,7 @@ export const Home = (props) => {
                         <img style={{ width: "50%", objectFit: "contain" }} src={require("../assets/images/lg.png").default}></img>
                     </div>
                     <div className="col-12" style={{ textAlign: "center" }}>
-                        <b>Reklam Ve Tanıtın Alanı</b>
+                        <b style={{ textAlign: "center" }}>Reklam Ve Tanıtın Alanı</b>
                     </div>
                 </div>
                 <div className="col-12 mt-2">

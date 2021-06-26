@@ -3,13 +3,14 @@ import { Link } from "react-router-dom";
 import { NavItem } from "reactstrap";
 import { apiurl, GetNoneToken } from "../datacrud/datacrud";
 import { kredicartdata } from "../kredicartdata";
+import { Helmet } from "react-helmet";
 
 export const CreditCart = (props) => {
     const [mainKrediKartData, setMainKrediKartData] = useState([])
     const [banklistFilter, setBanklistFilter] = useState([{ name: "", logoUrl: "" }])
     const [krediKartData, setKrediKartData] = useState([])
-    
-    
+
+
     useEffect(() => {
         start()
 
@@ -17,9 +18,9 @@ export const CreditCart = (props) => {
     const start = async () => {
 
 
-        if (props.cartType == "all" ) {
-            
-            let ccDAta = await GetNoneToken("CreditCarts/GetAllSiteByCode/"+null).then(x => { return x.data }).catch(x => { return false })
+        if (props.cartType == "all") {
+
+            let ccDAta = await GetNoneToken("CreditCarts/GetAllSiteByCode/" + null).then(x => { return x.data }).catch(x => { return false })
 
             setMainKrediKartData(ccDAta)
 
@@ -27,8 +28,8 @@ export const CreditCart = (props) => {
             bankListFill(ccDAta);
 
         } else {
-            
-            let ccDAta = await GetNoneToken("CreditCarts/GetAllSiteByCode/"+props.cartType).then(x => { return x.data }).catch(x => { return false })
+
+            let ccDAta = await GetNoneToken("CreditCarts/GetAllSiteByCode/" + props.cartType).then(x => { return x.data }).catch(x => { return false })
             setMainKrediKartData(ccDAta)
             setKrediKartData(ccDAta)
             bankListFill(ccDAta);
@@ -62,7 +63,7 @@ export const CreditCart = (props) => {
             }
         }
         let selected = mainKrediKartData.filter((x) => { return bnks.includes(x.bank) });
-        
+
         if (bnks == 0) {
             setKrediKartData(mainKrediKartData)
 
@@ -73,7 +74,18 @@ export const CreditCart = (props) => {
 
     return (
         <div className="ccartcontent">
-
+            <Helmet>
+                <meta property="og:type" content="article" />
+                <meta property="og:title" content="Mil Kazandıran Ve Puan Veren Kredi Kartları" />
+                <meta property="og:url" content={window.location.href} />
+                <meta property="og:description" content="Onlarca kredi kartlarını listeledik. Mil veren kredi kartları Bol bol uçuk kazandırıyor. Diğer yandan puan biriktirilen kredi kartları ile harcayarak kazanıyorsunuz." />
+                <meta name="keyword" content="kredi, kredi kartı, kredi başvurusu, kredi faiz oranı, kredi kartı başvurusu" />
+                <meta name="twitter:title" content="Mil Kazandıran Ve Puan Veren Kredi Kartları" />
+                <meta name="twitter:description" content= "Onlarca kredi kartlarını listeledik. Mil veren kredi kartları Bol bol uçuk kazandırıyor. Diğer yandan puan biriktirilen kredi kartları ile harcayarak kazanıyorsunuz." />
+                <meta name="description" content="Onlarca kredi kartlarını listeledik. Mil veren kredi kartları Bol bol uçuk kazandırıyor. Diğer yandan puan biriktirilen kredi kartları ile harcayarak kazanıyorsunuz." />
+                <meta name="robots" content="index,follow" />
+                <title>{"Mil Kazandıran Ve Puan Veren Kredi Kartları | kerdi.com.tr"} </title>
+            </Helmet>
             <div className="ccbanner" style={{ overflow: "hidden" }}>
 
             </div>
@@ -124,12 +136,10 @@ export const CreditCart = (props) => {
                                     }
                                     return (
                                         <div key={key} style={{ marginBottom: 13, background: bg, padding: 10 }}>
-
                                             <label style={{ marginBottom: 0, cursor: "pointer" }}>
                                                 <input value={item.name} className="bankCheckbox" onChange={(element) => changeFilter(element)} style={{ width: 22, height: 22 }} type="checkbox"></input>
-                                                <img style={{ width: 120, marginLeft: 10, marginTop: -13 }} src={apiurl+ item.logoUrl}></img>
+                                                <img style={{ width: 120, marginLeft: 10, marginTop: -13 }} src={apiurl + item.logoUrl}></img>
                                             </label>
-
                                         </div>
                                     )
 
@@ -153,7 +163,7 @@ export const CreditCart = (props) => {
 
                                                 <div className="col-8">
                                                     <h6 style={{ marginLeft: 10, color: "#ce2312" }}>{item.name}</h6>
-                                                    <img src={apiurl+item.logo} style={{ width: "100%" }}></img>
+                                                    <img src={apiurl + item.logo} style={{ width: "100%" }}></img>
                                                 </div>
                                                 <div className="col-4" >
                                                     <b style={{
