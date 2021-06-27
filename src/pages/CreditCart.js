@@ -4,7 +4,7 @@ import { NavItem } from "reactstrap";
 import { apiurl, GetNoneToken } from "../datacrud/datacrud";
 import { kredicartdata } from "../kredicartdata";
 import { Helmet } from "react-helmet";
-
+import hcbgImage from "../assets/images/bgss.jpg";
 export const CreditCart = (props) => {
     const [mainKrediKartData, setMainKrediKartData] = useState([])
     const [banklistFilter, setBanklistFilter] = useState([{ name: "", logoUrl: "" }])
@@ -89,9 +89,9 @@ export const CreditCart = (props) => {
             <div className="ccbanner" style={{ overflow: "hidden" }}>
 
             </div>
-            <div className="credit-cart-head">
+            <div className="credit-cart-head" style={{ backgroundImage: 'url('+hcbgImage+')',}} >
 
-                <div className="row">
+                <div className="row mb-4">
                     <div className="col-12" style={{ textAlign: "center", marginTop: 40 }}>
                         <h1 style={{ color: "white", textShadow: "1px 1px 5px black" }}>Kredi Kartları</h1>
                     </div>
@@ -100,16 +100,16 @@ export const CreditCart = (props) => {
                     <div className="col-12" style={{ textAlign: "center" }}>
                         <ul className="cart-type-nav">
                             <li className={props.cartType == "all" ? "active" : ""}>
-                                <Link to="/kredi-karti"><img style={{ width: 20, marginRight: 5 }} src={require("../assets/images/debit.png").default}></img>Tüm Kartlar</Link>
+                                <Link to="/kredi-karti"><img alt="Bütün kredi kartlarını" title="Bütün kredi kartlarını listele ve bul" style={{ width: 20, marginRight: 5 }} src={require("../assets/images/debit.png").default}></img>Tüm Kartlar</Link>
                             </li>
                             <li className={props.cartType == "miles" ? "active" : ""}>
-                                <Link to="/kredi-karti/mil-veren-kredi-kartlari"> <img style={{ width: 18, marginRight: 5 }} src={require("../assets/images/fly-color.png").default}></img>Mil Veren Kartlar</Link>
+                                <Link to="/kredi-karti/mil-veren-kredi-kartlari"> <img alt="Mil veren kredi kartlarını listele ve bul" title="Kullandıkça mil veren kredi kartlarını listeler" style={{ width: 18, marginRight: 5 }} src={require("../assets/images/fly-color.png").default}></img>Mil Veren Kartlar</Link>
                             </li>
                             <li className={props.cartType == "point" ? "active" : ""}>
-                                <Link to="/kredi-karti/puan-veren-kredi-kartlari">  <img style={{ width: 18, marginRight: 5 }} src={require("../assets/images/scorecolor.png").default}></img>Puan Veren Kartlar</Link>
+                                <Link to="/kredi-karti/puan-veren-kredi-kartlari">  <img alt="Puan veren kartlarını listele ve bul" title="Puan biriktirip harcadıkça kazandıran puan veren kredi kartları" style={{ width: 18, marginRight: 5 }} src={require("../assets/images/scorecolor.png").default}></img>Puan Veren Kartlar</Link>
                             </li>
                             <li className={props.cartType == "corporate" ? "active" : ""}>
-                                <Link to="/kredi-karti/ticari-kredi-kartlari"><img style={{ width: 18, marginRight: 5 }} src={require("../assets/images/corporatecolor.png").default}></img>Ticari Kartlar</Link>
+                                <Link to="/kredi-karti/ticari-kredi-kartlari"><img alt="Ticari kredi kartlarını bul" title="Ticari kredi kartları ile alışverişi kazançlı hale getiren ticari kredi kartları"  style={{ width: 18, marginRight: 5 }} src={require("../assets/images/corporatecolor.png").default}></img>Ticari Kartlar</Link>
                             </li>
 
 
@@ -138,7 +138,7 @@ export const CreditCart = (props) => {
                                         <div key={key} style={{ marginBottom: 13, background: bg, padding: 10 }}>
                                             <label style={{ marginBottom: 0, cursor: "pointer" }}>
                                                 <input value={item.name} className="bankCheckbox" onChange={(element) => changeFilter(element)} style={{ width: 22, height: 22 }} type="checkbox"></input>
-                                                <img style={{ width: 120, marginLeft: 10, marginTop: -13 }} src={apiurl + item.logoUrl}></img>
+                                                <img alt={item.name +"bütün kredi kartları listele"} title={item.name +" kredi kartları listele"} style={{ width: 120, marginLeft: 10, marginTop: -13 }} src={apiurl + item.logoUrl}></img>
                                             </label>
                                         </div>
                                     )
@@ -163,7 +163,7 @@ export const CreditCart = (props) => {
 
                                                 <div className="col-8">
                                                     <h6 style={{ marginLeft: 10, color: "#ce2312" }}>{item.name}</h6>
-                                                    <img src={apiurl + item.logo} style={{ width: "100%" }}></img>
+                                                    <img alt={item.bank +" banka ait"+item.name +"  adlı kredi kartı" }  title={item.bank +" banka "+item.name +" Kredi kartı" } src={apiurl + item.logo} style={{ width: "100%" }}></img>
                                                 </div>
                                                 <div className="col-4" >
                                                     <b style={{

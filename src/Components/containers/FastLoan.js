@@ -35,7 +35,7 @@ export const FastLoan = () => {
             alert: null,
             totalPayment: null,
             mountlyPayment: null,
-            loanTerms:[],
+            loanTerms: [],
             maxLoan: null,
             minLoan: 200,
         }])
@@ -50,8 +50,8 @@ export const FastLoan = () => {
     const start = async () => {
         var data = await GetNoneToken("FastLoans/GetAllSite").then(x => { return x.data }).catch(x => { return false })
         setFastLoadnData(data)
-        
-    
+
+
 
     }
 
@@ -65,7 +65,7 @@ export const FastLoan = () => {
 
         findLoan.alertShow = false;
         findLoan.alert = null;
-debugger
+
         if (amount < findLoan.minLoan) {
             findLoan.alertShow = true;
             findLoan.alert = "En düşük kredi tutarı " + findLoan.minLoan + " olabilir";
@@ -98,8 +98,8 @@ debugger
                         Hızlı Başvur
                     </p>
                 </div>
-                <div className="container" style={{padding:0}}>
-                    <div className="row row-container" style={{padding: "0px 12px 0px 10px"}}>
+                <div className="container" style={{ padding: 0 }}>
+                    <div className="row row-container" style={{ padding: "0px 12px 0px 10px" }}>
                         {
 
                             fastLoanData.sort((a, b) => { return a.orderBy - b.orderBy }).map((item, index) => {
@@ -111,7 +111,7 @@ debugger
                                 return (
 
                                     <div key={index} className="col-12 fast-loan-item" >
-                                        <div className="row" style={{padding: "8px 0 8px 0"}}>
+                                        <div className="row" style={{ padding: "8px 0 8px 0" }}>
                                             <div className="col-4 ">
                                                 <div className="col-12" style={{ padding: 0 }}><b>Tutar</b></div>
                                                 <div>
@@ -145,14 +145,20 @@ debugger
 
                                             </div>
                                         </div>
-                                        <div className="row" style={{paddingBottom:8}}>
+                                        <div className="row" style={{ paddingBottom: 8 }}>
                                             <div className="col-4">
-                                                <img src={apiurl+item.logo} style={{ width: "100%"}}></img>
+                                                <img title={item.bankName + " banka " + item.loanType + " hızlı başvuru"} alt={item.bankName + " banka " + item.loanType + " başvuru"} src={apiurl + item.logo} style={{ width: "100%" }}></img>
 
                                             </div>
                                             <div className="col-4">
-                                                <span>Faiz Oranı:</span> {item.rate}
+                                                <div className="col-12 m-0 p-0">
+                                                    <span>Faiz Oranı:</span> {item.rate}
+                                                </div>
+                                                 <div className="col-12 m-0 p-0">
+                                                    <b>{item.loanType}</b> 
+                                                </div>
                                             </div>
+
                                             <div className="col-4" style={{ padding: 0 }}>
                                                 <div className="col-5" style={{
                                                     padding: 0, float: "left",

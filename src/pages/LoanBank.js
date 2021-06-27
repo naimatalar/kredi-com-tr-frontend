@@ -76,7 +76,7 @@ export const LoanBank = (props) => {
                     <div className="col-12 col-lg-4 col-md-4" style={{ borderRight: "1px solid #b1b1b1" }}>
                         <div className="row">
                             <div className="col-12">
-                                <img style={{ width: "100%" }} src={apiurl+ bank.logoUrl}></img>
+                                <img title={bank.bankName + " banka "+loanType.loanName +"kredisi sorgulama soçuçları  kredi.com.tr"} alt={"logo"}  style={{ width: "100%" }} src={apiurl+ bank.logoUrl}></img>
                             </div>
 
                         </div>

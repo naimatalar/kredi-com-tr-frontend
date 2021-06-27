@@ -41,7 +41,7 @@ export const Home = (props) => {
                     <button onClick={() => { setAddsPopup(false) }} className="lv-close-button">X</button>
                     <div className="col-12">
                         <div className="row justify-content-center" >
-                            <img style={{ width: "50%", objectFit: "contain" }} src={require("../assets/images/lg.png").default}></img>
+                            <img title="kredi.com.tr" alt={"logo"} style={{ width: "50%", objectFit: "contain" }} src={require("../assets/images/lg.png").default}></img>
                         </div>
                     </div>
                     <div className="col-12 mt-4">
@@ -85,7 +85,7 @@ export const Home = (props) => {
             <div className="col-lg-2 col-md-12 p-0" style={{ marginBottom: 20 }}  >
                 <div className="d-none d-lg-flex row adds-first-big" >
                     <div className="row  m-0 p-0 justify-content-center">
-                        <img style={{ width: "80%", objectFit: "contain" }} src={require("../assets/images/lg.png").default}></img>
+                        <img title="kredi.com.tr kredi, kredi kartı vadeli mevduat" alt={"logo kredi.com"}  style={{ width: "80%", objectFit: "contain" }} src={require("../assets/images/lg.png").default}></img>
                         <b style={{ textAlign: "center" }}>Reklam Ve Tanıtın Alanı</b>
                     </div>
                     <div className="row  m-0 p-0 justify-content-center">
@@ -98,7 +98,7 @@ export const Home = (props) => {
                 <div className="d-lg-none d-md-flex row adds-first-big pt-4 pb-4" >
                     <div className="row  m-0 p-0 justify-content-center">
                         <div className="row justify-content-center">
-                            <img style={{ width: "50%", objectFit: "contain" }} src={require("../assets/images/lg.png").default}></img>
+                            <img title="kredi kartları krediler ve mevduatlar kredi.com.tr de" alt={"kredi.com.tr logo"}  style={{ width: "50%", objectFit: "contain" }} src={require("../assets/images/lg.png").default}></img>
                         </div>
                         <div className="col-12" style={{ textAlign: "center" }}>
                             <b style={{ textAlign: "center" }}>Reklam Ve Tanıtın Alanı</b>
@@ -151,7 +151,7 @@ export const Home = (props) => {
                 <div className="d-none d-lg-flex row adds-first-big" >
                     <div className="row  m-0 p-0 justify-content-center">
 
-                        <img style={{ width: "80%", objectFit: "contain" }} src={require("../assets/images/lg.png").default}></img>
+                        <img title="kredi.com.tr online kredi, kredi kartı ve mevduat başvuruları" alt={"kredi.com.tr "}  style={{ width: "80%", objectFit: "contain" }} src={require("../assets/images/lg.png").default}></img>
                         <b style={{ textAlign: "center" }}>Reklam Ve Tanıtın Alanı</b>
                     </div>
                     <div className="row  m-0 p-0 justify-content-center">
@@ -175,7 +175,7 @@ export const Home = (props) => {
             <div className="d-lg-none d-md-flex row adds-first-big pt-4 pb-4" >
                 <div className="row  m-0 p-0 justify-content-center">
                     <div className="row justify-content-center">
-                        <img style={{ width: "50%", objectFit: "contain" }} src={require("../assets/images/lg.png").default}></img>
+                        <img title="kredi.com.tr ile artık bankaların ürünleri parmaklarınızın ucunda" alt={"logo kredi.com.tr"}  style={{ width: "50%", objectFit: "contain" }} src={require("../assets/images/lg.png").default}></img>
                     </div>
                     <div className="col-12" style={{ textAlign: "center" }}>
                         <b style={{ textAlign: "center" }}>Reklam Ve Tanıtın Alanı</b>

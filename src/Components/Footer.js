@@ -12,7 +12,7 @@ const Footer = () => {
                     <div className="row">
 
                         <div className="col-md-5 mt-md-0 mt-3">
-                            <img alt="kredi.com.tr logo" style={{
+                            <img alt="kredi.com.tr logo" title={"kredi.com.tr"} style={{
                                 width: "80%"
                             }} src={require("../assets/images/lgwhite.png").default} ></img>
                           <h4>Bütün Bankaların Kredi Merkezi</h4>

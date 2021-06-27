@@ -13,7 +13,7 @@ export const BankContainer = (props) => {
         props.Banks.map((item, key) => {
             return (
                 <a key={key} href="#" style={{cursor:"pointer"}} className="col-2 banklist">
-                    <img  style={{cursor:"pointer"}} src={ apiConstant + "/StaticF" +  item.logoUrl} style={{width:"100%"}}></img>
+                    <img title={item.bankName+" ve kredi.com.tr çözüm ortaklığı"} alt={item.bankName+" çözüm ortaklığı"}  style={{cursor:"pointer"}} src={ apiConstant + "/StaticF" +  item.logoUrl} style={{width:"100%"}}></img>
                 </a>
             )
 

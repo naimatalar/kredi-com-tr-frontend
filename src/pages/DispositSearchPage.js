@@ -123,7 +123,7 @@ export const DispositSearchPage = (props) => {
                             </Helmet>
                             <div className="col-12 col-md-5 col-lg-5 row  align-content-center justify-content-center">
                                 <div className="justify-content-center col-12 row">
-                                    <img style={{ width: "30%" }} src={require("../assets/images/moneycolor.png").default}></img>
+                                    <img alt="Vadeli mevduat hesapları" title="Vadeli Mevduat Hesaplama Ve Başvurma" style={{ width: "30%" }} src={require("../assets/images/moneycolor.png").default}></img>
                                 </div>
                                 <div className="justify-content-center col-12 row">
                                     <h3><b>Mavduat</b></h3>

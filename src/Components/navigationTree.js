@@ -48,7 +48,7 @@ const NavigationTree = (props) => {
                         <div className="row" style={{ height: 90, alignItems: "center" }}>
                             <div className="col-lg-3 col-md-2" style={{ paddingBottom: 6 }}>
                                 <a title="kredi.com.tr" href="/">
-                                    <img alt="kredi.com.tr logo" src={require("../assets/images/lg2.png").default} style={{ width: "100%" }}></img>
+                                    <img alt="kredi.com.tr logo" title="kredi.com.tr" src={require("../assets/images/lg2.png").default} style={{ width: "100%" }}></img>
 
                                 </a>
 
@@ -101,7 +101,7 @@ const NavigationTree = (props) => {
                                                 <Nav className="row drop-nav-ul" style={{}}>
                                                     {props.BankNavigation.map((item, key) => {
                                                         return (
-                                                            <NavItem key={key} title={item.bankName} className="drop-item col-12"><a href={"/bankalar/" + item.bankUrlName} ><img style={{ width: "80%", padding: 3, marginBottom: 5 }} src={apiurl + item.logoUrl}></img> </a></NavItem>
+                                                            <NavItem key={key} title={item.bankName} className="drop-item col-12"><a href={"/bankalar/" + item.bankUrlName} ><img alt={item.bankName +" kredi.com.tr" } style={{ width: "80%", padding: 3, marginBottom: 5 }} src={apiurl + item.logoUrl}></img> </a></NavItem>
 
                                                         )
 
@@ -182,7 +182,7 @@ const NavigationTree = (props) => {
                                                 {props.BankNavigation.map((item, key) => {
                                                     return (
                                                         <div key={key} >
-                                                            <a href={"/bankalar/" + item.bankUrlName} ><img style={{ width: 170, padding: 3, marginBottom: 5 }} src={apiurl + item.logoUrl}></img> </a>                                                        </div>
+                                                            <a href={"/bankalar/" + item.bankUrlName} ><img  alt={"bankalar "+item.bankName+" kredi.com.tr"}  style={{ width: 170, padding: 3, marginBottom: 5 }} src={apiurl + item.logoUrl}></img> </a>                                                        </div>
 
                                                     )
                                                 })}

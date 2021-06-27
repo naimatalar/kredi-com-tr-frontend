@@ -168,7 +168,7 @@ export const Banks = (props) => {
                 <div className="col-12">
                     <div className="row justify-content-center">
 
-                        <div className="col-md-3 col-lg-3 col-sm-6 col-8">{bank.logoUrl == undefined ? "" : <img src={apiurl + bank.logoUrl} style={{ width: "100%" }}></img>}</div>
+                        <div className="col-md-3 col-lg-3 col-sm-6 col-8">{bank.logoUrl == undefined ? "" : <img src={apiurl + bank.logoUrl} style={{ width: "100%" }} alt={bank.bankName +" Bütün ürünleri krediler kredi kartı mevduat"} title={bank.bankName +" kredi, kredi kartı ve mevduat ürünleri"}></img>}</div>
                     </div>
                 </div>
             </div>
@@ -272,7 +272,7 @@ export const Banks = (props) => {
 
 
                                                             <div className="col-6">
-                                                                <img src={apiurl + each.logoUrl} style={{ width: "100%" }}></img>
+                                                                <img alt={bank.bankName +" bankaya ait "+ each.name +" kredi kartı"} title={bank.bankName +"  "+ each.name +" kredi kartı özellikleri"} src={apiurl + each.logoUrl} style={{ width: "100%" }}></img>
                                                             </div>
                                                             <div className="col-6">
                                                                 <div className="col-12">
@@ -319,7 +319,10 @@ export const Banks = (props) => {
                                                                                         marginRight: 3,
                                                                                         float: "left"
 
-                                                                                    }} src={require("../assets/images/campaigns.png").default}></img>
+                                                                                    }} src={require("../assets/images/campaigns.png").default} 
+                                                                                    alt={bank.bankName +" bankaya ait "+ each.name +" kampanya :"+jitem.title}
+                                                                                    title={jitem.title+" : "+bank.bankName +"  "+ each.name +" kredi kartının kampanyaları " }
+                                                                                    ></img>
                                                                                     <span key={jkey} style={{
                                                                                         fontSize: 13,
                                                                                         display: "block",

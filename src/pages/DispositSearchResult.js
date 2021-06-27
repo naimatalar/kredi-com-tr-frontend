@@ -4,6 +4,7 @@ import { LoanRate } from "../Components/containers/LoanRate";
 import CurrencyInput from "react-currency-input";
 import Dropdown from 'react-dropdown';
 import { DispositContainer } from "../Components/containers/DispositContainer";
+import { Helmet } from "react-helmet";
 
 export const DispositSearchResult = (props) => {
     var [data, setData] = useState(
@@ -23,6 +24,7 @@ export const DispositSearchResult = (props) => {
     const [termsValue, setTermsValue] = useState()
     const [currencyIcon, setCurrencyIcon] = useState("")
     const [currencyIconStatic, setCurrencyIconStatic] = useState("")
+    const [currencyName, setCurrencyName] = useState("")
 
 
     const [amount, setAmount] = useState(null)
@@ -39,21 +41,23 @@ export const DispositSearchResult = (props) => {
         let c = new URLSearchParams(props.location.search).get("c")
         let t = new URLSearchParams(props.location.search).get("term")
 
-        
-        let data = await GetNoneToken("Disposits/Search?amount=" + a + "&&term="+t+"&&c=" + c).then(x => { return x.data }).catch(x => { return false })
+
+        let data = await GetNoneToken("Disposits/Search?amount=" + a + "&&term=" + t + "&&c=" + c).then(x => { return x.data }).catch(x => { return false })
 
         setAmount(a)
         setCurrency(c)
-setTermsValue(t)
+        setTermsValue(t)
         setAmountStatic(a)
         setData(data)
         if (c == 0) {
             setCurrencyIconStatic("₺")
+            setCurrencyName("TL")
         } else if (c == 1) {
             setCurrencyIconStatic("$")
-
+            setCurrencyName("Dolar")
         } else if (c == 2) {
             setCurrencyIconStatic("€")
+            setCurrencyName("Euro")
         }
 
         currencIconChange(c)
@@ -73,12 +77,27 @@ setTermsValue(t)
 
 
         let prm = new URLSearchParams(props.location.search)
-        prm.set("amount", amount.replace(".","").replace(currencyIcon,""))
+        prm.set("amount", amount.replace(".", "").replace(currencyIcon, ""))
         prm.set("term", termsValue)
         prm.set("c", currency)
         window.location.replace("/vadeli-mevduati-hesaplama-ve-basvuru?" + prm)
     }
     return (<div className="container">
+        <Helmet>
+
+            <meta property="og:type" content="article" />
+            <meta property="og:title" content={(amount??"") + " " + currencyName + "  Anapara ve " + termsValue + " Vade ile En kazanclı mevduat hesapları | Online Başvuru | kerdi.com.tr"} />
+            <meta property="og:url" content={window.location.href} />
+            <meta property="og:description" content={(amount??"") + " " + currencyName + "  Anapara  " + termsValue + " Vadeli mevduat hesaplarını karşılaştırma ve en kazançlı vadeli mevduat hesabını bulmak ve başvurmak için doğru adres"} />
+            <meta name="keyword" content="kredi, kredi kartı, kredi başvurusu, kredi faiz oranı, kredi kartı başvurusu, vadeli mevduat, vadeli mevduat hesabı" />
+            <meta name="twitter:title" content={(amount??"") + " " + currencyName + "  Anapara ve " + termsValue + " Vade ile En kazanclı mevduat hesapları | Online Başvuru | kerdi.com.tr"} />
+            <meta name="twitter:description" content={(amount??"") + " " + currencyName + "  Anapara  " + termsValue + " Vadeli mevduat hesaplarını karşılaştırma ve en kazançlı vadeli mevduat hesabını bulmak ve başvurmak için doğru adres"} />
+            <meta name="description" content={"Vadeli mevduat hesapları karşılaştırma ve en kazançlı vadeli mevduat hesabını bulmak ve başvurmak için doğru adres"} />
+            <meta name="robots" content="index,follow" />
+            <title>{(amount??"") + " " + currencyName + "  Anapara ve " + termsValue + " Vade ile En kazanclı mevduat hesapları | Online Başvuru | kerdi.com.tr"} </title>
+
+        </Helmet>
+
         <div className="row mt-3">
             <div className="col-12  ">
 
@@ -94,10 +113,10 @@ setTermsValue(t)
                                     { value: "2", label: "Euro" },
 
                                 ]}
-                                onChange={(element) => {setCurrency(element.value);currencIconChange(element.value)}}
-                            placeholder="Para Birimi"
-                            arrowClassName="dropdownArrow"
-                            value={currency}
+                                onChange={(element) => { setCurrency(element.value); currencIconChange(element.value) }}
+                                placeholder="Para Birimi"
+                                arrowClassName="dropdownArrow"
+                                value={currency}
                             />
                         </div>
 
@@ -156,7 +175,7 @@ setTermsValue(t)
                             <div key={key} className="col-12 row loan-search-list-item mb-3">
                                 <div className="col-3">
                                     <div className="mb-2">
-                                        <img src={apiurl + item.bankLogoUrl} style={{ width: "100%" }}></img>
+                                        <img alt={item.bankName +" Vadeli Mevduat Hesapları"} title={item.bankName +" Vadeli Mevduat Hesaplarını Gör"}  src={apiurl + item.bankLogoUrl} style={{ width: "100%" }}></img>
                                     </div>
 
                                     <div className="mb-2" style={{ color: "grey", textAlign: "center" }}>{item.dispositName}</div>

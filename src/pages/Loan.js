@@ -155,7 +155,7 @@ const getContent = (data) => {
 
                 <div className="col-12 col-md-5 col-lg-5 row  align-content-center justify-content-center">
                     <div className="justify-content-center col-12 row">
-                        <img style={{ width: "30%" }} src={require("../assets/images/corporatecolor.png").default}></img>
+                        <img title="kobi kredisi arama ve başvuru kredi.com.tr" alt={"kobi kredisi başvuru"}  style={{ width: "30%" }} src={require("../assets/images/corporatecolor.png").default}></img>
                     </div>
                     <div className="justify-content-center col-12 row">
                         <h2><b>Kobi Kredisi</b></h2>
@@ -188,7 +188,7 @@ const getContent = (data) => {
             </Helmet>
             <div className="col-12 col-md-5 col-lg-5 row  align-content-center justify-content-center">
                 <div className="justify-content-center col-12 row">
-                    <img style={{ width: "30%" }} src={require("../assets/images/carColor.png").default}></img>
+                    <img title="araç kredisi başcuruları kredi.com.tr" alt={"araç kredisi başvuru ve arama"}  style={{ width: "30%" }} src={require("../assets/images/carColor.png").default}></img>
                 </div>
                 <div className="justify-content-center col-12 row">
                     <h3><b>Araç Kredisi.</b></h3>
@@ -220,7 +220,7 @@ const getContent = (data) => {
             </Helmet>
             <div className="col-12 col-md-5 col-lg-5 row  align-content-center justify-content-center">
                 <div className="justify-content-center col-12 row">
-                    <img style={{ width: "30%" }} src={require("../assets/images/homecolor.png").default}></img>
+                    <img  title="konut kredisi aramaları, başvurularu kredi.com.tr" alt={"konut kredi arama"} style={{ width: "30%" }} src={require("../assets/images/homecolor.png").default}></img>
                 </div>
                 <div className="justify-content-center col-12 row">
                     <h3><b>Konut Kredisi</b></h3>
@@ -251,7 +251,7 @@ const getContent = (data) => {
             </Helmet>
             <div className="col-12 col-md-5 col-lg-5 row  align-content-center justify-content-center">
                 <div className="justify-content-center col-12 row">
-                    <img style={{ width: "30%" }} src={require("../assets/images/moneycolor.png").default}></img>
+                    <img title="ihtiyaç kredisi arama,sorgulama ve bulma kredi.com.tr" alt={"ihtiyaç kredisi sorgulama"}  style={{ width: "30%" }} src={require("../assets/images/moneycolor.png").default}></img>
                 </div>
                 <div className="justify-content-center col-12 row">
                     <h3><b>İhtiyaç Kredisi</b></h3>

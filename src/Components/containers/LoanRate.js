@@ -32,7 +32,7 @@ export const LoanRate = () => {
                             return (
                                 <div key={index} className={"row loan-item " + rowLabel} >
                                     <div className="col-3 ">
-                                        <img src={apiConstant + "/StaticF" + item.logo} style={{ width: "100%",  }}></img>
+                                        <img alt={item.bank+" "+item.loanType+" faiz "} title={item.bank+" "+item.loanType+" faiz oranı"}  src={apiConstant + "/StaticF" + item.logo} style={{ width: "100%",  }}></img>
                                     </div>
                                     <div className="col-5 ">
                                         <b>{item.loanType}</b><br/>

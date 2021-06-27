@@ -65,7 +65,7 @@ export const SearchLoanPage = (props) => {
       term: term
     }
     var terms = await PostNoneToken("InterestRates/GetLoanSearchResult", d).then(x => { return x.data }).catch(x => { return false })
-    debugger
+    
     setData(terms)
   }
 
@@ -92,10 +92,10 @@ export const SearchLoanPage = (props) => {
       amount: (amount != null ? amount.replace("₺", "").replace(".", "") : ""),
       term: termsValue
     }
-    debugger
+    
     if (data.loanTypeId) {
       var urlName = props.Loans.find(x => x.id == data.loanTypeId)?.urlName
-      debugger
+      
       let prm = new URLSearchParams()
       prm.set("amount", data.amount)
       prm.set("term", data.term)
@@ -168,7 +168,7 @@ export const SearchLoanPage = (props) => {
               <div key={key} className="col-12 row loan-search-list-item mb-3">
                 <div className="col-3">
                   <div className="mb-2">
-                    <img src={apiurl + item.loanInfo.bankLogoUrl} style={{ width: "100%" }}></img>
+                    <img title={item.loanInfo.bankName+" "+ item.loanInfo.loanName } alt={item.loanInfo.bankName+" "+ item.loanInfo.loanName  +" sorgulama"} src={apiurl + item.loanInfo.bankLogoUrl} style={{ width: "100%" }}></img>
                   </div>
 
                   <div className="mb-2" style={{ color: "grey", textAlign: "center" }}>{item.loanInfo.loanName}</div>
