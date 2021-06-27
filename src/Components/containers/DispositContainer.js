@@ -13,13 +13,8 @@ export const DispositContainer = (props) => {
 
     const start = async () => {
         var data = await GetNoneToken("SelectedDisposits/GetAllSite").then(x => { return x.data }).catch(x => { return false })
-
         setData(data)
-
-        console.log(data)
-
     }
-
     return (
 
 

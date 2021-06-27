@@ -18,6 +18,8 @@ import Loan from "./pages/Loan";
 import { GetNoneToken, PostNoneToken } from "./datacrud/datacrud";
 import { SearchLoanPage } from "./pages/SearchLoanPage";
 import Head from "next/head";
+import { DispositSearchPage } from "./pages/DispositSearchPage";
+import { DispositSearchResult } from "./pages/DispositSearchResult";
 
 export default function App(props) {
   const [bankNavigation, setBankNavigation] = useState([]);
@@ -80,7 +82,12 @@ export default function App(props) {
             <CreditCart cartType="all" />
           </Route>
 
-
+          <Route path="/vadeli-mevduat-sorgulama"render={(props)=><DispositSearchPage {...props}/>}>
+            
+          </Route>
+          <Route path="/vadeli-mevduati-hesaplama-ve-basvuru" render={(props)=>< DispositSearchResult {...props}/>}>
+            
+          </Route>
 
           {
             bankNavigation.map((item, key) => {
@@ -110,15 +117,17 @@ export default function App(props) {
             <Banks BankId=""></Banks>
           </Route>
 
+
+
         </Switch>
-        <div style={{textAlign:"center",color:"red",textDecoration:"underline"}}>Platformumuz yapım aşamasındadır.<br></br>Faiz oranları, vadeler, kredi kartı fırsatları şu anlık <b style={{color:"red"}}>gerçek bilgiler değildir.</b><br></br>Gerçek bilgiler için bankanın web sitelerini ziyaret edebilirsiniz.</div>
+        <div style={{ textAlign: "center", color: "red", textDecoration: "underline" }}>Platformumuz yapım aşamasındadır.<br></br>Faiz oranları, vadeler, kredi kartı fırsatları şu anlık <b style={{ color: "red" }}>gerçek bilgiler değildir.</b><br></br>Gerçek bilgiler için bankanın web sitelerini ziyaret edebilirsiniz.</div>
       </div>
-     
+
       <div className="footer">
-      
+
         <Footer></Footer>
         <div className="footer-copyright text-center py-2" style={{ fontSize: 12 }}>© 2020 Copyright:
-               <a href="/"> kredi.com.tr</a>
+          <a href="/"> kredi.com.tr</a>
         </div>
       </div>
 

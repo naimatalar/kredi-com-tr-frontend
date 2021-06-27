@@ -85,6 +85,10 @@ const NavigationTree = (props) => {
                                         <a title="Kredi Kartı" className="nav-link" href="/kredi-karti">Kredi Kartı</a>
 
                                     </NavItem>
+                                    <NavItem>
+                                        <a title="Mevduat Hesapları" className="nav-link" href="/vadeli-mevduat-sorgulama">Mevduat</a>
+
+                                    </NavItem>
                                     <NavItem onMouseLeave={toggleBank} onMouseEnter={toggleBank}>
 
 

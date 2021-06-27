@@ -121,7 +121,7 @@ export const Banks = (props) => {
 
     }
     const selectLoanType = (loanId) => {
-        console.log(calculateDisposit)
+
         let selectedLoant = bank.loans.find(x => { return x.id == loanId })
         updateSelectedLoanOption(selectedLoant.rate, null, null)
         setActiveLoanType(selectedLoant)
@@ -410,7 +410,7 @@ export const Banks = (props) => {
                                                             precision="0"
                                                             prefix={currencyIcon}
                                                             value={calculateDisposit.amount}
-                                                            onChange={(val) => CalculateDispositFunc(parseInt(val.replace("₺", "").replace(".", "")), calculateDisposit.term)}
+                                                            onChange={(val) => CalculateDispositFunc(parseInt(val.replace(currencyIcon, "").replace(".", "")), calculateDisposit.term)}
                                                         />
                                                     </div>
                                                     <div className="col-6">
