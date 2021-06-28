@@ -114,7 +114,7 @@ export const Loan = (props) => {
                                     decimalSeparator=","
                                     thousandSeparator="."
                                     precision="0"
-                                    onChange={(x) => { setAmount(x) }}
+                                    // onChange={(x) => { setAmount(x) }}
                                     value={amount}
 
                                     prefix="₺"
