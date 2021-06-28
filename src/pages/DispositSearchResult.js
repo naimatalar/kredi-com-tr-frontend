@@ -86,15 +86,15 @@ export const DispositSearchResult = (props) => {
         <Helmet>
 
             <meta property="og:type" content="article" />
-            <meta property="og:title" content={(amount??"") + " " + currencyName + "  Anapara ve " + termsValue + " Vade ile En kazanclı mevduat hesapları | Online Başvuru | kerdi.com.tr"} />
+            <meta property="og:title" content={(amount ?? "") + " " + currencyName + "  Anapara ve " + termsValue + " Vade ile En kazanclı mevduat hesapları | Online Başvuru | kerdi.com.tr"} />
             <meta property="og:url" content={window.location.href} />
-            <meta property="og:description" content={(amount??"") + " " + currencyName + "  Anapara  " + termsValue + " Vadeli mevduat hesaplarını karşılaştırma ve en kazançlı vadeli mevduat hesabını bulmak ve başvurmak için doğru adres"} />
+            <meta property="og:description" content={(amount ?? "") + " " + currencyName + "  Anapara  " + termsValue + " Vadeli mevduat hesaplarını karşılaştırma ve en kazançlı vadeli mevduat hesabını bulmak ve başvurmak için doğru adres"} />
             <meta name="keyword" content="kredi, kredi kartı, kredi başvurusu, kredi faiz oranı, kredi kartı başvurusu, vadeli mevduat, vadeli mevduat hesabı" />
-            <meta name="twitter:title" content={(amount??"") + " " + currencyName + "  Anapara ve " + termsValue + " Vade ile En kazanclı mevduat hesapları | Online Başvuru | kerdi.com.tr"} />
-            <meta name="twitter:description" content={(amount??"") + " " + currencyName + "  Anapara  " + termsValue + " Vadeli mevduat hesaplarını karşılaştırma ve en kazançlı vadeli mevduat hesabını bulmak ve başvurmak için doğru adres"} />
+            <meta name="twitter:title" content={(amount ?? "") + " " + currencyName + "  Anapara ve " + termsValue + " Vade ile En kazanclı mevduat hesapları | Online Başvuru | kerdi.com.tr"} />
+            <meta name="twitter:description" content={(amount ?? "") + " " + currencyName + "  Anapara  " + termsValue + " Vadeli mevduat hesaplarını karşılaştırma ve en kazançlı vadeli mevduat hesabını bulmak ve başvurmak için doğru adres"} />
             <meta name="description" content={"Vadeli mevduat hesapları karşılaştırma ve en kazançlı vadeli mevduat hesabını bulmak ve başvurmak için doğru adres"} />
             <meta name="robots" content="index,follow" />
-            <title>{(amount??"") + " " + currencyName + "  Anapara ve " + termsValue + " Vade ile En kazanclı mevduat hesapları | Online Başvuru | kerdi.com.tr"} </title>
+            <title>{(amount ?? "") + " " + currencyName + "  Anapara ve " + termsValue + " Vade ile En kazanclı mevduat hesapları | Online Başvuru | kerdi.com.tr"} </title>
 
         </Helmet>
 
@@ -175,7 +175,7 @@ export const DispositSearchResult = (props) => {
                             <div key={key} className="col-12 row loan-search-list-item mb-3">
                                 <div className="col-3">
                                     <div className="mb-2">
-                                        <img alt={item.bankName +" Vadeli Mevduat Hesapları"} title={item.bankName +" Vadeli Mevduat Hesaplarını Gör"}  src={apiurl + item.bankLogoUrl} style={{ width: "100%" }}></img>
+                                        <img alt={item.bankName + " Vadeli Mevduat Hesapları"} title={item.bankName + " Vadeli Mevduat Hesaplarını Gör"} src={apiurl + item.bankLogoUrl} style={{ width: "100%" }}></img>
                                     </div>
 
                                     <div className="mb-2" style={{ color: "grey", textAlign: "center" }}>{item.dispositName}</div>
@@ -204,7 +204,10 @@ export const DispositSearchResult = (props) => {
                                             prefix={currencyIconStatic}
                                             value={amountStatic} />
                                     </b></div>
-                                    <div style={{ color: "black" }}>Faiz : <b style={{ color: "black" }}>{item.rate}</b>
+                                    <div style={{ color: "#f36800" }}>Faiz : <b style={{
+                                        fontSize: 13,fontWeight: "bold",
+                                        color: "#f36800"
+                                    }}>{item.rate}</b>
 
                                     </div>
                                 </div>
@@ -233,8 +236,12 @@ export const DispositSearchResult = (props) => {
                                             prefix={currencyIconStatic}
                                             value={(item.netAmount).toFixed(0)} />
                                     </div>
-                                    <div style={{ color: "black" }}>
-                                        {item.minTerm} Gün Vade
+                                    <div style={{
+                                        fontSize: 13,
+                                        fontWeight: "bold",
+                                        color: "#f36800"
+                                    }}>
+                                        {termsValue} Gün Vade
                                     </div>
                                 </div>
                                 <div className="col-3 pt-1 pb-1 text-center" style={{ background: "rgb(255 243 243)", border: "1px solid #ff9999" }}>
