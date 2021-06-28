@@ -168,84 +168,87 @@ export const Banks = (props) => {
                 <div className="col-12">
                     <div className="row justify-content-center">
 
-                        <div className="col-md-3 col-lg-3 col-sm-6 col-8">{bank.logoUrl == undefined ? "" : <img src={apiurl + bank.logoUrl} style={{ width: "100%" }} alt={bank.bankName +" Bütün ürünleri krediler kredi kartı mevduat"} title={bank.bankName +" kredi, kredi kartı ve mevduat ürünleri"}></img>}</div>
+                        <div className="col-md-3 col-lg-3 col-sm-6 col-8 m-2">{bank.logoUrl == undefined ? "" : <img src={apiurl + bank.logoUrl} style={{ width: "100%" }} alt={bank.bankName + " Bütün ürünleri krediler kredi kartı mevduat"} title={bank.bankName + " kredi, kredi kartı ve mevduat ürünleri"}></img>}</div>
                     </div>
                 </div>
             </div>
             <div className="master-content ">
 
                 <div className="row">
-                    <div className="col-12 col-lg-6 col-md-6 bank-loan-content mt-5 bankbackground">
-                        <div className="bank-loan-text">  <h4>Bankaya Ait <span style={{ textDecoration: "underline", color: "black" }}>{selectedLoanOptions.rate} </span>Kredi Faiz Oranı İle Hemen Kredinizi Hesaplayıp Başvurun </h4> </div>
+                    {bank?.loans?.length > 0 &&
 
-                        <div className="bank-loan-lightview">
-                            <div className="col-12 bank-loan-tab-link">
-                                <ul className="loan-list-content">
+                        <div className="col-12 col-lg-6 col-md-6 bank-loan-content mt-5 bankbackground">
+                            <div className="bank-loan-text">  <h4>Bankaya Ait <span style={{ textDecoration: "underline", color: "black" }}>{selectedLoanOptions.rate} </span>Kredi Faiz Oranı İle Hemen Kredinizi Hesaplayıp Başvurun </h4> </div>
 
-                                    {bank?.loans?.map((item, key) => {
-                                        let activeClass = ""
-                                        if (item.id == activeLoanType.id) {
-                                            activeClass = "active-loan-tab"
+                            <div className="bank-loan-lightview">
+                                <div className="col-12 bank-loan-tab-link">
+                                    <ul className="loan-list-content">
+
+                                        {bank?.loans?.map((item, key) => {
+                                            let activeClass = ""
+                                            if (item.id == activeLoanType.id) {
+                                                activeClass = "active-loan-tab"
+                                            }
+                                            return (
+
+                                                <li key={key} onClick={() => { selectLoanType(item.id) }} className={"loan-tabs " + activeClass} key={key}>
+
+                                                    {item.loanName}
+
+                                                </li>
+                                            )
+
+                                        })
+
                                         }
-                                        return (
+                                    </ul>
+                                </div>
+                                <div className="container">
 
-                                            <li key={key} onClick={() => { selectLoanType(item.id) }} className={"loan-tabs " + activeClass} key={key}>
-
-                                                {item.loanName}
-
-                                            </li>
-                                        )
-
-                                    })
-
-                                    }
-                                </ul>
-                            </div>
-                            <div className="container">
-
-                                <div className="row justify-content-center">
+                                    <div className="row justify-content-center">
 
 
-                                    <div className="col-5 ">
-                                        <Dropdown
-                                            options={activeLoanType.terms || []}
-                                            onChange={(val) => updateSelectedLoanOption(null, null, val.value)}
-                                            placeholder="Vade"
-                                            arrowClassName="dropdownArrow"
-                                        />
-                                    </div>
+                                        <div className="col-5 ">
+                                            <Dropdown
+                                                options={activeLoanType.terms || []}
+                                                onChange={(val) => updateSelectedLoanOption(null, null, val.value)}
+                                                placeholder="Vade"
+                                                arrowClassName="dropdownArrow"
+                                            />
+                                        </div>
 
-                                    <div className="col-5 ">
-                                        <CurrencyInput style={{
-                                            float: "left",
-                                            minWidth: 60,
-                                        }}
-                                            placeholder="Tutar Giriniz"
-                                            className="col-12"
-                                            decimalSeparator=","
-                                            thousandSeparator="."
-                                            precision="0"
-                                            prefix="₺"
-                                            value={selectedLoanOptions.amount}
-                                            onChange={(val) => updateSelectedLoanOption(null, val.replace("₺", "").replace(".", ""), null)}
-                                        />
-                                    </div>
+                                        <div className="col-5 ">
+                                            <CurrencyInput style={{
+                                                float: "left",
+                                                minWidth: 60,
+                                            }}
+                                                placeholder="Tutar Giriniz"
+                                                className="col-12"
+                                                decimalSeparator=","
+                                                thousandSeparator="."
+                                                precision="0"
+                                                prefix="₺"
+                                                value={selectedLoanOptions.amount}
+                                                onChange={(val) => updateSelectedLoanOption(null, val.replace("₺", "").replace(".", ""), null)}
+                                            />
+                                        </div>
 
 
 
-                                    <div className="justify-content col-5 mt-3">
+                                        <div className="justify-content col-5 mt-3">
+
+                                        </div>
+                                        <div className="justify-content col-5 mt-3">
+                                            <button onClick={() => { redirectLoanBank() }} className="default-button justify-content-center" type="submit">Hesapla</button>
+
+
+                                        </div>
 
                                     </div>
-                                    <div className="justify-content col-5 mt-3">
-                                        <button onClick={() => { redirectLoanBank() }} className="default-button justify-content-center" type="submit">Hesapla</button>
-
-
-                                    </div>
-
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    }
                     {bankContainerCount == 1 &&
                         <div className="col-12 col-lg-6 col-md-6 row mt-5 m-0">
                             <PopulerLoans />
@@ -272,7 +275,7 @@ export const Banks = (props) => {
 
 
                                                             <div className="col-6">
-                                                                <img alt={bank.bankName +" bankaya ait "+ each.name +" kredi kartı"} title={bank.bankName +"  "+ each.name +" kredi kartı özellikleri"} src={apiurl + each.logoUrl} style={{ width: "100%" }}></img>
+                                                                <img alt={bank.bankName + " bankaya ait " + each.name + " kredi kartı"} title={bank.bankName + "  " + each.name + " kredi kartı özellikleri"} src={apiurl + each.logoUrl} style={{ width: "100%" }}></img>
                                                             </div>
                                                             <div className="col-6">
                                                                 <div className="col-12">
@@ -319,9 +322,9 @@ export const Banks = (props) => {
                                                                                         marginRight: 3,
                                                                                         float: "left"
 
-                                                                                    }} src={require("../assets/images/campaigns.png").default} 
-                                                                                    alt={bank.bankName +" bankaya ait "+ each.name +" kampanya :"+jitem.title}
-                                                                                    title={jitem.title+" : "+bank.bankName +"  "+ each.name +" kredi kartının kampanyaları " }
+                                                                                    }} src={require("../assets/images/campaigns.png").default}
+                                                                                        alt={bank.bankName + " bankaya ait " + each.name + " kampanya :" + jitem.title}
+                                                                                        title={jitem.title + " : " + bank.bankName + "  " + each.name + " kredi kartının kampanyaları "}
                                                                                     ></img>
                                                                                     <span key={jkey} style={{
                                                                                         fontSize: 13,
@@ -360,10 +363,10 @@ export const Banks = (props) => {
                             </div>
                         </div>
                     }
-                     {bankContainerCount == 3 &&
-                       <h4 className="home-title mt-5" > Bütün verilerimizi analiz edip  <span style={{ fontWeight: "bold" }}>bankata ait vadeli mevduat hesaplarını </span> ve  daha nice vadeli mevduat hesaplarını sizlerle buluşturduk.   </h4>
+                    {bankContainerCount == 3 &&
+                        <h4 className="home-title mt-5" > Bütün verilerimizi analiz edip  <span style={{ fontWeight: "bold" }}>bankata ait vadeli mevduat hesaplarını </span> ve  daha nice vadeli mevduat hesaplarını sizlerle buluşturduk.   </h4>
 
-                     }
+                    }
                     {disposits.length > 0 &&
                         <div className="col-12 col-lg-6 col-md-6 row mt-5 ml-0 mr-0">
                             <div className="col-12 row m-0">
@@ -504,32 +507,34 @@ export const Banks = (props) => {
                                                     {calculateDispositResult.netAmount != "" &&
                                                         <div className="col-12 res-disposit row mb-3">
 
-                                                            <div className="col-6 mb-2">
-                                                                Net Kazanç :
-                                                                <CurrencyInput style={{
-                                                                    padding: 0,
-                                                                    border: "none",
-                                                                    display: "inline",
+                                                            <div className="col-6 mb-2 row ">
+                                                                <div style={{float:"left"}}>
+                                                                    Net Kazanç :
+                                                                    <CurrencyInput style={{
+                                                                        padding: 0,
+                                                                        border: "none",
+                                                                        display: "inline",
 
-                                                                    background: "none",
+                                                                        background: "none",
+                                                                       
+                                                                        fontWeight: "bold",
+                                                                        textAlign: "left",
+                                                                        position: "absolute",
+                                                                        margin: "2px 0px 2px 8px"
 
-                                                                    fontWeight: "bold",
-                                                                    textAlign: "left",
-                                                                    position: "absolute",
-                                                                    margin: "2px 0px 2px 8px"
-
-                                                                }}
-                                                                    className="col-5"
-                                                                    decimalSeparator=","
-                                                                    thousandSeparator="."
-                                                                    precision="0"
-                                                                    disabled
-                                                                    prefix={currencyIcon}
-                                                                    value={calculateDispositResult.netAmount} />
-
+                                                                    }}
+                                                                        className="col-5"
+                                                                        decimalSeparator=","
+                                                                        thousandSeparator="."
+                                                                        precision="0"
+                                                                        disabled
+                                                                        prefix={currencyIcon}
+                                                                        value={calculateDispositResult.netAmount} />
+                                                                </div>
+                                                                <div style={{ float: "left",marginLeft:57 }}>Vade : <b>{calculateDisposit.term}</b></div>
 
                                                             </div>
-                                                            <div className="col-6 mb-2">
+                                                            <div className="col-6 mb-2 text-right">
 
                                                                 Faiz Oranı: <b>{calculateDispositResult.rate}</b>
 
@@ -559,7 +564,7 @@ export const Banks = (props) => {
 
 
                                                             </div>
-                                                            <div className="col-6 p-2">
+                                                            <div className="col-6 p-2 text-right">
                                                                 <a href="#" style={{ color: "white" }} className="default-button blue-button">Hemen Başvur</a>
 
                                                             </div>
@@ -577,15 +582,15 @@ export const Banks = (props) => {
                         </div>
                     }
                     {bankContainerCount == 3 &&
-                        
-                            <div className="col-12 col-lg-6 col-md-6 row mt-5 ml-0 mr-0 bank-disposit-component justify-content-center">
-                                <h4 className="pt-2 pb-4">En çok Tercih Edilen Mevduat Hesapları</h4>
-                                <PerfectScrollbar className="bank-disposit-component-scroll">
-                                    <DispositContainer Big={true}></DispositContainer>
 
-                                </PerfectScrollbar>
-                            </div>
-                      
+                        <div className="col-12 col-lg-6 col-md-6 row mt-5 ml-0 mr-0 bank-disposit-component justify-content-center">
+                            <h4 className="pt-2 pb-4">En çok Tercih Edilen Mevduat Hesapları</h4>
+                            <PerfectScrollbar className="bank-disposit-component-scroll">
+                                <DispositContainer Big={true}></DispositContainer>
+
+                            </PerfectScrollbar>
+                        </div>
+
                     }
                     <div className="row mt-5">
                         <div className="col-12">
@@ -617,6 +622,7 @@ export const Banks = (props) => {
                         <BankContainer Banks={props.Banks}></BankContainer>
                     </div>
                 </div>
+
             </div>
         </div>
 

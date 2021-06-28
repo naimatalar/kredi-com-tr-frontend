@@ -65,11 +65,11 @@ const NavigationTree = (props) => {
                                             dropdownOpen &&
                                             <div className="drop-content ">
 
-                                                <Nav className="row drop-nav-ul" style={{}}>
+                                                <Nav className="row drop-nav-ul" style={{ width: 189, marginLeft: "-53px"}} >
 
                                                     {props.LoanNavigation.map((item, key) => {
                                                         return (
-                                                            <NavItem key={key} title={item.loanName} className="drop-item col-12">
+                                                            <NavItem key={key} title={item.loanName}  className="drop-item col-12">
                                                                 <a href={"/" + item.urlName}>{item.loanName}</a>
                                                             </NavItem>
                                                         )
@@ -101,7 +101,7 @@ const NavigationTree = (props) => {
                                                 <Nav className="row drop-nav-ul" style={{}}>
                                                     {props.BankNavigation.map((item, key) => {
                                                         return (
-                                                            <NavItem key={key} title={item.bankName} className="drop-item col-12"><a href={"/bankalar/" + item.bankUrlName} ><img alt={item.bankName +" kredi.com.tr" } style={{ width: "80%", padding: 3, marginBottom: 5 }} src={apiurl + item.logoUrl}></img> </a></NavItem>
+                                                            <NavItem key={key} title={item.bankName} className="drop-item col-6"><a href={"/bankalar/" + item.bankUrlName} ><img alt={item.bankName + " kredi.com.tr"} style={{ width: "80%", padding: 3, marginBottom: 5 }} src={apiurl + item.logoUrl}></img> </a></NavItem>
 
                                                         )
 
@@ -147,7 +147,7 @@ const NavigationTree = (props) => {
                                     <NavItem>
                                         <a className="mobil-nav-link arrow-bottom" onClick={toggleMobil} >
                                             Kredi
-                                     </a>
+                                        </a>
                                     </NavItem>
                                     <NavItem>
                                         <Collapse isOpen={mobilDropdownOpen} >
@@ -172,7 +172,7 @@ const NavigationTree = (props) => {
                                     <NavItem>
                                         <a className="mobil-nav-link arrow-bottom" onClick={toggleMobilBank} >
                                             Banka
-                                     </a>
+                                        </a>
                                     </NavItem>
                                     <NavItem>
                                         <Collapse isOpen={mobilDropdownOpenBank} >
@@ -182,7 +182,7 @@ const NavigationTree = (props) => {
                                                 {props.BankNavigation.map((item, key) => {
                                                     return (
                                                         <div key={key} >
-                                                            <a href={"/bankalar/" + item.bankUrlName} ><img  alt={"bankalar "+item.bankName+" kredi.com.tr"}  style={{ width: 170, padding: 3, marginBottom: 5 }} src={apiurl + item.logoUrl}></img> </a>                                                        </div>
+                                                            <a href={"/bankalar/" + item.bankUrlName} ><img alt={"bankalar " + item.bankName + " kredi.com.tr"} style={{ width: 170, padding: 3, marginBottom: 5 }} src={apiurl + item.logoUrl}></img> </a>                                                        </div>
 
                                                     )
                                                 })}
