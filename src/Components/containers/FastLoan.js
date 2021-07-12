@@ -6,6 +6,7 @@ import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
 import calculator from "../calculator";
 import { apiurl, GetNoneToken } from "../../datacrud/datacrud";
+import { loanRedirect } from "../RedirectComponent";
 export const FastLoan = () => {
     const [selectedLoan, setSelectedLoan] = useState({ bankId: null, amount: null, interestRateId: null, term: null })
     const [loanOptions, setLoanOptions] = useState(
@@ -38,6 +39,9 @@ export const FastLoan = () => {
             loanTerms: [],
             maxLoan: null,
             minLoan: 200,
+            loanUrlName: null,
+            redirectUrl: null,
+            bankId:null
         }])
     useEffect(() => {
 
@@ -135,13 +139,25 @@ export const FastLoan = () => {
                                             </div>
                                             <div className="col-4 " style={{ padding: 0 }}>
                                                 <div className="col-12">&nbsp;</div>
-                                                <button className="default-button fastloan-button" style={{
-                                                    padding: 2,
-                                                    width: "100%",
-                                                    textAlign: "center",
-                                                    fontWeight: "bold",
-                                                    color: "white"
-                                                }} type="submit">BAŞVUR</button>
+                                                <button
+                                                    onClick={() => loanRedirect(item.loanUrlName,
+                                                        item.redirectUrl,
+                                                        item.bankId,
+                                                        item.interestRateId,
+                                                        {
+                                                            bankName: item.bankName,
+                                                            amount: item.amount,
+                                                            loanName: item.loanType,
+                                                            rate: item.rate.toString(),
+                                                            term: item.term
+                                                        })}
+                                                    className="default-button fastloan-button" style={{
+                                                        padding: 2,
+                                                        width: "100%",
+                                                        textAlign: "center",
+                                                        fontWeight: "bold",
+                                                        color: "white"
+                                                    }} type="submit">BAŞVUR</button>
 
                                             </div>
                                         </div>
@@ -154,8 +170,8 @@ export const FastLoan = () => {
                                                 <div className="col-12 m-0 p-0">
                                                     <span>Faiz Oranı:</span> {item.rate}
                                                 </div>
-                                                 <div className="col-12 m-0 p-0">
-                                                    <b>{item.loanType}</b> 
+                                                <div className="col-12 m-0 p-0">
+                                                    <b>{item.loanType}</b>
                                                 </div>
                                             </div>
 

@@ -4,7 +4,7 @@ import React from "react"
     let d = vade
         let stopaj = 0;
         let totalMount = d / 30;
-debugger
+
         if (totalMount <= 6)
         {
             if (DovizMi)

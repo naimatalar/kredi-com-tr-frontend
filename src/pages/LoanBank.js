@@ -4,11 +4,17 @@ import bankdemodata from "../bankdemodata"
 import calculator from "../Components/calculator"
 import Dropdown from 'react-dropdown';
 import { Link } from "react-router-dom";
-import { apiurl, GetNoneToken } from "../datacrud/datacrud";
+import { apiurl, GetNoneToken, PostNoneToken } from "../datacrud/datacrud";
+import { loanRedirect } from "../Components/RedirectComponent";
 
 export const LoanBank = (props) => {
-    const [bank, setBank] = useState([])
-    const [loanType, setLoanType] = useState([])
+    const [bank, setBank] = useState({})
+    const [loanType, setLoanType] = useState({})
+    const [loanTermsDropdown, setLoanTermsDropdown] = useState([])
+    const [amt, setAmt] = useState(new URLSearchParams(props.location.search).get("amount"))
+    const [trm, setTrm] = useState(new URLSearchParams(props.location.search).get("term"))
+
+
     const [calcuateResult, setCalculateResult] = useState({
         totalpayment: 0,
         totalVergi: 0,
@@ -42,20 +48,24 @@ export const LoanBank = (props) => {
 
     const start = async () => {
         let bankData = await GetNoneToken("Banks/GetAllBankSiteById/" + props.BankId).then(x => { return x.data }).catch(x => { return false })
-        let lt = bankData.loans.find((x) => { return x.id == loanId })
-        
-        setLoanType(lt)
-        setBank(bankData)
-        var plan = calculator(parseFloat(lt.rate), parseInt(amount), parseInt(term), 5, 15)
-        setCalculateResult(plan)
+        if (bankData) {
+            let lt = bankData.loans.find((x) => { return x.id == loanId })
+            setLoanTermsDropdown(lt?.terms)
+            setLoanType(lt)
+            setBank(bankData)
+
+            var plan = calculator(parseFloat(lt?.rate), parseInt(amount), parseInt(trm), 5, 15)
+            setCalculateResult(plan)
+        }
+
     }
 
     const calculate = () => {
-        var plan = calculator(parseFloat(loanType.rate), parseInt(amount), parseInt(term), 5, 15)
+        var plan = calculator(parseFloat(loanType?.rate), parseInt(amount), parseInt(trm), 5, 15)
         setCalculateResult(plan)
         let prm = new URLSearchParams(props.location.search)
         prm.set("amount", amount)
-        prm.set("term", term)
+        prm.set("term", trm)
         prm.set("loanId", loanId)
         props.history.push(window.location.pathname + "?" + prm)
         //  window.location.replace("amount="+amount+"&term="+term+"&&loanId="+loanId)
@@ -63,20 +73,45 @@ export const LoanBank = (props) => {
 
     const updateSelectedLoanOption = (r = null, a = null, t = null) => {
 
-        amount = (a != null ? a : amount)
-        term = (t != null ? t : term)
+        var ss = bank?.loans?.find(x => {
+
+            if (
+                x.minAmount <= parseInt((a != null ? a : amount)) &&
+                x.maxAmount >= parseInt((a != null ? a : amount)) &&
+                x.loanUrlName == loanType.loanUrlName
+
+            ) {
+                return true
+            }
+
+        });
+
+        
+        if (ss) {
+            setLoanTermsDropdown(ss.terms)
+            setLoanType(ss)
+            setTrm(ss.terms[0])
+            setTrm(t != null ? t : trm)
+        } else {
+            setLoanTermsDropdown([])
+            setTrm("")
+
+        }
+
+        setAmt(a != null ? a : amt)
+
     }
 
 
     return (
-        
+
         <div>
             <div className="master-content">
                 <div className="row  mb-5" style={{ background: "white" }} >
                     <div className="col-12 col-lg-4 col-md-4" style={{ borderRight: "1px solid #b1b1b1" }}>
                         <div className="row">
                             <div className="col-12">
-                                <img title={bank.bankName + " banka "+loanType.loanName +"kredisi sorgulama soçuçları  kredi.com.tr"} alt={"logo"}  style={{ width: "100%" }} src={apiurl+ bank.logoUrl}></img>
+                                <img title={bank?.bankName + " banka " + loanType?.loanName + "kredisi sorgulama soçuçları  kredi.com.tr"} alt={"logo"} style={{ width: "100%" }} src={apiurl + bank.logoUrl}></img>
                             </div>
 
                         </div>
@@ -97,15 +132,15 @@ export const LoanBank = (props) => {
                                     thousandSeparator="."
                                     precision="0"
                                     prefix="₺"
-                                    value={amount}
-                                    onChange={(val) => updateSelectedLoanOption(null, val.replace("₺", "").replace(".", ""), null)}
+                                    value={amt}
+                                    onChange={(val) => { updateSelectedLoanOption(null, val.replace("₺", "").replace(".", ""), null); setAmt(val.replace("₺", "").replace(".", "")) }}
                                 />
                                 <div> <b style={{ color: "black" }}>Vade</b></div>
                                 <Dropdown
-                                    options={loanType.terms||[]}
-                                    onChange={(val) => updateSelectedLoanOption(null, null, val.value)}
+                                    options={loanTermsDropdown || []}
+                                    onChange={(val) => { updateSelectedLoanOption(null, null, val.value) }}
                                     placeholder="Vade"
-                                    value={term}
+                                    value={trm}
                                     arrowClassName="dropdownArrow"
                                 />
 
@@ -124,13 +159,13 @@ export const LoanBank = (props) => {
                     <div className="col-12 col-lg-8 col-md-8 mt-3 mt-3 pl-4 pr-4">
                         <div className="row loan-info-grid" >
                             <div className="col-12">
-                                <h4> <b>{loanType.loanName}</b></h4>
+                                <h4> <b>{loanType?.loanName}</b></h4>
                             </div>
 
 
                             <div className="col-12 col-lg-6 pt-2 pb-2">
                                 <b className=" col-6" style={{ color: "#797979" }}>Faiz Oranı:</b>
-                                <b className="col-6" style={{ color: "black" }}>   {loanType.rate}</b>
+                                <b className="col-6" style={{ color: "black" }}>   {loanType?.rate}</b>
                             </div>
                             <div className="col-12 col-lg-6 pt-2 pb-2">
                                 <b className=" col-6" style={{ color: "#797979" }}>Toplam Faiz:</b>
@@ -245,7 +280,7 @@ export const LoanBank = (props) => {
                                             fontWeight: "bold",
                                             color: "white",
                                             height: "100%"
-                                        }} onClick={() => calculate()} className="default-button justify-content-center text-center" >Başvur</button>
+                                        }} onClick={() => loanRedirect(loanType?.loanUrlName, loanType?.redirectUrl, bank.id, loanId, { bankName: bank.bankName, amount: amount, loanName: loanType?.loanName, rate: loanType?.rate.toString(), term: term })} className="default-button justify-content-center text-center" >Başvur</button>
 
                                     </div>
 

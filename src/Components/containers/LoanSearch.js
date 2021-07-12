@@ -42,7 +42,7 @@ export const LoanSearch = (props) => {
         }
         if (data.loanTypeId) {
             var urlName = propsLoan.find(x => x.id == data.loanTypeId)?.urlName
-            debugger
+            
             let prm = new URLSearchParams()
             prm.set("amount", data.amount)
             prm.set("term", data.term)

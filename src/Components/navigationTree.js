@@ -53,9 +53,17 @@ const NavigationTree = (props) => {
                                 </a>
 
                             </div>
-                            <div className="col-lg-9 col-md-10 " style={{ float: "right" }}>
+                            <div className="col-lg-9 col-md-10 nav-container" style={{ float: "right" }}>
                                 <div style={{ display: "flex", justifyContent: "flex-end" }}>
-                                    <a style={{ fontSize: 13, fontWeight: "normal", textDecoration: "underline" }} className="nav-link" href="/">Aylık Ne Kadar Kredi Ödeyebilirim?</a>
+                                    <a style={{
+                                        fontSize: 13,
+                                        fontWeight: "normal",
+                                        border: "none",
+                                        fontFamily: "sans-serif",
+                                        border: "1px solid #077a68",
+                                        borderRadius: 6,
+                                        padding: "3px 9px 2px 10px"
+                                    }} className="nav-link" href="/hesaplama/aylik-ne-kadar-odeyebilirim">Aylık Ne Kadar Kredi Ödeyebilirim?</a>
                                 </div>
                                 <Nav style={{ float: "right" }}>
                                     <NavItem onMouseLeave={toggle} onMouseEnter={toggle}>
@@ -65,11 +73,11 @@ const NavigationTree = (props) => {
                                             dropdownOpen &&
                                             <div className="drop-content ">
 
-                                                <Nav className="row drop-nav-ul" style={{ width: 189, marginLeft: "-53px"}} >
+                                                <Nav className="row drop-nav-ul" style={{ width: 189, marginLeft: "-53px" }} >
 
                                                     {props.LoanNavigation.map((item, key) => {
                                                         return (
-                                                            <NavItem key={key} title={item.loanName}  className="drop-item col-12">
+                                                            <NavItem key={key} title={item.loanName} className="drop-item col-12">
                                                                 <a href={"/" + item.urlName}>{item.loanName}</a>
                                                             </NavItem>
                                                         )
@@ -112,14 +120,12 @@ const NavigationTree = (props) => {
                                     </NavItem>
 
                                     <NavItem>
-                                        <a title="Kredi Hesaplama" className="nav-link" href="/">Hesaplama</a>
+                                        <a title="Kredi Hesaplama" className="nav-link" href="/hesaplama">Hesaplama</a>
 
                                     </NavItem>
+
                                     <NavItem>
-                                        <a title="Kredi Notu" className="nav-link" href="/users">Kredi Notu</a>
-                                    </NavItem>
-                                    <NavItem>
-                                        <a title="blog" className="nav-link" href="/About">Blog</a>
+                                        <a title="blog" className="nav-link" href="/haberler-bilgiler">Haberler</a>
                                     </NavItem>
                                 </Nav>
                             </div>
@@ -191,14 +197,18 @@ const NavigationTree = (props) => {
                                         </Collapse>
                                     </NavItem>
                                     <NavItem>
-                                        <a className="mobil-nav-link" href="/">Hesaplama</a>
+                                        <a className="mobil-nav-link" href="/hesaplama">Hesaplama</a>
                                     </NavItem>
                                     <NavItem>
-                                        <a className="mobil-nav-link" href="/users">Kredi Notu</a>
+                                        <a title="Mevduat Hesapları" className="mobil-nav-link" href="/vadeli-mevduat-sorgulama">Mevduat</a>
+
                                     </NavItem>
                                     <NavItem>
-                                        <a className="mobil-nav-link" href="/about">Blog</a>
+                                        <a title="blog" className="mobil-nav-link" href="/haberler-bilgiler">Haberler</a>
                                     </NavItem>
+
+
+
                                 </Nav>
                             </Collapse>
                         </Navbar>

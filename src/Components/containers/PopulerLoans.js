@@ -30,7 +30,7 @@ export const PopulerLoans = () => {
                             return (
                                 <div key={index} className="row loan-item" style={!isLast ? { borderBottom: "1px solid black" } : {}}>
                                     <div className="col-3 ">
-                                        <img title={item.bankName +" popüler "+ item.loanType+" kredi.com.tr"} alt={item.bankName +" popüler "+ item.loanType+" öne çıkan"} src={apiConstant + "/StaticF" + item.logo} style={{ width: "80%", height: 15 }}></img>
+                                        <img title={item.bankName +" popüler "+ item.loanType+" kredi.com.tr"} alt={item.bankName +" popüler "+ item.loanType+" öne çıkan"} src={apiConstant + "/StaticF" + item.logo} style={{ width: "100%",  }}></img>
                                     </div>
                                     <div className="col-5 ">
                                         <span>{item.loanType} {item.amount}TL</span>

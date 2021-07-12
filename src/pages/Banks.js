@@ -20,6 +20,7 @@ import { PopulerLoans } from "../Components/containers/PopulerLoans";
 import { DispositContainer } from "../Components/containers/DispositContainer";
 import 'react-perfect-scrollbar/dist/css/styles.css';
 import PerfectScrollbar from 'react-perfect-scrollbar'
+import { creditCartRedirect } from "../Components/RedirectComponent";
 export const Banks = (props) => {
     const [bank, setBank] = useState({})
     const [activeLoanType, setActiveLoanType] = useState({ id: null })
@@ -32,6 +33,7 @@ export const Banks = (props) => {
     const [calculateDispositResult, setCalculateDispositResult] = useState({ netAmount: "", totalAmount: "", term: "", id: "", rate: "" })
     const [currencyIcon, setCurrencyIcon] = useState("")
     const [bankContainerCount, setBankContainerCount] = useState()
+    const [loanTermsDropdonw, setLoanTermsDropdown] = useState([])
 
     let isActive = ""
 
@@ -52,10 +54,14 @@ export const Banks = (props) => {
         if (bankData.loans.length > 0) {
             containercnt++
             updateSelectedLoanOption(bankData.loans[0]?.rate, null, null)
+
+
+
+
         } else {
             updateSelectedLoanOption(0, null, null)
-
         }
+
         if (bankData.disposits.length > 0) {
             containercnt++
             setSelectedDisposit(bankData.disposits[0])
@@ -72,6 +78,8 @@ export const Banks = (props) => {
         }
         setBankContainerCount(containercnt)
 
+
+        // changeLoanTypeTab()
     }
 
     const currencIconChange = (c) => {
@@ -84,6 +92,7 @@ export const Banks = (props) => {
         } else if (c.dispositCurrency == 2) {
             setCurrencyIcon("€")
         }
+
 
     }
     const CalculateDispositFunc = (amount = 0, term = 0) => {
@@ -122,11 +131,41 @@ export const Banks = (props) => {
     }
     const selectLoanType = (loanId) => {
 
-        let selectedLoant = bank.loans.find(x => { return x.id == loanId })
-        updateSelectedLoanOption(selectedLoant.rate, null, null)
-        setActiveLoanType(selectedLoant)
+        let existControl = []
+        let selectedLoant = bank.loans.filter(x => { return x.loanUrlName == loanId })
+
+
+
+        updateSelectedLoanOption(selectedLoant[0].rate, null, null)
+        setActiveLoanType(selectedLoant[0])
+
+
     }
     const updateSelectedLoanOption = (rate = null, amount = null, term = null) => {
+
+        var ss = bank?.loans?.find(x => {
+
+            if (
+                x.minAmount <= parseInt((amount != null ? amount : selectedLoanOptions.amount)) &&
+                x.maxAmount >= parseInt((amount != null ? amount : selectedLoanOptions.amount)) &&
+                x.loanUrlName == activeLoanType.loanUrlName
+
+            ) {
+                return true
+            }
+
+        });
+
+
+        if (ss) {
+            setLoanTermsDropdown(ss.terms)
+            setActiveLoanType(ss)
+
+        } else {
+            setLoanTermsDropdown([])
+
+        }
+
 
         selectedLoanOptions.rate = (rate != null ? rate : selectedLoanOptions.rate)
         selectedLoanOptions.amount = (amount != null ? amount : selectedLoanOptions.amount)
@@ -140,14 +179,15 @@ export const Banks = (props) => {
         prm.set("amount", selectedLoanOptions.amount)
         prm.set("term", selectedLoanOptions.term)
         prm.set("loanId", activeLoanType.id)
-        window.location.replace("/bankalar/" + bank.bankUrlName + "-kredi-hesaplama-ve-basvuru?" + prm)
+        props.history.push("/bankalar/" + bank.bankUrlName + "-kredi-hesaplama-ve-basvuru?" + prm);
+        // window.location.replace("/bankalar/" + bank.bankUrlName + "-kredi-hesaplama-ve-basvuru?" + prm)
     }
 
 
     const toggle = tab => {
         if (activeTab !== tab) setActiveTab(tab);
     }
-
+    var loanUrlNameControl = []
     return (
         <div className="container-fluid">
             <Helmet>
@@ -186,36 +226,32 @@ export const Banks = (props) => {
 
                                         {bank?.loans?.map((item, key) => {
                                             let activeClass = ""
-                                            if (item.id == activeLoanType.id) {
+
+                                            if (item.loanUrlName == activeLoanType.loanUrlName) {
                                                 activeClass = "active-loan-tab"
                                             }
-                                            return (
+                                            if (loanUrlNameControl.includes(item.loanUrlName)) {
 
-                                                <li key={key} onClick={() => { selectLoanType(item.id) }} className={"loan-tabs " + activeClass} key={key}>
 
-                                                    {item.loanName}
+                                            } else {
+                                                loanUrlNameControl.push(item.loanUrlName)
 
-                                                </li>
-                                            )
+                                                return (
+                                                    <li key={key} onClick={() => { selectLoanType(item.loanUrlName) }} className={"loan-tabs " + activeClass} key={key}>
+                                                        {item.loanName}
 
-                                        })
+                                                    </li>
+                                                )
 
-                                        }
+                                            }
+
+                                        })}
                                     </ul>
                                 </div>
                                 <div className="container">
 
                                     <div className="row justify-content-center">
 
-
-                                        <div className="col-5 ">
-                                            <Dropdown
-                                                options={activeLoanType.terms || []}
-                                                onChange={(val) => updateSelectedLoanOption(null, null, val.value)}
-                                                placeholder="Vade"
-                                                arrowClassName="dropdownArrow"
-                                            />
-                                        </div>
 
                                         <div className="col-5 ">
                                             <CurrencyInput style={{
@@ -232,6 +268,15 @@ export const Banks = (props) => {
                                                 onChange={(val) => updateSelectedLoanOption(null, val.replace("₺", "").replace(".", ""), null)}
                                             />
                                         </div>
+                                        <div className="col-5 ">
+                                            <Dropdown
+                                                options={loanTermsDropdonw?.sort((a, b) => a.value - b.value) || []}
+                                                onChange={(val) => updateSelectedLoanOption(null, null, val.value)}
+                                                placeholder="Vade"
+                                                arrowClassName="dropdownArrow"
+                                            />
+                                        </div>
+
 
 
 
@@ -270,7 +315,7 @@ export const Banks = (props) => {
 
                                             creditCarts.map((each, index) => {
                                                 return (<div key={index}  >
-                                                    <div className="each-fade" >
+                                                    <div className="each-fade" style={{ padding: 22 }} >
                                                         <div className="row">
 
 
@@ -279,7 +324,7 @@ export const Banks = (props) => {
                                                             </div>
                                                             <div className="col-6">
                                                                 <div className="col-12">
-                                                                    <h3>{each.name}</h3>
+                                                                    <h3 style={{ color: "black", fontWeight: "bold" }}>{each.name}</h3>
 
                                                                     <b style={{ color: "#535656" }}> Yıllık Ücret</b>
 
@@ -292,14 +337,28 @@ export const Banks = (props) => {
                                                                             <button className="default-button" style={{
                                                                                 padding: 3,
                                                                                 fontSize: 13,
-                                                                            }} type="submit">BAŞVUR</button>
+                                                                            }}
+                                                                                onClick={() => creditCartRedirect(null,
+                                                                                    each.redirectUrl,
+                                                                                    bank.id,
+                                                                                    each.id,
+                                                                                    {
+                                                                                        bankName: bank.bankName,
+                                                                                        CreditCartName: each.name
+                                                                                    })}
+
+                                                                                type="submit">BAŞVUR</button>
                                                                         </div>
                                                                         <div className="col-6">
-                                                                            <button className="default-button" style={{
+                                                                            <a className="default-button" style={{
                                                                                 padding: 3,
                                                                                 fontSize: 13,
                                                                                 background: "#585858",
-                                                                            }} type="submit">DETAY</button>
+                                                                                width: "100%",
+                                                                                display: "block",
+                                                                                textAlign: "center",
+                                                                                color: "white",
+                                                                            }} href={"/" + bank.bankUrlName + "/" + each.urlName}>DETAY</a>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -508,7 +567,7 @@ export const Banks = (props) => {
                                                         <div className="col-12 res-disposit row mb-3">
 
                                                             <div className="col-6 mb-2 row ">
-                                                                <div style={{float:"left"}}>
+                                                                <div style={{ float: "left" }}>
                                                                     Net Kazanç :
                                                                     <CurrencyInput style={{
                                                                         padding: 0,
@@ -516,7 +575,7 @@ export const Banks = (props) => {
                                                                         display: "inline",
 
                                                                         background: "none",
-                                                                       
+
                                                                         fontWeight: "bold",
                                                                         textAlign: "left",
                                                                         position: "absolute",
@@ -531,7 +590,7 @@ export const Banks = (props) => {
                                                                         prefix={currencyIcon}
                                                                         value={calculateDispositResult.netAmount} />
                                                                 </div>
-                                                                <div style={{ float: "left",marginLeft:57 }}>Vade : <b>{calculateDisposit.term}</b></div>
+                                                                <div style={{ float: "left", marginLeft: 57 }}>Vade : <b>{calculateDisposit.term}</b></div>
 
                                                             </div>
                                                             <div className="col-6 mb-2 text-right">

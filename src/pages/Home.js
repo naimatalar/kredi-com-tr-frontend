@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { propTypes } from "react-currency-input";
 import { BankContainer } from "../Components/containers/BankContainer";
 import EmailPost from "../Components/containers/EmailPost";
@@ -13,9 +13,29 @@ import MiddleMenu from "../Components/containers/MiddleMenu";
 import { PopulerLoans } from "../Components/containers/PopulerLoans";
 import Slider from "../Components/containers/Slider";
 import { DispositContainer } from "../Components/containers/DispositContainer";
+import { GetNoneToken } from "../datacrud/datacrud";
 export const Home = (props) => {
 
     const [addsPopup, setAddsPopup] = useState(false)
+    const [sss, setSss] = useState([])
+    const [blog, setBlog] = useState([])
+
+    useEffect(() => {
+
+        start()
+    }, [])
+    const start = async () => {
+        var sss_ = await GetNoneToken("Faqs/GetAllSite").then(x => { return x.data }).catch(x => { return false })
+        if (sss_) {
+            setSss(sss_)
+        }
+        var blg = await GetNoneToken("Blogs/GetAllWebSite").then(x => { return x.data }).catch(x => { return false })
+       
+        if (blg) {
+            setBlog(blg)
+        }
+
+    }
 
     return (<>
         <Helmet>
@@ -85,7 +105,7 @@ export const Home = (props) => {
             <div className="col-lg-2 col-md-12 p-0" style={{ marginBottom: 20 }}  >
                 <div className="d-none d-lg-flex row adds-first-big" >
                     <div className="row  m-0 p-0 justify-content-center">
-                        <img title="kredi.com.tr kredi, kredi kartı vadeli mevduat" alt={"logo kredi.com"}  style={{ width: "80%", objectFit: "contain" }} src={require("../assets/images/lg.png").default}></img>
+                        <img title="kredi.com.tr kredi, kredi kartı vadeli mevduat" alt={"logo kredi.com"} style={{ width: "80%", objectFit: "contain" }} src={require("../assets/images/lg.png").default}></img>
                         <b style={{ textAlign: "center" }}>Reklam Ve Tanıtın Alanı</b>
                     </div>
                     <div className="row  m-0 p-0 justify-content-center">
@@ -98,7 +118,7 @@ export const Home = (props) => {
                 <div className="d-lg-none d-md-flex row adds-first-big pt-4 pb-4" >
                     <div className="row  m-0 p-0 justify-content-center">
                         <div className="row justify-content-center">
-                            <img title="kredi kartları krediler ve mevduatlar kredi.com.tr de" alt={"kredi.com.tr logo"}  style={{ width: "50%", objectFit: "contain" }} src={require("../assets/images/lg.png").default}></img>
+                            <img title="kredi kartları krediler ve mevduatlar kredi.com.tr de" alt={"kredi.com.tr logo"} style={{ width: "50%", objectFit: "contain" }} src={require("../assets/images/lg.png").default}></img>
                         </div>
                         <div className="col-12" style={{ textAlign: "center" }}>
                             <b style={{ textAlign: "center" }}>Reklam Ve Tanıtın Alanı</b>
@@ -129,7 +149,7 @@ export const Home = (props) => {
                 padding: 7,
                 background: "linear-gradient(45deg, #077a683b, transparent)"
             }}>
-                <i style={{ color: " #505050",fontWeight:"bold" }}> En çok tercih edilen mevduat hesapları</i>
+                <i style={{ color: " #505050", fontWeight: "bold" }}> En çok tercih edilen mevduat hesapları</i>
 
             </div>
             <div className="row">
@@ -151,7 +171,7 @@ export const Home = (props) => {
                 <div className="d-none d-lg-flex row adds-first-big" >
                     <div className="row  m-0 p-0 justify-content-center">
 
-                        <img title="kredi.com.tr online kredi, kredi kartı ve mevduat başvuruları" alt={"kredi.com.tr "}  style={{ width: "80%", objectFit: "contain" }} src={require("../assets/images/lg.png").default}></img>
+                        <img title="kredi.com.tr online kredi, kredi kartı ve mevduat başvuruları" alt={"kredi.com.tr "} style={{ width: "80%", objectFit: "contain" }} src={require("../assets/images/lg.png").default}></img>
                         <b style={{ textAlign: "center" }}>Reklam Ve Tanıtın Alanı</b>
                     </div>
                     <div className="row  m-0 p-0 justify-content-center">
@@ -175,7 +195,7 @@ export const Home = (props) => {
             <div className="d-lg-none d-md-flex row adds-first-big pt-4 pb-4" >
                 <div className="row  m-0 p-0 justify-content-center">
                     <div className="row justify-content-center">
-                        <img title="kredi.com.tr ile artık bankaların ürünleri parmaklarınızın ucunda" alt={"logo kredi.com.tr"}  style={{ width: "50%", objectFit: "contain" }} src={require("../assets/images/lg.png").default}></img>
+                        <img title="kredi.com.tr ile artık bankaların ürünleri parmaklarınızın ucunda" alt={"logo kredi.com.tr"} style={{ width: "50%", objectFit: "contain" }} src={require("../assets/images/lg.png").default}></img>
                     </div>
                     <div className="col-12" style={{ textAlign: "center" }}>
                         <b style={{ textAlign: "center" }}>Reklam Ve Tanıtın Alanı</b>
@@ -216,36 +236,47 @@ export const Home = (props) => {
             <div className="container">
 
                 <div className="row">
-                    <div className="col-lg-6 col-md-6 col-sm-12" style={{ paddingRight: 36 }}>
+                    <div className="col-lg-6 col-md-6 col-sm-12 imghide" style={{ paddingRight: 36 }}>
                         <h3>Sık Sorulan Sorular</h3>
+                        {sss?.map((item, key) => {
+
+                            return (<div key={key} style={{ padding: 5 }}>
+
+                                <div>
+
+                                    <p style={{ fontWeight: "bold" }}>* {item.question}</p>
+
+                                </div>
+                                <div>
+                                    <h6 style={{color:"black",fontSize:13}}>*{item.ansver}</h6>
+                                </div>
+                            </div>)
+                        })}
+
 
                         <div style={{ padding: 5 }}>
-                            <h6>*Kredi Puanı Nedir ?</h6>
-                            <p style={{ color: "black" }}>Finansal geçmişinizin ortak bir kuruluşta analiz edilmesi sonrası size verilen nota kredi notu yani kredi puanı denir. Ülkemizde KKB isimli kuruluşta toplanan kredi notu; bankalara müşterileri hakkında detaylı bilgi edinebilme imkanı tanır.</p>
-                        </div>
-                        <div style={{ padding: 5 }}>
-                            <h6>*Kredi Faiz Oranı Nedir ?</h6>
-                            <p style={{ color: "black" }}>Faiz, kısaca kar anlamına gelir. Banka ya da benzeri yerden borç karşılığı alınan paranın, kullanımına karşılık verilen ücrettir. Bu ücretin oranı, belli başlı hususlara bağlı olarak değişir.</p>
-                        </div>
-                        <div style={{ padding: 5 }}>
-                            <a href="" style={{ fontWeight: "bold", textDecoration: "underline" }}>SIK SORULAN SORULAR SAYFASINA GİT</a>
+                            <a href="" style={{ fontWeight: "bold", textDecoration: "underline",color:"#007bff" }}>SIK SORULAN SORULAR SAYFASINA GİT</a>
                         </div>
                     </div>
-                    <div className="col-lg-6 col-md-6 col-sm-12">
+                    <div className="col-lg-6 col-md-6 col-sm-12 imghide">
                         <h3>Blog</h3>
-                        <div style={{ padding: 5 }}>
-                            <h6>*Faizler Yükseliyor </h6>
-                            <p style={{ color: "black" }}>Hastalık sonrasında verilen bol likidite harcamaya dönecek, ABD ekonomisi düştüğü yerden kalkacak. Bu da ister istemez enflasyon yaratacak..</p>
-                            <p><b><a href="" style={{ color: "#333333" }}>Devamını Oku...</a></b></p>
-                        </div>
-                        <div style={{ padding: 5 }}>
-                            <h6>*Kredi Ötelemeleri </h6>
-                            <p style={{ color: "black" }}>Koronavirüs salgını sonrası alınan tedbirler kapsamında bankalar çok önemli bir karar aldı. Dört büyük banka 31 Mart tarihinde dönem sonu taksit, faiz ve anapara ödemesini gerçekleştiremeyen vatandaşlarımız için ödemelerin ötelenmesi yönünde karar aldı.</p>
-                            <p><b><a href="" style={{ color: "#333333" }}>Devamını Oku...</a></b></p>
+                        <div >
+                            {blog?.map((item, key) => {
+
+                                return (
+                                    <div style={{ padding: 5 }}>
+                                        <h6><b>* {item.title}</b> </h6>
+                                        <div className="maxhg" style={{ color: "black",paddingBottom:23 }} dangerouslySetInnerHTML={{ __html: item.content }}></div>
+                                        
+                                        <p><b><a style={{color:"#007bff"}} href={"/haberler-bilgiler/"+item.urlName }>Devamını Oku...</a></b></p>
+                                    </div>
+                                )
+                            })}
 
                         </div>
+
                         <div style={{ padding: 5 }}>
-                            <a href="" style={{ fontWeight: "bold", textDecoration: "underline" }}>BLOG SAYFASINA GİT</a>
+                            <a href="/haberler-bilgiler" style={{ fontWeight: "bold", textDecoration: "underline",color:"#007bff" }}>BLOG SAYFASINA GİT</a>
                         </div>
                     </div>
                 </div>

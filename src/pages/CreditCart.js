@@ -5,6 +5,7 @@ import { apiurl, GetNoneToken } from "../datacrud/datacrud";
 import { kredicartdata } from "../kredicartdata";
 import { Helmet } from "react-helmet";
 import hcbgImage from "../assets/images/bgss.jpg";
+import { creditCartRedirect } from "../Components/RedirectComponent";
 export const CreditCart = (props) => {
     const [mainKrediKartData, setMainKrediKartData] = useState([])
     const [banklistFilter, setBanklistFilter] = useState([{ name: "", logoUrl: "" }])
@@ -171,16 +172,27 @@ export const CreditCart = (props) => {
                                                         color: "#828282"
                                                     }}>Yıllık Ücret</b>
                                                     <p style={{ marginBottom: 5 }}><b>{item.yearlyUsingAmount} ₺</b></p>
-                                                    <button className="default-button" style={{
+                                                    <button 
+                                                    onClick={() => creditCartRedirect(null,
+                                                        item.redirectUrl,
+                                                        item.bankId,
+                                                        item.creditCartId,
+                                                        {
+                                                            bankName: item.bank,
+                                                            CreditCartName:item.name
+                                                        })}
+                                                    className="default-button" style={{
                                                         padding: 3,
                                                         fontSize: 13
                                                     }} type="submit">BAŞVUR</button>
-                                                    <button className="default-button" style={{
+                                                    <a href={"/"+item.bankUrlName+"/"+item.urlName} className="default-button" style={{
                                                         padding: 3,
                                                         fontSize: 13,
                                                         marginTop: 14,
                                                         background: "#585858",
-                                                    }} type="submit">DETAY</button>
+                                                        textAlign:"center",
+                                                        color:"white"
+                                                    }} type="submit">DETAY</a>
 
                                                 </div>
                                                 <div style={{ width: "100%" }}><hr style={{ margin: "7px 0 2px 0" }}></hr></div>

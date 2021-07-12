@@ -38,7 +38,8 @@ export const Loan = (props) => {
         let prm = new URLSearchParams()
         prm.set("amount", data.amount)
         prm.set("term", data.term)
-        window.location.replace("/" + loan.urlName + "-arama-hesaplama?" + prm)
+      
+        props.history.push("/" + loan.urlName + "-arama-hesaplama?" + prm)
 
     }
     return (

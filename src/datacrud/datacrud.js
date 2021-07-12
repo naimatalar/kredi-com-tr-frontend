@@ -15,14 +15,11 @@ export const GetNoneToken = async (url) => {
     {
         headers: {
             'Content-Type': 'application/Json',
-            
         }
     }
     try {
          return Axios.get(apiUrl + url, headers)
     } catch (error) {
-      
-
     }
     
 }

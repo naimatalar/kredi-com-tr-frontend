@@ -20,10 +20,16 @@ import { SearchLoanPage } from "./pages/SearchLoanPage";
 import Head from "next/head";
 import { DispositSearchPage } from "./pages/DispositSearchPage";
 import { DispositSearchResult } from "./pages/DispositSearchResult";
-
+import { RedirectProduct } from "./pages/RedirectProduct";
+import { Blog } from "./pages/Blog";
+import { BlogDetail } from "./pages/BlogDetail";
+import { CreditCartDetail } from "./pages/CreditCartDetail";
+import { CalculatePage } from "./pages/CalculatePage";
 export default function App(props) {
   const [bankNavigation, setBankNavigation] = useState([]);
   const [loanNavigation, setLoanNavigation] = useState([]);
+  const [blogNavigation, setBlogNavigation] = useState([]);
+  const [creditCartName, setCreditCartName] = useState([]);
 
   useEffect(() => {
 
@@ -32,12 +38,14 @@ export default function App(props) {
   }, [props])
 
   const start = async () => {
+
     var Bank = await GetNoneToken("Banks/GetAllBankSite").then(x => { return x.data }).catch(x => { return false })
-
     var loanType = await GetNoneToken("LoanTypes/GetAllSite").then(x => { return x.data }).catch(x => { return false })
+    var blogs = await GetNoneToken("Blogs/GetAlUrlName").then(x => { return x.data }).catch(x => { return false })
+    var creditCarts = await GetNoneToken("CreditCarts/GetCreditCartName").then(x => { return x.data }).catch(x => { return false })
+    setCreditCartName(creditCarts)
+    setBlogNavigation(blogs)
     setLoanNavigation(loanType)
-
-
     setBankNavigation(Bank)
   }
 
@@ -65,9 +73,17 @@ export default function App(props) {
 
               </Route>
             )
-
-
           })}
+          {loanNavigation.map((item, key) => {
+            return (
+              <Route key={key} path={"/" + item.urlName + "-basvuru"} render={(props) => <RedirectProduct {...props} ></RedirectProduct>}>
+
+              </Route>
+            )
+          })}
+
+          <Route path={"/kredi-karti-basvuru"} render={(props) => <RedirectProduct {...props}  ></RedirectProduct>}>
+          </Route>
 
           <Route path="/kredi-karti/ticari-kredi-kartlari">
             <CreditCart cartType="corporate" />
@@ -81,12 +97,25 @@ export default function App(props) {
           <Route path="/kredi-karti">
             <CreditCart cartType="all" />
           </Route>
-
-          <Route path="/vadeli-mevduat-sorgulama"render={(props)=><DispositSearchPage {...props}/>}>
-            
+          <Route path="/hesaplama/kredi-hesaplama">
+            <CalculatePage UrlName="kredi-hesaplama" />
           </Route>
-          <Route path="/vadeli-mevduati-hesaplama-ve-basvuru" render={(props)=>< DispositSearchResult {...props}/>}>
-            
+          <Route path="/hesaplama/aylik-ne-kadar-odeyebilirim">
+            <CalculatePage UrlName="aylik-ne-kadar-odeyebilirim" />
+          </Route>
+
+          <Route path="/hesaplama">
+            <CalculatePage UrlName="-" />
+          </Route>
+
+          <Route path={"/vadeli-mevduati-basvuru"} render={(props) => <RedirectProduct  {...props} ></RedirectProduct>}>
+          </Route>
+
+          <Route path="/vadeli-mevduat-sorgulama" render={(props) => <DispositSearchPage {...props} />}>
+
+          </Route>
+          <Route path="/vadeli-mevduati-hesaplama-ve-basvuru" render={(props) => < DispositSearchResult {...props} />}>
+
           </Route>
 
           {
@@ -113,11 +142,42 @@ export default function App(props) {
           }
 
 
-          <Route exact path="/bankalar">
-            <Banks BankId=""></Banks>
+
+          <Route exact path="/haberler-bilgiler">
+            <Blog Banks={bankNavigation} ></Blog>
           </Route>
 
+          {
+            blogNavigation?.map((item, key) => {
+              return (
 
+                <Route exact key={key} path={'/haberler-bilgiler/' + item.urlName}
+                  render={(props) => <BlogDetail  {...props} blogName={item.urlName}></BlogDetail>} >
+
+                </Route>
+              )
+            })
+          }
+          {creditCartName.map((item, key) => {
+
+            return (
+              <Route key={key + "55d6"} path={"/" + item.bankUrlName + "/" + item.urlName} render={(props) => <CreditCartDetail {...props} data={item} ></CreditCartDetail>}>
+
+              </Route>
+            )
+          })}
+
+          <Route exact path="/bankalar">
+            {
+              bankNavigation.map((item, key) => {
+                return (
+                  <Route key={key} path={'/bankalar/' + item.bankUrlName} render={(props) => <Banks {...props} Banks={bankNavigation} BankId={item.id}></Banks>}>
+
+                  </Route>
+                )
+              })
+            }
+          </Route>
 
         </Switch>
         <div style={{ textAlign: "center", color: "red", textDecoration: "underline" }}>Platformumuz yapım aşamasındadır.<br></br>Faiz oranları, vadeler, kredi kartı fırsatları şu anlık <b style={{ color: "red" }}>gerçek bilgiler değildir.</b><br></br>Gerçek bilgiler için bankanın web sitelerini ziyaret edebilirsiniz.</div>
