@@ -11,20 +11,22 @@ import { BrowserRouter } from 'react-router-dom';
 import { hydrate, render } from 'react-dom';
 
 
-// const rootElement = document.getElementById("root");
-// if (rootElement.hasChildNodes()) {
-//   hydrate(<App />, rootElement);
-// } else {
-//   render(<App />, rootElement);
-// }
+const rootElement = document.getElementById("root");
+if (rootElement.hasChildNodes()) {
+  hydrate(<App />, rootElement);
+} else {
+  render(<App />, rootElement);
+  // "postbuild": "react-snap"
+}
 
 
-ReactDOM.hydrate(
 
-  <App />
-  ,
-  document.getElementById('root')
-);
+// ReactDOM.hydrate(
+
+//   <App />
+//   ,
+//   document.getElementById('root')
+// );
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

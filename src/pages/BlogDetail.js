@@ -22,6 +22,7 @@ export const BlogDetail = (props) => {
         setBlog(blogList)
         setData(ccData)
         
+        
     }
     { console.log(data?.title) }
     return (<div className="master-content">
@@ -34,6 +35,9 @@ export const BlogDetail = (props) => {
             <meta name="keyword" content="kredi, kredi kartı, kredi başvurusu, kredi faiz oranı, kredi kartı başvurusu" />
             <meta name="description" content="kredi.com.tr Kolayca Arayın, Pratik Şekilde Hesaplayın, Hızlıca Başvurun" />
             <meta name="robots" content="index,follow" />
+            <link rel="apple-touch-icon" href={apiurl + data?.imageUrl} />
+            <meta property="og:image"  itemProp="image"  content={apiurl + data?.imageUrl}  />
+
             <title>KREDİ.COM.TR | {data.title ?? ""} </title>
         </Helmet>
         <div className="row">
@@ -65,7 +69,7 @@ export const BlogDetail = (props) => {
                                 justifyContent: "flex-end",
                                 alignItems: "center"
                             }}>
-                                <a href={item.urlName}><b>Oku</b></a>
+                                <a href={"/haberler-bilgiler/"+item.urlName}><b>Oku</b></a>
                             </div>
                         </div>
                     )

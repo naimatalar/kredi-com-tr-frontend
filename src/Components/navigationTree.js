@@ -48,7 +48,7 @@ const NavigationTree = (props) => {
                         <div className="row" style={{ height: 90, alignItems: "center" }}>
                             <div className="col-lg-3 col-md-2" style={{ paddingBottom: 6 }}>
                                 <a title="kredi.com.tr" href="/">
-                                    <img alt="kredi.com.tr logo" title="kredi.com.tr" src={require("../assets/images/lg2.png").default} style={{ width: "100%" }}></img>
+                                    <img alt="kredi.com.tr logo" title="kredi.com.tr" src={require("../assets/images/lg.png").default} style={{ width: "100%" }}></img>
 
                                 </a>
 

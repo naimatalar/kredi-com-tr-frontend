@@ -151,7 +151,7 @@ const getContent = (data) => {
                     <meta name="twitter:description" content="Anlaşmalı olduğumuz bankaların içinden onlarca kobi kredisi seçeneğini sizin için hesaplayıp getiriyoruz" />
                     <meta name="description" content="Anlaşmalı olduğumuz bankaların içinden onlarca kobi kredisi seçeneğini sizin için hesaplayıp getiriyoruz" />
                     <meta name="robots" content="index,follow" />
-                    <title>{"Kobi Kredisi Hesaplama Ve Başvurma | kerdi.com.tr"} </title>
+                    <title>{"Kobi Kredisi Hesaplama Ve Başvurma | kredi.com.tr"} </title>
                 </Helmet>
 
                 <div className="col-12 col-md-5 col-lg-5 row  align-content-center justify-content-center">
@@ -185,7 +185,7 @@ const getContent = (data) => {
                 <meta name="twitter:description" content="Hayalinizdeki aracı almak için krediye ihtiyaç duyuyorsanız doğru yerdenizniz. Sizin için birsürü fırsat bulabiliriz." />
                 <meta name="description" content="Hayalinizdeki aracı almak için krediye ihtiyaç duyuyorsanız doğru yerdenizniz. Sizin için birsürü fırsat bulabiliriz." />
                 <meta name="robots" content="index,follow" />
-                <title>{"Kobi Kredisi Hesaplama Ve Başvurma | kerdi.com.tr"} </title>
+                <title>{"Kobi Kredisi Hesaplama Ve Başvurma | kredi.com.tr"} </title>
             </Helmet>
             <div className="col-12 col-md-5 col-lg-5 row  align-content-center justify-content-center">
                 <div className="justify-content-center col-12 row">
@@ -217,7 +217,7 @@ const getContent = (data) => {
                 <meta name="twitter:description" content="Hayalini kurduğunuz yuvaya kavuşurken çorbada bizimde tuzumuz olsun. Kredinizi bulmanıza yardım edelim." />
                 <meta name="description" content="Hayalini kurduğunuz yuvaya kavuşurken çorbada bizimde tuzumuz olsun. Kredinizi bulmanıza yardım edelim." />
                 <meta name="robots" content="index,follow" />
-                <title>{"Konut Kredisi Hesaplama Ve Başvurma | kerdi.com.tr"} </title>
+                <title>{"Konut Kredisi Hesaplama Ve Başvurma | kredi.com.tr"} </title>
             </Helmet>
             <div className="col-12 col-md-5 col-lg-5 row  align-content-center justify-content-center">
                 <div className="justify-content-center col-12 row">
@@ -248,7 +248,7 @@ const getContent = (data) => {
                 <meta name="twitter:description" content="İhtiyaç kredisi hayatın her anında lazım olan bir bir kredi türüdür. Bu krediyi bulmak ise kredi.com.tr nin uzmanlık alanıdır." />
                 <meta name="description" content="İhtiyaç kredisi hayatın her anında lazım olan bir bir kredi türüdür. Bu krediyi bulmak ise kredi.com.tr nin uzmanlık alanıdır." />
                 <meta name="robots" content="index,follow" />
-                <title>{"İhtiyaç Kredisi Hesaplama Ve Başvurma | kerdi.com.tr"} </title>
+                <title>{"İhtiyaç Kredisi Hesaplama Ve Başvurma | kredi.com.tr"} </title>
             </Helmet>
             <div className="col-12 col-md-5 col-lg-5 row  align-content-center justify-content-center">
                 <div className="justify-content-center col-12 row">

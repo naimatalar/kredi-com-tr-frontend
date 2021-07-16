@@ -119,7 +119,7 @@ export const DispositSearchPage = (props) => {
                                 <meta name="twitter:description" content="Vadeli Mevduat ile kazancınızı yükselteceğiniz banka seçenekleri sorgulama." />
                                 <meta name="description" content=" Vadeli Mevduat ile kazancınızı yükselteceğiniz banka seçenekleri sorgulama" />
                                 <meta name="robots" content="index,follow" />
-                                <title>{"Vadeli Mevduat Hesaplama Ve Başvurma | kerdi.com.tr"} </title>
+                                <title>{"Vadeli Mevduat Hesaplama Ve Başvurma | kredi.com.tr"} </title>
                             </Helmet>
                             <div className="col-12 col-md-5 col-lg-5 row  align-content-center justify-content-center">
                                 <div className="justify-content-center col-12 row">

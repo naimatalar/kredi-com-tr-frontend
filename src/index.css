@@ -604,6 +604,9 @@ width: 100%;
   .blog-image{
     display: none;
     }
+    .result-how-get{
+      zoom: 0.5;
+    }
 }
 
 .popularLoanDetail{
@@ -852,6 +855,7 @@ background: #dadada;
     padding: 26px 0 27px 0px;
     border: 1px solid #077a68;
     border-radius: 8px;
+    margin: 0 auto;
 }
 .inf-res *{
   font-size: 19px;

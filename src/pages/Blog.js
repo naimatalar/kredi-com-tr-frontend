@@ -53,7 +53,7 @@ export const Blog = (props) => {
 
         <Helmet>
             <meta property="og:type" content="article" />
-            <meta property="og:title" content="Finans dünyasını takip edip sizlerle paylaşıyoruz | kerdi.com.tr" />
+            <meta property="og:title" content="Finans dünyasını takip edip sizlerle paylaşıyoruz | kredi.com.tr" />
             <meta property="og:url" content={window.location.href} />
             <meta property="og:description" content="En uygun kredi fırsatlarını kredi.com.tr ayrıcalığı ile sizlerle buluşturuyoruz. Finans dünyasını yakından takip edip sizleri haberdar ediyoruz" />
             <meta name="keyword" content="kredi, kredi kartı, kredi başvurusu, kredi faiz oranı, kredi kartı başvurusu" />

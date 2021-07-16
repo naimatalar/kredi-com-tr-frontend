@@ -86,15 +86,15 @@ export const DispositSearchResult = (props) => {
         <Helmet>
 
             <meta property="og:type" content="article" />
-            <meta property="og:title" content={(amount ?? "") + " " + currencyName + "  Anapara ve " + termsValue + " Vade ile En kazanclı mevduat hesapları | Online Başvuru | kerdi.com.tr"} />
+            <meta property="og:title" content={(amount ?? "") + " " + currencyName + "  Anapara ve " + termsValue + " Vade ile En kazanclı mevduat hesapları | Online Başvuru | kredi.com.tr"} />
             <meta property="og:url" content={window.location.href} />
             <meta property="og:description" content={(amount ?? "") + " " + currencyName + "  Anapara  " + termsValue + " Vadeli mevduat hesaplarını karşılaştırma ve en kazançlı vadeli mevduat hesabını bulmak ve başvurmak için doğru adres"} />
             <meta name="keyword" content="kredi, kredi kartı, kredi başvurusu, kredi faiz oranı, kredi kartı başvurusu, vadeli mevduat, vadeli mevduat hesabı" />
-            <meta name="twitter:title" content={(amount ?? "") + " " + currencyName + "  Anapara ve " + termsValue + " Vade ile En kazanclı mevduat hesapları | Online Başvuru | kerdi.com.tr"} />
+            <meta name="twitter:title" content={(amount ?? "") + " " + currencyName + "  Anapara ve " + termsValue + " Vade ile En kazanclı mevduat hesapları | Online Başvuru | kredi.com.tr"} />
             <meta name="twitter:description" content={(amount ?? "") + " " + currencyName + "  Anapara  " + termsValue + " Vadeli mevduat hesaplarını karşılaştırma ve en kazançlı vadeli mevduat hesabını bulmak ve başvurmak için doğru adres"} />
             <meta name="description" content={"Vadeli mevduat hesapları karşılaştırma ve en kazançlı vadeli mevduat hesabını bulmak ve başvurmak için doğru adres"} />
             <meta name="robots" content="index,follow" />
-            <title>{(amount ?? "") + " " + currencyName + "  Anapara ve " + termsValue + " Vade ile En kazanclı mevduat hesapları | Online Başvuru | kerdi.com.tr"} </title>
+            <title>{(amount ?? "") + " " + currencyName + "  Anapara ve " + termsValue + " Vade ile En kazanclı mevduat hesapları | Online Başvuru | kredi.com.tr"} </title>
 
         </Helmet>
 

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react"
 import { apiurl, GetNoneToken, PostNoneToken } from "../datacrud/datacrud"
-import { PopulerLoans } from "../Components/containers/PopulerLoans";
 import { LoanRate } from "../Components/containers/LoanRate";
 import CurrencyInput from "react-currency-input";
 import Dropdown from 'react-dropdown';
@@ -24,8 +23,8 @@ export const SearchLoanPage = (props) => {
       lns.push({ label: item.loanName, value: item.id })
     }
     setLoanOption(lns)
-    let amount = new URLSearchParams(props.location.search).get("amount")
-    let term = new URLSearchParams(props.location.search).get("term")
+    let amount = new URLSearchParams(props.location.search).get("amount")||0
+    let term = new URLSearchParams(props.location.search).get("term")||0
 
 
 
@@ -145,17 +144,17 @@ export const SearchLoanPage = (props) => {
               <div key={key} className="col-12 row loan-search-list-item mb-3">
                 <div className="col-3">
                   <div className="mb-2">
-                    <img title={item.loanInfo.bankName + " " + item.loanInfo.loanName} alt={item.loanInfo.bankName + " " + item.loanInfo.loanName + " sorgulama"} src={apiurl + item.loanInfo.bankLogoUrl} style={{ width: "100%" }}></img>
+                    <img title={item?.loanInfo?.bankName + " " + item?.loanInfo?.loanName} alt={item?.loanInfo?.bankName + " " + item?.loanInfo?.loanName + " sorgulama"} src={apiurl + item?.loanInfo?.bankLogoUrl} style={{ width: "100%" }}></img>
                   </div>
 
-                  <div className="mb-2" style={{ color: "grey", textAlign: "center" }}>{item.loanInfo.loanName}</div>
+                  <div className="mb-2" style={{ color: "grey", textAlign: "center" }}>{item?.loanInfo?.loanName}</div>
                 </div>
                 <div className="col-2">
                   <div className="">
                     <span style={{ color: "grey" }}>Faiz Oranı</span>
                   </div>
 
-                  <div className="mb-2"><b style={{ color: "Black" }}>{item.loanInfo.rate}</b></div>
+                  <div className="mb-2"><b style={{ color: "Black" }}>{item?.loanInfo?.rate}</b></div>
                 </div>
                 <div className="col-2">
                   <div className="">
@@ -180,7 +179,7 @@ export const SearchLoanPage = (props) => {
                       precision="2"
                       disabled
                       suffix=" TL"
-                      value={item.calculatorInfo.aylikOdeme.toFixed(0)} />
+                      value={item?.calculatorInfo?.aylikOdeme?.toFixed(0)} />
 
 
                   </div>
@@ -208,16 +207,16 @@ export const SearchLoanPage = (props) => {
                       precision="2"
                       disabled
                       suffix=" TL"
-                      value={(item.calculatorInfo.aylikOdeme) * parseInt(staticTerm).toFixed(0)} />
+                      value={(item?.calculatorInfo?.aylikOdeme) * parseInt(staticTerm).toFixed(0)} />
                   </div>
                 </div>
                 <div className="col-2 row m-0 justify-content-center align-content-space-between" style={{ height: 80 }}>
                   <div className="">
                     <button
-                      onClick={() => loanRedirect(item.loanInfo.loanUrlName,
-                        item.loanInfo.redirectUrl,
-                        item.loanInfo.bankId,
-                        item.loanInfo.interestRateId,
+                      onClick={() => loanRedirect(item?.loanInfo?.loanUrlName,
+                        item?.loanInfo?.redirectUrl,
+                        item?.loanInfo?.bankId,
+                        item?.loanInfo?.interestRateId,
                         {
                           bankName: item.loanInfo.bankName,
                           amount: amount,
@@ -229,7 +228,7 @@ export const SearchLoanPage = (props) => {
                   </div>
 
                   <div className="mb-2" style={{ textAlign: "center" }}>
-                    <a href={"/bankalar/" + item.loanInfo.bankUrlName + "-kredi-hesaplama-ve-basvuru?amount=" + amount + "&term=" + staticTerm + "&loanId=" + item.loanInfo.interestRateId + ""} style={{ fontWeight: "bold", color: "rgb(85 0 195)", textDecoration: "underline" }}  >Detay</a>
+                    <a href={"/bankalar/" + item?.loanInfo?.bankUrlName + "-kredi-hesaplama-ve-basvuru?amount=" + amount + "&term=" + staticTerm + "&loanId=" + item.loanInfo.interestRateId + ""} style={{ fontWeight: "bold", color: "rgb(85 0 195)", textDecoration: "underline" }}  >Detay</a>
                   </div>
                 </div>
 
