@@ -21,8 +21,8 @@ export const BlogDetail = (props) => {
         let blogList = await GetNoneToken("Blogs/get4Blog").then(x => { return x.data }).catch(x => { return false })
         setBlog(blogList)
         setData(ccData)
-        
-        
+
+
     }
     { console.log(data?.title) }
     return (<div className="master-content">
@@ -36,7 +36,14 @@ export const BlogDetail = (props) => {
             <meta name="description" content="kredi.com.tr Kolayca Arayın, Pratik Şekilde Hesaplayın, Hızlıca Başvurun" />
             <meta name="robots" content="index,follow" />
             <link rel="apple-touch-icon" href={apiurl + data?.imageUrl} />
-            <meta property="og:image"  itemProp="image"  content={apiurl + data?.imageUrl}  />
+            <meta property="og:image" itemProp="image" content={apiurl + data?.imageUrl} />
+
+
+            <meta name="twitter:card" content="summary_large_image" />
+            <meta name="twitter:title" content={data?.title} />
+            <meta name="twitter:description" content="kredi.com.tr Kolayca Arayın, Pratik Şekilde Hesaplayın, Hızlıca Başvurun" />
+            <meta name="twitter:url" content={window.location.href} />
+            <meta name="twitter:image" content={apiurl + data?.imageUrl}  />
 
             <title>KREDİ.COM.TR | {data.title ?? ""} </title>
         </Helmet>
@@ -63,13 +70,13 @@ export const BlogDetail = (props) => {
                             <div key={key} className="col-7 p-0 pl-2 pr-1" style={{ fontSize: 13, color: "black" }}>
                                 {item.title}
                                 <br></br>
-                               <i style={{color:"grey"}}>{item.date}</i> 
+                                <i style={{ color: "grey" }}>{item.date}</i>
                             </div>
                             <div key={key} className="col-2 row p-0" style={{
                                 justifyContent: "flex-end",
                                 alignItems: "center"
                             }}>
-                                <a href={"/haberler-bilgiler/"+item.urlName}><b>Oku</b></a>
+                                <a href={"/haberler-bilgiler/" + item.urlName}><b>Oku</b></a>
                             </div>
                         </div>
                     )

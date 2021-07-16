@@ -50,7 +50,12 @@ export const CalculatePage = (props) => {
                                 <meta name="description" content="Ne kadar kredi ödeyebileceğinizi öğrenin | Bu sayfa ödeyebileceğiniz kredileri hesaplar ve listeler | kredi.com.tr" />
                                 <meta name="robots" content="index,follow" />
                                 <meta property="og:image" itemProp="image" content={require("../assets/images/thn.jpg").default} />
-                                {/* <link rel="apple-touch-icon" href={require("../assets/images/thn.jpg").default} /> */}
+                                <meta name="twitter:card" content="summary_large_image" />
+                                <meta name="twitter:title" content="Aylık Ne Kadar Kredi Ödeyebileceğini Öğren" />
+                                <meta name="twitter:description" content="Bu sayfa girdiğiniz bilgileri bankaya sorarak ödeyebileceğiniz kredileri başvurabilmeniz için bulur | kredi.com.tr" />
+                                <meta name="twitter:url" content={window.location.href} />
+                                <meta name="twitter:image" content={require("../assets/images/thn.jpg").default} />
+
 
                                 <title>Ne kadar kredi ödeyebileceğinizi öğrenin | Bu sayfa ödeyebileceğiniz kredileri hesaplar ve listeler | kredi.com.tr</title>
                             </Helmet>
