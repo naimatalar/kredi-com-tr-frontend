@@ -146,12 +146,12 @@ export const HowToPay = () => {
                     <div className="row col-12 result-how-get">
                         {
                             notFound == true && !isNaN(resultMoney) &&
-                            <div style={{ color: "red" }}>Verilere göre size kalan aylık ücret ({resultMoney} ₺) Geliriniz giderinize göre çok düşük olduğundan uygun kredi bulunamadı </div>
+                            <div style={{ color: "red" }}>Verilere göre size kalan aylık ücret. ({resultMoney} ₺) Geliriniz giderinize göre çok düşük olduğundan uygun kredi bulunamadı! </div>
 
                         }
                         {
                             isNaN(resultMoney) &&
-                            <div style={{ color: "red" }}>Girilen Veriler Hatalı </div>
+                            <div style={{ color: "red" }}>Girilen Veriler Hatalı! </div>
 
                         }
 
@@ -252,7 +252,7 @@ export const HowToPay = () => {
                     </div>
                 </div>
             </div>
-            <p>Bu hesaplama aracımız sizin aylık ödeyebileceğiniz tutarı hesaplar. Bu hesaplamayı yaparken aylık geliriniz ve bir kısım giderlerinizi sisteme girmeniz yeterli olacaktır.
+            <p>Bu hesaplama aracımız sizin aylık ödeyebileceğiniz tutarı hesaplar. Bu hesaplamayı yaparken aylık gelirinizi ve bir kısım giderlerinizi sisteme girmeniz yeterli olacaktır.
             </p>
             <p>Hesaplamayı yaptıktan sonra size en uygun krediyi veren bankayı bulur.</p>
 

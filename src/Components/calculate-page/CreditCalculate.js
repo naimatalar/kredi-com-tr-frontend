@@ -54,7 +54,7 @@ export const CreditCalculate = () => {
                         </select>
                     </div>
                     <div className="col-12">
-                        <label style={{ width: 120 }}><b>Kredi Tutartı: &nbsp;</b> </label>
+                        <label style={{ width: 120 }}><b>Kredi Tutarı: &nbsp;</b> </label>
                         <input value={amount} required onChange={(e) => { setAmount(e.target.value) }} type="text" placeholder=" örnek: 50000"></input>
                     </div>
                     <div className="col-12 mt-2">
@@ -84,7 +84,7 @@ export const CreditCalculate = () => {
             calculateResult.totalpayment != 0 && calculateResult.totalFaiz != 0 && calculateResult.totalVergi != 0 &&
             <div className="row mt-3">
 
-                <div className="col-12"><h2>Hesaplam Sonucu </h2><hr className="title-hr mt-1"></hr></div>
+                <div className="col-12"><h2>Hesaplama Sonucu </h2><hr className="title-hr mt-1"></hr></div>
                 <div className="col-6 mt-3 inf-res">
                     <div className="col-12 row mt-2">
                         <div className="col-6"><b>Aylık Taksit :</b> </div>
@@ -230,28 +230,28 @@ export const CreditCalculate = () => {
         <div className="row col-12 mt-3">
 
             <h3>Kredi Hesaplama Nasıl Yapılır?</h3>
-            <p >Kredi heaplama kredinin türüne göre değişiklik gösterir. Genel Hesaplama formülü; <br>
+            <p >Kredi hesaplama kredinin türüne göre değişiklik gösterir. Genel Hesaplama formülü; <br>
             </br>
                 <br></br>
                 <img src={require("../../assets/images/kredihesap.jpg").default} style={{ width: 450 }}></img>
                 <br></br>
                 <br></br>
-                İhtiyaç kredilerinde Maliye Bakanlığınca her taksitte, faiz üzerinden KKDF ve BSMV tahsil eder. Bu ödemeler banklalar tarafından kişiden tahsil edilir ve ilgili kuruma öder
+                İhtiyaç kredilerinde Maliye Bakanlığı tarafından her taksitte, faiz üzerinden KKDF ve BSMV tahsil eder. Bu ödemeler banklalar tarafından kişiden tahsil edilir ve ilgili kuruma ödenir.
             </p>
             <div className="row mt-5">
                 <div className="col-12 mb-3"><h2>İhtiyaç Kredisi Çekme Şartları? </h2><hr className="title-hr mt-1"></hr></div>
                 <p>
-                    İhtiyaç kredileri en fazla kullanılan kredi türüdür. İhtyicaç kredileri bireysel bir kredi türüdür.
+                    İhtiyaç kredileri en fazla kullanılan kredi türüdür. İhtiyaç kredileri bireysel bir kredi türüdür.
                     İhtiyaç kredilerinin  başvurusu için başlıca şartlar aşağıdadır;
                 </p>
                 <ul>
-                    <li>18 Yaşından büyük olmak</li>
-                    <li>Aylık düzenli gelire sahip olmak</li>
-                    <li>Daha önceki kredilerden dolayı karalisteye alınmış olmamak</li>
+                    <li>18 Yaşından büyük olmak.</li>
+                    <li>Aylık düzenli gelire sahip olmak.</li>
+                    <li>Daha önceki kredilerden dolayı kara listeye alınmış olmamak.</li>
                 </ul>
                 <p>
-                    Bu şartlar yerinde ise aylık gelirinize göre banklarla görüşme sağlayabilirsiniz. Ve geriye kalan bankanın, talep ettiğiniz krediyi ödeyebilme potansiyelinizi kontrol edecektir.
-                    Ödeme potansiyeliniz uygun bulunduğu taktirde, kredinizi kullanabilirsiniz
+                    Bu şartlar yerinde ise aylık gelirinize göre banklarla görüşme sağlayabilirsiniz. Ve geriye kalan aşamada; banka, talep ettiğiniz krediyi ödeyebilme potansiyelinizi kontrol edecektir.
+                    Ödeme potansiyeliniz uygun bulunduğu taktirde, kredinizi kullanabilirsiniz.
                 </p>
 
             </div>

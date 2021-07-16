@@ -132,10 +132,10 @@ export const DispositSearchPage = (props) => {
                             </div>
                             <div className="col-12 col-md-7 col-lg-7 row justify-content-center d-none d-lg-block d-md-block">
                                 <h2>
-                                    <b style={{ color: "rgb(61 61 61)" }}>Yatırın Bekleyin</b>
+                                    <b style={{ color: "rgb(61 61 61)" }}>Yatırın Bekleyin!</b>
                                 </h2>
-                                <p style={{ color: "rgb(61 61 61)" }}>  Vadeli mevduat ile yatrırım yaptığınız bankalar paranıza değer katmaya devam ediyor</p>
-                                <p style={{ color: "rgb(61 61 61)" }}> Bizde ise bankaların en kazançlı mevduat hesaplarını sizin için sorguluyoruz. </p>
+                                <p style={{ color: "rgb(61 61 61)" }}>  Vadeli mevduat ile yatırım yaptığınız bankalar paranıza değer katmaya devam ediyor</p>
+                                <p style={{ color: "rgb(61 61 61)" }}> Bizde bankaların en kazançlı mevduat hesaplarını sizin için sorguluyoruz. </p>
                             </div>
                         </div>
                     </div>
@@ -145,7 +145,7 @@ export const DispositSearchPage = (props) => {
                 <div className="col-12 mt-5">
                     <p className="home-title" > Bankaya gitmeye gerek kalmadan
                         <span style={{ fontWeight: "bold" }}> vadeli mevduatlar </span>
-                        ile ilgili bütün bilgilere sahip olabilir, hesaplamaları yapabilir ve başvurabilisiniz
+                        ile ilgili bütün bilgilere sahip olabilir, hesaplamaları yapabilir ve başvurabilisiniz.
                     </p>
 
                 </div>
@@ -157,11 +157,11 @@ export const DispositSearchPage = (props) => {
                     <div className="col-12 col-md-6 col-lg-6 mt-5 row justify-content-center  align-content-center">
                         <div className="col-12 justify-content-center row">
                             <h3> <b>Ne Kadar Kredi Çekmeliyim ?</b></h3>
-                            <p style={{ color: "black" }}>Artık hesap kitap işlerini sizin yerinize biz yapıyoruz. <br></br> Bize gereken birkaç kelir ve gider bilginiz. Deneyimli finans ve yazılım uzmanlarımızla geliştirdiğimiz hesap araçlarıyla, sizi hesap makinesinden kurtarıyoruz </p>
-                            <b className="mb-3" style={{ color: "black" }}>Aylık gelirinizi girerek hesaplamaya başlayın </b>
+                            <p style={{ color: "black" }}>Artık hesap kitap işlerini sizin yerinize biz yapıyoruz. <br></br> Bize gereken birkaç gelir ve gider bilginiz. Deneyimli finans ve yazılım uzmanlarımızla geliştirdiğimiz hesap araçlarıyla, sizi hesap makinesinden kurtarıyoruz </p>
+                            <b className="mb-3" style={{ color: "black" }}>Aylık Gelirinizi Girerek Hesaplamaya Başlayın </b>
                             <div style={{ clear: "both" }}></div>
                             <div className="col-8">
-                                <CurrencyInput style={{ width: "100%", maxWidth: "100%" }} placeholder="Tutar Giriniz" className="col-7"
+                                <CurrencyInput style={{ width: "100%", maxWidth: "100%" }} placeholder="Tutar Giriniz." className="col-7"
                                     decimalSeparator=","
                                     thousandSeparator="."
                                     precision="0"

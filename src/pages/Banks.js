@@ -222,7 +222,7 @@ export const Banks = (props) => {
                     {bank?.loans?.length > 0 &&
 
                         <div className="col-12 col-lg-6 col-md-6 bank-loan-content mt-5 bankbackground">
-                            <div className="bank-loan-text">  <h4>Bankaya Ait <span style={{ textDecoration: "underline", color: "black" }}>{selectedLoanOptions.rate} </span>Kredi Faiz Oranı İle Hemen Kredinizi Hesaplayıp Başvurun </h4> </div>
+                            <div className="bank-loan-text">  <h4>Bankaya Ait <span style={{ textDecoration: "underline", color: "black" }}>{selectedLoanOptions.rate} </span>Kredi Faiz Oranı İle Hemen Kredinizi Hesaplayıp Başvurun. </h4> </div>
 
                             <div className="bank-loan-lightview">
                                 <div className="col-12 bank-loan-tab-link">
@@ -308,7 +308,7 @@ export const Banks = (props) => {
 
                         <div className="col-12 col-lg-6 col-md-6 row mt-5 ">
                             <div className="col-12">
-                                <h4 style={{ color: "#464646", borderBottom: "1px solid #464646" }} className="text-center"> Bankaya Ait <b title={bank.bankName + "kredi kartı"}>{creditCarts.length} Adet Kredi Kartı</b> Bulunuyor</h4>
+                                <h4 style={{ color: "#464646", borderBottom: "1px solid #464646" }} className="text-center"> Bankaya Ait <b title={bank.bankName + "kredi kartı"}>{creditCarts.length} Adet Kredi Kartı</b> Bulunuyor!</h4>
 
                             </div>
                             <div className="col-12 cnts">
@@ -647,7 +647,7 @@ export const Banks = (props) => {
                     {bankContainerCount == 3 &&
 
                         <div className="col-12 col-lg-6 col-md-6 row mt-5 ml-0 mr-0 bank-disposit-component justify-content-center">
-                            <h4 className="pt-2 pb-4">En çok Tercih Edilen Mevduat Hesapları</h4>
+                            <h4 className="pt-2 pb-4">En Çok Tercih Edilen Mevduat Hesapları</h4>
                             <PerfectScrollbar className="bank-disposit-component-scroll">
                                 <DispositContainer Big={true}></DispositContainer>
 
@@ -657,7 +657,7 @@ export const Banks = (props) => {
                     }
                     <div className="row mt-5">
                         <div className="col-12">
-                            <h4 className="home-title" > Diğer bütün bankaların <span style={{ fontWeight: "bold" }}>en çok kullanılan kredileri ve faiz oranları </span>`nı derleyip topladık. Size ise sadece sonuçlara göz atmak kalıyor.  </h4>
+                            <h4 className="home-title" > Diğer bütün bankaların <span style={{ fontWeight: "bold" }}>en çok kullanılan kredileri ve faiz oranları</span>nı derleyip topladık. Size ise sadece sonuçlara göz atmak kalıyor.  </h4>
                         </div>
                     </div>
                     <div className="row mt-3">

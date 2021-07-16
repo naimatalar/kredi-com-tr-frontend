@@ -53,13 +53,13 @@ export const Blog = (props) => {
 
         <Helmet>
             <meta property="og:type" content="article" />
-            <meta property="og:title" content="Finans dünyasını takip edip sizlerle paylaşıyoruz | kredi.com.tr" />
+            <meta property="og:title" content="Finans dünyasını takip edip sizlerle paylaşıyoruz. | kredi.com.tr" />
             <meta property="og:url" content={window.location.href} />
-            <meta property="og:description" content="En uygun kredi fırsatlarını kredi.com.tr ayrıcalığı ile sizlerle buluşturuyoruz. Finans dünyasını yakından takip edip sizleri haberdar ediyoruz" />
+            <meta property="og:description" content="En uygun kredi fırsatlarını kredi.com.tr ayrıcalığı ile sizlerle buluşturuyoruz. Finans dünyasını yakından takip edip sizleri haberdar ediyoruz." />
             <meta name="keyword" content="kredi, kredi kartı, kredi başvurusu, kredi faiz oranı, kredi kartı başvurusu" />
             <meta name="description" content="kredi.com.tr Kolayca Arayın, Pratik Şekilde Hesaplayın, Hızlıca Başvurun" />
             <meta name="robots" content="index,follow" />
-            <title>KREDİ.COM.TR | Finans dünyasını takip edip sizlerle paylaşıyoruz</title>
+            <title>KREDİ.COM.TR | Finans dünyasını takip edip sizlerle paylaşıyoruz.</title>
         </Helmet>
 
 
@@ -71,7 +71,7 @@ export const Blog = (props) => {
                         background: "white",
                         padding: 33
                     }}>
-                        <div className="mb-4"><h4 style={{ color: "black", textAlign: "center" }}> Sizin için <b>araştırıyor, analiz ediyor ve paylaşıyoruz</b> .</h4></div>
+                        <div className="mb-4"><h4 style={{ color: "black", textAlign: "center" }}> Sizin için <b>araştırıyor, analiz ediyor ve paylaşıyoruz</b>.</h4></div>
 
                         {blog?.map((item, key) => {
                             return (<div key={key} className="pb-2 pt-2 col-12 row align-items-center blog-list-item justify-content-between">
