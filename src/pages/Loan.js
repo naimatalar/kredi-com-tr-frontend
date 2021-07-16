@@ -58,7 +58,7 @@ export const Loan = (props) => {
 
                             <div className="col-12">
                                 <div className="col-12 mb-4">
-                                    <CurrencyInput style={{ width: "100%", maxWidth: "100%" }} placeholder="Tutar Giriniz" className="col-7"
+                                    <CurrencyInput style={{ width: "100%", maxWidth: "100%" }} placeholder="Tutar Giriniz." className="col-7"
                                         decimalSeparator=","
                                         thousandSeparator="."
                                         precision="0"
@@ -93,10 +93,10 @@ export const Loan = (props) => {
 
                 <div className="col-12 mt-5">
                     <p className="home-title" >
-                        <span style={{ fontWeight: "bold" }}>Kredi Fırsatlarını </span>
-                        parmaklarınız ucuna getiriyoruz. Birbirinden farklı ve çeşitli
-                        <span style={{ fontWeight: "bold" }}>kredi türleri ve kredi kartlarını
-                        </span> sizler için seçip sorguluyoruz </p>
+                        <span style={{ fontWeight: "bold" }}>Kredi fırsatlarını </span>
+                        parmaklarınızın ucuna getiriyoruz. Birbirinden farklı ve çeşitli
+                        <span style={{ fontWeight: "bold" }}> kredi türleri ve kredi kartlarını
+                        </span> sizler için seçip sorguluyoruz. </p>
 
                 </div>
                 <div className="row">
@@ -107,8 +107,8 @@ export const Loan = (props) => {
                     <div className="col-12 col-md-6 col-lg-6 mt-5 row justify-content-center  align-content-center">
                         <div className="col-12 justify-content-center row">
                             <h3> <b>Ne Kadar Kredi Çekmeliyim ?</b></h3>
-                            <p style={{ color: "black" }}>Artık hesap kitap işlerini sizin yerinize biz yapıyoruz. <br></br> Bize gereken birkaç kelir ve gider bilginiz. Deneyimli finans ve yazılım uzmanlarımızla geliştirdiğimiz hesap araçlarıyla, sizi hesap makinesinden kurtarıyoruz </p>
-                            <b className="mb-3" style={{ color: "black" }}>Aylık gelirinizi girerek hesaplamaya başlayın </b>
+                            <p style={{ color: "black" }}>Artık hesap kitap işlerini sizin yerinize biz yapıyoruz. <br></br> Bize gereken birkaç gelir ve gider bilginiz. Deneyimli finans ve yazılım uzmanlarımızla geliştirdiğimiz hesap araçlarıyla, sizi hesap makinesinden kurtarıyoruz. </p>
+                            <b className="mb-3" style={{ color: "black" }}>Aylık Gelirinizi Girerek Hesaplamaya Başlayın </b>
                             <div style={{ clear: "both" }}></div>
                             <div className="col-8">
                                 <CurrencyInput style={{ width: "100%", maxWidth: "100%" }} placeholder="Tutar Giriniz" className="col-7"
@@ -165,10 +165,10 @@ const getContent = (data) => {
                 </div>
                 <div className="col-12 col-md-7 col-lg-7 row justify-content-center d-none d-lg-block d-md-block">
                     <h2>
-                        <b style={{ color: "rgb(61 61 61)" }}>Ara, Hespla, Başvur</b>
+                        <b style={{ color: "rgb(61 61 61)" }}>Ara, Hesapla, Başvur!</b>
                     </h2>
                     <p style={{ color: "rgb(61 61 61)" }}>  Anlaşmalı olduğumuz bankaların içinden onlarca kobi kredisi seçeneğini sizin için hesaplayıp getirelim. </p>
-                    <p style={{ color: "rgb(61 61 61)" }}>  Önceliğimiz düşük faiz oranı yüksek kredi alma şansı sağlamak </p>
+                    <p style={{ color: "rgb(61 61 61)" }}>  Önceliğimiz düşük faiz oranı ile yüksek kredi alma şansı sağlamak. </p>
                 </div>
             </>
         )
@@ -179,11 +179,11 @@ const getContent = (data) => {
                 <meta property="og:type" content="article" />
                 <meta property="og:title" content="Araç Kredisi Hesaplama Ve Başvurma" />
                 <meta property="og:url" content={window.location.href} />
-                <meta property="og:description" content="Hayalinizdeki aracı almak için krediye ihtiyaç duyuyorsanız doğru yerdenizniz. Sizin için birsürü fırsat bulabiliriz." />
+                <meta property="og:description" content="Hayalinizdeki aracı almak için krediye ihtiyaç duyuyorsanız, doğru yerdesiniz. Sizin için birçok fırsat bulabiliriz." />
                 <meta name="keyword" content="araç kredisi, araç kredi başvurusu, araç kredisi hesablama " />
                 <meta name="twitter:title" content="Kobi Kredisi Hesaplama Ve Başvurma" />
-                <meta name="twitter:description" content="Hayalinizdeki aracı almak için krediye ihtiyaç duyuyorsanız doğru yerdenizniz. Sizin için birsürü fırsat bulabiliriz." />
-                <meta name="description" content="Hayalinizdeki aracı almak için krediye ihtiyaç duyuyorsanız doğru yerdenizniz. Sizin için birsürü fırsat bulabiliriz." />
+                <meta name="twitter:description" content="Hayalinizdeki aracı almak için krediye ihtiyaç duyuyorsanız doğru yerdesiniz. Sizin için birçok fırsat bulabiliriz." />
+                <meta name="description" content="Hayalinizdeki aracı almak için krediye ihtiyaç duyuyorsanız doğru yerdesiniz. Sizin için birçok fırsat bulabiliriz." />
                 <meta name="robots" content="index,follow" />
                 <title>{"Kobi Kredisi Hesaplama Ve Başvurma | kredi.com.tr"} </title>
             </Helmet>
@@ -198,10 +198,10 @@ const getContent = (data) => {
             </div>
             <div className="col-12 col-md-7 col-lg-7 row justify-content-center d-none d-lg-block d-md-block">
                 <h2>
-                    <b style={{ color: "rgb(61 61 61)" }}>Araç Kredini Hesapla</b>
+                    <b style={{ color: "rgb(61 61 61)" }}>Araç Kredini Hesapla!</b>
                 </h2>
-                <p style={{ color: "rgb(61 61 61)" }}>  Hayalinizdeki aracı almak için krediye ihtiyaç duyuyorsanız doğru yerdenizniz. Sizin için birsürü fırsat bulabiliriz </p>
-                <p style={{ color: "rgb(61 61 61)" }}>  Aracınızı şimdiden aracınızı seçin. Krediyi bulma işini ise bizde </p>
+                <p style={{ color: "rgb(61 61 61)" }}>  Hayalinizdeki aracı almak için krediye ihtiyaç duyuyorsanız doğru yerdesiniz. Sizin için birçok fırsat bulabiliriz. </p>
+                <p style={{ color: "rgb(61 61 61)" }}>  Aracınızı şimdiden seçin. Krediyi bulma işi ise bizde. </p>
             </div>
         </>)
     } else if (data.includes("konut")) {
@@ -211,10 +211,10 @@ const getContent = (data) => {
                 <meta property="og:type" content="article" />
                 <meta property="og:title" content="Konut Kredisi Hesaplama Ve Başvurma" />
                 <meta property="og:url" content={window.location.href} />
-                <meta property="og:description" content="Hayalini kurduğunuz yuvaya kavuşurken çorbada bizimde tuzumuz olsun. Kredinizi bulmanıza yardım edelim." />
+                <meta property="og:description" content="Hayalini kurduğunuz yuvaya kavuşurken çorbada bizim de tuzumuz olsun. Kredinizi bulmanıza yardım edelim." />
                 <meta name="keyword" content="konut kredisi, konut kredi başvurusu, konut kredisi hesablama " />
                 <meta name="twitter:title" content="Konut Kredisi Hesaplama Ve Başvurma" />
-                <meta name="twitter:description" content="Hayalini kurduğunuz yuvaya kavuşurken çorbada bizimde tuzumuz olsun. Kredinizi bulmanıza yardım edelim." />
+                <meta name="twitter:description" content="Hayalini kurduğunuz yuvaya kavuşurken çorbada bizim de tuzumuz olsun. Kredinizi bulmanıza yardım edelim." />
                 <meta name="description" content="Hayalini kurduğunuz yuvaya kavuşurken çorbada bizimde tuzumuz olsun. Kredinizi bulmanıza yardım edelim." />
                 <meta name="robots" content="index,follow" />
                 <title>{"Konut Kredisi Hesaplama Ve Başvurma | kredi.com.tr"} </title>
@@ -230,10 +230,10 @@ const getContent = (data) => {
             </div>
             <div className="col-12 col-md-7 col-lg-7 row justify-content-center d-none d-lg-block d-md-block">
                 <h2>
-                    <b style={{ color: "rgb(61 61 61)" }}>Konut Krediniz Aratın</b>
+                    <b style={{ color: "rgb(61 61 61)" }}>Konut Kredinizi Aratın!</b>
                 </h2>
-                <p style={{ color: "rgb(61 61 61)" }}>  Hayalini kurduğunuz yuvaya kavuşurken çorbada bizimde tuzumuz olsun. Kredinizi bulmanıza yardım edelim. </p>
-                <p style={{ color: "rgb(61 61 61)" }}>  Aracınızı şimdiden aracınızı seçin. Krediyi bulma işini ise bizde </p>
+                <p style={{ color: "rgb(61 61 61)" }}>  Hayalini kurduğunuz yuvaya kavuşurken çorbada bizim de tuzumuz olsun. Kredinizi bulmanıza yardım edelim. </p>
+                <p style={{ color: "rgb(61 61 61)" }}>  Aracınızı şimdiden seçin. Krediyi bulma işi ise bizde. </p>
             </div>
         </>)
     } else if (data.includes("ihtiyac")) {
@@ -242,11 +242,11 @@ const getContent = (data) => {
                 <meta property="og:type" content="article" />
                 <meta property="og:title" content="İhtiyaç Kredisi Hesaplama Ve Başvurma" />
                 <meta property="og:url" content={window.location.href} />
-                <meta property="og:description" content="İhtiyaç kredisi hayatın her anında lazım olan bir bir kredi türüdür. Bu krediyi bulmak ise kredi.com.tr nin uzmanlık alanıdır." />
+                <meta property="og:description" content="İhtiyaç kredisi hayatın her anında lazım olan bir bir kredi türüdür. Bu krediyi bulmak ise kredi.com.tr olarak bizlerin uzmanlık alanıdır." />
                 <meta name="keyword" content="ihtiyaç kredisi, ihtiyaç kredi başvurusu, ihtiyaç kredisi hesablama " />
                 <meta name="twitter:title" content="İhtiyaç Kredisi Hesaplama Ve Başvurma" />
-                <meta name="twitter:description" content="İhtiyaç kredisi hayatın her anında lazım olan bir bir kredi türüdür. Bu krediyi bulmak ise kredi.com.tr nin uzmanlık alanıdır." />
-                <meta name="description" content="İhtiyaç kredisi hayatın her anında lazım olan bir bir kredi türüdür. Bu krediyi bulmak ise kredi.com.tr nin uzmanlık alanıdır." />
+                <meta name="twitter:description" content="İhtiyaç kredisi hayatın her anında lazım olan bir bir kredi türüdür. Bu krediyi bulmak ise kredi.com.tr olarak bizlerin uzmanlık alanıdır." />
+                <meta name="description" content="İhtiyaç kredisi hayatın her anında lazım olan bir bir kredi türüdür. Bu krediyi bulmak ise kredi.com.tr olarak bizlerin uzmanlık alanıdır." />
                 <meta name="robots" content="index,follow" />
                 <title>{"İhtiyaç Kredisi Hesaplama Ve Başvurma | kredi.com.tr"} </title>
             </Helmet>
@@ -261,10 +261,10 @@ const getContent = (data) => {
             </div>
             <div className="col-12 col-md-7 col-lg-7 row justify-content-center d-none d-lg-block d-md-block">
                 <h2>
-                    <b style={{ color: "rgb(61 61 61)" }}>İhtiyacınızı Karşılayın</b>
+                    <b style={{ color: "rgb(61 61 61)" }}>İhtiyacınızı Karşılayın!</b>
                 </h2>
-                <p style={{ color: "rgb(61 61 61)" }}>  İhtiyaç kredisi hayatın her anında lazım olan bir bir kredi türüdür. Bu krediyi bulmak ise kredi.com.tr nin uzmanlık alanıdır. </p>
-                <p style={{ color: "rgb(61 61 61)" }}> Ne zaman ihtiyaç duyarsanız, htiyaç kredinizi bulmaya hazırız </p>
+                <p style={{ color: "rgb(61 61 61)" }}>  İhtiyaç kredisi hayatın her anında lazım olan bir kredi türüdür. Bu krediyi bulmak ise kredi.com.tr olarak bizlerin uzmanlık alanıdır. </p>
+                <p style={{ color: "rgb(61 61 61)" }}> Ne zaman ihtiyaç duyarsanız, ihtiyaç kredinizi bulmaya hazırız. </p>
             </div>
         </>)
     }

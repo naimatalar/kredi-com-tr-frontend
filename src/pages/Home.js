@@ -42,11 +42,11 @@ export const Home = (props) => {
             <meta property="og:type" content="article" />
             <meta property="og:title" content="Kredi Fırsatları, En İyi Kredi Kartları | kredi.com.tr" />
             <meta property="og:url" content={window.location.href} />
-            <meta property="og:description" content="En uygun kredi fırsatlarını kredi.com.tr ayrıcalığı ile sizlerle buluşturuyoruz. Bol puan veren ve uçuş mili kazandıran kredi kartlarını sizin için listeleyip tercihinize sunuyoruz." />
+            <meta property="og:description" content="En uygun kredi fırsatlarını kredi.com.tr ayrıcalığı ile sizlerle buluşturuyoruz. Bol puan veren ve uçuş mili kazandıran kredi kartlarını sizin için listeleyip tercihlerinize sunuyoruz." />
             <meta name="keyword" content="kredi, kredi kartı, kredi başvurusu, kredi faiz oranı, kredi kartı başvurusu" />
             <meta name="twitter:title" content="Kredi Fırsatları, En İyi Kredi Kartları | kredi.com.tr" />
             <meta name="twitter:description" content="Kredi.com.tr | Türkiyenin En Profesyonel Kredi Ve Kredi Kartı Başvuru Platformu" />
-            <meta name="description" content="kredi.com.tr Kolayca Arayın, Pratik Şekilde Hesaplayın, Hızlıca Başvurun" />
+            <meta name="description" content="kredi.com.tr Kolayca Arayın, Pratik Şekilde Hesaplayın, Hızlıca Başvurun!" />
             <meta name="robots" content="index,follow" />
             <title>KREDİ.COM.TR | Türkiyenin En Profesyonel Kredi Ve Kredi Kartı Başvuru Platformu</title>
         </Helmet>
@@ -67,7 +67,7 @@ export const Home = (props) => {
                     <div className="col-12 mt-4">
                         <div className="row justify-content-center" >
                             <h4>
-                                Reklam Ve İşbirliğili İletişim Bilgiliri
+                                Reklam Ve İş Birliği İletişim Bilgileri
                             </h4>
                         </div>
                     </div>
@@ -94,7 +94,7 @@ export const Home = (props) => {
 
 
             <div className="col-12">
-                <p className="home-title" style={{ marginTop: 0 }}>Kolayca <span style={{ fontWeight: "bold" }}>Arayın,</span> Pratik Şekilde <span style={{ fontWeight: "bold" }}>Hesaplayın,</span> Hızlıca <span style={{ fontWeight: "bold" }}>Başvurun</span>  </p>
+                <p className="home-title" style={{ marginTop: 0 }}>Kolayca <span style={{ fontWeight: "bold" }}>Arayın,</span> Pratik Şekilde <span style={{ fontWeight: "bold" }}>Hesaplayın,</span> Hızlıca <span style={{ fontWeight: "bold" }}>Başvurun!</span>  </p>
             </div>
             <div style={{ paddingRight: 5, marginBottom: 20 }} className="col-lg-5 col-md-6 loan-search-container">
                 <LoanSearch Loans={props.Loans}></LoanSearch>
@@ -109,7 +109,7 @@ export const Home = (props) => {
                         <b style={{ textAlign: "center" }}>Reklam Ve Tanıtın Alanı</b>
                     </div>
                     <div className="row  m-0 p-0 justify-content-center">
-                        <span style={{ textAlign: "center", textAlign: "center", color: " #181818", fontSize: 12 }}>Aylık 3MN web trafiğine sahip sitemizde tanıtım ve reklamlarınızı yayınlayalım. Ürün yada hizmetinizi parmakların ucuna taşıyalım. </span>
+                        <span style={{ textAlign: "center", textAlign: "center", color: " #181818", fontSize: 12 }}>Aylık 3MN web trafiğine sahip sitemizde tanıtım ve reklamlarınızı yayınlayalım. Ürün ya da hizmetinizi parmaklarınızın ucuna taşıyalım. </span>
                     </div>
                     <div className="row  m-0 p-0 justify-content-center">
                         <button onClick={() => { setAddsPopup(true) }} className="default-button">&nbsp; İLETİŞİM &nbsp;</button>
@@ -127,7 +127,7 @@ export const Home = (props) => {
                     <div className="col-12 mt-2">
                         <div className="row  m-0 p-0 justify-content-center">
 
-                            <span style={{ textAlign: "center", textAlign: "center", color: " #181818", fontSize: 12 }}>Aylık 3MN web trafiğine sahip sitemizde tanıtım ve reklamlarınızı yayınlayalım. Ürün yada hizmetinizi parmakların ucuna taşıyalım. </span>
+                            <span style={{ textAlign: "center", textAlign: "center", color: " #181818", fontSize: 12 }}>Aylık 3MN web trafiğine sahip sitemizde tanıtım ve reklamlarınızı yayınlayalım. Ürün ya da hizmetinizi parmaklarınızın ucuna taşıyalım. </span>
                         </div>
                     </div>
                     <div className="col-12 mt-3">
@@ -149,7 +149,7 @@ export const Home = (props) => {
                 padding: 7,
                 background: "linear-gradient(45deg, #077a683b, transparent)"
             }}>
-                <i style={{ color: " #505050", fontWeight: "bold" }}> En çok tercih edilen mevduat hesapları</i>
+                <i style={{ color: " #505050", fontWeight: "bold" }}> En Çok Tercih Edilen Mevduat Hesapları</i>
 
             </div>
             <div className="row">
@@ -172,11 +172,11 @@ export const Home = (props) => {
                     <div className="row  m-0 p-0 justify-content-center">
 
                         <img title="kredi.com.tr online kredi, kredi kartı ve mevduat başvuruları" alt={"kredi.com.tr "} style={{ width: "80%", objectFit: "contain" }} src={require("../assets/images/lg.png").default}></img>
-                        <b style={{ textAlign: "center" }}>Reklam Ve Tanıtın Alanı</b>
+                        <b style={{ textAlign: "center" }}>Reklam Ve Tanıtım Alanı</b>
                     </div>
                     <div className="row  m-0 p-0 justify-content-center">
 
-                        <span style={{ textAlign: "center", textAlign: "center", color: " #181818", fontSize: 12 }}>Aylık 3MN web trafiğine sahip sitemizde tanıtım ve reklamlarınızı yayınlayalım. Ürün yada hizmetinizi parmakların ucuna taşıyalım. </span>
+                        <span style={{ textAlign: "center", textAlign: "center", color: " #181818", fontSize: 12 }}>Aylık 3MN web trafiğine sahip sitemizde tanıtım ve reklamlarınızı yayınlayalım. Ürün ya da hizmetinizi parmaklarınızın ucuna taşıyalım. </span>
                     </div>
                     <div className="row  m-0 p-0 justify-content-center">
 
@@ -204,7 +204,7 @@ export const Home = (props) => {
                 <div className="col-12 mt-2">
                     <div className="row  m-0 p-0 justify-content-center">
 
-                        <span style={{ textAlign: "center", textAlign: "center", color: " #181818", fontSize: 12 }}>Aylık 3MN web trafiğine sahip sitemizde tanıtım ve reklamlarınızı yayınlayalım. Ürün yada hizmetinizi parmakların ucuna taşıyalım. </span>
+                        <span style={{ textAlign: "center", textAlign: "center", color: " #181818", fontSize: 12 }}>Aylık 3MN web trafiğine sahip sitemizde tanıtım ve reklamlarınızı yayınlayalım. Ürün ya da hizmetinizi parmaklarınızın ucuna taşıyalım. </span>
                     </div>
                 </div>
                 <div className="col-12 mt-3">
@@ -218,7 +218,7 @@ export const Home = (props) => {
         </div>
         <div className="row middle-menu-content">
             <div className="col-12">
-                <p className="home-title" >Düzinelerce <span style={{ fontWeight: "bold" }}>kredi ödeme seçenekleri </span> ve bol kazandırıp çok uçuran <span style={{ fontWeight: "bold" }}>kredi kartları </span> parmaklarınızın ucunda </p>
+                <p className="home-title" >Düzinelerce <span style={{ fontWeight: "bold" }}>kredi ödeme seçenekleri </span> ve bol kazandırıp çok uçuran <span style={{ fontWeight: "bold" }}>kredi kartları </span> parmaklarınızın ucunda! </p>
             </div>
             <div className="container">
                 <MiddleMenu Loans={props.Loans}></MiddleMenu>
@@ -287,12 +287,12 @@ export const Home = (props) => {
 
                 <div className="row">
                     <div className="col-12" style={{ paddingRight: 36 }}>
-                        <h3>kred.com.tr</h3>
+                        <h3>kredi.com.tr</h3>
                         <p style={{ color: "black" }}>
-                            Kredi ve kredi kartı ile geniş bilgi ve deneyimlerimizin sonucunda geliştiridiğimiz hesaplama
-                            başvuru ve karşılaştırmalarla kredi.com.tr kredi kullanıcılara güncel bildilerle hizmet verir.
-                            Akıllı ödeme ve bütçe hesaplamasıyla ne kadar kredi çekmenizi ve  aylık ne kadar ödeyebileceğinizi hesaplayıp
-                            hayallerinize bütçenize en uygun kredi ve kredi kartlarını seçiminize sunar.
+                            Kredi ve kredi kartı ile geniş bilgi ve deneyimlerimizin sonucunda geliştirdiğimiz hesaplama,
+                            başvuru ve karşılaştırmalarla kredi.com.tr; kullanıcılara güncel bilgilerle hizmet verir.
+                            Akıllı ödeme ve bütçe hesaplamasıyla ne kadar kredi çekebileceğinizi ve aylık ne kadar ödeyebileceğinizi hesaplayıp,
+                            bütçenize en uygun kredi ve kredi kartlarını seçiminize sunar.
                         </p>
                         <p><b><a href="" style={{ color: "#333333" }}>Devamını Oku...</a></b></p>
 

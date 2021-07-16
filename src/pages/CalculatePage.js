@@ -80,11 +80,11 @@ export const CalculatePage = (props) => {
                     {
                         props.UrlName == "-" && <div className="row">
                             <div className="col-12 mb-3">
-                                <h2>Hesaplama Araçlarımızla Neler Yapabilirsiniz </h2><hr className="title-hr mt-1"></hr></div>
+                                <h2>Hesaplama Araçlarımızla Neler Yapabilirsiniz? </h2><hr className="title-hr mt-1"></hr></div>
 
-                            <p>Hesaplama sayfamız sadece kredi yada finansal konular değil, sizleri sayılar ve formüllerle uğraşıp efor sarfetmenize gerek olmadan sonuçları sizlere sunmayı hedefler</p>
-                            <p>Kullanıcının formüller yazmasınza hesap makinasını eline almasına gerek yok. <br></br>
-                                Hesaplama sayfamız kullanıcıdan belirli bilgileri alır ve hesaplar. </p>
+                            <p>Hesaplama sayfamız, sadece kredi ya da finansal konular değil; sizlere, sayılarla ve formüllerle uğraşıp efor sarfetmenize gerek olmadan sonuçları sunmayı hedefler.</p>
+                            <p>Kullanıcının formüller yazmasınza, hesap makinasını eline almasına gerek yok. <br></br>
+                                Hesaplama sayfamız, kullanıcıdan belirli bilgileri alır ve hesaplar. </p>
                             <div className="row col-12">
 
                                 <CreditCalculate></CreditCalculate>
