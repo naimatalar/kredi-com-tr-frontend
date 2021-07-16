@@ -40,11 +40,11 @@ export const Home = (props) => {
     return (<>
         <Helmet>
             <meta property="og:type" content="article" />
-            <meta property="og:title" content="Kredi Fırsatları, En İyi Kredi Kartları | kerdi.com.tr" />
+            <meta property="og:title" content="Kredi Fırsatları, En İyi Kredi Kartları | kredi.com.tr" />
             <meta property="og:url" content={window.location.href} />
             <meta property="og:description" content="En uygun kredi fırsatlarını kredi.com.tr ayrıcalığı ile sizlerle buluşturuyoruz. Bol puan veren ve uçuş mili kazandıran kredi kartlarını sizin için listeleyip tercihinize sunuyoruz." />
             <meta name="keyword" content="kredi, kredi kartı, kredi başvurusu, kredi faiz oranı, kredi kartı başvurusu" />
-            <meta name="twitter:title" content="Kredi Fırsatları, En İyi Kredi Kartları | kerdi.com.tr" />
+            <meta name="twitter:title" content="Kredi Fırsatları, En İyi Kredi Kartları | kredi.com.tr" />
             <meta name="twitter:description" content="Kredi.com.tr | Türkiyenin En Profesyonel Kredi Ve Kredi Kartı Başvuru Platformu" />
             <meta name="description" content="kredi.com.tr Kolayca Arayın, Pratik Şekilde Hesaplayın, Hızlıca Başvurun" />
             <meta name="robots" content="index,follow" />

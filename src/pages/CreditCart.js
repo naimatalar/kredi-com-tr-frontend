@@ -85,7 +85,7 @@ export const CreditCart = (props) => {
                 <meta name="twitter:description" content= "Onlarca kredi kartlarını listeledik. Mil veren kredi kartları Bol bol uçuk kazandırıyor. Diğer yandan puan biriktirilen kredi kartları ile harcayarak kazanıyorsunuz." />
                 <meta name="description" content="Onlarca kredi kartlarını listeledik. Mil veren kredi kartları Bol bol uçuk kazandırıyor. Diğer yandan puan biriktirilen kredi kartları ile harcayarak kazanıyorsunuz." />
                 <meta name="robots" content="index,follow" />
-                <title>{"Mil Kazandıran Ve Puan Veren Kredi Kartları | kerdi.com.tr"} </title>
+                <title>{"Mil Kazandıran Ve Puan Veren Kredi Kartları | kredi.com.tr"} </title>
             </Helmet>
             <div className="ccbanner" style={{ overflow: "hidden" }}>
 

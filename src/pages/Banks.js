@@ -193,15 +193,19 @@ export const Banks = (props) => {
             <Helmet>
 
                 <meta property="og:type" content="article" />
-                <meta property="og:title" content={(bank.bankName ?? "") + ": Kredi Ve Kredi Kartı Fırsatları | kerdi.com.tr"} />
+                <meta property="og:title" content={(bank.bankName ?? "") + ": Kredi Ve Kredi Kartı Fırsatları | kredi.com.tr"} />
                 <meta property="og:url" content={window.location.href} />
+
                 <meta property="og:description" content={(bank.bankName ?? "") + " bankaya ait kredileri sorgulayabilir, vadeli mevduat hesabı oluşturabilirsiniz. Ayrıca " + (bank.bankName ?? "") + " bankasına ait kredi kartlarını listeledik  ."} />
                 <meta name="keyword" content="kredi, kredi kartı, kredi başvurusu, kredi faiz oranı, kredi kartı başvurusu, vadeli mevduat, vadeli mevduat hesabı" />
-                <meta name="twitter:title" content={(bank.bankName ?? "") + ": Kredi, Kredi Kartı ve Mevduat Fırsatları | kerdi.com.tr"} />
+                <meta name="twitter:title" content={(bank.bankName ?? "") + ": Kredi, Kredi Kartı ve Mevduat Fırsatları | kredi.com.tr"} />
                 <meta name="twitter:description" content={(bank.bankName ?? "") + " bankaya ait kredileri sorgulayabilir, vadeli mevduat hesabı oluşturabilirsiniz. Ayrıca " + (bank.bankName ?? "") + " bankasına ait kredi kartlarını listeledik  ."} />
                 <meta name="description" content={(bank.bankName ?? "") + " bankaya ait kredileri sorgulayabilirsiniz. Ayrıca " + (bank.bankName ?? "") + " bankasına ait kredi kartlarını listeledik  ."} />
                 <meta name="robots" content="index,follow" />
-                <title>{(bank.bankName ?? "") + ": Kredi, Kredi Kartı ve Mevduat Fırsatları   | kerdi.com.tr"} </title>
+                <meta property="og:image"  itemProp="image"  content={apiurl + bank?.logoUrl} />
+                <link rel="apple-touch-icon" href={apiurl + bank?.logoUrl}/>
+
+                <title>{(bank.bankName ?? "") + ": Kredi, Kredi Kartı ve Mevduat Fırsatları   | kredi.com.tr"} </title>
 
             </Helmet>
             <div className="row bank-label">

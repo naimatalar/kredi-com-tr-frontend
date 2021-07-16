@@ -19,10 +19,10 @@ export const HowToPay = () => {
     async function sleep(msec) {
         return new Promise(resolve => setTimeout(resolve, msec));
     }
-    const redirectLoanDetail = async (amount,term,loanId,bankUrlName) => {
+    const redirectLoanDetail = async (amount, term, loanId, bankUrlName) => {
 
 
-        window.location.replace("/bankalar/" + bankUrlName + "-kredi-hesaplama-ve-basvuru?amount=" +amount+"&term="+term+"&loanId="+loanId );
+        window.location.replace("/bankalar/" + bankUrlName + "-kredi-hesaplama-ve-basvuru?amount=" + amount + "&term=" + term + "&loanId=" + loanId);
     }
     const calculatenw = async () => {
         setCollepseId(null)
@@ -39,7 +39,7 @@ export const HowToPay = () => {
         setResultMoney(result)
         for (const item of loanType) {
             for (let index = 12; index < 60; index = index + 6) {
-debugger
+
                 var sa = calculator(parseFloat(item.rate), parseFloat(neKadarKredi), parseFloat(index), 5, 15)
                 if (result > sa.totalpayment && loanList.filter(x => { return x.bankId == item.bankId })?.length == 0) {
 
@@ -48,8 +48,8 @@ debugger
                             items: [],
                             bankLogoUrl: item.logo,
                             id: item.id,
-                            bankUrlName:item.bankUrlName,
-                            bankId:item.bankId
+                            bankUrlName: item.bankUrlName,
+                            bankId: item.bankId
                         })
                     }
                 }
@@ -64,8 +64,8 @@ debugger
                             term: index,
                             bankLogoUrl: item.logo,
                             id: item.id,
-                            bankId:item.bankId
-                            
+                            bankId: item.bankId
+
                         })
                     }
 
@@ -100,16 +100,14 @@ debugger
     }
     return (
         <div className="row">
-            <div className="col-12 mb-3"><h2>Aylık Ne Kadar Kredi Ödeyebilirm? </h2><hr className="title-hr mt-1"></hr></div>
-            <p>Bu hesaplama aracımız sizin aylık ödeyebileceğiniz tutarı hesaplar. Bu hesaplamayı yaparken aylık geliriniz ve bir kısım giderlerinizi sisteme girmeniz yeterli olacaktır.
-            </p>
-            <p>Hesaplamayı yaptıktan sonra size en uygun krediyi veren bankayı bulur.</p>
+            <div className="col-12 mb-3 mt-3"><h2>Aylık Ne Kadar Kredi Ödeyebilirm? </h2><hr className="title-hr mt-1"></hr></div>
+
             <div className="row col-12">
                 <h4>Hemen Hesapla</h4>
                 {loading == true && <img className="ld-but" src={require("../../assets/images/loading.gif").default}></img>}
-                <div className={"col-12 row calculate-page-calculate-container mt-4 " + (loading == true ? "add-blur" : "")} onSubmit={() => { return false }}>
+                <div className={"col-12 row calculate-page-calculate-container mt-4 "  + (loading == true ? "add-blur" : "")} onSubmit={() => { return false }}>
 
-                    <div className="col-7">
+                    <div className="col-12 col-md-7 col-lg-7">
 
                         <div className="col-12 mb-2">
                             <label style={{ width: 165 }}><b> Ne Nadar Kredi Lazım: &nbsp;</b> </label>
@@ -122,18 +120,18 @@ debugger
 
                         <div className="col-12 mt-2">
                             <label style={{ width: 165 }}><b>Kira: &nbsp;</b> </label>
-                            <input value={kira} onChange={(e) => { setKira(e.target.value) }} type="text" placeholder=" örnek: 0 - 4000"></input>
+                            <input value={kira} onChange={(e) => { setKira(e.target.value) }} type="text" placeholder=" örnek: 1500"></input>
                         </div>
                         <div className="col-12 mt-2">
                             <label style={{ width: 165 }}><b> Kredi Kartı Gideri : &nbsp;</b> </label>
-                            <input value={krediKart} onChange={(e) => { setKrediKart(e.target.value) }} type="text" placeholder=" örnek: 0-2000"></input>
+                            <input value={krediKart} onChange={(e) => { setKrediKart(e.target.value) }} type="text" placeholder=" örnek: 1000"></input>
                         </div>
                         <div className="col-12 mt-2">
                             <label style={{ width: 165 }}><b> Ev Giderleri  : &nbsp;</b> </label>
-                            <input value={evGiderleri} onChange={(e) => { setEvGiderleri(e.target.value) }} type="text" placeholder=" örnek: 0-2000"></input>
+                            <input value={evGiderleri} onChange={(e) => { setEvGiderleri(e.target.value) }} type="text" placeholder=" örnek: 1000"></input>
                         </div>
                     </div>
-                    <div className="col-5">
+                    <div className="col-md-5 col-lg-5 col-12">
                         <div className="col-12">
                             <button className="default-button" disabled={loading}
                                 onClick={() => { calculatenw() }} style={{ color: "white" }}>Hesapla</button></div>
@@ -236,7 +234,7 @@ debugger
                                                                 </div>
                                                             </div>
                                                             <div className="col-2 row align-items-center justify-content-center">
-                                                                <a href={"/bankalar/" + item.bankUrlName + "-kredi-hesaplama-ve-basvuru?amount=" +neKadarKredi+"&term="+jitem.term+"&loanId="+jitem.id}  style={{ color: "white" }} className="default-button row justify-content-center">İncele</a>
+                                                                <a href={"/bankalar/" + item.bankUrlName + "-kredi-hesaplama-ve-basvuru?amount=" + neKadarKredi + "&term=" + jitem.term + "&loanId=" + jitem.id} style={{ color: "white" }} className="default-button row justify-content-center">İncele</a>
                                                             </div>
                                                         </div>
                                                     </Collapse>
@@ -254,6 +252,10 @@ debugger
                     </div>
                 </div>
             </div>
+            <p>Bu hesaplama aracımız sizin aylık ödeyebileceğiniz tutarı hesaplar. Bu hesaplamayı yaparken aylık geliriniz ve bir kısım giderlerinizi sisteme girmeniz yeterli olacaktır.
+            </p>
+            <p>Hesaplamayı yaptıktan sonra size en uygun krediyi veren bankayı bulur.</p>
+
         </div>
 
     )
