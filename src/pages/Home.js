@@ -109,7 +109,7 @@ export const Home = (props) => {
                         <b style={{ textAlign: "center" }}>Reklam Ve Tanıtın Alanı</b>
                     </div>
                     <div className="row  m-0 p-0 justify-content-center">
-                        <span style={{ textAlign: "center", textAlign: "center", color: " #181818", fontSize: 12 }}>Aylık 3MN web trafiğine sahip sitemizde tanıtım ve reklamlarınızı yayınlayalım. Ürün yada hizmetinizi parmakların ucuna taşıyalım. </span>
+                        <span style={{ textAlign: "center", textAlign: "center", color: " #181818", fontSize: 12 }}>Aylık 3MN web trafiğine sahip sitemizde tanıtım ve reklamlarınızı yayınlayalım. Ürün yada hizmetinizi parmaklarınızın ucuna taşıyalım. </span>
                     </div>
                     <div className="row  m-0 p-0 justify-content-center">
                         <button onClick={() => { setAddsPopup(true) }} className="default-button">&nbsp; İLETİŞİM &nbsp;</button>
@@ -127,7 +127,7 @@ export const Home = (props) => {
                     <div className="col-12 mt-2">
                         <div className="row  m-0 p-0 justify-content-center">
 
-                            <span style={{ textAlign: "center", textAlign: "center", color: " #181818", fontSize: 12 }}>Aylık 3MN web trafiğine sahip sitemizde tanıtım ve reklamlarınızı yayınlayalım. Ürün yada hizmetinizi parmakların ucuna taşıyalım. </span>
+                            <span style={{ textAlign: "center", textAlign: "center", color: " #181818", fontSize: 12 }}>Aylık 3MN web trafiğine sahip sitemizde tanıtım ve reklamlarınızı yayınlayalım. Ürün yada hizmetinizi parmaklarınızın ucuna taşıyalım. </span>
                         </div>
                     </div>
                     <div className="col-12 mt-3">
@@ -176,7 +176,7 @@ export const Home = (props) => {
                     </div>
                     <div className="row  m-0 p-0 justify-content-center">
 
-                        <span style={{ textAlign: "center", textAlign: "center", color: " #181818", fontSize: 12 }}>Aylık 3MN web trafiğine sahip sitemizde tanıtım ve reklamlarınızı yayınlayalım. Ürün yada hizmetinizi parmakların ucuna taşıyalım. </span>
+                        <span style={{ textAlign: "center", textAlign: "center", color: " #181818", fontSize: 12 }}>Aylık 3MN web trafiğine sahip sitemizde tanıtım ve reklamlarınızı yayınlayalım. Ürün yada hizmetinizi parmaklarınızın ucuna taşıyalım. </span>
                     </div>
                     <div className="row  m-0 p-0 justify-content-center">
 
@@ -204,7 +204,7 @@ export const Home = (props) => {
                 <div className="col-12 mt-2">
                     <div className="row  m-0 p-0 justify-content-center">
 
-                        <span style={{ textAlign: "center", textAlign: "center", color: " #181818", fontSize: 12 }}>Aylık 3MN web trafiğine sahip sitemizde tanıtım ve reklamlarınızı yayınlayalım. Ürün yada hizmetinizi parmakların ucuna taşıyalım. </span>
+                        <span style={{ textAlign: "center", textAlign: "center", color: " #181818", fontSize: 12 }}>Aylık 3MN web trafiğine sahip sitemizde tanıtım ve reklamlarınızı yayınlayalım. Ürün yada hizmetinizi parmaklarınızın ucuna taşıyalım. </span>
                     </div>
                 </div>
                 <div className="col-12 mt-3">
