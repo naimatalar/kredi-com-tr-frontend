@@ -20,7 +20,7 @@ export const CalculatePage = (props) => {
         {
             name: "Aylık Ne Kadar Ödeyebilirim?",
             urlName: "aylik-ne-kadar-odeyebilirim",
-            description: "Ne karar kredi çekebileceğinizi hesaplar. Ve size uygun kredileri bulur"
+            description: "Ne kadar kredi çekebileceğinizi hesaplar. Ve size uygun kredileri bulur"
 
         },
 
@@ -33,8 +33,14 @@ export const CalculatePage = (props) => {
         <div className="master-content">
 
             <div className="row col-12 justify-content-center">
-                <p className="home-title text-center" > <span style={{ fontWeight: "bold" }}>{selectedLink?.name}</span> <br></br> {selectedLink?.description} </p>
-
+                {
+                    !selectedLink?.name &&
+                    <p className="home-title text-center" > <span style={{ fontWeight: "bold" }}>Hesaplama Araçlarımız</span> <br></br> Bu araçlar sizleri kalem,kağıt ve hesap makinesinden kurtarıyor </p>
+                }
+                {
+                    selectedLink?.name &&
+                    <p className="home-title text-center" > <span style={{ fontWeight: "bold" }}>{selectedLink?.name}</span> <br></br> {selectedLink?.description} </p>
+                }
             </div>
             <div className="row mt-4">
                 <div className="col-12 col-md-9 col-lg-9 calculate-pages-s">
@@ -47,17 +53,17 @@ export const CalculatePage = (props) => {
                                 <meta property="og:url" content={window.location.href} />
                                 <meta property="og:description" content="Bu sayfa aylık ödeyebileceğiniz kredileri hesaplar ve listeler | kredi.com.tr" />
                                 <meta name="keyword" content="aylık ödeme öğrenme, aylık kredi hesaplama, aylık ne kadar kredi ödenir" />
-                                <meta name="description" content="Ne kadar kredi ödeyebileceğinizi öğrenin | Bu sayfa ödeyebileceğiniz kredileri hesaplar ve listeler | kredi.com.tr" />
+                                <meta name="description" content="Aylık ne kadar çekebileceğinizi hesaplayıp size en uygun krediyi veren bakaları listeliyoruz. Hesaplama, geiliriniz ve giderleriniz baz alarak size onaylanma oranı yüksek kredileri getirir" />
                                 <meta name="robots" content="index,follow" />
                                 <meta property="og:image" itemProp="image" content={require("../assets/images/thn.jpg").default} />
                                 <meta name="twitter:card" content="summary_large_image" />
-                                <meta name="twitter:title" content="Aylık Ne Kadar Kredi Ödeyebileceğini Öğren" />
+                                <meta name="twitter:title" content="Aylık Ne Kadar Kredi Çekebileceğinizi Öğren" />
                                 <meta name="twitter:description" content="Bu sayfa girdiğiniz bilgileri bankaya sorarak ödeyebileceğiniz kredileri başvurabilmeniz için bulur | kredi.com.tr" />
                                 <meta name="twitter:url" content={window.location.href} />
                                 <meta name="twitter:image" content={require("../assets/images/thn.jpg").default} />
 
 
-                                <title>Ne kadar kredi ödeyebileceğinizi öğrenin | Bu sayfa ödeyebileceğiniz kredileri hesaplar ve listeler | kredi.com.tr</title>
+                                <title>Aylık ne kadar kredi çekebileceğinizi öğrenin | kredi.com.tr</title>
                             </Helmet>
                         </>
                     }
@@ -103,7 +109,7 @@ export const CalculatePage = (props) => {
                             if (item.urlName == props.UrlName) {
                                 active = "active"
                             }
-                            return (<a href={props.UrlName == "-" ? ("/hesaplama/" + item.urlName) : ("/hesaplama/" + item.urlName)} className={"list-group-item col-12 text-center mb-2 " + active}>{item.name}</a>)
+                            return (<a key={key} href={props.UrlName == "-" ? ("/hesaplama/" + item.urlName) : ("/hesaplama/" + item.urlName)} className={"list-group-item col-12 text-center mb-2 " + active}>{item.name}</a>)
                         })}
                     </ul>
                 </div>

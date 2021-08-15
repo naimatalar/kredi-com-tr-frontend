@@ -15,7 +15,7 @@ import CreditCart from "./pages/CreditCart";
 import { Home } from "./pages/Home";
 import { LoanBank } from "./pages/LoanBank";
 import Loan from "./pages/Loan";
-import { GetNoneToken, PostNoneToken } from "./datacrud/datacrud";
+import { apiurl, GetNoneToken, PostNoneToken } from "./datacrud/datacrud";
 import { SearchLoanPage } from "./pages/SearchLoanPage";
 import Head from "next/head";
 import { DispositSearchPage } from "./pages/DispositSearchPage";
@@ -25,36 +25,44 @@ import { Blog } from "./pages/Blog";
 import { BlogDetail } from "./pages/BlogDetail";
 import { CreditCartDetail } from "./pages/CreditCartDetail";
 import { CalculatePage } from "./pages/CalculatePage";
+import { Faq } from "./pages/Faq";
+import homepage from "./Components/Schduler/Homepage";
+import Homepage from "./Components/Schduler/Homepage";
+import axios from "axios";
 export default function App(props) {
   const [bankNavigation, setBankNavigation] = useState([]);
   const [loanNavigation, setLoanNavigation] = useState([]);
   const [blogNavigation, setBlogNavigation] = useState([]);
   const [creditCartName, setCreditCartName] = useState([]);
+  const [blg, setBlg] = useState([]);
+  const [sss_, setSss_] = useState([]);
 
   useEffect(() => {
 
     start();
 
-  }, [props])
+  }, [])
 
   const start = async () => {
 
-    var Bank = await GetNoneToken("Banks/GetAllBankSite").then(x => { return x.data }).catch(x => { return false })
-    var loanType = await GetNoneToken("LoanTypes/GetAllSite").then(x => { return x.data }).catch(x => { return false })
-    var blogs = await GetNoneToken("Blogs/GetAlUrlName").then(x => { return x.data }).catch(x => { return false })
-    var creditCarts = await GetNoneToken("CreditCarts/GetCreditCartName").then(x => { return x.data }).catch(x => { return false })
-    setCreditCartName(creditCarts)
-    setBlogNavigation(blogs)
-    setLoanNavigation(loanType)
-    setBankNavigation(Bank)
+    var hp = await GetNoneToken("HomePageData/getHomePageData").then(x => { return x.data }).catch(x => { return false })
+    setCreditCartName(hp.creditCarts)
+    setBlogNavigation(hp.blogs)
+    setLoanNavigation(hp.loanType)
+    setBankNavigation(hp.Bank)
+
   }
+
 
   return (
     <Router>
 
       <NavigationTree BankNavigation={bankNavigation} LoanNavigation={loanNavigation}></NavigationTree>
+
       <div>
         <Switch>
+
+
           <Route exact path="/" render={(props) => <div className="master-content"> <Home Loans={loanNavigation} {...props} Banks={bankNavigation} /></div>}>
 
           </Route>
@@ -67,6 +75,11 @@ export default function App(props) {
             )
           })}
 
+          <Route path="/vadeli-mevduati-hesaplama-ve-basvuru" render={(props) => < DispositSearchResult {...props} />}>
+
+          </Route>
+
+
           {loanNavigation.map((item, key) => {
             return (
               <Route key={key} path={"/" + item.urlName + "-arama-hesaplama"} render={(props) => <SearchLoanPage Loan={item} Loans={loanNavigation} {...props} ></SearchLoanPage>}>
@@ -74,6 +87,10 @@ export default function App(props) {
               </Route>
             )
           })}
+
+
+
+
           {loanNavigation.map((item, key) => {
             return (
               <Route key={key} path={"/" + item.urlName + "-basvuru"} render={(props) => <RedirectProduct {...props} ></RedirectProduct>}>
@@ -82,8 +99,11 @@ export default function App(props) {
             )
           })}
 
-          <Route path={"/kredi-karti-basvuru"} render={(props) => <RedirectProduct {...props}  ></RedirectProduct>}>
+          <Route path="/soru-cevap" render={(props) => < Faq {...props} />}>
+
           </Route>
+
+
 
           <Route path="/kredi-karti/ticari-kredi-kartlari">
             <CreditCart cartType="corporate" />
@@ -100,6 +120,7 @@ export default function App(props) {
           <Route path="/hesaplama/kredi-hesaplama">
             <CalculatePage UrlName="kredi-hesaplama" />
           </Route>
+
           <Route path="/hesaplama/aylik-ne-kadar-odeyebilirim">
             <CalculatePage UrlName="aylik-ne-kadar-odeyebilirim" />
           </Route>
@@ -111,12 +132,8 @@ export default function App(props) {
           <Route path={"/vadeli-mevduati-basvuru"} render={(props) => <RedirectProduct  {...props} ></RedirectProduct>}>
           </Route>
 
-          <Route path="/vadeli-mevduat-sorgulama" render={(props) => <DispositSearchPage {...props} />}>
 
-          </Route>
-          <Route path="/vadeli-mevduati-hesaplama-ve-basvuru" render={(props) => < DispositSearchResult {...props} />}>
 
-          </Route>
 
           {
             bankNavigation.map((item, key) => {
@@ -158,7 +175,7 @@ export default function App(props) {
               )
             })
           }
-          {creditCartName.map((item, key) => {
+          {creditCartName?.map((item, key) => {
 
             return (
               <Route key={key + "55d6"} path={"/" + item.bankUrlName + "/" + item.urlName} render={(props) => <CreditCartDetail {...props} data={item} ></CreditCartDetail>}>
@@ -178,7 +195,9 @@ export default function App(props) {
               })
             }
           </Route>
+          <Route path="/vadeli-mevduat-sorgulama" render={(props) => <DispositSearchPage {...props} />}>
 
+          </Route>
         </Switch>
         {/* <div style={{ textAlign: "center", color: "red", textDecoration: "underline" }}>Platformumuz yapım aşamasındadır.<br></br>Faiz oranları, vadeler, kredi kartı fırsatları şu anlık <b style={{ color: "red" }}>gerçek bilgiler değildir.</b><br></br>Gerçek bilgiler için bankanın web sitelerini ziyaret edebilirsiniz.</div> */}
       </div>
@@ -191,6 +210,14 @@ export default function App(props) {
         </div>
       </div>
 
+      <Route path={"/kredi-karti-basvuru"} render={(props) => <RedirectProduct {...props}  ></RedirectProduct>}>
+      </Route>
+      <Route path={"/mevduat-basvuru"} render={(props) => <RedirectProduct {...props}  ></RedirectProduct>}>
+      </Route>
+
+      <Route exact path="/setdata" render={(props) => <Homepage></Homepage>}>
+
+      </Route>
     </Router >
   );
 }

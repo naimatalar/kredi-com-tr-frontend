@@ -33,7 +33,7 @@ export const BlogDetail = (props) => {
             <meta property="og:url" content={window.location.href} />
             <meta property="og:description" content={data?.title} />
             <meta name="keyword" content="kredi, kredi kartı, kredi başvurusu, kredi faiz oranı, kredi kartı başvurusu" />
-            <meta name="description" content="kredi.com.tr Kolayca Arayın, Pratik Şekilde Hesaplayın, Hızlıca Başvurun" />
+            <meta name="description" content="Kredi.com.tr ile Kredi ürünleri, kredi kartları ve mevduatlatı arayıp karşılaştırarak başvurabilirsiniz. Türkiye'nin Kredi Başvuru Merkezi | KREDİ.COM.TR" />
             <meta name="robots" content="index,follow" />
             <link rel="apple-touch-icon" href={apiurl + data?.imageUrl} />
             <meta property="og:image" itemProp="image" content={apiurl + data?.imageUrl} />
@@ -62,17 +62,17 @@ export const BlogDetail = (props) => {
                 <hr className="title-hr"></hr>
                 {blog.map((item, key) => {
                     return (
-                        <div className="col-12 row mb-3 blog-detail-item">
+                        <div key={key} className="col-12 row mb-3 blog-detail-item">
 
-                            <div key={key} className="col-3 p-0">
+                            <div className="col-3 p-0">
                                 <img src={apiurl + item.imageUrl} style={{ width: "100%" }}></img>
                             </div>
-                            <div key={key} className="col-7 p-0 pl-2 pr-1" style={{ fontSize: 13, color: "black" }}>
+                            <div  className="col-7 p-0 pl-2 pr-1" style={{ fontSize: 13, color: "black" }}>
                                 {item.title}
                                 <br></br>
                                 <i style={{ color: "grey" }}>{item.date}</i>
                             </div>
-                            <div key={key} className="col-2 row p-0" style={{
+                            <div  className="col-2 row p-0" style={{
                                 justifyContent: "flex-end",
                                 alignItems: "center"
                             }}>

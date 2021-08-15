@@ -4,12 +4,15 @@ import Dropdown from 'react-dropdown';
 import { GetNoneToken, PostNoneToken } from "../datacrud/datacrud";
 import { PopulerLoans } from "../Components/containers/PopulerLoans";
 import { Helmet } from "react-helmet";
+import { HowToPay } from "../Components/calculate-page/HowToPay";
+import { LoanRate } from "../Components/containers/LoanRate";
 
 export const Loan = (props) => {
     const [loan, setLoan] = useState(props.Loan)
     const [amount, setAmount] = useState()
     const [terms, setTerms] = useState([])
     const [termsValue, setTermsValue] = useState()
+    const [howMuchCalculate, setHowMuchCalculate] = useState()
 
 
     useEffect(() => {
@@ -30,7 +33,7 @@ export const Loan = (props) => {
     const calculate = async () => {
         var data = {
             loanTypeId: loan.id,
-            amount: (amount != null ? amount.replace("₺", "").replace(".", "") : ""),
+            amount: (amount != null ? amount.replace("₺", "").replace(/\./g, "") : ""),
             term: termsValue
         }
 
@@ -38,12 +41,12 @@ export const Loan = (props) => {
         let prm = new URLSearchParams()
         prm.set("amount", data.amount)
         prm.set("term", data.term)
-      
+
         props.history.push("/" + loan.urlName + "-arama-hesaplama?" + prm)
 
     }
     return (
-        <div className="master-content">
+        <div className="master-content" id="rtt">
 
             <div className="container-fluid">
                 <div className="loan-search-container-label pt-5">
@@ -58,14 +61,14 @@ export const Loan = (props) => {
 
                             <div className="col-12">
                                 <div className="col-12 mb-4">
-                                    <CurrencyInput style={{ width: "100%", maxWidth: "100%" }} placeholder="Tutar Giriniz." className="col-7"
+                                    <CurrencyInput style={{ width: "100%", maxWidth: "100%" }} placeholder="Tutar Giriniz" className="col-7"
                                         decimalSeparator=","
                                         thousandSeparator="."
                                         precision="0"
                                         onChange={(x) => { setAmount(x) }}
                                         value={amount}
-
                                         prefix="₺"
+
                                     />
 
                                 </div>
@@ -90,6 +93,28 @@ export const Loan = (props) => {
                     </div>
 
                 </div>
+                <div className="row">
+                    <div className="mt-5 col-12 col-md-8 col-lg-8">
+
+                        <HowToPay></HowToPay>
+                    </div>
+                    <div className="mt-5 col-12 col-md-4 col-lg-4">
+                        <div className="col-12 mb-3 mt-3"><h2>Kredi Puanı Nedir?</h2><hr className="title-hr mt-1"></hr></div>
+                        <p style={{ color: "black" }}>
+                            &nbsp; &nbsp; &nbsp; &nbsp;  Kredi puanı, BDDK tarafından kişinin kredi ve kredi kartı kullanımına göre belirlenir. <br></br> <br></br> &nbsp; &nbsp; &nbsp; &nbsp;
+                            <small style={{color:"black"}}>Kişi herhangi bir bankaya kredi başvurusunda bulunduğunda ilgili banka,kişinin kredi puanını göz önünde bulundurur.</small> 
+                            <br></br><br></br>
+                            <b style={{ color: "black" }}>Kredi Puanını Etkileyen şeyler Nedir ?</b>
+            <br></br><br></br>
+            &nbsp; &nbsp; &nbsp; &nbsp; <small style={{ color: "black" }}> Kullandığınız kredi ve kredi kartlarını zamanında ödemeniz, hangi sıklıkta kredi kullandığınız, erken kapatma işlemleri gibi kriterler kredi puanını etkiler.
+            Kredi çekmeniz gerekiyor ve puanınız düşük ise kredi kartı alıp 6 ay yada daha fazla bir süre düzenli ödemeniz kredi puanınızı yükseltecektir.</small>
+                        </p>
+                        <br></br>
+                        <a href="https://www.findeks.com/">Kredi Puanınızı Öğrenmek İçin Tıklayın</a>
+                    </div>
+                </div>
+
+
 
                 <div className="col-12 mt-5">
                     <p className="home-title" >
@@ -104,8 +129,9 @@ export const Loan = (props) => {
                         <PopulerLoans></PopulerLoans>
 
                     </div>
-                    <div className="col-12 col-md-6 col-lg-6 mt-5 row justify-content-center  align-content-center">
-                        <div className="col-12 justify-content-center row">
+                    <div className="d-none d-lg-block d-md-block col-12 col-md-6 col-lg-6 mt-5 row justify-content-center  align-content-center">
+                        <LoanRate></LoanRate>
+                        {/* <div className="col-12 justify-content-center row">
                             <h3> <b>Ne Kadar Kredi Çekmeliyim ?</b></h3>
                             <p style={{ color: "black" }}>Artık hesap kitap işlerini sizin yerinize biz yapıyoruz. <br></br> Bize gereken birkaç gelir ve gider bilginiz. Deneyimli finans ve yazılım uzmanlarımızla geliştirdiğimiz hesap araçlarıyla, sizi hesap makinesinden kurtarıyoruz. </p>
                             <b className="mb-3" style={{ color: "black" }}>Aylık Gelirinizi Girerek Hesaplamaya Başlayın </b>
@@ -115,17 +141,17 @@ export const Loan = (props) => {
                                     decimalSeparator=","
                                     thousandSeparator="."
                                     precision="0"
-                                    // onChange={(x) => { setAmount(x) }}
-                                    value={amount}
+                                     onChange={(x) => { setHowMuchCalculate(x.replace(/\./g))}}
+                                    value={howMuchCalculate}
 
                                     prefix="₺"
                                 />
-                                <button onClick={(x) => { calculate() }} className="default-button mt-3" type="submit">HESAPLAMAYA BAŞLA</button>
+                                <button className="default-button mt-3" type="submit">HESAPLAMAYA BAŞLA</button>
 
                             </div>
 
                         </div>
-
+ */}
 
                     </div>
                 </div>
@@ -156,7 +182,7 @@ const getContent = (data) => {
 
                 <div className="col-12 col-md-5 col-lg-5 row  align-content-center justify-content-center">
                     <div className="justify-content-center col-12 row">
-                        <img title="kobi kredisi arama ve başvuru kredi.com.tr" alt={"kobi kredisi başvuru"}  style={{ width: "30%" }} src={require("../assets/images/corporatecolor.png").default}></img>
+                        <img title="kobi kredisi arama ve başvuru kredi.com.tr" alt={"kobi kredisi başvuru"} style={{ width: "30%" }} src={require("../assets/images/corporatecolor.png").default}></img>
                     </div>
                     <div className="justify-content-center col-12 row">
                         <h2><b>Kobi Kredisi</b></h2>
@@ -189,7 +215,7 @@ const getContent = (data) => {
             </Helmet>
             <div className="col-12 col-md-5 col-lg-5 row  align-content-center justify-content-center">
                 <div className="justify-content-center col-12 row">
-                    <img title="araç kredisi başcuruları kredi.com.tr" alt={"araç kredisi başvuru ve arama"}  style={{ width: "30%" }} src={require("../assets/images/carColor.png").default}></img>
+                    <img title="araç kredisi başcuruları kredi.com.tr" alt={"araç kredisi başvuru ve arama"} style={{ width: "30%" }} src={require("../assets/images/carColor.png").default}></img>
                 </div>
                 <div className="justify-content-center col-12 row">
                     <h3><b>Araç Kredisi.</b></h3>
@@ -221,7 +247,7 @@ const getContent = (data) => {
             </Helmet>
             <div className="col-12 col-md-5 col-lg-5 row  align-content-center justify-content-center">
                 <div className="justify-content-center col-12 row">
-                    <img  title="konut kredisi aramaları, başvurularu kredi.com.tr" alt={"konut kredi arama"} style={{ width: "30%" }} src={require("../assets/images/homecolor.png").default}></img>
+                    <img title="konut kredisi aramaları, başvurularu kredi.com.tr" alt={"konut kredi arama"} style={{ width: "30%" }} src={require("../assets/images/homecolor.png").default}></img>
                 </div>
                 <div className="justify-content-center col-12 row">
                     <h3><b>Konut Kredisi</b></h3>
@@ -233,7 +259,7 @@ const getContent = (data) => {
                     <b style={{ color: "rgb(61 61 61)" }}>Konut Kredinizi Aratın!</b>
                 </h2>
                 <p style={{ color: "rgb(61 61 61)" }}>  Hayalini kurduğunuz yuvaya kavuşurken çorbada bizim de tuzumuz olsun. Kredinizi bulmanıza yardım edelim. </p>
-                <p style={{ color: "rgb(61 61 61)" }}>  Aracınızı şimdiden seçin. Krediyi bulma işi ise bizde. </p>
+                <p style={{ color: "rgb(61 61 61)" }}>  Ev için krediyi sizin için buluyoruz. </p>
             </div>
         </>)
     } else if (data.includes("ihtiyac")) {
@@ -252,7 +278,7 @@ const getContent = (data) => {
             </Helmet>
             <div className="col-12 col-md-5 col-lg-5 row  align-content-center justify-content-center">
                 <div className="justify-content-center col-12 row">
-                    <img title="ihtiyaç kredisi arama,sorgulama ve bulma kredi.com.tr" alt={"ihtiyaç kredisi sorgulama"}  style={{ width: "30%" }} src={require("../assets/images/moneycolor.png").default}></img>
+                    <img title="ihtiyaç kredisi arama,sorgulama ve bulma kredi.com.tr" alt={"ihtiyaç kredisi sorgulama"} style={{ width: "30%" }} src={require("../assets/images/moneycolor.png").default}></img>
                 </div>
                 <div className="justify-content-center col-12 row">
                     <h3><b>İhtiyaç Kredisi</b></h3>

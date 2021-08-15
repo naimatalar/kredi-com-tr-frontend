@@ -582,32 +582,17 @@ input[type="text"]{
 .blog-image{
 width: 100%;
 }
-@media  (max-width: 900px) {
-  .debit-buttons button span {
-    font-size: 11px;
-  } 
-  .middle-menu-text {
-    font-size: 11px;
-  }
-  .home-title{
-    font-size: 20px;
-  }
-  .div-table-col {
-    width: 16%;         
-  }
-  .div-table-row * {
-    font-size: 10px;        
-  }
-  .loan-search-list-item{
-    zoom:65%;
-  }
-  .blog-image{
-    display: none;
-    }
-    .result-how-get{
-      zoom: 0.5;
-    }
+.redirect-product-logo{
+  width: 25%;
 }
+.redirect-product-arrow{
+  width: 8%;
+}
+.redirect-bank-logo{
+  width: 25%;
+}
+
+
 
 .popularLoanDetail{
   padding: 0 10px 0 8px;
@@ -695,11 +680,15 @@ list-style: none;
   font-size: 13px;
 }
 .disposit-table .div-table-header{
-  background: #7a7a7a;
+  background: #2d8b55
 }
 .disposit-table *{
   font-size: 13px;
 }
+.disposit-table {
+  zoom: .8;
+}
+
 .active-col *,.active-col input {
   color: red;
 }
@@ -884,4 +873,132 @@ background: #dadada;
   left: 0;
   right: 0;
   margin: 0 auto;
+}
+.bg-0t{
+  background: #077a68;
+  color: white;
+}
+.ddr .div-table-col{
+  padding-right: 0;
+    padding-left: 0;
+    text-align: center;
+    border: 1px solid #a7a7a7;
+  
+}
+.jj-flp {
+  
+  background: #3bacd8;
+  color: white;
+  font-weight: bold;
+}
+.sss-item{
+  justify-content: space-around;
+    background: white;
+    padding: 9px;
+    border: 1px solid #c9c9c9;
+    border-radius: 11px;
+    margin-bottom: 13px;
+}
+.sss-collapse{
+  padding: 26px;
+  color: #4e4e4e;
+}
+.sss-title{
+  font-size: 20px;
+    font-weight: bold;
+}
+.campaign-icon{
+  color: #cb6f80;
+    font-weight: bold;
+    font-size: 20px;
+}
+.campaign-title{
+  font-weight: bold;
+  color: #037cc7;
+}
+@media  (max-width: 900px) {
+  .debit-buttons button span {
+    font-size: 11px;
+  } 
+  .middle-menu-text {
+    font-size: 11px;
+  }
+  .home-title{
+    font-size: 20px;
+  }
+  .div-table-col {
+    width: 16%;         
+  }
+
+  .div-table-row * {
+    font-size: 10px;        
+  }
+  .loan-search-list-item *{
+    zoom:80%;
+  }
+  .card-detail-button-text{
+  zoom:65%;
+  }
+    .cart-type-nav{
+  zoom:65%;
+  }
+  .loan-search-content,.disposit-item,.populer-loan-container,.loan-rate-container{
+    zoom:0.8
+  }
+  .disposit-table{
+zoom: .5;
+  }
+
+  .redirect-product-logo{
+    width: 80%;
+  }
+  .redirect-bank-logo{
+    width: 70%;
+  }
+  .redirect-product-text-container *{
+    margin-top: -50px;
+    text-align: center;
+  }
+  .redirect-product-arrow{
+    width: 40%;
+    margin-top: -90px;
+  }
+
+  .blog-image{
+    display: none;
+    }
+    .result-how-get{
+      zoom: 0.5;
+    }
+ .credit-cart-slider-container{
+      zoom: 0.6;
+    }
+    .disposit-bank-container{
+      zoom: 0.6;
+    }
+}
+
+.special-offer>.credit-cart-item{
+  background: #f7f896;
+}
+.special-offer h6{
+  font-weight: bold;
+  color:rgb(0 46 255) !important
+}
+.populer-mark{
+  position: absolute;
+  top: -15px;
+  left: 27px;
+  background: #ffffff;
+  padding: 2px 18px 2px 20px;
+  border: 1px solid #fad0d0;
+  border-radius: 10px;
+  color: #ff0000;
+  font-weight: bold;
+  font-size: 12px;
+  box-shadow: 2px 2px 2px -1px #efbcbc;
+}
+.special-select{
+  background:#eaf8ff ;
+  border-color: #0644c2;
 }

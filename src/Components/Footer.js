@@ -15,20 +15,24 @@ const Footer = () => {
                             <img alt="kredi.com.tr logo" title={"kredi.com.tr"} style={{
                                 width: "80%"
                             }} src={require("../assets/images/lgwhite.png").default} ></img>
-                          <h4>Bütün Bankaların Kredi Merkezi</h4>
+                          <h4 className="text-center">Kredi Başvuru Merkezi</h4>
                         </div>
                         <div className="col-md-2 mt-md-0 mt-3">
-                            <h5 className="text-uppercase">Bilgiler</h5>
+                            <h5 className="text-uppercase">kredi.com.tr</h5>
 
                             <ul className="list-unstyled">
+                           
                                 <li>
-                                    <a href="#!">Sık Sorulan Sorular</a>
+                                    <a href="/soru-cevap">Sık Sorulan Sorular</a>
                                 </li>
                                 <li>
-                                    <a href="#!">Kredi Notu</a>
+                                    <a href="/hesaplama/aylik-ne-kadar-odeyebilirim/">Ne Kadar Kredi Çekebilirim</a>
                                 </li>
                                 <li>
-                                    <a href="#!">Blog</a>
+                                    <a href="/haberler-bilgiler">Haberler</a>
+                                </li>
+                                 <li>
+                                    <a href="/vadeli-mevduat-sorgulama">Mevduat Başvuru</a>
                                 </li>
                                 
                             </ul>
@@ -39,20 +43,20 @@ const Footer = () => {
 
                         <div className="col-md-2 mb-md-0 mb-3">
 
-                            <h5 className="text-uppercase">Krediler</h5>
+                            <h5 className="text-uppercase">Kredi</h5>
 
                             <ul className="list-unstyled">
                                 <li>
-                                    <a href="#!">İhtiyaç Kredisi</a>
+                                    <a href="/ihtiyac-kredisi">İhtiyaç Kredisi</a>
                                 </li>
                                 <li>
-                                    <a href="#!">Taşıt Kredisi</a>
+                                    <a href="/tasit-kredisi">Taşıt Kredisi</a>
                                 </li>
                                 <li>
-                                    <a href="#!">Konut Kredisi</a>
+                                    <a href="/konut-kredisi">Konut Kredisi</a>
                                 </li>
                                 <li>
-                                    <a href="#!">Kobi Kredisi</a>
+                                    <a href="/kobi-kredisi">Kobi Kredisi</a>
                                 </li>
                             </ul>
 
@@ -63,16 +67,16 @@ const Footer = () => {
 
                             <ul className="list-unstyled">
                                 <li>
-                                    <a href="#!">Mil Veren Kredi Kartları</a>
+                                    <a href="/kredi-karti/mil-veren-kredi-kartlari">Mil Veren Kredi Kartları</a>
                                 </li>
                                 <li>
-                                    <a href="#!">Puan Veren Kredi Kartları</a>
+                                    <a href="/kredi-karti/puan-veren-kredi-kartlari">Puan Veren Kredi Kartları</a>
                                 </li>
                                 <li>
-                                    <a href="#!">Ticari Kredi Kartları</a>
+                                    <a href="/kredi-karti/ticari-kredi-kartlari">Ticari Kredi Kartları</a>
                                 </li>
                                 <li>
-                                    <a href="#!">Tüm Kredi Kartları</a>
+                                    <a href="/kredi-karti/">Tüm Kredi Kartları</a>
                                 </li>
                             </ul>
 

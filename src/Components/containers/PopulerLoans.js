@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import { apiConstant, GetNoneToken } from "../../datacrud/datacrud";
 export const PopulerLoans = () => {
     const [data, setData] = useState([])
@@ -19,12 +18,14 @@ export const PopulerLoans = () => {
                 <div>
                     <p style={{ textAlign: "center", fontWeight: "bold" }}>
                         <img title="öne çıkan krediler kredi.com.tr" alt="popüler krediler " style={{ width: 22, marginRight: 5 }} src={require("../../assets/images/mck.png").default}></img>
-                       Öne Çıkan Krediler
+                       Öne Çıkan 
+                       Krediler
+                     
                     </p>
                 </div>
                 <div className="container">
                     <div className="row row-container" >
-                        {data.map((item, index) => {
+                        {data?.map((item, index) => {
                             var isLast = data.length == index + 1;
       
                             return (

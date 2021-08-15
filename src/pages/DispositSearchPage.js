@@ -13,7 +13,7 @@ export const DispositSearchPage = (props) => {
     const [currencyIcon, setCurrencyIcon] = useState("₺")
     const [currency, setCurrency] = useState(0)
 
-    const [termValue, setTermValue] = useState()
+    const [termValue, setTermValue] = useState("")
     const [amount, setAmount] = useState()
 
     useEffect(() => {
@@ -35,6 +35,7 @@ export const DispositSearchPage = (props) => {
 
         prm.set("c", currency)
         window.location.replace("/vadeli-mevduati-hesaplama-ve-basvuru?" + prm)
+        // window.location.replace()
     }
 
     return (
@@ -85,7 +86,7 @@ export const DispositSearchPage = (props) => {
                                         decimalSeparator=","
                                         thousandSeparator="."
                                         precision="0"
-                                        onChange={(x) => { setAmount(x.replace(".", "").replace(",", "").replace(currencyIcon, "")) }}
+                                        onChange={(x) => { setAmount(x.replace(/\./g, "").replace(",", "").replace(currencyIcon, "")) }}
                                         value={amount}
 
                                         prefix={currencyIcon}
@@ -98,7 +99,6 @@ export const DispositSearchPage = (props) => {
                                         value={termValue}
                                         onChange={(d) => { setTermValue(d.target.value) }}
                                         placeholder="Vade"
-                                        arrowClassName="dropdownArrow"
 
                                     />
                                 </div>

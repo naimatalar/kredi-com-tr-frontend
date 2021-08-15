@@ -5,7 +5,9 @@ import CurrencyInput from "react-currency-input";
 import Dropdown from 'react-dropdown';
 import { loanRedirect } from "../Components/RedirectComponent";
 export const SearchLoanPage = (props) => {
-  var [data, setData] = useState([])
+  const [data, setData] = useState([])
+  const [noData, setNoData] = useState(false)
+
   const [loansOption, setLoanOption] = useState([])
   const [terms, setTerms] = useState([])
   const [termsValue, setTermsValue] = useState()
@@ -23,8 +25,8 @@ export const SearchLoanPage = (props) => {
       lns.push({ label: item.loanName, value: item.id })
     }
     setLoanOption(lns)
-    let amount = new URLSearchParams(props.location.search).get("amount")||0
-    let term = new URLSearchParams(props.location.search).get("term")||0
+    let amount = new URLSearchParams(props.location.search).get("amount") || 0
+    let term = new URLSearchParams(props.location.search).get("term") || 0
 
 
 
@@ -42,6 +44,10 @@ export const SearchLoanPage = (props) => {
     var terms = await PostNoneToken("InterestRates/GetLoanSearchResult", d).then(x => { return x.data }).catch(x => { return false })
 
     setData(terms)
+    if (terms?.length==0) {
+      setNoData(true)
+    }
+
   }
 
   const loanTypeOnChange = async (id) => {
@@ -64,7 +70,7 @@ export const SearchLoanPage = (props) => {
   const calculate = async () => {
     var data = {
       loanTypeId: loanType,
-      amount: (amount != null ? amount.replace("₺", "").replace(".", "") : ""),
+      amount: (amount != null ? amount.replace("₺", "").replace(/\./g, "") : ""),
       term: termsValue
     }
 
@@ -131,18 +137,24 @@ export const SearchLoanPage = (props) => {
 
 
       </div>
-      <div className="col-12 col-md-4 d-none d-lg-flex d-md-flex">
-        <LoanRate></LoanRate>
 
-      </div>
       <div className="col-12 col-md-8">
 
         {
           data?.map((item, key) => {
-
+            let isPopuler = ""
+            if (item?.loanInfo?.isPopuler) {
+              isPopuler = "special-select"
+            }
             return (
-              <div key={key} className="col-12 row loan-search-list-item mb-3">
-                <div className="col-3">
+              <div key={key} className={"col-12 row loan-search-list-item mb-3 pt-4 " + isPopuler}>
+                {
+                  isPopuler != "" &&
+                  <div className="populer-mark">
+                    <img style={{ width: 32 }} src={require("../assets/images/special.png").default} /> Sponsorlu
+                  </div>
+                }
+                <div className="col-3 mt-2">
                   <div className="mb-2">
                     <img title={item?.loanInfo?.bankName + " " + item?.loanInfo?.loanName} alt={item?.loanInfo?.bankName + " " + item?.loanInfo?.loanName + " sorgulama"} src={apiurl + item?.loanInfo?.bankLogoUrl} style={{ width: "100%" }}></img>
                   </div>
@@ -154,7 +166,7 @@ export const SearchLoanPage = (props) => {
                     <span style={{ color: "grey" }}>Faiz Oranı</span>
                   </div>
 
-                  <div className="mb-2"><b style={{ color: "Black" }}>{item?.loanInfo?.rate}</b></div>
+                  <div className="mb-2"><b style={{ color: "black" }}>{item?.loanInfo?.rate}</b></div>
                 </div>
                 <div className="col-2">
                   <div className="">
@@ -170,7 +182,8 @@ export const SearchLoanPage = (props) => {
                       background: "none",
                       color: "black",
                       fontWeight: "bold",
-                      maxWidth: "100%"
+                      maxWidth: "100%",
+
 
                     }}
                       className="col-7"
@@ -196,7 +209,7 @@ export const SearchLoanPage = (props) => {
                       display: "inline",
                       float: "left",
                       background: "none",
-                      color: "black",
+                      color: "black ",
                       fontWeight: "bold",
                       maxWidth: "100%"
 
@@ -228,7 +241,7 @@ export const SearchLoanPage = (props) => {
                   </div>
 
                   <div className="mb-2" style={{ textAlign: "center" }}>
-                    <a href={"/bankalar/" + item?.loanInfo?.bankUrlName + "-kredi-hesaplama-ve-basvuru?amount=" + amount + "&term=" + staticTerm + "&loanId=" + item.loanInfo.interestRateId + ""} style={{ fontWeight: "bold", color: "rgb(85 0 195)", textDecoration: "underline" }}  >Detay</a>
+                    <a href={"/bankalar/" + item?.loanInfo?.bankUrlName + "-kredi-hesaplama-ve-basvuru?amount=" + amount + "&term=" + staticTerm + "&loanId=" + item?.loanInfo?.interestRateId + ""} style={{ fontWeight: "bold", color: "rgb(85 0 195)", textDecoration: "underline" }}  >Detay</a>
                   </div>
                 </div>
 
@@ -236,10 +249,13 @@ export const SearchLoanPage = (props) => {
 
           })
         }{
-          data?.length == 0 && <div className="col-12 row text-center justify-content-center"><b><i style={{color:"#b0b0b0"}}>Sonuç Bulunamadı !</i></b>  </div>
+          noData  && <div className="col-12 row text-center justify-content-center"><b><i style={{ color: "#b0b0b0" }}>Sonuç Bulunamadı !</i></b>  </div>
         }
       </div>
+      <div className="col-12 col-md-4 d-none d-lg-flex d-md-flex">
+        <LoanRate></LoanRate>
 
+      </div>
     </div>
   </div>)
 }

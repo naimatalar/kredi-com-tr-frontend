@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react"
+import { Helmet } from "react-helmet"
+import { creditCartRedirect } from "../Components/RedirectComponent"
 import { apiurl, GetNoneToken } from "../datacrud/datacrud"
 export const CreditCartDetail = (props) => {
     const [data, setData] = useState({})
@@ -24,9 +26,23 @@ export const CreditCartDetail = (props) => {
     }
     return (
         <div className="master-content">
+            <Helmet>
+                <meta name="og:image" content={apiurl + data?.logo}></meta>
+                <meta name="twitter:image" content={apiurl + data?.logo}></meta>
+                <meta property="og:type" content="article" />
+                <meta property="og:title" content={data?.bank +" "+data?.name + " Kredi Kartı"} />
+                <meta property="og:url" content={window.location.href} />
+                <meta property="og:description"  content={"Kredi Kartı Detayları :"+data?.bank +" "+data?.name + " Kredi Kartı , "+(data?.yearlyUsingAmount == 0 ? "Ücretsiz" : data?.yearlyUsingAmount + " TL")}  />
+                <meta name="keyword" content="kredi, kredi kartı, kredi başvurusu, kredi faiz oranı, kredi kartı başvurusu" />
+                <meta name="twitter:title"  content={data?.bank +" "+data?.name + " Kredi Kartı"}  />
+                <meta name="twitter:description"  content={"Kredi Kartı Detayları :"+data?.bank +" "+data?.name + " Kredi Kartı , "+(data?.yearlyUsingAmount == 0 ? "Ücretsiz" : data?.yearlyUsingAmount + " TL")} />
+                <meta name="description"  content={"Kredi Kartı Detayları :"+data?.bank +" "+data?.name + " Kredi Kartı , "+(data?.yearlyUsingAmount == 0 ? "Ücretsiz" : data?.yearlyUsingAmount + " TL")}/>
+                <meta name="robots" content="index,follow" />
+                <title>{data.bank +" - "+data.name + " Kredi Kartı"} </title>
+            </Helmet>
             <div className="row credit-cart-content" >
                 <div className="col-12 col-md-4">
-                    <img src={apiurl + data.logo} alt={data.name + " Kredi Kartı"} style={{ width: "90%" }}></img>
+                    <img src={apiurl + data.logo} alt={ data.name + " Kredi Kartı"} style={{ width: "90%" }}></img>
                 </div>
                 <div className="col-12 col-md-8 row cart-master-info pt-4">
                     <div className="row col-12" style={{
@@ -53,17 +69,28 @@ export const CreditCartDetail = (props) => {
                         <div className="col-12" style={{ color: "grey", fontWeight: "bold" }}>Üye İşyeri Sayısı</div>
                         <div className="col-12" style={{ color: "black" }}>{data.memberBussiness}</div>
                     </div>
-                    <div className="row col-12 justify-content-between mt-5">
+                    <div className="row col-12 justify-content-between mt-5 card-detail-button-text">
                         <div className="row col-6">
                             <div className="col-12" style={{ color: "grey", fontWeight: "bold", fontSize: 25 }}>Yıllık Kullanım Ücreti</div>
-                            <div className="col-12" style={{ color: "black", fontWeight: "bold", fontSize: 25 }} >{data.yearlyUsingAmount == 0 ? "Ücretsiz" : data.yearlyUsingAmount}</div>
+                            <div className="col-12" style={{ color: "black", fontWeight: "bold", fontSize: 25 }} >{data.yearlyUsingAmount == 0 ? "Ücretsiz" : data.yearlyUsingAmount + " TL"}</div>
                         </div>
                         <div className="row col-6">
-                            <a className="default-button row" style={{
-                                fontSize: 23, maxHeight: 60, color: "white",
-                                justifyContent: "center",
-                                alignItems: "center"
-                            }}>Başvur</a>
+                            <a className="default-button row"
+                                onClick={() => creditCartRedirect(null,
+                                    data.redirectUrl,
+                                    data.bankId,
+                                    data.id,
+                                    {
+                                        bankName: data.bank,
+                                        CreditCartName: data.name
+                                    })}
+
+                                style={{
+                                    fontSize: 23, maxHeight: 60, color: "white",
+                                    justifyContent: "center",
+                                    alignItems: "center",
+                                    cursor: "pointer"
+                                }}>Başvur</a>
                         </div>
                     </div>
                 </div>
@@ -85,11 +112,11 @@ export const CreditCartDetail = (props) => {
                 <div className=" row justify-content-center col-12">
                     <div className="col-12 col-md-12 row cart-master-info pt-4 ">
                         {
-                            attributas.map((item, key) => {
+                            attributas?.map((item, key) => {
 
                                 return (
                                     <>
-                                        <div key={key} className="col-3 mb-3" >
+                                        <div key={key} className="col-12 col-md-3 col-lg-3 mb-3" >
                                             <div className="col-12" style={{ borderBottom: "2px solid #d8d8d8", color: "grey" }}>
                                                 {item.Key}
                                             </div>

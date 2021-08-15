@@ -14,6 +14,7 @@ import { PopulerLoans } from "../Components/containers/PopulerLoans";
 import Slider from "../Components/containers/Slider";
 import { DispositContainer } from "../Components/containers/DispositContainer";
 import { GetNoneToken } from "../datacrud/datacrud";
+import { PopulerBankCampaing } from "../Components/containers/PopulerBankCampaing";
 export const Home = (props) => {
 
     const [addsPopup, setAddsPopup] = useState(false)
@@ -30,31 +31,14 @@ export const Home = (props) => {
             setSss(sss_)
         }
         var blg = await GetNoneToken("Blogs/GetAllWebSite").then(x => { return x.data }).catch(x => { return false })
-       
+
         if (blg) {
             setBlog(blg)
         }
 
     }
-
+    console.log("rnd")
     return (<>
-        <Helmet>
-            <meta property="og:type" content="article" />
-            <meta property="og:title" content="Kredi Fırsatları, En İyi Kredi Kartları | kredi.com.tr" />
-            <meta property="og:url" content={window.location.href} />
-            <meta property="og:description" content="En uygun kredi fırsatlarını kredi.com.tr ayrıcalığı ile sizlerle buluşturuyoruz. Bol puan veren ve uçuş mili kazandıran kredi kartlarını sizin için listeleyip tercihlerinize sunuyoruz." />
-            <meta name="keyword" content="kredi, kredi kartı, kredi başvurusu, kredi faiz oranı, kredi kartı başvurusu" />
-            <meta name="twitter:title" content="Kredi Fırsatları, En İyi Kredi Kartları | kredi.com.tr" />
-            <meta name="twitter:description" content="Kredi.com.tr | Türkiyenin En Profesyonel Kredi Ve Kredi Kartı Başvuru Platformu" />
-            <meta name="description" content="kredi.com.tr Kolayca Arayın, Pratik Şekilde Hesaplayın, Hızlıca Başvurun!" />
-            <meta name="robots" content="index,follow" />
-            <title>KREDİ.COM.TR | Türkiyenin En Profesyonel Kredi Ve Kredi Kartı Başvuru Platformu</title>
-        </Helmet>
-
-        {/* <NextSeo
-            title="Simple Usage Example"
-            description="A short description goes here."
-        /> */}
         {
             addsPopup && <> <div onClick={() => { setAddsPopup(false) }} className="lv-shadow"></div>
                 <div className="lv-master">
@@ -89,7 +73,9 @@ export const Home = (props) => {
         }
 
         <div className="row">
+            <div>
 
+            </div>
 
 
 
@@ -141,8 +127,15 @@ export const Home = (props) => {
 
 
         </div>
-        <div className="col-12">
+        <div className="col-12  mb-4">
+            <PopulerBankCampaing></PopulerBankCampaing>
+        </div>
+
+        <div className="col-12 mt-5">
             <p className="home-title" >En çok kazandıran <span style={{ fontWeight: "bold" }}>vadeli mevduat seçeneklerini </span> sizin için seçtik.</p>
+
+
+
         </div>
         <div className=" mb-4 bt-4">
             <div className="mb-3" style={{
@@ -248,14 +241,14 @@ export const Home = (props) => {
 
                                 </div>
                                 <div>
-                                    <h6 style={{color:"black",fontSize:13}}>*{item.ansver}</h6>
+                                    <h6 style={{ color: "black", fontSize: 13 }}>*{item.ansver}</h6>
                                 </div>
                             </div>)
                         })}
 
 
                         <div style={{ padding: 5 }}>
-                            <a href="" style={{ fontWeight: "bold", textDecoration: "underline",color:"#007bff" }}>SIK SORULAN SORULAR SAYFASINA GİT</a>
+                            <a href="/soru-cevap" style={{ fontWeight: "bold", textDecoration: "underline", color: "#007bff" }}>SIK SORULAN SORULAR SAYFASINA GİT</a>
                         </div>
                     </div>
                     <div className="col-lg-6 col-md-6 col-sm-12 imghide">
@@ -264,11 +257,11 @@ export const Home = (props) => {
                             {blog?.map((item, key) => {
 
                                 return (
-                                    <div style={{ padding: 5 }}>
+                                    <div key={key} style={{ padding: 5 }}>
                                         <h6><b>* {item.title}</b> </h6>
-                                        <div className="maxhg" style={{ color: "black",paddingBottom:23 }} dangerouslySetInnerHTML={{ __html: item.content }}></div>
-                                        
-                                        <p><b><a style={{color:"#007bff"}} href={"/haberler-bilgiler/"+item.urlName }>Devamını Oku...</a></b></p>
+                                        <div className="maxhg" style={{ color: "black", paddingBottom: 23 }} dangerouslySetInnerHTML={{ __html: item.content }}></div>
+
+                                        <p><b><a style={{ color: "#007bff" }} href={"/haberler-bilgiler/" + item.urlName}>Devamını Oku...</a></b></p>
                                     </div>
                                 )
                             })}
@@ -276,7 +269,7 @@ export const Home = (props) => {
                         </div>
 
                         <div style={{ padding: 5 }}>
-                            <a href="/haberler-bilgiler" style={{ fontWeight: "bold", textDecoration: "underline",color:"#007bff" }}>BLOG SAYFASINA GİT</a>
+                            <a href="/haberler-bilgiler" style={{ fontWeight: "bold", textDecoration: "underline", color: "#007bff" }}>BLOG SAYFASINA GİT</a>
                         </div>
                     </div>
                 </div>

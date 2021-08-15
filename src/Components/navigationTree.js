@@ -63,7 +63,7 @@ const NavigationTree = (props) => {
                                         border: "1px solid #077a68",
                                         borderRadius: 6,
                                         padding: "3px 9px 2px 10px"
-                                    }} className="nav-link" href="/hesaplama/aylik-ne-kadar-odeyebilirim">Aylık Ne Kadar Kredi Ödeyebilirim?</a>
+                                    }} className="nav-link" href="/hesaplama/aylik-ne-kadar-odeyebilirim">Ne Kadar Kredi Çekebilirim?</a>
                                 </div>
                                 <Nav style={{ float: "right" }}>
                                     <NavItem onMouseLeave={toggle} onMouseEnter={toggle}>

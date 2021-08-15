@@ -16,7 +16,7 @@ const HowMuchLoan = () => {
 
 
             <div className="row" style={{ padding: 14 }}>
-                <h5>Ne Kadar Kredi Çekmeliyim?</h5>
+                <h5>Ne Kadar Kredi Çekebilirim?</h5>
                 <p style={{ color: "black" }}>Bu similatör, size en uygun ve kolay ödenebilir kredi fırsatlarını hesaplar. Hesaplama sonucunda size en uygun kredi fırsatlarını listeler </p>
 
             </div>
@@ -24,22 +24,11 @@ const HowMuchLoan = () => {
                 paddingTop: 18,
                 borderTop: "1px solid #757373"
             }}>
+              
+              
                 <div className="col-6">
-                    <CurrencyInput thousandSeparator="." maxLength={8} precision="0" prefix="₺" value={amount} onChangeEvent={(val) => { setAmount(val.target.value) }} style={{
-                        padding: 3,
-                        width: "100%",
-                        border: "1px solid #717171",
-                        color: "black"
-                    }} />
-                </div>
-                <div className="col-6">
-                    <button className="default-button fastloan-button" style={{
-                        padding: 2,
-                        width: "65%",
-                        textAlign: "center",
-                        fontWeight: "bold",
-                        color: "white"
-                    }} type="submit">DEVAM</button>
+                    <a href="/hesaplama/aylik-ne-kadar-odeyebilirim"> Hesaplamak için tıklayınız </a>
+                  
                 </div>
             </div>
 

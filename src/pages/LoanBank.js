@@ -133,7 +133,7 @@ export const LoanBank = (props) => {
                                     precision="0"
                                     prefix="₺"
                                     value={amt}
-                                    onChange={(val) => { updateSelectedLoanOption(null, val.replace("₺", "").replace(".", ""), null); setAmt(val.replace("₺", "").replace(".", "")) }}
+                                    onChange={(val) => { updateSelectedLoanOption(null, val.replace("₺", "").replace(/\./g, ""), null); setAmt(val.replace("₺", "").replace(/\./g, "")) }}
                                 />
                                 <div> <b style={{ color: "black" }}>Vade</b></div>
                                 <Dropdown

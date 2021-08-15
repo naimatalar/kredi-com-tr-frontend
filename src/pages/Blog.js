@@ -53,7 +53,7 @@ export const Blog = (props) => {
 
         <Helmet>
             <meta property="og:type" content="article" />
-            <meta property="og:title" content="Finans dünyasını takip edip sizlerle paylaşıyoruz. | kredi.com.tr" />
+            <meta property="og:title" content="KREDİ.COM.TR | Finans Dünyasını Takip Edip Sizlerle Paylaşıyoruz." />
             <meta property="og:url" content={window.location.href} />
             <meta property="og:description" content="En uygun kredi fırsatlarını kredi.com.tr ayrıcalığı ile sizlerle buluşturuyoruz. Finans dünyasını yakından takip edip sizleri haberdar ediyoruz." />
             <meta name="keyword" content="kredi, kredi kartı, kredi başvurusu, kredi faiz oranı, kredi kartı başvurusu" />
@@ -154,7 +154,7 @@ export const Blog = (props) => {
                     </div>
                     {props.Banks.slice(0, 5).map((item, key) => {
                         return (
-                            <div className="row mb-4" style={{ borderTop: " 1px solid #dadada", paddingTop: 9 }}>
+                            <div key={key} className="row mb-4" style={{ borderTop: " 1px solid #dadada", paddingTop: 9 }}>
                                 <div className="col-3 p-1"><img src={apiurl + item.logoUrl} alt={item.bankName + " bilgiler"} title={item.bankName + " bilgiler"} style={{ width: "100%" }}></img> </div>
                                 <div className="col-3 p-0" style={{
                                     color: "black",

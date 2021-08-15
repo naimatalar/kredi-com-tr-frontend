@@ -8,7 +8,7 @@ export const LoanSearch = (props) => {
     const [terms, setTerms] = useState([])
     const [termsValue, setTermsValue] = useState()
 
-    const [amount, setAmount] = useState(null)
+    const [amount, setAmount] = useState("")
     const [loanType, setLoanType] = useState()
     const [propsLoan, setPropsLoan] = useState([])
 
@@ -35,14 +35,21 @@ export const LoanSearch = (props) => {
     }
 
     const calculate = async () => {
-        var data = {
-            loanTypeId: loanType,
-            amount: (amount != null ? amount.replace("₺", "").replace(".", "") : ""),
-            term: termsValue
+        var data = {};
+        try {
+            data = {
+                loanTypeId: loanType,
+                amount: (amount != null ? amount?.replace("₺", "").replace(/\./g, "") : ""),
+                term: termsValue
+            }
+        } catch (error) {
+            alert(error)
         }
+
+
         if (data.loanTypeId) {
             var urlName = propsLoan.find(x => x.id == data.loanTypeId)?.urlName
-            
+
             let prm = new URLSearchParams()
             prm.set("amount", data.amount)
             prm.set("term", data.term)
@@ -66,7 +73,7 @@ export const LoanSearch = (props) => {
     return (
 
         <div >
-            <div className="" style={props.backgroundStyle||{borderRadius:5}}>
+            <div className="" style={props.backgroundStyle || { borderRadius: 5 }}>
                 <div className="container">
                     <div className="row" >
                         <div className="loan-search-content">
@@ -105,7 +112,7 @@ export const LoanSearch = (props) => {
                                             onChange={(d) => { termListOnChange(d.value) }}
                                             placeholder="Vade"
                                             arrowClassName="dropdownArrow"
-                                        
+
                                         />
                                     </div>
 
@@ -113,7 +120,7 @@ export const LoanSearch = (props) => {
                                         &nbsp;
                                     </div>
                                     <div className="col-6 " style={{ justifyontent: "flex-end", marginTop: 12 }}>
-                                        <button onClick={(x) => { calculate() }} className="default-button" type="submit">ARA</button>
+                                        <button onClick={(x) => { calculate() }} className="default-button" >ARA</button>
                                     </div>
                                 </div>
                             </div>

@@ -76,21 +76,23 @@ export const CreditCart = (props) => {
     return (
         <div className="ccartcontent">
             <Helmet>
+                <meta name="og:image" content={require("../assets/images/logo192.png").default}></meta>
+                <meta name="twitter:image" content={require("../assets/images/logo192.png").default}></meta>
                 <meta property="og:type" content="article" />
-                <meta property="og:title" content="Mil Kazandıran Ve Puan Veren Kredi Kartları" />
+                <meta property="og:title" content="Mil Kazandıran Ve Puan Veren Kredi Kartları | KREDİ.COM.TR" />
                 <meta property="og:url" content={window.location.href} />
                 <meta property="og:description" content="Onlarca kredi kartlarını listeledik. Mil veren kredi kartları Bol bol uçuk kazandırıyor. Diğer yandan puan biriktirilen kredi kartları ile harcayarak kazanıyorsunuz." />
                 <meta name="keyword" content="kredi, kredi kartı, kredi başvurusu, kredi faiz oranı, kredi kartı başvurusu" />
                 <meta name="twitter:title" content="Mil Kazandıran Ve Puan Veren Kredi Kartları" />
-                <meta name="twitter:description" content= "Onlarca kredi kartlarını listeledik. Mil veren kredi kartları Bol bol uçuk kazandırıyor. Diğer yandan puan biriktirilen kredi kartları ile harcayarak kazanıyorsunuz." />
+                <meta name="twitter:description" content="Onlarca kredi kartlarını listeledik. Mil veren kredi kartları Bol bol uçuk kazandırıyor. Diğer yandan puan biriktirilen kredi kartları ile harcayarak kazanıyorsunuz." />
                 <meta name="description" content="Onlarca kredi kartlarını listeledik. Mil veren kredi kartları Bol bol uçuk kazandırıyor. Diğer yandan puan biriktirilen kredi kartları ile harcayarak kazanıyorsunuz." />
                 <meta name="robots" content="index,follow" />
-                <title>{"Mil Kazandıran Ve Puan Veren Kredi Kartları | kredi.com.tr"} </title>
+                <title>{"Mil Kazandıran Ve Puan Veren Kredi Kartları | KREDİ.COM.TR"} </title>
             </Helmet>
             <div className="ccbanner" style={{ overflow: "hidden" }}>
 
             </div>
-            <div className="credit-cart-head" style={{ backgroundImage: 'url('+hcbgImage+')',}} >
+            <div className="credit-cart-head" style={{ backgroundImage: 'url(' + hcbgImage + ')', }} >
 
                 <div className="row mb-4">
                     <div className="col-12" style={{ textAlign: "center", marginTop: 40 }}>
@@ -110,7 +112,7 @@ export const CreditCart = (props) => {
                                 <Link to="/kredi-karti/puan-veren-kredi-kartlari">  <img alt="Puan veren kartlarını listele ve bul" title="Puan biriktirip harcadıkça kazandıran puan veren kredi kartları" style={{ width: 18, marginRight: 5 }} src={require("../assets/images/scorecolor.png").default}></img>Puan Veren Kartlar</Link>
                             </li>
                             <li className={props.cartType == "corporate" ? "active" : ""}>
-                                <Link to="/kredi-karti/ticari-kredi-kartlari"><img alt="Ticari kredi kartlarını bul" title="Ticari kredi kartları ile alışverişi kazançlı hale getiren ticari kredi kartları"  style={{ width: 18, marginRight: 5 }} src={require("../assets/images/corporatecolor.png").default}></img>Ticari Kartlar</Link>
+                                <Link to="/kredi-karti/ticari-kredi-kartlari"><img alt="Ticari kredi kartlarını bul" title="Ticari kredi kartları ile alışverişi kazançlı hale getiren ticari kredi kartları" style={{ width: 18, marginRight: 5 }} src={require("../assets/images/corporatecolor.png").default}></img>Ticari Kartlar</Link>
                             </li>
 
 
@@ -139,7 +141,7 @@ export const CreditCart = (props) => {
                                         <div key={key} style={{ marginBottom: 13, background: bg, padding: 10 }}>
                                             <label style={{ marginBottom: 0, cursor: "pointer" }}>
                                                 <input value={item.name} className="bankCheckbox" onChange={(element) => changeFilter(element)} style={{ width: 22, height: 22 }} type="checkbox"></input>
-                                                <img alt={item.name +"bütün kredi kartları listele"} title={item.name +" kredi kartları listele"} style={{ width: 120, marginLeft: 10, marginTop: -13 }} src={apiurl + item.logoUrl}></img>
+                                                <img alt={item.name + "bütün kredi kartları listele"} title={item.name + " kredi kartları listele"} style={{ width: 120, marginLeft: 10, marginTop: -13 }} src={apiurl + item.logoUrl}></img>
                                             </label>
                                         </div>
                                     )
@@ -153,18 +155,27 @@ export const CreditCart = (props) => {
                         <div className="">
 
 
-                            <div className="row">
+                            <div className="row mt-4">
 
 
                                 {krediKartData.map((item, index) => {
+                                    let isPopuler = ""
+                                    if (item.isPopuler) {
+                                        isPopuler = "special-offer"
+                                    }
                                     return (
-                                        <div key={index} className="lg-md-6 col-lg-6 col-sm-6 col-xs-12 " style={{ marginBottom: 35 }}>
-
+                                        <div key={index} className={"lg-md-6 col-lg-6 col-sm-6 col-xs-12 " + isPopuler} style={{ marginBottom: 35 }}>
+                                            {
+                                                isPopuler != "" &&
+                                                <div className="populer-mark">
+                                                    <img style={{ width: 32 }} src={require("../assets/images/special.png").default} /> Sponsorlu
+                                                </div>
+                                            }
                                             <div className="row credit-cart-item">
 
                                                 <div className="col-8">
                                                     <h6 style={{ marginLeft: 10, color: "#ce2312" }}>{item.name}</h6>
-                                                    <img alt={item.bank +" banka ait"+item.name +"  adlı kredi kartı" }  title={item.bank +" banka "+item.name +" Kredi kartı" } src={apiurl + item.logo} style={{ width: "100%" }}></img>
+                                                    <img alt={item.bank + " banka ait" + item.name + "  adlı kredi kartı"} title={item.bank + " banka " + item.name + " Kredi kartı"} src={apiurl + item.logo} style={{ width: "100%" }}></img>
                                                 </div>
                                                 <div className="col-4" >
                                                     <b style={{
@@ -172,26 +183,26 @@ export const CreditCart = (props) => {
                                                         color: "#828282"
                                                     }}>Yıllık Ücret</b>
                                                     <p style={{ marginBottom: 5 }}><b>{item.yearlyUsingAmount} ₺</b></p>
-                                                    <button 
-                                                    onClick={() => creditCartRedirect(null,
-                                                        item.redirectUrl,
-                                                        item.bankId,
-                                                        item.creditCartId,
-                                                        {
-                                                            bankName: item.bank,
-                                                            CreditCartName:item.name
-                                                        })}
-                                                    className="default-button" style={{
-                                                        padding: 3,
-                                                        fontSize: 13
-                                                    }} type="submit">BAŞVUR</button>
-                                                    <a href={"/"+item.bankUrlName+"/"+item.urlName} className="default-button" style={{
+                                                    <button
+                                                        onClick={() => creditCartRedirect(null,
+                                                            item.redirectUrl,
+                                                            item.bankId,
+                                                            item.creditCartId,
+                                                            {
+                                                                bankName: item.bank,
+                                                                CreditCartName: item.name
+                                                            })}
+                                                        className="default-button" style={{
+                                                            padding: 3,
+                                                            fontSize: 13
+                                                        }} type="submit">BAŞVUR</button>
+                                                    <a href={"/" + item.bankUrlName + "/" + item.urlName} className="default-button" style={{
                                                         padding: 3,
                                                         fontSize: 13,
                                                         marginTop: 14,
                                                         background: "#585858",
-                                                        textAlign:"center",
-                                                        color:"white"
+                                                        textAlign: "center",
+                                                        color: "white"
                                                     }} type="submit">DETAY</a>
 
                                                 </div>

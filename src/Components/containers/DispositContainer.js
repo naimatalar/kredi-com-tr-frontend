@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import CurrencyInput from "react-currency-input";
 
 import { apiConstant, apiurl, GetNoneToken } from "../../datacrud/datacrud";
+import { dispositRedirect, loanRedirect } from "../RedirectComponent";
 export const DispositContainer = (props) => {
     const [data, setData] = useState([])
 
@@ -109,8 +110,21 @@ export const DispositContainer = (props) => {
                                     <div className="align-self-center">
                                         <a style={{
                                             fontSize: 14,
-                                            background: "rebeccapurple"
-                                        }} className="default-button">
+                                            background: "rebeccapurple",
+                                            cursor:"pointer",
+                                            color:"white"
+                                        }} 
+                                        onClick={() => dispositRedirect(
+                                            item.redirectUrl,
+                                            item.bankId,
+                                            item.dispositId,
+                                            {
+                                                bankName: item.bankName,
+                                                amount: item.amount.toString(),
+                                                rate: item.rate.toString(),
+                                                term: item.dayTerm.toString()
+                                            })}
+                                        className="default-button">
                                             Hemen Başvur</a></div>
 
                                 </div>

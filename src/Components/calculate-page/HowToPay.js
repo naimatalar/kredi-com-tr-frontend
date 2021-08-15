@@ -103,9 +103,19 @@ export const HowToPay = () => {
             <div className="col-12 mb-3 mt-3"><h2>Aylık Ne Kadar Kredi Ödeyebilirm? </h2><hr className="title-hr mt-1"></hr></div>
 
             <div className="row col-12">
-                <h4>Hemen Hesapla</h4>
+                <div className="row pt-0 col-12" style={{color:"black"}}>
+                   Bu hesaplama aracımız sizin aylık ödeyebileceğiniz tutarı hesaplar. Bu hesaplamayı yaparken aylık gelirinizi ve bir kısım giderlerinizi sisteme girmeniz yeterli olacaktır. Hesaplamayı yaptıktan sonra size en uygun krediyi veren bankayı bulur.                
+                </div>
+
+                <br></br>
+                
+                <div className="row col-12 mt-2">
+                    <h4>Hemen Hesapla</h4>
+                </div>
+
+
                 {loading == true && <img className="ld-but" src={require("../../assets/images/loading.gif").default}></img>}
-                <div className={"col-12 row calculate-page-calculate-container mt-4 "  + (loading == true ? "add-blur" : "")} onSubmit={() => { return false }}>
+                <div className={"col-12 row calculate-page-calculate-container mt-4 " + (loading == true ? "add-blur" : "")} onSubmit={() => { return false }}>
 
                     <div className="col-12 col-md-7 col-lg-7">
 
@@ -192,14 +202,14 @@ export const HowToPay = () => {
                                             {item.items?.map((jitem, jkey) => {
                                                 let color = jkey % 2 == 0 ? { background: "#eeeeee" } : {};
                                                 return (
-                                                    <Collapse style={color} className="pt-2 pb-2 col-12 row justify-content-center" key={jkey} isOpen={collapseId == item.id} >
+                                                    <Collapse  style={color} className="pt-2 pb-2 col-12 row justify-content-center" key={jkey} isOpen={collapseId == item.id} >
 
 
 
                                                         <div className="row col-12">
                                                             <div className="col-3">
-                                                                <div className="col-12 text-center">
-                                                                    <b>Aylık Ödeme</b>
+                                                                <div className="col-12 text-center font-weight-bold">
+                                                                    Aylık Ödeme
                                                                 </div>
                                                                 <div className="col-12 text-center">
                                                                     {jitem.mountlyPayment.toFixed(2)}
@@ -207,8 +217,8 @@ export const HowToPay = () => {
                                                                 </div>
                                                             </div>
                                                             <div className="col-1">
-                                                                <div className="col-12 text-center">
-                                                                    <b>Faiz</b>
+                                                                <div className="col-12 text-center font-weight-bold">
+                                                                    Faiz
                                                                 </div>
                                                                 <div className="col-12 text-center">
                                                                     {jitem.rate}
@@ -216,8 +226,8 @@ export const HowToPay = () => {
                                                                 </div>
                                                             </div>
                                                             <div className="col-2">
-                                                                <div className="col-12 text-center">
-                                                                    <b>Vade</b>
+                                                                <div className="col-12 text-center font-weight-bold">
+                                                                    Vade
                                                                 </div>
                                                                 <div className="col-12 text-center">
                                                                     {jitem.term}
@@ -225,8 +235,8 @@ export const HowToPay = () => {
                                                                 </div>
                                                             </div>
                                                             <div className="col-4 ">
-                                                                <div className="col-12 text-center">
-                                                                    <b>Toplam Geri Ödeme</b>
+                                                                <div className="col-12 text-center font-weight-bold">
+                                                                    Toplam Geri Ödeme
                                                                 </div>
                                                                 <div className="col-12 text-center">
                                                                     {jitem.totalPayment.toFixed(2)} ₺
@@ -252,9 +262,7 @@ export const HowToPay = () => {
                     </div>
                 </div>
             </div>
-            <p>Bu hesaplama aracımız sizin aylık ödeyebileceğiniz tutarı hesaplar. Bu hesaplamayı yaparken aylık gelirinizi ve bir kısım giderlerinizi sisteme girmeniz yeterli olacaktır.
-            </p>
-            <p>Hesaplamayı yaptıktan sonra size en uygun krediyi veren bankayı bulur.</p>
+
 
         </div>
 
