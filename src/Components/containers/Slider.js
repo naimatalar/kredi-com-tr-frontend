@@ -20,7 +20,7 @@ const Slider = () => {
   const start = async () => {
     var data = await GetNoneToken("Sliders/GetAllSite").then(x => { return x.data }).catch(x => { return false })
     setImages(data)
-    console.log(data)
+   
   }
 
   return (

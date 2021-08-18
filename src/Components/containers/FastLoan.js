@@ -47,7 +47,7 @@ export const FastLoan = () => {
 
     }
 
-    console.log("sdfgdf", "gdfghd")
+  
 
     return (
 

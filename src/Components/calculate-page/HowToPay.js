@@ -96,28 +96,29 @@ export const HowToPay = () => {
         setKrediKart("")
         setEvGiderleri("")
         setNeKadarKredi("")
+        setResultData([])
 
     }
     return (
         <div className="row">
-            <div className="col-12 mb-3 mt-3"><h2>Aylık Ne Kadar Kredi Ödeyebilirm? </h2><hr className="title-hr mt-1"></hr></div>
+            <div className="col-12 mb-3 mt-3"><h2>Ne Kadar Kredi Çekebilirim? </h2><hr className="title-hr mt-1"></hr></div>
 
             <div className="row col-12">
                 <div className="row pt-0 col-12" style={{color:"black"}}>
-                   Bu hesaplama aracımız sizin aylık ödeyebileceğiniz tutarı hesaplar. Bu hesaplamayı yaparken aylık gelirinizi ve bir kısım giderlerinizi sisteme girmeniz yeterli olacaktır. Hesaplamayı yaptıktan sonra size en uygun krediyi veren bankayı bulur.                
+                   Bu hesaplama aracımız sizin aylık ödeyebileceğiniz tutarı hesaplar. Size kredi verebilecek olan bankaları bulur. Bu hesaplamayı yaparken aylık gelirinizi ve bir kısım giderlerinizi sisteme girmeniz yeterli olacaktır. Hesaplamayı yaptıktan sonra size en uygun krediyi veren bankayı bulur.                
                 </div>
 
                 <br></br>
                 
                 <div className="row col-12 mt-2">
-                    <h4>Hemen Hesapla</h4>
+                    <h4>Hemen Bul</h4>
                 </div>
 
 
                 {loading == true && <img className="ld-but" src={require("../../assets/images/loading.gif").default}></img>}
                 <div className={"col-12 row calculate-page-calculate-container mt-4 " + (loading == true ? "add-blur" : "")} onSubmit={() => { return false }}>
 
-                    <div className="col-12 col-md-7 col-lg-7">
+                    <div className="col-12 col-md-8 col-lg-8">
 
                         <div className="col-12 mb-2">
                             <label style={{ width: 165 }}><b> Ne Nadar Kredi Lazım: &nbsp;</b> </label>
@@ -141,7 +142,7 @@ export const HowToPay = () => {
                             <input value={evGiderleri} onChange={(e) => { setEvGiderleri(e.target.value) }} type="text" placeholder=" örnek: 1000"></input>
                         </div>
                     </div>
-                    <div className="col-md-5 col-lg-5 col-12">
+                    <div className="col-md-4 col-lg-4 col-12">
                         <div className="col-12">
                             <button className="default-button" disabled={loading}
                                 onClick={() => { calculatenw() }} style={{ color: "white" }}>Hesapla</button></div>

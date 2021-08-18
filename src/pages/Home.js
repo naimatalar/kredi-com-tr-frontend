@@ -15,6 +15,7 @@ import Slider from "../Components/containers/Slider";
 import { DispositContainer } from "../Components/containers/DispositContainer";
 import { GetNoneToken } from "../datacrud/datacrud";
 import { PopulerBankCampaing } from "../Components/containers/PopulerBankCampaing";
+import { HowToPay } from "../Components/calculate-page/HowToPay";
 export const Home = (props) => {
 
     const [addsPopup, setAddsPopup] = useState(false)
@@ -37,7 +38,7 @@ export const Home = (props) => {
         }
 
     }
-    console.log("rnd")
+
     return (<>
         {
             addsPopup && <> <div onClick={() => { setAddsPopup(false) }} className="lv-shadow"></div>
@@ -130,25 +131,33 @@ export const Home = (props) => {
         <div className="col-12  mb-4">
             <PopulerBankCampaing></PopulerBankCampaing>
         </div>
+        <div className="row col-12">
+            <div className="col-7 mt-3">
+                <HowToPay></HowToPay>
 
-        <div className="col-12 mt-5">
-            <p className="home-title" >En çok kazandıran <span style={{ fontWeight: "bold" }}>vadeli mevduat seçeneklerini </span> sizin için seçtik.</p>
 
+            </div>
+            <div className="col-5 mt-3">
+                <p className="home-title" >En çok kazandıran <span style={{ fontWeight: "bold" }}>vadeli mevduat seçeneklerini </span> sizin için seçtik.</p>
 
+                <div className="mb-3" style={{
+                    padding: 7,
+                    background: "linear-gradient(45deg, #077a683b, transparent)"
+                }}>
+                    <i style={{ color: " #505050", fontWeight: "bold" }}> En Çok Tercih Edilen Mevduat Hesapları</i>
 
+                </div>
+                <div className="row">
+                    <DispositContainer Big></DispositContainer>
+
+                </div>
+
+            </div>
         </div>
+
+
         <div className=" mb-4 bt-4">
-            <div className="mb-3" style={{
-                padding: 7,
-                background: "linear-gradient(45deg, #077a683b, transparent)"
-            }}>
-                <i style={{ color: " #505050", fontWeight: "bold" }}> En Çok Tercih Edilen Mevduat Hesapları</i>
 
-            </div>
-            <div className="row">
-                <DispositContainer></DispositContainer>
-
-            </div>
         </div>
         <div className="row">
             <div className="col-12" style={{ marginBottom: 15 }}>

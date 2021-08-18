@@ -24,7 +24,7 @@ export const BlogDetail = (props) => {
 
 
     }
-    { console.log(data?.title) }
+  
     return (<div className="master-content">
 
         <Helmet>
