@@ -29,10 +29,10 @@ export const BlogDetail = (props) => {
 
         <Helmet>
             <meta property="og:type" content="article" />
-            <meta property="og:title" content={data?.title} />
+            <meta property="og:title" content={"KREDİ.COM.TR | "+data?.title} />
             <meta property="og:url" content={window.location.href} />
             <meta property="og:description" content={data?.title} />
-            <meta name="keyword" content="kredi, kredi kartı, kredi başvurusu, kredi faiz oranı, kredi kartı başvurusu" />
+            <meta name="keyword" content="kredi, kredi kartı, kredi başvurusu, faiz oranı, başvuru, kampanya" />
             <meta name="description" content="Kredi.com.tr ile Kredi ürünleri, kredi kartları ve mevduatlatı arayıp karşılaştırarak başvurabilirsiniz. Türkiye'nin Kredi Başvuru Merkezi | KREDİ.COM.TR" />
             <meta name="robots" content="index,follow" />
             <link rel="apple-touch-icon" href={apiurl + data?.imageUrl} />

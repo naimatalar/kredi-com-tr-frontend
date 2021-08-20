@@ -35,7 +35,7 @@ export const DispositContainer = (props) => {
                             <div className="disposit-item mb-4 p-3 ">
                                 <div className="row justify-content-around mb-2" style={{ padding: "3px 0 3px 0px", background: "gainsboro" }}>
                                     <div className="col-4 p-0">
-                                        <img title={item.bankName + " vadeli mevduat hesapları"} alt={item.bankName + " vadeli mevduat"} style={{ width: "100%" }} src={apiurl + item.bankLogoUrl}></img>
+                                        <img  title={item.bankName + " vadeli mevduat hesapları"} alt={item.bankName + " vadeli mevduat"} style={{ width: "100%" }} src={apiurl + item.bankLogoUrl}></img>
 
                                     </div>
                                     <div className="col-4 p-0" style={{ fontSize: 12, color: "black", textAlign: "center" }}><b style={{ color: "black" }}>Ana Para</b> <br></br>

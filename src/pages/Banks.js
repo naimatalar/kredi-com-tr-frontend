@@ -83,21 +83,21 @@ export const Banks = (props) => {
             <Helmet>
 
                 <meta property="og:type" content="article" />
-                <meta property="og:title" content={(bank.bankName ?? "") + ": Kredi Ve Kredi Kartı Fırsatları | kredi.com.tr"} />
+                <meta property="og:title" content={"KREDİ.COM.TR | "+ (bank.bankName ?? "") + ": Kredi Ve Kredi Kartı Fırsatları"} />
                 <meta property="og:url" content={window.location.href} />
 
                 <meta property="og:description" content={(bank.bankName ?? "") + " bankaya ait kredileri sorgulayabilir, vadeli mevduat hesabı oluşturabilirsiniz. Ayrıca " + (bank.bankName ?? "") + " bankasına ait kredi kartlarını listeledik  ."} />
                 <meta name="keyword" content="kredi, kredi kartı, kredi başvurusu, kredi faiz oranı, kredi kartı başvurusu, vadeli mevduat, vadeli mevduat hesabı" />
-                <meta name="twitter:title" content={(bank.bankName ?? "") + ": Kredi, Kredi Kartı ve Mevduat Fırsatları | kredi.com.tr"} />
+                <meta name="twitter:title" content={"KREDİ.COM.TR | "+(bank.bankName ?? "") + ": Kredi, Kredi Kartı ve Mevduat Fırsatları"} />
 
-                <meta name="twitter:description" content={(bank.bankName ?? "") + " bankaya ait kredileri sorgulayabilir, vadeli mevduat hesabı oluşturabilirsiniz. Ayrıca " + (bank.bankName ?? "") + " bankasına ait kredi kartlarını listeledik  ."} />
+                <meta name="twitter:description" content={"KREDİ.COM.TR | "+(bank.bankName ?? "") + " bankaya ait kredileri sorgulayabilir, vadeli mevduat hesabı oluşturabilirsiniz. Ayrıca " + (bank.bankName ?? "") + " bankasına ait kredi kartlarını listeledik  ."} />
 
-                <meta name="description" content={(bank.bankName ?? "") + " bankaya ait kredileri sorgulayabilirsiniz. Ayrıca " + (bank.bankName ?? "") + " bankasına ait kredi kartlarını listeledik  ."} />
+                <meta name="description" content={"KREDİ.COM.TR | "+(bank.bankName ?? "") + " bankaya ait kredileri sorgulayabilirsiniz. Ayrıca " + (bank.bankName ?? "") + " bankasına ait kredi kartlarını listeledik  ."} />
                 <meta name="robots" content="index,follow" />
                 <meta property="og:image" itemProp="image" content={apiurl + bank?.logoUrl} />
                 <link rel="apple-touch-icon" href={apiurl + bank?.logoUrl} />
 
-                <title>{(bank.bankName ?? "") + ": Kredi, Kredi Kartı ve Mevduat Fırsatları   | kredi.com.tr"} </title>
+                <title>{"KREDİ.COM.TR | "+(bank.bankName ?? "") + ": Kredi, Kredi Kartı ve Mevduat Başvuru"} </title>
 
             </Helmet>
             <div className="row bank-label">

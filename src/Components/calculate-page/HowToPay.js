@@ -115,7 +115,7 @@ export const HowToPay = () => {
                 </div>
 
 
-                {loading == true && <img className="ld-but" src={require("../../assets/images/loading.gif").default}></img>}
+                {loading == true && <img alt="loading" className="ld-but" src={require("../../assets/images/loading.gif").default}></img>}
                 <div className={"col-12 row calculate-page-calculate-container mt-4 " + (loading == true ? "add-blur" : "")} onSubmit={() => { return false }}>
 
                     <div className="col-12 col-md-8 col-lg-8">
@@ -168,11 +168,12 @@ export const HowToPay = () => {
 
                         {
                             resultData.map((item, key) => {
+                                debugger
                                 return (
                                     <div key={key} className="col-12 row align-items-center how-cal-items">
                                         <div className="col-3 p-0 text-center">
 
-                                            <img src={apiurl + item.bankLogoUrl} style={{ width: "70%" }}></img>
+                                            <img alt={item.bankUrlName} src={apiurl + item.bankLogoUrl} style={{ width: "70%" }}></img>
                                         </div>
                                         <div className="col-7 p-0 text-center">
 
@@ -199,13 +200,11 @@ export const HowToPay = () => {
                                             }
                                         </div>
                                         <div className="row justify-content-center m-0 col-12 mt-4">
-
+ 
                                             {item.items?.map((jitem, jkey) => {
                                                 let color = jkey % 2 == 0 ? { background: "#eeeeee" } : {};
                                                 return (
                                                     <Collapse  style={color} className="pt-2 pb-2 col-12 row justify-content-center" key={jkey} isOpen={collapseId == item.id} >
-
-
 
                                                         <div className="row col-12">
                                                             <div className="col-3">

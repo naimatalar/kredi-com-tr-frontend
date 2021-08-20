@@ -21,7 +21,7 @@ export const Home = (props) => {
     const [addsPopup, setAddsPopup] = useState(false)
     const [sss, setSss] = useState([])
     const [blog, setBlog] = useState([])
-
+    console.log(props);
     useEffect(() => {
 
         start()
@@ -132,12 +132,12 @@ export const Home = (props) => {
             <PopulerBankCampaing></PopulerBankCampaing>
         </div>
         <div className="row col-12">
-            <div className="col-7 mt-3">
+            <div className="col-12 col-md-7 col-lg-7 mt-3">
                 <HowToPay></HowToPay>
 
 
             </div>
-            <div className="col-5 mt-3">
+            <div className="col-12 col-md-5 col-lg-5 mt-3">
                 <p className="home-title" >En çok kazandıran <span style={{ fontWeight: "bold" }}>vadeli mevduat seçeneklerini </span> sizin için seçtik.</p>
 
                 <div className="mb-3" style={{

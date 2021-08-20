@@ -55,9 +55,9 @@ export const Blog = (props) => {
             <meta property="og:type" content="article" />
             <meta property="og:title" content="KREDİ.COM.TR | Finans Dünyasını Takip Edip Sizlerle Paylaşıyoruz." />
             <meta property="og:url" content={window.location.href} />
-            <meta property="og:description" content="En uygun kredi fırsatlarını kredi.com.tr ayrıcalığı ile sizlerle buluşturuyoruz. Finans dünyasını yakından takip edip sizleri haberdar ediyoruz." />
+            <meta property="og:description" content="KREDİ.COM.TR | En uygun kredi fırsatlarını kredi.com.tr ayrıcalığı ile sizlerle buluşturuyoruz. Finans dünyasını yakından takip edip sizleri haberdar ediyoruz." />
             <meta name="keyword" content="kredi, kredi kartı, kredi başvurusu, kredi faiz oranı, kredi kartı başvurusu" />
-            <meta name="description" content="kredi.com.tr Kolayca Arayın, Pratik Şekilde Hesaplayın, Hızlıca Başvurun" />
+            <meta name="description" content="KREDİ.COM.TR | En uygun kredi fırsatlarını kredi.com.tr ayrıcalığı ile sizlerle buluşturuyoruz. Finans dünyasını yakından takip edip sizleri haberdar ediyoruz." />
             <meta name="robots" content="index,follow" />
             <title>KREDİ.COM.TR | Finans dünyasını takip edip sizlerle paylaşıyoruz.</title>
         </Helmet>

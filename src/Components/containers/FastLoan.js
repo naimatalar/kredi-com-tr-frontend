@@ -209,7 +209,7 @@ const FastLoanList = (props) => {
             </div>
             <div className="row" style={{ paddingBottom: 8 }}>
                 <div className="col-4">
-                    <img title={fastLoanData.bankName + " banka " + fastLoanData.loanType + " hızlı başvuru"} alt={fastLoanData.bankName + " banka " + fastLoanData.loanType + " başvuru"} src={apiurl + fastLoanData.logo} style={{ width: "100%" }}></img>
+                    <img  title={fastLoanData.bankName + " banka " + fastLoanData.loanType + " hızlı başvuru"} alt={fastLoanData.bankName + " banka " + fastLoanData.loanType + " başvuru"} src={apiurl + fastLoanData.logo} style={{ width: "100%" }}></img>
 
                 </div>
                 <div className="col-4">

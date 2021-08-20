@@ -38,7 +38,7 @@ export const CreditCalculate = () => {
     return (<div>
 
         <div className="row col-12 ">
-            {loading == true && <img style={{ marginTop: -30 }} className="ld-but" src={require("../../assets/images/loading.gif").default}></img>}
+            {loading == true && <img style={{ marginTop: -30 }} alt="loading" className="ld-but" src={require("../../assets/images/loading.gif").default}></img>}
 
             <div className={"row calculate-page-calculate-container col-12 " + (loading == true ? "add-blur" : "")} onSubmit={() => { return false }}>
 
@@ -233,7 +233,7 @@ export const CreditCalculate = () => {
             <p >Kredi hesaplama kredinin türüne göre değişiklik gösterir. Genel Hesaplama formülü; <br>
             </br>
                 <br></br>
-                <img src={require("../../assets/images/kredihesap.jpg").default} style={{ width: 450 }}></img>
+                <img alt="kredi Hesapla" src={require("../../assets/images/kredihesap.jpg").default} style={{ width: 450 }}></img>
                 <br></br>
                 <br></br>
                 İhtiyaç kredilerinde Maliye Bakanlığı tarafından her taksitte, faiz üzerinden KKDF ve BSMV tahsil eder. Bu ödemeler banklalar tarafından kişiden tahsil edilir ve ilgili kuruma ödenir.

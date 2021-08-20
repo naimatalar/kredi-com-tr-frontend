@@ -3,6 +3,7 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
+  Redirect,
 } from "react-router-dom";
 import bankdemodata from "./bankdemodata";
 import loantypedemodata from "./loantypedemodata";
@@ -29,6 +30,7 @@ import { Faq } from "./pages/Faq";
 import homepage from "./Components/Schduler/Homepage";
 import Homepage from "./Components/Schduler/Homepage";
 import axios from "axios";
+import { route } from "next/dist/next-server/server/router";
 export default function App(props) {
   const [bankNavigation, setBankNavigation] = useState([]);
   const [loanNavigation, setLoanNavigation] = useState([]);
@@ -54,6 +56,7 @@ export default function App(props) {
   }
 
 
+
   return (
     <Router>
 
@@ -62,10 +65,9 @@ export default function App(props) {
       <div>
         <Switch>
 
-
           <Route exact path="/" render={(props) => <div className="master-content"> <Home Loans={loanNavigation} {...props} Banks={bankNavigation} /></div>}>
-
           </Route>
+
 
           {loanNavigation.map((item, key) => {
             return (
@@ -75,11 +77,11 @@ export default function App(props) {
             )
           })}
 
+
+
           <Route path="/vadeli-mevduati-hesaplama-ve-basvuru" render={(props) => < DispositSearchResult {...props} />}>
 
           </Route>
-
-
           {loanNavigation.map((item, key) => {
             return (
               <Route key={key} path={"/" + item.urlName + "-arama-hesaplama"} render={(props) => <SearchLoanPage Loan={item} Loans={loanNavigation} {...props} ></SearchLoanPage>}>
@@ -87,10 +89,6 @@ export default function App(props) {
               </Route>
             )
           })}
-
-
-
-
           {loanNavigation.map((item, key) => {
             return (
               <Route key={key} path={"/" + item.urlName + "-basvuru"} render={(props) => <RedirectProduct {...props} ></RedirectProduct>}>
@@ -175,6 +173,7 @@ export default function App(props) {
               )
             })
           }
+
           {creditCartName?.map((item, key) => {
 
             return (
@@ -184,20 +183,29 @@ export default function App(props) {
             )
           })}
 
-          <Route exact path="/bankalar">
+          <Route path="/bankalar">
             {
               bankNavigation.map((item, key) => {
                 return (
                   <Route key={key} path={'/bankalar/' + item.bankUrlName} render={(props) => <Banks {...props} Banks={bankNavigation} BankId={item.id}></Banks>}>
-
                   </Route>
                 )
               })
             }
+            {/* <Route render={(props) => <div className="master-content"> <Home Loans={loanNavigation} {...props} Banks={bankNavigation} /></div>}>
+
+            </Route> */}
+
           </Route>
           <Route path="/vadeli-mevduat-sorgulama" render={(props) => <DispositSearchPage {...props} />}>
 
           </Route>
+
+          <Route render={(props) => <div className="master-content"> <Home Loans={loanNavigation} {...props} Banks={bankNavigation} /></div>}>
+
+          </Route>
+
+
         </Switch>
         {/* <div style={{ textAlign: "center", color: "red", textDecoration: "underline" }}>Platformumuz yapım aşamasındadır.<br></br>Faiz oranları, vadeler, kredi kartı fırsatları şu anlık <b style={{ color: "red" }}>gerçek bilgiler değildir.</b><br></br>Gerçek bilgiler için bankanın web sitelerini ziyaret edebilirsiniz.</div> */}
       </div>
@@ -218,6 +226,8 @@ export default function App(props) {
       <Route exact path="/setdata" render={(props) => <Homepage></Homepage>}>
 
       </Route>
+
+
     </Router >
   );
 }
