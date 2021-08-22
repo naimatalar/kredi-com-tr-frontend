@@ -248,7 +248,7 @@ export const CreditCart = (props) => {
                                                         display: "block",
                                                         paddingLeft: 23,
                                                         cursor: "pointer"
-                                                    }}> <i>Tüm Kampayaları Gör (+{item.campaingCount - 2})</i>  </b>
+                                                    }}> <i>Tüm Kampayaları Gör ({item.campaingCount })</i>  </b>
                                                 </div>
 
                                             </div>

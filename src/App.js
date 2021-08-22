@@ -31,6 +31,9 @@ import homepage from "./Components/Schduler/Homepage";
 import Homepage from "./Components/Schduler/Homepage";
 import axios from "axios";
 import { route } from "next/dist/next-server/server/router";
+import CreditCartCampaing from "./pages/CreditCartCampaing";
+import CreditCartCampaingDetail from "./pages/CreditCartCampaingDetail";
+import Loading from "./pages/Loading";
 export default function App(props) {
   const [bankNavigation, setBankNavigation] = useState([]);
   const [loanNavigation, setLoanNavigation] = useState([]);
@@ -62,10 +65,10 @@ export default function App(props) {
 
       <NavigationTree BankNavigation={bankNavigation} LoanNavigation={loanNavigation}></NavigationTree>
 
-      <div>
+      <div className="container">
         <Switch>
 
-          <Route exact path="/" render={(props) => <div className="master-content"> <Home Loans={loanNavigation} {...props} Banks={bankNavigation} /></div>}>
+          <Route exact path="/" render={(props) => <div className="container"> <Home Loans={loanNavigation} {...props} Banks={bankNavigation} /></div>}>
           </Route>
 
 
@@ -157,7 +160,21 @@ export default function App(props) {
           }
 
 
+          
+          
+                <Route  path="/kredi-karti-kampanyalari" exact  render={(props) => <CreditCartCampaing {...props} ></CreditCartCampaing>}>
 
+                </Route>
+              
+            {creditCartName?.map((item, key) => {
+
+              return (
+                <Route exact key={key + "54968548"} path={"/kredi-karti-kampanyalari/" + item.urlName} render={(props) => <CreditCartCampaingDetail {...props} data={item} ></CreditCartCampaingDetail>}>
+
+                </Route>
+              )
+            })} 
+         
           <Route exact path="/haberler-bilgiler">
             <Blog Banks={bankNavigation} ></Blog>
           </Route>
@@ -183,6 +200,8 @@ export default function App(props) {
             )
           })}
 
+
+
           <Route path="/bankalar">
             {
               bankNavigation.map((item, key) => {
@@ -192,16 +211,14 @@ export default function App(props) {
                 )
               })
             }
-            {/* <Route render={(props) => <div className="master-content"> <Home Loans={loanNavigation} {...props} Banks={bankNavigation} /></div>}>
 
-            </Route> */}
 
           </Route>
           <Route path="/vadeli-mevduat-sorgulama" render={(props) => <DispositSearchPage {...props} />}>
 
           </Route>
 
-          <Route render={(props) => <div className="master-content"> <Home Loans={loanNavigation} {...props} Banks={bankNavigation} /></div>}>
+          <Route render={(props) => <Loading></Loading>}>
 
           </Route>
 

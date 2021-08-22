@@ -68,21 +68,16 @@ const NavigationTree = (props) => {
                                 <Nav style={{ float: "right" }}>
                                     <NavItem onMouseLeave={toggle} onMouseEnter={toggle}>
                                         <span className="nav-link drop-nav-link" title="Kredi" >Kredi </span>
-
                                         {
                                             dropdownOpen &&
                                             <div className="drop-content ">
-
                                                 <Nav className="row drop-nav-ul" style={{ width: 189, marginLeft: "-53px" }} >
-
                                                     {props.LoanNavigation.map((item, key) => {
                                                         return (
                                                             <NavItem key={key} title={item.loanName} className="drop-item col-12">
                                                                 <a href={"/" + item.urlName}>{item.loanName}</a>
                                                             </NavItem>
                                                         )
-
-
                                                     })}
 
                                                 </Nav>

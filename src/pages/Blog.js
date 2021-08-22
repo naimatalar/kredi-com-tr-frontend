@@ -25,27 +25,31 @@ export const Blog = (props) => {
         if (isBottom) {
             setLoanding(true)
             await sleep(1000)
+
             if (isOk == false) {
                 setPage(page + 1)
 
-                var data = await GetNoneToken("Blogs/GetAllSite/" + (page + 1)+"/"+query).then(x => { return x.data }).catch(x => { return false })
+                var data = await GetNoneToken("Blogs/GetAllSite/" + (page + 1) + "/" + query).then(x => { return x.data }).catch(x => { return false })
                 let blogAds = blog;
                 for (const i of data.data) {
                     blogAds.push(i)
                 }
+
+
                 setIsOk(data.isOk)
                 setIsBottum(true)
                 setBlog(blogAds)
+
             }
+            setLoanding(false)
         }
-        setLoanding(false)
 
     }
     const scrollRef = createRef()
 
     const start = async () => {
-        
-        var data = await GetNoneToken("Blogs/GetAllSite/" + page + "/"+query).then(x => { return x.data }).catch(x => { return false })
+
+        var data = await GetNoneToken("Blogs/GetAllSite/" + page + "/" + query).then(x => { return x.data }).catch(x => { return false })
         setBlog(data.data)
     }
 
@@ -103,13 +107,13 @@ export const Blog = (props) => {
 
                     <div className="col-12 row justify-content-between">
                         <div className="col-8 p-0">
-                            <input type="text" onChange={(e)=>{setQuery(e.target.value)}} style={{
+                            <input type="text" onChange={(e) => { setQuery(e.target.value) }} style={{
                                 padding: "5px 0px 7px 12px",
                                 width: "100%"
                             }} placeholder="Arama"></input>
                         </div>
                         <div className="col-4 row">
-                            <button onClick={()=>{start()}} type="text" className="default-button" style={{ width: "100%" }} >Ara</button>
+                            <button onClick={() => { start() }} type="text" className="default-button" style={{ width: "100%" }} >Ara</button>
                         </div>
                     </div>
 

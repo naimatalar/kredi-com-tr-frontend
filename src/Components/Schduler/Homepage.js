@@ -14,6 +14,7 @@ function Homepage(props) {
         var loanType = await GetNoneToken("LoanTypes/GetAllSite").then(x => { return x.data }).catch(x => { return false })
         var blogs = await GetNoneToken("Blogs/GetAlUrlName").then(x => { return x.data }).catch(x => { return false })
         var creditCarts = await GetNoneToken("CreditCarts/GetCreditCartName").then(x => { return x.data }).catch(x => { return false })
+        
         var sysData=JSON.stringify({Bank:Bank,loanType:loanType,blogs:blogs,creditCarts:creditCarts})
         
         var data = await PostNoneToken("HomePageData/update",{data:sysData}).then(x => { return x.data }).catch(x => { return false })
