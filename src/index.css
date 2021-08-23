@@ -63,7 +63,10 @@ body{
 
 .pcontent{
   background: white;
-  border-bottom: 1px solid rgb(161, 161, 161); box-shadow: black -2px -1px 9px -1px;}
+  border-bottom: 1px solid rgb(161, 161, 161); 
+  box-shadow: black -2px -1px 9px -1px;
+overflow: hidden;
+}
 .ccbanner{
   width: 100%;
     opacity: .5;

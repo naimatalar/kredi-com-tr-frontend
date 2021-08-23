@@ -65,7 +65,7 @@ export default function App(props) {
 
       <NavigationTree BankNavigation={bankNavigation} LoanNavigation={loanNavigation}></NavigationTree>
 
-      <div className="container">
+      <div className="pcontent">
         <Switch>
 
           <Route exact path="/" render={(props) => <div className="container"> <Home Loans={loanNavigation} {...props} Banks={bankNavigation} /></div>}>
@@ -132,49 +132,33 @@ export default function App(props) {
 
           <Route path={"/vadeli-mevduati-basvuru"} render={(props) => <RedirectProduct  {...props} ></RedirectProduct>}>
           </Route>
-
-
-
-
           {
             bankNavigation.map((item, key) => {
               return (
                 <Route key={key} path={'/bankalar/' + item.bankUrlName} render={(props) => <Banks {...props} Banks={bankNavigation} BankId={item.id}></Banks>}>
-
                 </Route>
               )
             })
           }
-
-
           {
             bankNavigation.map((item, key) => {
               return (
-
                 <Route key={key} path={'/bankalar/' + item.bankUrlName + "-kredi-hesaplama-ve-basvuru"}
                   render={(props) => <LoanBank  {...props} BankId={item.id}></LoanBank>} >
-
                 </Route>
               )
             })
           }
+          <Route path="/kredi-karti-kampanyalari" exact render={(props) => <CreditCartCampaing {...props} ></CreditCartCampaing>}>
+          </Route>
+          {creditCartName?.map((item, key) => {
+            return (
+              <Route exact key={key + "54968548"} path={"/kredi-karti-kampanyalari/" + item.urlName} render={(props) => <CreditCartCampaingDetail {...props} data={item} ></CreditCartCampaingDetail>}>
 
+              </Route>
+            )
+          })}
 
-          
-          
-                <Route  path="/kredi-karti-kampanyalari" exact  render={(props) => <CreditCartCampaing {...props} ></CreditCartCampaing>}>
-
-                </Route>
-              
-            {creditCartName?.map((item, key) => {
-
-              return (
-                <Route exact key={key + "54968548"} path={"/kredi-karti-kampanyalari/" + item.urlName} render={(props) => <CreditCartCampaingDetail {...props} data={item} ></CreditCartCampaingDetail>}>
-
-                </Route>
-              )
-            })} 
-         
           <Route exact path="/haberler-bilgiler">
             <Blog Banks={bankNavigation} ></Blog>
           </Route>
