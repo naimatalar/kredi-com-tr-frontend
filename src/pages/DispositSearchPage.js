@@ -7,7 +7,7 @@ import { Helmet } from "react-helmet";
 import { Nav, NavItem, NavLink, TabContent, TabPane } from "reactstrap";
 import classnames from 'classnames';
 
-
+ 
 export const DispositSearchPage = (props) => {
     const [activeTab, setActiveTab] = useState(1);
     const [currencyIcon, setCurrencyIcon] = useState("₺")

@@ -65,7 +65,7 @@ export default function App(props) {
 
       <NavigationTree BankNavigation={bankNavigation} LoanNavigation={loanNavigation}></NavigationTree>
 
-      <div className="pcontent">
+      <div style={{ width: "100%", overflow: "hidden" }}>
         <Switch>
 
           <Route exact path="/" render={(props) => <div className="container"> <Home Loans={loanNavigation} {...props} Banks={bankNavigation} /></div>}>
@@ -149,16 +149,15 @@ export default function App(props) {
               )
             })
           }
-          <Route path="/kredi-karti-kampanyalari" exact render={(props) => <CreditCartCampaing {...props} ></CreditCartCampaing>}>
-          </Route>
-          {creditCartName?.map((item, key) => {
-            return (
-              <Route exact key={key + "54968548"} path={"/kredi-karti-kampanyalari/" + item.urlName} render={(props) => <CreditCartCampaingDetail {...props} data={item} ></CreditCartCampaingDetail>}>
+
+
+    
+              <Route exact  path={"/kredi-karti-kampanyalari/:slug"} render={(props) => <CreditCartCampaingDetail {...props} ></CreditCartCampaingDetail>}>
 
               </Route>
-            )
-          })}
-
+       
+          <Route path="/kredi-karti-kampanyalari" exact render={(props) => <CreditCartCampaing {...props} ></CreditCartCampaing>}>
+          </Route>
           <Route exact path="/haberler-bilgiler">
             <Blog Banks={bankNavigation} ></Blog>
           </Route>
@@ -202,7 +201,7 @@ export default function App(props) {
 
           </Route>
 
-          <Route render={(props) => <Loading></Loading>}>
+          <Route path="*" render={(props) => <Loading></Loading>}>
 
           </Route>
 
@@ -219,7 +218,7 @@ export default function App(props) {
         </div>
       </div>
 
-      <Route path={"/kredi-karti-basvuru"} render={(props) => <RedirectProduct {...props}  ></RedirectProduct>}>
+      <Route path={"/kredi-karti-basvuru/"} render={(props) => <RedirectProduct {...props}  ></RedirectProduct>}>
       </Route>
       <Route path={"/mevduat-basvuru"} render={(props) => <RedirectProduct {...props}  ></RedirectProduct>}>
       </Route>

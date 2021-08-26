@@ -53,17 +53,35 @@ const NavigationTree = (props) => {
                                 </a>
 
                             </div>
-                            <div className="col-lg-9 col-md-10 nav-container" style={{ float: "right" }}>
-                                <div style={{ display: "flex", justifyContent: "flex-end" }}>
-                                    <a style={{
-                                        fontSize: 13,
-                                        fontWeight: "normal",
-                                        border: "none",
-                                        fontFamily: "sans-serif",
-                                        border: "1px solid #077a68",
-                                        borderRadius: 6,
-                                        padding: "3px 9px 2px 10px"
-                                    }} className="nav-link" href="/hesaplama/aylik-ne-kadar-odeyebilirim">Ne Kadar Kredi Çekebilirim?</a>
+                            <div className="col-lg-9 col-md-10  nav-container" style={{ float: "right" }}>
+                                <div className="row justify-content-end mb-1" >
+
+                                    <div style={{ display: "flex", justifyContent: "flex-end" }}>
+                                        <a style={{
+                                            fontSize: 13,
+                                            fontWeight: "normal",
+                                            border: "none",
+                                            fontFamily: "sans-serif",
+                                          
+                                            borderRadius: 6,
+                                            padding: "3px 9px 2px 10px",
+                                            color:"#c55600"
+                                        }} className="nav-link" href="/kredi-karti-kampanyalari">Kredi Kartı Kampanyaları</a>
+
+
+                                    </div>
+                                    <div style={{ display: "flex", justifyContent: "flex-end" }}>
+                                        <a style={{
+                                            fontSize: 13,
+                                            fontWeight: "normal",
+                                            border: "none",
+                                            fontFamily: "sans-serif",
+                                            border: "1px solid #077a68",
+                                            borderRadius: 6,
+                                            padding: "3px 9px 2px 10px"
+                                        }} className="nav-link" href="/hesaplama/aylik-ne-kadar-odeyebilirim">Ne Kadar Kredi Çekebilirim?</a>
+
+                                    </div>
                                 </div>
                                 <Nav style={{ float: "right" }}>
                                     <NavItem onMouseLeave={toggle} onMouseEnter={toggle}>
@@ -88,10 +106,13 @@ const NavigationTree = (props) => {
                                         <a title="Kredi Kartı" className="nav-link" href="/kredi-karti">Kredi Kartı</a>
 
                                     </NavItem>
+
+
                                     <NavItem>
                                         <a title="Mevduat Hesapları" className="nav-link" href="/vadeli-mevduat-sorgulama">Mevduat</a>
 
                                     </NavItem>
+
                                     <NavItem onMouseLeave={toggleBank} onMouseEnter={toggleBank}>
 
 
@@ -207,7 +228,9 @@ const NavigationTree = (props) => {
                                 </Nav>
                             </Collapse>
                         </Navbar>
+                       
                     </div>
+                   
                 }
 
 

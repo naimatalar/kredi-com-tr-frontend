@@ -38,7 +38,10 @@ export const creditCartRedirect = async (creditCartUrl, Url = null, BankId = nul
 
    } 
     window.location.replace("/kredi-karti-basvuru?o=" + data.id+"&t=1")
+    
 }
+
+
 
 export const dispositRedirect = async ( Url = null, BankId = null, ObjectId = null, DispositRedirectModel = { bankName: null, amount: null,term:null,rate:null }) => {
     

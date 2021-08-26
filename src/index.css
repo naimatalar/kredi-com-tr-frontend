@@ -65,7 +65,7 @@ body{
   background: white;
   border-bottom: 1px solid rgb(161, 161, 161); 
   box-shadow: black -2px -1px 9px -1px;
-overflow: hidden;
+
 }
 .ccbanner{
   width: 100%;
@@ -175,7 +175,7 @@ overflow: hidden;
   background: linear-gradient( 
     180deg
      ,#7a250714 1% ,#dbb0dc1f 43%,transparent);
-     height: 165px;
+     height: 189px;
      background-size: 100%;
      background-position: bottom;
 }
@@ -808,8 +808,9 @@ img {
   all: initial;
 } */
 .maxhg *{
-font-size: 11px !important;
+font-size: 14px !important;
 color:black !important ;
+font-family: "neris" !important;
 }
 .cart-master-info{
   text-align: center;
@@ -1011,4 +1012,15 @@ zoom: .5;
     margin: -2px 0 0 3px;
     color: black;
     font-style: italic;
+}
+.cart-campaign-link{
+  background: white;
+  color: #ff6524;
+  padding: 3px 15px 6px 17px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+.faq-3time{
+  font-size: 15px;
+  color: #000;
 }

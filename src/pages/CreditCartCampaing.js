@@ -3,7 +3,7 @@ import { BottomScrollListener } from 'react-bottom-scroll-listener';
 import { Helmet } from 'react-helmet';
 import { apiurl, GetNoneToken } from '../datacrud/datacrud';
 
-function CreditCartCampaing(props) {
+const CreditCartCampaing=(props)=> { 
     const [data, setData] = useState([])
     const [page, setPage] = useState(1)
     const [yillikUcret, setYillikUcret] = useState(null)
@@ -90,31 +90,33 @@ function CreditCartCampaing(props) {
     const start = async () => {
 
 
+      
+            let ccData = await GetNoneToken("CreditCartCampaigns/GetAllBySite?sayfa=" + page + props.location.search.replace("?", "&")).then(x => { return x.data }).catch(x => { return false })
 
-        let ccData = await GetNoneToken("CreditCartCampaigns/GetAllBySite?sayfa=" + page + props.location.search.replace("?", "&")).then(x => { return x.data }).catch(x => { return false })
+            setData(ccData.data)
+            setIsOk(ccData.isOk)
 
-        setData(ccData.data)
-        setIsOk(ccData.isOk)
+            let b = await GetNoneToken("CreditCartCampaigns/getBank").then(x => { return x.data }).catch(x => { return false })
 
-        let b = await GetNoneToken("CreditCartCampaigns/getBank").then(x => { return x.data }).catch(x => { return false })
-
-        bankListFill(b)
-        let prm = new URLSearchParams(props.location.search)
-        var bnk = prm.get("banka")?.split(".")
-        var karttp = prm.get("karttipi")?.split(".")
-        var yillik = prm.get("yillikucret")
-        if (yillik == "true") {
-            yillik = true
-        } else if (yillik == "false") {
-            yillik = false
-        } else if (yillik == undefined) {
-            yillik = null
-        }
+            bankListFill(b)
+            let prm = new URLSearchParams(props.location.search)
+            var bnk = prm.get("banka")?.split(".")
+            var karttp = prm.get("karttipi")?.split(".")
+            var yillik = prm.get("yillikucret")
+            if (yillik == "true") {
+                yillik = true
+            } else if (yillik == "false") {
+                yillik = false
+            } else if (yillik == undefined) {
+                yillik = null
+            }
 
 
-        setYillikUcret(yillik)
-        setKartTipi(karttp == undefined ? [] : karttp)
-        setBank(bnk == undefined ? [] : bnk)
+            setYillikUcret(yillik)
+            setKartTipi(karttp == undefined ? [] : karttp)
+            setBank(bnk == undefined ? [] : bnk)
+  
+
 
 
     }
@@ -174,18 +176,20 @@ function CreditCartCampaing(props) {
 
             <Helmet>
                 <meta property="og:type" content="article" />
-                <meta property="og:title" content="KREDİ.COM.TR | Finans Dünyasını Takip Edip Sizlerle Paylaşıyoruz." />
+                <meta property="og:title" content="KREDİ.COM.TR | Kredi kartı kampanyalarına hemen başvur." />
                 <meta property="og:url" content={window.location.href} />
-                <meta property="og:description" content="KREDİ.COM.TR | En uygun kredi fırsatlarını kredi.com.tr ayrıcalığı ile sizlerle buluşturuyoruz. Finans dünyasını yakından takip edip sizleri haberdar ediyoruz." />
+                <meta property="og:description" content="KREDİ.COM.TR | Düzinelerce kredi kartına ait binlerce kampanya. Yemek, alışveriş, akaryakıt ve daha birçok alanda kampanya başvurmanız için sizleri bekliyor" />
                 <meta name="keyword" content="kredi, kredi kartı, kredi başvurusu, kredi faiz oranı, kredi kartı başvurusu" />
-                <meta name="description" content="KREDİ.COM.TR | En uygun kredi fırsatlarını kredi.com.tr ayrıcalığı ile sizlerle buluşturuyoruz. Finans dünyasını yakından takip edip sizleri haberdar ediyoruz." />
+                <meta name="description" content="KREDİ.COM.TR | Düzinelerce kredi kartına ait binlerce kampanya. Yemek, alışveriş, akaryakıt ve daha birçok alanda kampanya başvurmanız için sizleri bekliyor." />
                 <meta name="robots" content="index,follow" />
-                <title>KREDİ.COM.TR | Finans dünyasını takip edip sizlerle paylaşıyoruz.</title>
+
+                <title>KREDİ.COM.TR | Kredi kartı kampanyalarına hemen başvur.</title>
             </Helmet>
 
 
-            <div className="row mt-1 pb-5">
-                <div className="col-12 col-md-3 col-lg-3" style={{ paddingLeft: 40 }}>
+            <div className="row mt-3 pb-5">
+                <div className="col-12 col-md-3 col-lg-3 mt-3" style={{ paddingLeft: 40 }}>
+                    <h5 className="mb-4"><b style={{ color: "#525252", fontStyle: "italic" }} >Filtreleme</b></h5>
                     <h6><b>Kart Türü</b></h6>
                     <hr style={{ borderColor: "#077a68", marginTop: 14 }} />
                     <div className="col-12 mb-4" style={{ padding: 0 }}>
@@ -276,19 +280,20 @@ function CreditCartCampaing(props) {
                             background: "white",
                             padding: 33
                         }}>
-                            <div className="mb-4"><h4 style={{ color: "black", textAlign: "center" }}> Binlerce  <b>kredi kartı kampanyalarını </b> sizler için bulduk.</h4></div>
+                            <div className="mb-2"><h4 style={{ color: "black", textAlign: "center" }}> Binlerce  <b>kredi kartı kampanyalarını </b> sizler için bulduk.</h4></div>
+                            <div className="mb-4"><h3 style={{ color: "black", textAlign: "center" }}> Hemen  <b>Başvur </b> </h3></div>
 
                             {data?.map((item, key) => {
                                 return (<div key={key} className="pb-2 pt-2 col-12 row align-items-center blog-list-item justify-content-between">
                                     <div className="col-12 col-md-2">
-                                        <img  className="blog-image" src={apiurl + item.imageUrl}></img>
+                                        <img className="blog-image" src={apiurl + item.imageUrl}></img>
                                     </div>
                                     <div className="col-12 col-md-10" style={{ color: "black" }}>
                                         <div style={{ color: "black", fontSize: 20 }}> {item.title}</div>
                                         <div> <i style={{ color: "grey", fontSize: 12 }}>{item.date} </i></div>
-                                        <a style={{float: "right", marginTop: 7,textDecoration: "underline"}} href={"/kredi-karti-kampanyalari/" + item.cartUrlName+"?src="+item.stringId}>Detay için tıklayınız </a>
+                                        <a style={{ float: "right", marginTop: 7, textDecoration: "underline" }} href={"/kredi-karti-kampanyalari/" + item.cartUrlName + "?src=" + item.stringId}>Detay için tıklayınız </a>
                                     </div>
-                                    
+
 
                                 </div>)
                             })}

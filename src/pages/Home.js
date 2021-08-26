@@ -21,7 +21,6 @@ export const Home = (props) => {
     const [addsPopup, setAddsPopup] = useState(false)
     const [sss, setSss] = useState([])
     const [blog, setBlog] = useState([])
-    console.log(props);
     useEffect(() => {
 
         start()
@@ -93,7 +92,7 @@ export const Home = (props) => {
                 <div className="d-none d-lg-flex row adds-first-big" >
                     <div className="row  m-0 p-0 justify-content-center">
                         <img title="kredi.com.tr kredi, kredi kartı vadeli mevduat" alt={"logo kredi.com"} style={{ width: "80%", objectFit: "contain" }} src={require("../assets/images/lg.png").default}></img>
-                        <b style={{ textAlign: "center" }}>Reklam Ve Tanıtın Alanı</b>
+                        <b style={{ textAlign: "center" }}>Reklam Ve Tanıtım Alanı</b>
                     </div>
                     <div className="row  m-0 p-0 justify-content-center">
                         <span style={{ textAlign: "center", textAlign: "center", color: " #181818", fontSize: 12 }}>Aylık 3MN web trafiğine sahip sitemizde tanıtım ve reklamlarınızı yayınlayalım. Ürün ya da hizmetinizi parmaklarınızın ucuna taşıyalım. </span>
@@ -108,7 +107,7 @@ export const Home = (props) => {
                             <img title="kredi kartları krediler ve mevduatlar kredi.com.tr de" alt={"kredi.com.tr logo"} style={{ width: "50%", objectFit: "contain" }} src={require("../assets/images/lg.png").default}></img>
                         </div>
                         <div className="col-12" style={{ textAlign: "center" }}>
-                            <b style={{ textAlign: "center" }}>Reklam Ve Tanıtın Alanı</b>
+                            <b style={{ textAlign: "center" }}>Reklam Ve Tanıtım Alanı</b>
                         </div>
                     </div>
                     <div className="col-12 mt-2">
@@ -119,7 +118,7 @@ export const Home = (props) => {
                     </div>
                     <div className="col-12 mt-3">
                         <div className="row  m-0 p-0 justify-content-center">
-
+                            
                             <button onClick={() => { setAddsPopup(true) }} style={{ width: 156 }} className="default-button">&nbsp; İLETİŞİM &nbsp;</button>
                         </div>
                     </div>
@@ -149,7 +148,6 @@ export const Home = (props) => {
                 </div>
                 <div className="row">
                     <DispositContainer Big></DispositContainer>
-
                 </div>
 
             </div>
@@ -200,7 +198,7 @@ export const Home = (props) => {
                         <img title="kredi.com.tr ile artık bankaların ürünleri parmaklarınızın ucunda" alt={"logo kredi.com.tr"} style={{ width: "50%", objectFit: "contain" }} src={require("../assets/images/lg.png").default}></img>
                     </div>
                     <div className="col-12" style={{ textAlign: "center" }}>
-                        <b style={{ textAlign: "center" }}>Reklam Ve Tanıtın Alanı</b>
+                        <b style={{ textAlign: "center" }}>Reklam Ve Tanıtım Alanı</b>
                     </div>
                 </div>
                 <div className="col-12 mt-2">
@@ -246,11 +244,11 @@ export const Home = (props) => {
 
                                 <div>
 
-                                    <p style={{ fontWeight: "bold" }}>* {item.question}</p>
+                                    <h6 style={{ fontWeight: "bold" }}>* {item.question}</h6>
 
                                 </div>
-                                <div>
-                                    <h6 style={{ color: "black", fontSize: 13 }}>*{item.ansver}</h6>
+                                <div dangerouslySetInnerHTML={{ __html: item.ansver }} className="faq-3time"> 
+                                    {/* <h6 style={{ color: "black", fontSize: 13 }}>*{item.ansver}</h6> */}
                                 </div>
                             </div>)
                         })}

@@ -97,6 +97,7 @@ export const CreditCart = (props) => {
                 <div className="row mb-4">
                     <div className="col-12" style={{ textAlign: "center", marginTop: 40 }}>
                         <h1 style={{ color: "white", textShadow: "1px 1px 5px black" }}>Kredi Kartları</h1>
+                        <div><a class="cart-campaign-link" href="/kredi-karti-kampanyalari">Kredi Kartı Kampanyalarını Görmek İçin Tıklayıız</a></div>
                     </div>
                 </div>
                 <div className="row">
