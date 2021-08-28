@@ -268,7 +268,7 @@ export const Home = (props) => {
                                         <h6><b>* {item.title}</b> </h6>
                                         <div className="maxhg" style={{ color: "black", paddingBottom: 23 }} dangerouslySetInnerHTML={{ __html: item.content }}></div>
 
-                                        <p><b><a style={{ color: "#007bff" }} href={"/haberler-bilgiler/" + item.urlName}>Devamını Oku...</a></b></p>
+                                        <p><b><a style={{ color: "#007bff" }} href={"/haberler-bilgiler/"+item.urlName}>Devamını Oku...</a></b></p>
                                     </div>
                                 )
                             })}

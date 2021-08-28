@@ -49,13 +49,13 @@ const CreditCartCampaingDetail = (props) => {
                     </div>
                     
                 </div>
-                <div className="col-12 col-md-4 col-lg-4 row">
+                <div className="col-12 col-md-4 col-lg-4 ">
 
                     <div className="col-12 row mb-3">
                         <img alt={data?.cartUrlName} src={apiurl + data?.cartLogoUrl} style={{ width: "100%", margin: "0 auto" }}></img>
                     </div>
-                    <div className="col-12 row">
-                        <img src={apiurl + data?.bankLogoUrlName} alt={data?.title} style={{ width: "100%" }}></img>
+                    <div className="col-12 row justify-content-center mt-2 mb-2">
+                        <img src={apiurl + data?.bankLogoUrlName} alt={data?.title} style={{ width: "80%" }}></img>
 
                     </div>
                     <div className="col-12 row mb-3 row justify-content-center mt-3">

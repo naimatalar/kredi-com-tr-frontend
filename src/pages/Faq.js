@@ -87,7 +87,7 @@ export const Faq = () => {
                                 justifyContent: "flex-end",
                                 alignItems: "center"
                             }}>
-                                <a href={"/haberler-bilgiler/" + item.urlName}><b>Oku</b></a>
+                                <a href={"/haberler-bilgiler/"+item.urlName}><b>Oku</b></a>
                             </div>
                         </div>
                     )

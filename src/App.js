@@ -151,28 +151,24 @@ export default function App(props) {
           }
 
 
-    
-              <Route exact  path={"/kredi-karti-kampanyalari/:slug"} render={(props) => <CreditCartCampaingDetail {...props} ></CreditCartCampaingDetail>}>
 
-              </Route>
-       
+          <Route exact path={"/kredi-karti-kampanyalari/:slug"} render={(props) => <CreditCartCampaingDetail {...props} ></CreditCartCampaingDetail>}>
+
+          </Route>
+
           <Route path="/kredi-karti-kampanyalari" exact render={(props) => <CreditCartCampaing {...props} ></CreditCartCampaing>}>
           </Route>
           <Route exact path="/haberler-bilgiler">
             <Blog Banks={bankNavigation} ></Blog>
           </Route>
 
-          {
-            blogNavigation?.map((item, key) => {
-              return (
 
-                <Route exact key={key} path={'/haberler-bilgiler/' + item.urlName}
-                  render={(props) => <BlogDetail  {...props} blogName={item.urlName}></BlogDetail>} >
 
-                </Route>
-              )
-            })
-          }
+          <Route exact path={'/haberler-bilgiler/:slug'}
+            render={(props) => <BlogDetail  {...props} ></BlogDetail>} >
+
+          </Route>
+
 
           {creditCartName?.map((item, key) => {
 

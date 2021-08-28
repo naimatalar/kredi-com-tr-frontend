@@ -78,6 +78,7 @@ export const Blog = (props) => {
                         <div className="mb-4"><h4 style={{ color: "black", textAlign: "center" }}> Sizin için <b>araştırıyor, analiz ediyor ve paylaşıyoruz</b>.</h4></div>
 
                         {blog?.map((item, key) => {
+                          
                             return (<div key={key} className="pb-2 pt-2 col-12 row align-items-center blog-list-item justify-content-between">
                                 <div className="col-12 col-md-2">
                                     <img alt={item.title} title={item.title} className="blog-image" src={apiurl + item.imageUrl}></img>
@@ -88,7 +89,7 @@ export const Blog = (props) => {
 
                                 </div>
                                 <div className="col-12 col-md-2 text-center" style={{ color: "black" }}>
-                                    <a className="default-button" style={{ width: "100%", display: "block" }} href={"/haberler-bilgiler/" + item.urlName}>OKU</a>
+                                    <a className="default-button" style={{ width: "100%", display: "block" }} href={"/haberler-bilgiler/"+item.urlName}>OKU</a>
                                 </div>
 
                             </div>)

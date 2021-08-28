@@ -291,7 +291,7 @@ const CreditCartCampaing=(props)=> {
                                     <div className="col-12 col-md-10" style={{ color: "black" }}>
                                         <div style={{ color: "black", fontSize: 20 }}> {item.title}</div>
                                         <div> <i style={{ color: "grey", fontSize: 12 }}>{item.date} </i></div>
-                                        <a style={{ float: "right", marginTop: 7, textDecoration: "underline" }} href={"/kredi-karti-kampanyalari/" + item.cartUrlName + "?src=" + item.stringId}>Detay için tıklayınız </a>
+                                        <a style={{ float: "right", marginTop: 7, textDecoration: "underline" }} href={"/kredi-karti-kampanyalari/kampanya-detaylari?src=" + item.stringId}>Detay için tıklayınız </a>
                                     </div>
 
 
