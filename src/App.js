@@ -178,7 +178,7 @@ export default function App(props) {
               </Route>
             )
           })} 
-
+ 
 
 
           <Route path="/bankalar">
