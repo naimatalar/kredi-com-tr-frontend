@@ -80,16 +80,16 @@ export const Blog = (props) => {
                         {blog?.map((item, key) => {
                           
                             return (<div key={key} className="pb-2 pt-2 col-12 row align-items-center blog-list-item justify-content-between">
-                                <div className="col-12 col-md-2">
+                                <div className="col-12 col-md-3">
                                     <img alt={item.title} title={item.title} className="blog-image" src={apiurl + item.imageUrl}></img>
                                 </div>
-                                <div className="col-12 col-md-7" style={{ color: "black" }}>
+                                <div className="col-12 col-md-8" style={{ color: "black" }}>
                                     <div style={{ color: "black", fontSize: 20 }}> {item.title}</div>
                                     <div> <i style={{ color: "grey", fontSize: 12 }}>{item.date} </i></div>
 
                                 </div>
-                                <div className="col-12 col-md-2 text-center" style={{ color: "black" }}>
-                                    <a className="default-button" style={{ width: "100%", display: "block" }} href={"/haberler-bilgiler/"+item.urlName}>OKU</a>
+                                <div className="col-12 col-md-1 text-center" style={{ color: "black" }}>
+                                    <a style={{ width: "100%", display: "block" }} href={"/haberler-bilgiler/"+item.urlName}>OKU</a>
                                 </div>
 
                             </div>)
