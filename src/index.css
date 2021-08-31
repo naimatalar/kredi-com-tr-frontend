@@ -379,6 +379,7 @@ text-decoration: none;
 input[type="text"]{
   padding: 8px;
     border: 1px solid #cccccc;
+    width: 100%;
 }
 ::-webkit-input-placeholder { /* Edge */
   color: #077a68 ;

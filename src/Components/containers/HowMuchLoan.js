@@ -26,7 +26,7 @@ const HowMuchLoan = () => {
             }}>
               
               
-                <div className="col-6">
+                <div className="col-12">
                     <a href="/hesaplama/aylik-ne-kadar-odeyebilirim"> Hesaplamak için tıklayınız </a>
                   
                 </div>
