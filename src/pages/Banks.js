@@ -22,6 +22,7 @@ import { creditCartRedirect, dispositRedirect } from "../Components/RedirectComp
 import { DispositMatrixContainer } from "../Components/containers/DispositMatrixContainer";
 import BankLoanContainer from "../Components/BankLoanContainer";
 import DispositSelectContainer from "../Components/DispositSelectContainer";
+import Image from "react-image-webp";
 export const Banks = (props) => {
     const [bank, setBank] = useState({})
     const [activeLoanType, setActiveLoanType] = useState({ id: null })
@@ -87,7 +88,7 @@ export const Banks = (props) => {
                 <meta property="og:url" content={window.location.href} />
 
                 <meta property="og:description" content={(bank.bankName ?? "") + " bankaya ait kredileri sorgulayabilir, vadeli mevduat hesabı oluşturabilirsiniz. Ayrıca " + (bank.bankName ?? "") + " bankasına ait kredi kartlarını listeledik  ."} />
-                <meta name="keyword" content="kredi, kredi kartı, kredi başvurusu, kredi faiz oranı, kredi kartı başvurusu, vadeli mevduat, vadeli mevduat hesabı" />
+                <meta name="og:keyword" content={"Bankalar,"+bank.bankName+" , kredi kartı, faiz oranı, kredi hesaplama"} />
                 <meta name="twitter:title" content={"KREDİ.COM.TR | "+(bank.bankName ?? "") + ": Kredi, Kredi Kartı ve Mevduat Fırsatları"} />
 
                 <meta name="twitter:description" content={"KREDİ.COM.TR | "+(bank.bankName ?? "") + " bankaya ait kredileri sorgulayabilir, vadeli mevduat hesabı oluşturabilirsiniz. Ayrıca " + (bank.bankName ?? "") + " bankasına ait kredi kartlarını listeledik  ."} />
@@ -199,15 +200,16 @@ export const Banks = (props) => {
                                                                         each.creditCartCampaigns?.map((jitem, jkey) => {
                                                                             return (
                                                                                 <div key={jkey}>
-                                                                                    <img style={{
+                                                                                    <Image style={{
                                                                                         width: 30,
                                                                                         marginRight: 3,
                                                                                         float: "left"
 
                                                                                     }} src={require("../assets/images/campaigns.png").default}
+                                                                                    webp={require("../assets/images/campaigns.png").default}
                                                                                         alt={bank.bankName + " bankaya ait " + each.name + " kampanya :" + jitem.title}
                                                                                         title={jitem.title + " : " + bank.bankName + "  " + each.name + " kredi kartının kampanyaları "}
-                                                                                    ></img>
+                                                                                    ></Image>
                                                                                     <span key={jkey} style={{
                                                                                         fontSize: 13,
                                                                                         display: "block",

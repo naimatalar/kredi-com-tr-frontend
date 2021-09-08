@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react"
 import CurrencyInput from "react-currency-input"
+import Image from "react-image-webp"
 import { apiurl, GetNoneToken } from "../datacrud/datacrud"
 
 export const RedirectProduct = (props) => {
@@ -51,7 +52,9 @@ export const RedirectProduct = (props) => {
         <div className="redirect-page-master">
             <div className="row">
                 <div className="col-12 row justify-content-center mt-5 mb-3">
-                    <img className="redirect-product-logo" src={require("../assets/images/lg.png").default}></img>
+                    <Image className="redirect-product-logo" 
+                    webp={require("../assets/images/lg.webp").default}
+                    src={require("../assets/images/lg.png").default}></Image>
                 </div>
                 <div className="col-12 row justify-content-center mb-4 bt-4 ">
                     <img  className="redirect-product-arrow"  src={require("../assets/images/down.gif").default}></img>

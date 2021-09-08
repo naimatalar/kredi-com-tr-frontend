@@ -1046,3 +1046,20 @@ overflow: hidden;
     padding: 22px;
     background: white;
 }
+.social-media {
+  margin-right: 15px;
+ 
+  }
+
+.social-media img{
+    -webkit-filter: none; /* Safari 6.0 - 9.0 */
+    filter: none; 
+  width: 16px;
+  }
+
+  .social-media img:hover{
+
+     opacity: 1;
+       -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+  }

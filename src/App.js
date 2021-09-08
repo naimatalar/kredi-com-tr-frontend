@@ -118,12 +118,24 @@ export default function App(props) {
           <Route path="/kredi-karti">
             <CreditCart cartType="all" />
           </Route>
-          <Route path="/hesaplama/kredi-hesaplama">
-            <CalculatePage UrlName="kredi-hesaplama" />
+          <Route path="/hesaplama/ihtiyca-kredi-hesaplama">
+            <CalculatePage UrlName="ihtiyca-kredi-hesaplama" />
+
           </Route>
+
+
 
           <Route path="/hesaplama/aylik-ne-kadar-odeyebilirim">
             <CalculatePage UrlName="aylik-ne-kadar-odeyebilirim" />
+          </Route>
+          <Route path="/hesaplama/ihtiyac-kredisi-hesaplama">
+            <CalculatePage UrlName="ihtiyac-kredisi-hesaplama" />
+          </Route>
+          <Route path="/hesaplama/arac-kredisi-hesaplama">
+            <CalculatePage UrlName="arac-kredisi-hesaplama" />
+          </Route>
+          <Route path="/hesaplama/konut-kredisi-hesaplama">
+            <CalculatePage UrlName="konut-kredisi-hesaplama" />
           </Route>
 
           <Route path="/hesaplama">
@@ -177,8 +189,8 @@ export default function App(props) {
 
               </Route>
             )
-          })} 
- 
+          })}
+
 
 
           <Route path="/bankalar">
@@ -197,7 +209,7 @@ export default function App(props) {
 
           </Route>
 
-          <Route path="*" render={(props) => <Loading></Loading>}>
+          <Route path="*" render={(props) => <Loading {...props}></Loading>}>
 
           </Route>
 

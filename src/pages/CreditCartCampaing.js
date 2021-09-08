@@ -3,7 +3,7 @@ import { BottomScrollListener } from 'react-bottom-scroll-listener';
 import { Helmet } from 'react-helmet';
 import { apiurl, GetNoneToken } from '../datacrud/datacrud';
 
-const CreditCartCampaing=(props)=> { 
+const CreditCartCampaing = (props) => {
     const [data, setData] = useState([])
     const [page, setPage] = useState(1)
     const [yillikUcret, setYillikUcret] = useState(null)
@@ -90,32 +90,32 @@ const CreditCartCampaing=(props)=> {
     const start = async () => {
 
 
-      
-            let ccData = await GetNoneToken("CreditCartCampaigns/GetAllBySite?sayfa=" + page + props.location.search.replace("?", "&")).then(x => { return x.data }).catch(x => { return false })
 
-            setData(ccData.data)
-            setIsOk(ccData.isOk)
+        let ccData = await GetNoneToken("CreditCartCampaigns/GetAllBySite?sayfa=" + page + props.location.search.replace("?", "&")).then(x => { return x.data }).catch(x => { return false })
 
-            let b = await GetNoneToken("CreditCartCampaigns/getBank").then(x => { return x.data }).catch(x => { return false })
+        setData(ccData.data)
+        setIsOk(ccData.isOk)
 
-            bankListFill(b)
-            let prm = new URLSearchParams(props.location.search)
-            var bnk = prm.get("banka")?.split(".")
-            var karttp = prm.get("karttipi")?.split(".")
-            var yillik = prm.get("yillikucret")
-            if (yillik == "true") {
-                yillik = true
-            } else if (yillik == "false") {
-                yillik = false
-            } else if (yillik == undefined) {
-                yillik = null
-            }
+        let b = await GetNoneToken("CreditCartCampaigns/getBank").then(x => { return x.data }).catch(x => { return false })
+
+        bankListFill(b)
+        let prm = new URLSearchParams(props.location.search)
+        var bnk = prm.get("banka")?.split(".")
+        var karttp = prm.get("karttipi")?.split(".")
+        var yillik = prm.get("yillikucret")
+        if (yillik == "true") {
+            yillik = true
+        } else if (yillik == "false") {
+            yillik = false
+        } else if (yillik == undefined) {
+            yillik = null
+        }
 
 
-            setYillikUcret(yillik)
-            setKartTipi(karttp == undefined ? [] : karttp)
-            setBank(bnk == undefined ? [] : bnk)
-  
+        setYillikUcret(yillik)
+        setKartTipi(karttp == undefined ? [] : karttp)
+        setBank(bnk == undefined ? [] : bnk)
+
 
 
 
@@ -180,6 +180,8 @@ const CreditCartCampaing=(props)=> {
                 <meta property="og:url" content={window.location.href} />
                 <meta property="og:description" content="KREDİ.COM.TR | Düzinelerce kredi kartına ait binlerce kampanya. Yemek, alışveriş, akaryakıt ve daha birçok alanda kampanya başvurmanız için sizleri bekliyor" />
                 <meta name="keyword" content="kredi, kredi kartı, kredi başvurusu, kredi faiz oranı, kredi kartı başvurusu" />
+                <meta name="og:keyword" content="kredi, kredi kartı, kredi başvurusu, kredi faiz oranı, kredi kartı başvurusu" />
+
                 <meta name="description" content="KREDİ.COM.TR | Düzinelerce kredi kartına ait binlerce kampanya. Yemek, alışveriş, akaryakıt ve daha birçok alanda kampanya başvurmanız için sizleri bekliyor." />
                 <meta name="robots" content="index,follow" />
 

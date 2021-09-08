@@ -24,7 +24,7 @@ export const BlogDetail = (props) => {
         let creditCart = await GetNoneToken("CreditCarts/GetOnlyFive").then(x => { return x.data }).catch(x => { return false })
 
         setCreditCart(creditCart)
-        console.log(creditCart)
+      
         setBlog(blogList)
         setData(ccData)
 
@@ -39,7 +39,7 @@ export const BlogDetail = (props) => {
                 <meta property="og:title" content={"KREDİ.COM.TR | " + data?.title} />
                 <meta property="og:url" content={window.location.href} />
                 <meta property="og:description" content={data?.title} />
-                <meta name="keyword" content="kredi, kredi kartı, kredi başvurusu, faiz oranı, başvuru, kampanya" />
+                <meta name="og:keyword" content="kredi, kredi kartı, kredi başvurusu, faiz oranı, başvuru, kampanya" />
                 <meta name="description" content="Kredi.com.tr ile Kredi ürünleri, kredi kartları ve mevduatlatı arayıp karşılaştırarak başvurabilirsiniz. Türkiye'nin Kredi Başvuru Merkezi | KREDİ.COM.TR" />
                 <meta name="robots" content="index,follow" />
                 <link rel="apple-touch-icon" href={apiurl + data?.imageUrl} />

@@ -47,7 +47,7 @@ export const FastLoan = () => {
 
     }
 
-  
+
 
     return (
 
@@ -153,7 +153,7 @@ const FastLoanList = (props) => {
         setFastLoadnData(filtering);
         setRefresh(new Date().getTime())
     }
-
+   
     return (
 
         <div className="col-12 fast-loan-item" >
@@ -205,24 +205,29 @@ const FastLoanList = (props) => {
                             color: "white"
                         }} type="submit">BAŞVUR</button>
 
+
                 </div>
             </div>
             <div className="row" style={{ paddingBottom: 8 }}>
-                <div className="col-4">
-                    <img  title={fastLoanData.bankName + " banka " + fastLoanData.loanType + " hızlı başvuru"} alt={fastLoanData.bankName + " banka " + fastLoanData.loanType + " başvuru"} src={apiurl + fastLoanData.logo} style={{ width: "100%" }}></img>
+                <div className="col-4 text-center" >
 
+                    <img title={fastLoanData.bankName + " banka " + fastLoanData.loanType + " hızlı başvuru"} alt={fastLoanData.bankName + " banka " + fastLoanData.loanType + " başvuru"} src={apiurl + fastLoanData.logo} style={{ width: "100%" }}></img>
+                    <b style={{ color: "red" }}>{fastLoanData.loanType}</b>
                 </div>
-                <div className="col-4">
-                    <div className="col-12 m-0 p-0">
-                        <span>Faiz Oranı:</span> {fastLoanData.rate}
-                    </div>
-                    <div className="col-12 m-0 p-0">
-                        <b>{fastLoanData.loanType}</b>
-                    </div>
-                </div>
+
 
                 <div className="col-4" style={{ padding: 0 }}>
                     <FastLoanResult mountlyPayment={fastLoanData.mountlyPayment} totalPayment={fastLoanData.totalPayment} ></FastLoanResult>
+
+                </div>
+                <div className="col-4">
+                    <div className="col-12 m-0 p-0">
+                        <a style={{fontWeight:"bold",color:"blue"}} href={"/bankalar/"+fastLoanData.bankUrlName+"-kredi-hesaplama-ve-basvuru?amount=" + (amount ?? fastLoanData.amount) + "&term=" + fastLoanData.term?.toString() + "&loanId=" + fastLoanData.interestRateId}>Detay</a>
+                    </div>
+                    <div className="col-12 m-0 p-0">
+                        <span>Faiz Oranı:</span> {fastLoanData.rate}
+
+                    </div>
 
                 </div>
             </div>

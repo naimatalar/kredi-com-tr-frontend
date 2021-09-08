@@ -4,6 +4,7 @@ import { LoanRate } from "../Components/containers/LoanRate";
 import CurrencyInput from "react-currency-input";
 import Dropdown from 'react-dropdown';
 import { loanRedirect } from "../Components/RedirectComponent";
+import Image from "react-image-webp";
 export const SearchLoanPage = (props) => {
   const [data, setData] = useState([])
   const [noData, setNoData] = useState(false)
@@ -44,7 +45,7 @@ export const SearchLoanPage = (props) => {
     var terms = await PostNoneToken("InterestRates/GetLoanSearchResult", d).then(x => { return x.data }).catch(x => { return false })
 
     setData(terms)
-    if (terms?.length==0) {
+    if (terms?.length == 0) {
       setNoData(true)
     }
 
@@ -151,7 +152,7 @@ export const SearchLoanPage = (props) => {
                 {
                   isPopuler != "" &&
                   <div className="populer-mark">
-                    <img style={{ width: 32 }} src={require("../assets/images/special.png").default} /> Sponsorlu
+                    <Image style={{ width: 32 }} webp={require("../assets/images/special.webp").default} src={require("../assets/images/special.png").default} /> Sponsorlu
                   </div>
                 }
                 <div className="col-3 mt-2">
@@ -249,7 +250,7 @@ export const SearchLoanPage = (props) => {
 
           })
         }{
-          noData  && <div className="col-12 row text-center justify-content-center"><b><i style={{ color: "#b0b0b0" }}>Sonuç Bulunamadı !</i></b>  </div>
+          noData && <div className="col-12 row text-center justify-content-center"><b><i style={{ color: "#b0b0b0" }}>Sonuç Bulunamadı !</i></b>  </div>
         }
       </div>
       <div className="col-12 col-md-4 d-none d-lg-flex d-md-flex">

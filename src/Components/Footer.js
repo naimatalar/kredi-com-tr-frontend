@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'react-image-webp';
 const Footer = () => {
 
     return (
@@ -12,16 +13,23 @@ const Footer = () => {
                     <div className="row">
 
                         <div className="col-md-5 mt-md-0 mt-3">
-                            <img alt="kredi.com.tr logo" title={"kredi.com.tr"} style={{
-                                width: "80%"
-                            }} src={require("../assets/images/lgwhite.png").default} ></img>
-                          <h4 className="text-center">Kredi Başvuru Merkezi</h4>
+                            <Image style={{
+                                width: "80%",
+                                
+                            }}
+                                src={require('../assets/images/lgwhite.png').default}
+                                webp={require('../assets/images/lgwhite.webp').default}
+                            />
+
+
+
+                            <h4 className="text-center">Kredi Başvuru Merkezi</h4>
                         </div>
                         <div className="col-md-2 mt-md-0 mt-3">
                             <h5 className="text-uppercase">kredi.com.tr</h5>
 
                             <ul className="list-unstyled">
-                           
+
                                 <li>
                                     <a href="/soru-cevap">Sık Sorulan Sorular</a>
                                 </li>
@@ -31,10 +39,10 @@ const Footer = () => {
                                 <li>
                                     <a href="/haberler-bilgiler">Haberler</a>
                                 </li>
-                                 <li>
+                                <li>
                                     <a href="/vadeli-mevduat-sorgulama">Mevduat Başvuru</a>
                                 </li>
-                                
+
                             </ul>
 
                         </div>
@@ -87,7 +95,7 @@ const Footer = () => {
 
                 </div>
 
-           
+
 
             </div>
         </div>

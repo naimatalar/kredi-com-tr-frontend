@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react"
+import Image from "react-image-webp";
 import { apiurl, GetNoneToken } from "../../datacrud/datacrud"
 
 export const PopulerBankCampaing = () => {
@@ -25,7 +26,9 @@ export const PopulerBankCampaing = () => {
                         padding: 7,
                         background: "linear-gradient(45deg, rgb(87 231 255 / 21%), transparent)"
                     }}>
-                        <small className="campaign-icon"><img style={{ filter: "hue-rotate(184deg)", width: 30 }} src={require("../../assets/images/campaigns.png").default}></img> Sponsorlu Kampanya</small>
+                        <small className="campaign-icon"><Image style={{ filter: "hue-rotate(184deg)", width: 30 }} 
+                        webp={require("../../assets/images/campaigns.webp").default}
+                      src={require("../../assets/images/campaigns.png").default}></Image> Sponsorlu Kampanya</small>
 
                     </div>
 

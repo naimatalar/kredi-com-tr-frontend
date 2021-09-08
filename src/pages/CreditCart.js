@@ -6,6 +6,7 @@ import { kredicartdata } from "../kredicartdata";
 import { Helmet } from "react-helmet";
 import hcbgImage from "../assets/images/bgss.jpg";
 import { creditCartRedirect } from "../Components/RedirectComponent";
+import Image from "react-image-webp";
 export const CreditCart = (props) => {
     const [mainKrediKartData, setMainKrediKartData] = useState([])
     const [banklistFilter, setBanklistFilter] = useState([{ name: "", logoUrl: "" }])
@@ -83,6 +84,8 @@ export const CreditCart = (props) => {
                 <meta property="og:url" content={window.location.href} />
                 <meta property="og:description" content="Onlarca kredi kartlarını listeledik. Mil veren kredi kartları Bol bol uçuk kazandırıyor. Diğer yandan puan biriktirilen kredi kartları ile harcayarak kazanıyorsunuz." />
                 <meta name="keyword" content="kredi, kredi kartı, kredi başvurusu, kredi faiz oranı, kredi kartı başvurusu" />
+                <meta name="og:keyword" content="kredi, kredi kartı, kredi başvurusu, kredi faiz oranı, kredi kartı başvurusu" />
+
                 <meta name="twitter:title" content="Mil Kazandıran Ve Puan Veren Kredi Kartları" />
                 <meta name="twitter:description" content="Onlarca kredi kartlarını listeledik. Mil veren kredi kartları Bol bol uçuk kazandırıyor. Diğer yandan puan biriktirilen kredi kartları ile harcayarak kazanıyorsunuz." />
                 <meta name="description" content="Onlarca kredi kartlarını listeledik. Mil veren kredi kartları Bol bol uçuk kazandırıyor. Diğer yandan puan biriktirilen kredi kartları ile harcayarak kazanıyorsunuz." />
@@ -104,16 +107,16 @@ export const CreditCart = (props) => {
                     <div className="col-12" style={{ textAlign: "center" }}>
                         <ul className="cart-type-nav">
                             <li className={props.cartType == "all" ? "active" : ""}>
-                                <Link to="/kredi-karti"><img alt="Bütün kredi kartlarını" title="Bütün kredi kartlarını listele ve bul" style={{ width: 20, marginRight: 5 }} src={require("../assets/images/debit.png").default}></img>Tüm Kartlar</Link>
+                                <Link to="/kredi-karti"><Image alt="Bütün kredi kartlarını" title="Bütün kredi kartlarını listele ve bul" style={{ width: 20, marginRight: 5 }} webp={require("../assets/images/debit.webp").default} src={require("../assets/images/debit.png").default}></Image>Tüm Kartlar</Link>
                             </li>
                             <li className={props.cartType == "miles" ? "active" : ""}>
-                                <Link to="/kredi-karti/mil-veren-kredi-kartlari"> <img alt="Mil veren kredi kartlarını listele ve bul" title="Kullandıkça mil veren kredi kartlarını listeler" style={{ width: 18, marginRight: 5 }} src={require("../assets/images/fly-color.png").default}></img>Mil Veren Kartlar</Link>
+                                <Link to="/kredi-karti/mil-veren-kredi-kartlari"> <Image alt="Mil veren kredi kartlarını listele ve bul" title="Kullandıkça mil veren kredi kartlarını listeler" style={{ width: 18, marginRight: 5 }} webp={require("../assets/images/fly-color.webp").default} src={require("../assets/images/fly-color.png").default}></Image>Mil Veren Kartlar</Link>
                             </li>
                             <li className={props.cartType == "point" ? "active" : ""}>
-                                <Link to="/kredi-karti/puan-veren-kredi-kartlari">  <img alt="Puan veren kartlarını listele ve bul" title="Puan biriktirip harcadıkça kazandıran puan veren kredi kartları" style={{ width: 18, marginRight: 5 }} src={require("../assets/images/scorecolor.png").default}></img>Puan Veren Kartlar</Link>
+                                <Link to="/kredi-karti/puan-veren-kredi-kartlari">  <Image alt="Puan veren kartlarını listele ve bul" title="Puan biriktirip harcadıkça kazandıran puan veren kredi kartları" style={{ width: 18, marginRight: 5 }} webp={require("../assets/images/scorecolor.webp").default}src={require("../assets/images/scorecolor.png").default}></Image>Puan Veren Kartlar</Link>
                             </li>
                             <li className={props.cartType == "corporate" ? "active" : ""}>
-                                <Link to="/kredi-karti/ticari-kredi-kartlari"><img alt="Ticari kredi kartlarını bul" title="Ticari kredi kartları ile alışverişi kazançlı hale getiren ticari kredi kartları" style={{ width: 18, marginRight: 5 }} src={require("../assets/images/corporatecolor.png").default}></img>Ticari Kartlar</Link>
+                                <Link to="/kredi-karti/ticari-kredi-kartlari"><Image alt="Ticari kredi kartlarını bul" title="Ticari kredi kartları ile alışverişi kazançlı hale getiren ticari kredi kartları" style={{ width: 18, marginRight: 5 }} webp={require("../assets/images/corporatecolor.webp").default}src={require("../assets/images/corporatecolor.png").default}></Image>Ticari Kartlar</Link>
                             </li>
 
 
@@ -169,7 +172,7 @@ export const CreditCart = (props) => {
                                             {
                                                 isPopuler != "" &&
                                                 <div className="populer-mark">
-                                                    <img style={{ width: 32 }} src={require("../assets/images/special.png").default} /> Sponsorlu
+                                                    <Image style={{ width: 32 }} webp={require("../assets/images/special.webp").default} src={require("../assets/images/special.png").default} /> Sponsorlu
                                                 </div>
                                             }
                                             <div className="row credit-cart-item">
@@ -223,12 +226,12 @@ export const CreditCart = (props) => {
                                                         item.campaing.map((jitem, jkey) => {
                                                             return (
                                                                 <div key={jkey}>
-                                                                    <img style={{
+                                                                    <Image style={{
                                                                         width: 30,
                                                                         marginRight: 3,
                                                                         float: "left"
 
-                                                                    }} src={require("../assets/images/campaigns.png").default}></img>
+                                                                    }} webp={require("../assets/images/campaigns.webp").default} src={require("../assets/images/campaigns.png").default}></Image>
                                                                     <span key={jkey} style={{
                                                                         fontSize: 13,
                                                                         display: "block",
@@ -249,7 +252,7 @@ export const CreditCart = (props) => {
                                                         display: "block",
                                                         paddingLeft: 23,
                                                         cursor: "pointer"
-                                                    }}> <i>Tüm Kampayaları Gör ({item.campaingCount })</i>  </b>
+                                                    }}> <i>Tüm Kampayaları Gör ({item.campaingCount})</i>  </b>
                                                 </div>
 
                                             </div>

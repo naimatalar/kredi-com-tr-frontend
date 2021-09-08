@@ -6,6 +6,7 @@ import { PopulerLoans } from "../Components/containers/PopulerLoans";
 import { Helmet } from "react-helmet";
 import { Nav, NavItem, NavLink, TabContent, TabPane } from "reactstrap";
 import classnames from 'classnames';
+import Image from "react-image-webp";
 
  
 export const DispositSearchPage = (props) => {
@@ -115,6 +116,8 @@ export const DispositSearchPage = (props) => {
                                 <meta property="og:url" content={window.location.href} />
                                 <meta property="og:description" content="Vadeli Mevduat ile kazancınızı yükselteceğiniz banka seçenekleri sorgulama " />
                                 <meta name="keyword" content="Vadeli Mevduat ile kazancınızı yükselteceğiniz banka seçenekleri sorgulama " />
+                                                              <meta name="og:keyword" content="Vadeli Mevduat ile kazancınızı yükselteceğiniz banka seçenekleri sorgulama " />
+
                                 <meta name="twitter:title" content="Vadeli Mevduat Hesaplama Ve Başvurma" />
                                 <meta name="twitter:description" content="Vadeli Mevduat ile kazancınızı yükselteceğiniz banka seçenekleri sorgulama." />
                                 <meta name="description" content=" Vadeli Mevduat ile kazancınızı yükselteceğiniz banka seçenekleri sorgulama" />
@@ -123,7 +126,9 @@ export const DispositSearchPage = (props) => {
                             </Helmet>
                             <div className="col-12 col-md-5 col-lg-5 row  align-content-center justify-content-center">
                                 <div className="justify-content-center col-12 row">
-                                    <img alt="Vadeli mevduat hesapları" title="Vadeli Mevduat Hesaplama Ve Başvurma" style={{ width: "30%" }} src={require("../assets/images/moneycolor.png").default}></img>
+                                    <Image alt="Vadeli mevduat hesapları" title="Vadeli Mevduat Hesaplama Ve Başvurma" style={{ width: "30%" }}
+                                     src={require("../assets/images/moneycolor.png").default}
+                                     src={require("../assets/images/moneycolor.png").default}></Image>
                                 </div>
                                 <div className="justify-content-center col-12 row">
                                     <h3><b>Mavduat</b></h3>

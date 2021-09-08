@@ -6,6 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, DropdownItem, Dropdown, DropdownToggle, DropdownMenu } from 'reactstrap';
 import { bankdemodata } from "../bankdemodata";
 import { apiurl } from "../datacrud/datacrud";
+import Image from "react-image-webp";
 const NavigationTree = (props) => {
     const [collapsed, setCollapsed] = useState(true);
     const toggleNavbar = () => setCollapsed(!collapsed);
@@ -48,7 +49,11 @@ const NavigationTree = (props) => {
                         <div className="row" style={{ height: 90, alignItems: "center" }}>
                             <div className="col-lg-3 col-md-2" style={{ paddingBottom: 6 }}>
                                 <a title="kredi.com.tr" href="/">
-                                    <img alt="kredi.com.tr logo" title="kredi.com.tr" src={require("../assets/images/lg.png").default} style={{ width: "100%" }}></img>
+                                    <Image alt="kredi.com.tr logo" title="kredi.com.tr"
+                                        src={require("../assets/images/lg.png").default}
+                                        webp={require("../assets/images/lg.webp").default}
+
+                                        style={{ width: "100%" }}></Image>
 
                                 </a>
 
@@ -56,16 +61,18 @@ const NavigationTree = (props) => {
                             <div className="col-lg-9 col-md-10  nav-container" style={{ float: "right" }}>
                                 <div className="row justify-content-end mb-1" >
 
+
                                     <div style={{ display: "flex", justifyContent: "flex-end" }}>
+
                                         <a style={{
                                             fontSize: 13,
                                             fontWeight: "normal",
                                             border: "none",
                                             fontFamily: "sans-serif",
-                                          
+
                                             borderRadius: 6,
                                             padding: "3px 9px 2px 10px",
-                                            color:"#c55600"
+                                            color: "#c55600"
                                         }} className="nav-link" href="/kredi-karti-kampanyalari">Kredi Kartı Kampanyaları</a>
 
 
@@ -78,9 +85,27 @@ const NavigationTree = (props) => {
                                             fontFamily: "sans-serif",
                                             border: "1px solid #077a68",
                                             borderRadius: 6,
-                                            padding: "3px 9px 2px 10px"
+                                            padding: "3px 9px 2px 10px",
+
                                         }} className="nav-link" href="/hesaplama/aylik-ne-kadar-odeyebilirim">Ne Kadar Kredi Çekebilirim?</a>
 
+                                    </div>
+                                    <div style={{ display: "flex", justifyContent: "flex-end", marginLeft: 30 }}>
+
+                                        <a class="social-media" href="https://www.facebook.com/groups/4272638979483202">
+                                            <Image src={require("../assets/images/facebook.png").default}
+                                                webp={require("../assets/images/facebook.webp").default} />
+                                        </a>
+                                        <a class="social-media" href="https://www.instagram.com/kredicomtr">
+                                            <Image webp={require("../assets/images/instagram.png").default}
+                                                src={require("../assets/images/instagram.webp").default} />
+                                        </a>
+                                        <a class="social-media" href="https://www.linkedin.com/company/74042232">
+
+                                            <Image src={require("../assets/images/linkedin.png").default}
+                                                webp={require("../assets/images/linkedin.webp").default}
+                                            />
+                                        </a>
                                     </div>
                                 </div>
                                 <Nav style={{ float: "right" }}>
@@ -228,9 +253,9 @@ const NavigationTree = (props) => {
                                 </Nav>
                             </Collapse>
                         </Navbar>
-                       
+
                     </div>
-                   
+
                 }
 
 
