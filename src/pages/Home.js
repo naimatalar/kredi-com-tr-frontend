@@ -19,13 +19,28 @@ import { HowToPay } from "../Components/calculate-page/HowToPay";
 
 import Image from "react-image-webp";
 
- const Home = (props) => {
+const Home = (props) => {
     const [addsPopup, setAddsPopup] = useState(false)
     const [sss, setSss] = useState([])
     const [blog, setBlog] = useState([])
+    const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions(0));
+
+    function getWindowDimensions() {
+        const { innerWidth: width, innerHeight: height } = window;
+        return {
+            width,
+            height
+        };
+    }
     useEffect(() => {
 
         start()
+        function handleResize() {
+            setWindowDimensions(getWindowDimensions());
+        }
+
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
     }, [])
     const start = async () => {
         var sss_ = await GetNoneToken("Faqs/GetAllSite").then(x => { return x.data }).catch(x => { return false })
@@ -106,8 +121,8 @@ import Image from "react-image-webp";
                 <div className="d-lg-none d-md-flex row adds-first-big pt-4 pb-4" >
                     <div className="row  m-0 p-0 justify-content-center">
                         <div className="row justify-content-center">
-                            <Image title="kredi kartları krediler ve mevduatlar kredi.com.tr de" alt={"kredi.com.tr logo"} style={{ width: "50%", objectFit: "contain" }} 
-                            webp={require("../assets/images/lg.webp").default}src={require("../assets/images/lg.png").default}></Image>
+                            <Image title="kredi kartları krediler ve mevduatlar kredi.com.tr de" alt={"kredi.com.tr logo"} style={{ width: "50%", objectFit: "contain" }}
+                                webp={require("../assets/images/lg.webp").default} src={require("../assets/images/lg.png").default}></Image>
                         </div>
                         <div className="col-12" style={{ textAlign: "center" }}>
                             <b style={{ textAlign: "center" }}>Reklam Ve Tanıtım Alanı</b>
@@ -121,7 +136,7 @@ import Image from "react-image-webp";
                     </div>
                     <div className="col-12 mt-3">
                         <div className="row  m-0 p-0 justify-content-center">
-                            
+
                             <button onClick={() => { setAddsPopup(true) }} style={{ width: 156 }} className="default-button">&nbsp; İLETİŞİM &nbsp;</button>
                         </div>
                     </div>
@@ -199,8 +214,8 @@ import Image from "react-image-webp";
                 <div className="row  m-0 p-0 justify-content-center">
                     <div className="row justify-content-center">
                         <Image title="kredi.com.tr ile artık bankaların ürünleri parmaklarınızın ucunda" alt={"logo kredi.com.tr"} style={{ width: "50%", objectFit: "contain" }}
-                         webp={require("../assets/images/lg.webp").default}
-                         src={require("../assets/images/lg.png").default}></Image>
+                            webp={require("../assets/images/lg.webp").default}
+                            src={require("../assets/images/lg.png").default}></Image>
                     </div>
                     <div className="col-12" style={{ textAlign: "center" }}>
                         <b style={{ textAlign: "center" }}>Reklam Ve Tanıtım Alanı</b>
@@ -252,7 +267,7 @@ import Image from "react-image-webp";
                                     <h6 style={{ fontWeight: "bold" }}>* {item.question}</h6>
 
                                 </div>
-                                <div dangerouslySetInnerHTML={{ __html: item.ansver }} className="faq-3time"> 
+                                <div dangerouslySetInnerHTML={{ __html: item.ansver }} className="faq-3time">
                                     {/* <h6 style={{ color: "black", fontSize: 13 }}>*{item.ansver}</h6> */}
                                 </div>
                             </div>)
@@ -273,7 +288,7 @@ import Image from "react-image-webp";
                                         <h6><b>* {item.title}</b> </h6>
                                         <div className="maxhg" style={{ color: "black", paddingBottom: 23 }} dangerouslySetInnerHTML={{ __html: item.content }}></div>
 
-                                        <p><b><a style={{ color: "#007bff" }} href={"/haberler-bilgiler/"+item.urlName}>Devamını Oku...</a></b></p>
+                                        <p><b><a style={{ color: "#007bff" }} href={"/haberler-bilgiler/" + item.urlName}>Devamını Oku...</a></b></p>
                                     </div>
                                 )
                             })}
@@ -324,7 +339,10 @@ import Image from "react-image-webp";
             </div>
         </div>
         <div className="row" style={{ justifyContent: "center", marginTop: 100 }}>
-            <BankContainer Banks={props.Banks}></BankContainer>
+            {windowDimensions.width > 800 &&
+                <BankContainer Banks={props.Banks}></BankContainer>
+            }
+
         </div>
     </>)
 }

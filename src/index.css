@@ -11,6 +11,7 @@
   font-display: block;
 }
 
+
 * ,body * {
   font-family:  "neris";
   color:#077a68;
@@ -229,7 +230,7 @@ a:active{
 .loan-search-container{
   border-radius: 5px;
   box-shadow: 2px 2px 6px 0px black;
-  background-image: url('./assets/images/krediArat.png');
+  background-image: url('./assets/images/krediArat.webp');
 }
 .populer-loan-container{
   border-radius: 5px;
@@ -339,10 +340,10 @@ text-decoration: none;
   padding: 36px 0 38px 0px;
   border-radius: 6px;
   box-shadow: 0px 2px 5px 1px black;
-  background-image: url('./assets/images/krediArat.png');
+  background-image: url('./assets/images/krediArat.webp');
 }
 .bankbackground{
-    background-image: url('./assets/images/kredibanka.png');
+    background-image: url('./assets/images/kredibanka.webp');
 
 }
 .middle-menu-text{

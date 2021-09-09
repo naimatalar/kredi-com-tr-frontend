@@ -21,7 +21,7 @@ const NavigationTree = (props) => {
     const toggleMobilBank = () => { setMobilDropdownOpenBank(!mobilDropdownOpenBank); setMobilDropdownOpen(false) }
 
 
-    const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
+    const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions(0));
 
     function getWindowDimensions() {
         const { innerWidth: width, innerHeight: height } = window;
@@ -92,15 +92,15 @@ const NavigationTree = (props) => {
                                     </div>
                                     <div style={{ display: "flex", justifyContent: "flex-end", marginLeft: 30 }}>
 
-                                        <a class="social-media" href="https://www.facebook.com/groups/4272638979483202">
+                                        <a className="social-media" href="https://www.facebook.com/groups/4272638979483202">
                                             <Image src={require("../assets/images/facebook.png").default}
                                                 webp={require("../assets/images/facebook.webp").default} />
                                         </a>
-                                        <a class="social-media" href="https://www.instagram.com/kredicomtr">
+                                        <a className="social-media" href="https://www.instagram.com/kredicomtr">
                                             <Image webp={require("../assets/images/instagram.png").default}
                                                 src={require("../assets/images/instagram.webp").default} />
                                         </a>
-                                        <a class="social-media" href="https://www.linkedin.com/company/74042232">
+                                        <a className="social-media" href="https://www.linkedin.com/company/74042232">
 
                                             <Image src={require("../assets/images/linkedin.png").default}
                                                 webp={require("../assets/images/linkedin.webp").default}
@@ -184,7 +184,10 @@ const NavigationTree = (props) => {
                         <Navbar color="faded" light>
                             <NavbarBrand href="/" className="mr-auto">
 
-                                <img alt="kredi.com.tr logo" src={require("../assets/images/lg.png").default} style={{ width: 180 }}></img>
+                                <Image alt="kredi.com.tr logo" src={require("../assets/images/lg.png").default}
+                                webp={require("../assets/images/lg.webp").default} style={{ width: 180 }}>
+
+                                </Image>
 
                             </NavbarBrand>
                             <NavbarToggler onClick={toggleNavbar} className="mr-2" />
@@ -195,10 +198,10 @@ const NavigationTree = (props) => {
                                         <a className="mobil-nav-link arrow-bottom" onClick={toggleMobil} >
                                             Kredi
                                         </a>
-                                    </NavItem>
+                                    </NavItem> 
                                     <NavItem>
                                         <Collapse isOpen={mobilDropdownOpen} >
-
+  
                                             <>
 
                                                 {props.LoanNavigation.map((item, key) => {
@@ -223,18 +226,21 @@ const NavigationTree = (props) => {
                                     </NavItem>
                                     <NavItem>
                                         <Collapse isOpen={mobilDropdownOpenBank} >
+                                            {
+                                                mobilDropdownOpenBank &&
+                                                <>
 
-                                            <>
+                                                    {props.BankNavigation.map((item, key) => {
+                                                        return (
+                                                            <div key={key} >
+                                                                <a href={"/bankalar/" + item.bankUrlName} ><img alt={"bankalar " + item.bankName + " kredi.com.tr"} style={{ width: 170, padding: 3, marginBottom: 5 }} src={apiurl + item.logoUrl}></img> </a>                                                        </div>
 
-                                                {props.BankNavigation.map((item, key) => {
-                                                    return (
-                                                        <div key={key} >
-                                                            <a href={"/bankalar/" + item.bankUrlName} ><img alt={"bankalar " + item.bankName + " kredi.com.tr"} style={{ width: 170, padding: 3, marginBottom: 5 }} src={apiurl + item.logoUrl}></img> </a>                                                        </div>
+                                                        )
+                                                    })}
 
-                                                    )
-                                                })}
+                                                </>
+                                            }
 
-                                            </>
                                         </Collapse>
                                     </NavItem>
                                     <NavItem>

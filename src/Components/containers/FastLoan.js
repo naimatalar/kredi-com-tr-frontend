@@ -166,7 +166,7 @@ const FastLoanList = (props) => {
                             precision="0"
                             prefix="₺"
                             value={amount ?? fastLoanData.amount}
-                            onChange={(element) => { chanheVals(fastLoanData.id, fastLoanData.term, element); setAmount(element) }} style={{ padding: 3, width: "100%" }} />
+                            onChange={(element) => { chanheVals(fastLoanData.id, fastLoanData.term, element); setAmount(element) }} style={{ padding: 3, width: "100%"}} />
                         {fastLoanData.alertShow &&
                             < span style={{ textAlign: "center", color: "red" }} className="fast-loan-warning">{fastLoanData.alert}</span>
 
@@ -211,7 +211,7 @@ const FastLoanList = (props) => {
             <div className="row" style={{ paddingBottom: 8 }}>
                 <div className="col-4 text-center" >
 
-                    <img title={fastLoanData.bankName + " banka " + fastLoanData.loanType + " hızlı başvuru"} alt={fastLoanData.bankName + " banka " + fastLoanData.loanType + " başvuru"} src={apiurl + fastLoanData.logo} style={{ width: "100%" }}></img>
+                    <img title={fastLoanData.bankName + " banka " + fastLoanData.loanType + " hızlı başvuru"} alt={fastLoanData.bankName + " banka " + fastLoanData.loanType + " başvuru"} src={apiurl + fastLoanData.logo} style={{ width: "100%",height: 23  }}></img>
                     <b style={{ color: "red" }}>{fastLoanData.loanType}</b>
                 </div>
 

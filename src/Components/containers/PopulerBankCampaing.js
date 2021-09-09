@@ -26,9 +26,9 @@ export const PopulerBankCampaing = () => {
                         padding: 7,
                         background: "linear-gradient(45deg, rgb(87 231 255 / 21%), transparent)"
                     }}>
-                        <small className="campaign-icon"><Image style={{ filter: "hue-rotate(184deg)", width: 30 }} 
-                        webp={require("../../assets/images/campaigns.webp").default}
-                      src={require("../../assets/images/campaigns.png").default}></Image> Sponsorlu Kampanya</small>
+                        <small className="campaign-icon"><Image style={{ filter: "hue-rotate(184deg)", width: 30 }}
+                            webp={require("../../assets/images/campaigns.webp").default}
+                            src={require("../../assets/images/campaigns.png").default}></Image> Sponsorlu Kampanya</small>
 
                     </div>
 
@@ -49,7 +49,7 @@ export const PopulerBankCampaing = () => {
 
                         <img style={{
                             width: 240,
-
+                            height: 55
                         }} src={apiurl + data?.bankLogoUrl}></img>
                         <a style={{
                             fontSize: 18,

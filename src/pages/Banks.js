@@ -37,10 +37,26 @@ export const Banks = (props) => {
     const [bankContainerCount, setBankContainerCount] = useState()
     const [amountss, setAmountss] = useState()
 
-    
+    const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions(0));
+
+    function getWindowDimensions() {
+        const { innerWidth: width, innerHeight: height } = window;
+        return {
+            width,
+            height
+        };
+    }
+
+
 
     useEffect(() => {
         start()
+        function handleResize() {
+            setWindowDimensions(getWindowDimensions());
+        }
+
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
     }, [])
     const start = async () => {
 
@@ -62,7 +78,7 @@ export const Banks = (props) => {
 
         if (bankData.disposits.length > 0) {
             containercnt++
- 
+
         }
         if (bankData.creditCart.length > 0) {
             containercnt++
@@ -74,7 +90,7 @@ export const Banks = (props) => {
     }
 
 
-  
+
 
 
 
@@ -84,21 +100,21 @@ export const Banks = (props) => {
             <Helmet>
 
                 <meta property="og:type" content="article" />
-                <meta property="og:title" content={"KREDİ.COM.TR | "+ (bank.bankName ?? "") + ": Kredi Ve Kredi Kartı Fırsatları"} />
+                <meta property="og:title" content={"KREDİ.COM.TR | " + (bank.bankName ?? "") + ": Kredi Ve Kredi Kartı Fırsatları"} />
                 <meta property="og:url" content={window.location.href} />
 
                 <meta property="og:description" content={(bank.bankName ?? "") + " bankaya ait kredileri sorgulayabilir, vadeli mevduat hesabı oluşturabilirsiniz. Ayrıca " + (bank.bankName ?? "") + " bankasına ait kredi kartlarını listeledik  ."} />
-                <meta name="og:keyword" content={"Bankalar,"+bank.bankName+" , kredi kartı, faiz oranı, kredi hesaplama"} />
-                <meta name="twitter:title" content={"KREDİ.COM.TR | "+(bank.bankName ?? "") + ": Kredi, Kredi Kartı ve Mevduat Fırsatları"} />
+                <meta name="og:keyword" content={"Bankalar," + bank.bankName + " , kredi kartı, faiz oranı, kredi hesaplama"} />
+                <meta name="twitter:title" content={"KREDİ.COM.TR | " + (bank.bankName ?? "") + ": Kredi, Kredi Kartı ve Mevduat Fırsatları"} />
 
-                <meta name="twitter:description" content={"KREDİ.COM.TR | "+(bank.bankName ?? "") + " bankaya ait kredileri sorgulayabilir, vadeli mevduat hesabı oluşturabilirsiniz. Ayrıca " + (bank.bankName ?? "") + " bankasına ait kredi kartlarını listeledik  ."} />
+                <meta name="twitter:description" content={"KREDİ.COM.TR | " + (bank.bankName ?? "") + " bankaya ait kredileri sorgulayabilir, vadeli mevduat hesabı oluşturabilirsiniz. Ayrıca " + (bank.bankName ?? "") + " bankasına ait kredi kartlarını listeledik  ."} />
 
-                <meta name="description" content={"KREDİ.COM.TR | "+(bank.bankName ?? "") + " bankaya ait kredileri sorgulayabilirsiniz. Ayrıca " + (bank.bankName ?? "") + " bankasına ait kredi kartlarını listeledik  ."} />
+                <meta name="description" content={"KREDİ.COM.TR | " + (bank.bankName ?? "") + " bankaya ait kredileri sorgulayabilirsiniz. Ayrıca " + (bank.bankName ?? "") + " bankasına ait kredi kartlarını listeledik  ."} />
                 <meta name="robots" content="index,follow" />
                 <meta property="og:image" itemProp="image" content={apiurl + bank?.logoUrl} />
                 <link rel="apple-touch-icon" href={apiurl + bank?.logoUrl} />
 
-                <title>{"KREDİ.COM.TR | "+(bank.bankName ?? "") + ": Kredi, Kredi Kartı ve Mevduat Başvuru"} </title>
+                <title>{"KREDİ.COM.TR | " + (bank.bankName ?? "") + ": Kredi, Kredi Kartı ve Mevduat Başvuru"} </title>
 
             </Helmet>
             <div className="row bank-label">
@@ -206,7 +222,7 @@ export const Banks = (props) => {
                                                                                         float: "left"
 
                                                                                     }} src={require("../assets/images/campaigns.png").default}
-                                                                                    webp={require("../assets/images/campaigns.png").default}
+                                                                                        webp={require("../assets/images/campaigns.png").default}
                                                                                         alt={bank.bankName + " bankaya ait " + each.name + " kampanya :" + jitem.title}
                                                                                         title={jitem.title + " : " + bank.bankName + "  " + each.name + " kredi kartının kampanyaları "}
                                                                                     ></Image>
@@ -292,7 +308,10 @@ export const Banks = (props) => {
                         </div>
                     </div>
                     <div className="row mt-7" style={{ justifyContent: "center", marginTop: 100 }}>
-                        <BankContainer Banks={props.Banks}></BankContainer>
+                        {windowDimensions.width > 800 &&
+                            <BankContainer Banks={props.Banks}></BankContainer>
+
+                        }
                     </div>
                 </div>
 
