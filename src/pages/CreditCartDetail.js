@@ -34,6 +34,8 @@ import { apiurl, GetNoneToken } from "../datacrud/datacrud"
                 <meta property="og:url" content={window.location.href} />
                 <meta property="og:description"  content={"Kredi Kartı Detayları :"+data?.bank +" "+data?.name + " Kredi Kartı , "+(data?.yearlyUsingAmount == 0 ? "Ücretsiz" : data?.yearlyUsingAmount + " TL")}  />
                 <meta name="keyword" content="kredi, kredi kartı, kredi başvurusu, kredi faiz oranı, kredi kartı başvurusu" />
+                               <meta name="og:keyword" content="kredi, kredi kartı, kredi başvurusu, kredi faiz oranı, kredi kartı başvurusu" />
+
                 <meta name="twitter:title"  content={data?.bank +" "+data?.name + " Kredi Kartı"}  />
                 <meta name="twitter:description"  content={"Kredi Kartı Detayları :"+data?.bank +" "+data?.name + " Kredi Kartı , "+(data?.yearlyUsingAmount == 0 ? "Ücretsiz" : data?.yearlyUsingAmount + " TL")} />
                 <meta name="description"  content={"Kredi Kartı Detayları :"+data?.bank +" "+data?.name + " Kredi Kartı , "+(data?.yearlyUsingAmount == 0 ? "Ücretsiz" : data?.yearlyUsingAmount + " TL")}/>

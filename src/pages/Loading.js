@@ -7,19 +7,19 @@ function Loading(props) {
         start()
     }, [])
     function start() {
-        // setTimeout(() => {
-            
-        //     window.location.replace("/")
-        // }, 3000);
-
+       var pat= props.location.pathname.toString().split("/");
+       console.log(pat[pat.length-1])
     }
 
     return (
-        <div className="row">
-            <img style={{
-                width: "50%",
-                margin: " 0 auto"
-            }} src={require("../assets/images/loading.gif").default}></img>
+        <div className="container">
+            <div className="col-12">
+                <img style={{
+                    width: "50%",
+                    margin: " 0 auto"
+                }} src={require("../assets/images/loading.gif").default}></img>
+
+            </div>
         </div>
     );
 }

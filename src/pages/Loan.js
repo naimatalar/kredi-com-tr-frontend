@@ -6,6 +6,7 @@ import { PopulerLoans } from "../Components/containers/PopulerLoans";
 import { Helmet } from "react-helmet";
 import { HowToPay } from "../Components/calculate-page/HowToPay";
 import { LoanRate } from "../Components/containers/LoanRate";
+import Image from "react-image-webp";
 
 export const Loan = (props) => {
     const [loan, setLoan] = useState(props.Loan)
@@ -102,12 +103,12 @@ export const Loan = (props) => {
                         <div className="col-12 mb-3 mt-3"><h2>Kredi Puanı Nedir?</h2><hr className="title-hr mt-1"></hr></div>
                         <p style={{ color: "black" }}>
                             &nbsp; &nbsp; &nbsp; &nbsp;  Kredi puanı, BDDK tarafından kişinin kredi ve kredi kartı kullanımına göre belirlenir. <br></br> <br></br> &nbsp; &nbsp; &nbsp; &nbsp;
-                            <small style={{color:"black"}}>Kişi herhangi bir bankaya kredi başvurusunda bulunduğunda ilgili banka,kişinin kredi puanını göz önünde bulundurur.</small> 
+                            <small style={{ color: "black" }}>Kişi herhangi bir bankaya kredi başvurusunda bulunduğunda ilgili banka,kişinin kredi puanını göz önünde bulundurur.</small>
                             <br></br><br></br>
                             <b style={{ color: "black" }}>Kredi Puanını Etkileyen şeyler Nedir ?</b>
-            <br></br><br></br>
-            &nbsp; &nbsp; &nbsp; &nbsp; <small style={{ color: "black" }}> Kullandığınız kredi ve kredi kartlarını zamanında ödemeniz, hangi sıklıkta kredi kullandığınız, erken kapatma işlemleri gibi kriterler kredi puanını etkiler.
-            Kredi çekmeniz gerekiyor ve puanınız düşük ise kredi kartı alıp 6 ay yada daha fazla bir süre düzenli ödemeniz kredi puanınızı yükseltecektir.</small>
+                            <br></br><br></br>
+                            &nbsp; &nbsp; &nbsp; &nbsp; <small style={{ color: "black" }}> Kullandığınız kredi ve kredi kartlarını zamanında ödemeniz, hangi sıklıkta kredi kullandığınız, erken kapatma işlemleri gibi kriterler kredi puanını etkiler.
+                                Kredi çekmeniz gerekiyor ve puanınız düşük ise kredi kartı alıp 6 ay yada daha fazla bir süre düzenli ödemeniz kredi puanınızı yükseltecektir.</small>
                         </p>
                         <br></br>
                         <a href="https://www.findeks.com/">Kredi Puanınızı Öğrenmek İçin Tıklayın</a>
@@ -173,6 +174,8 @@ const getContent = (data) => {
                     <meta property="og:url" content={window.location.href} />
                     <meta property="og:description" content="Anlaşmalı olduğumuz bankaların içinden onlarca kobi kredisi seçeneğini sizin için hesaplayıp getiriyoruz" />
                     <meta name="keyword" content="kobi kredisi, kobi kredi başvurusu, kobi kredisi hesablama " />
+                    <meta name="og:keyword" content="kobi kredisi, kobi kredi başvurusu, kobi kredisi hesablama " />
+
                     <meta name="twitter:title" content="Kobi Kredisi Hesaplama Ve Başvurma" />
                     <meta name="twitter:description" content="Anlaşmalı olduğumuz bankaların içinden onlarca kobi kredisi seçeneğini sizin için hesaplayıp getiriyoruz" />
                     <meta name="description" content="Anlaşmalı olduğumuz bankaların içinden onlarca kobi kredisi seçeneğini sizin için hesaplayıp getiriyoruz" />
@@ -182,7 +185,9 @@ const getContent = (data) => {
 
                 <div className="col-12 col-md-5 col-lg-5 row  align-content-center justify-content-center">
                     <div className="justify-content-center col-12 row">
-                        <img title="kobi kredisi arama ve başvuru kredi.com.tr" alt={"kobi kredisi başvuru"} style={{ width: "30%" }} src={require("../assets/images/corporatecolor.png").default}></img>
+                        <Image title="kobi kredisi arama ve başvuru kredi.com.tr" alt={"kobi kredisi başvuru"} style={{ width: "30%" }}
+                            webp={require("../assets/images/corporatecolor.webp").default}
+                            src={require("../assets/images/corporatecolor.png").default}></Image>
                     </div>
                     <div className="justify-content-center col-12 row">
                         <h2><b>Kobi Kredisi</b></h2>
@@ -207,6 +212,8 @@ const getContent = (data) => {
                 <meta property="og:url" content={window.location.href} />
                 <meta property="og:description" content="Hayalinizdeki aracı almak için krediye ihtiyaç duyuyorsanız, doğru yerdesiniz. Sizin için birçok fırsat bulabiliriz." />
                 <meta name="keyword" content="araç kredisi, araç kredi başvurusu, araç kredisi hesablama " />
+                <meta name="og:keyword" content="araç kredisi, araç kredi başvurusu, araç kredisi hesablama " />
+
                 <meta name="twitter:title" content="Kobi Kredisi Hesaplama Ve Başvurma" />
                 <meta name="twitter:description" content="Hayalinizdeki aracı almak için krediye ihtiyaç duyuyorsanız doğru yerdesiniz. Sizin için birçok fırsat bulabiliriz." />
                 <meta name="description" content="Hayalinizdeki aracı almak için krediye ihtiyaç duyuyorsanız doğru yerdesiniz. Sizin için birçok fırsat bulabiliriz." />
@@ -215,7 +222,8 @@ const getContent = (data) => {
             </Helmet>
             <div className="col-12 col-md-5 col-lg-5 row  align-content-center justify-content-center">
                 <div className="justify-content-center col-12 row">
-                    <img title="araç kredisi başcuruları kredi.com.tr" alt={"araç kredisi başvuru ve arama"} style={{ width: "30%" }} src={require("../assets/images/carColor.png").default}></img>
+                    <Image title="araç kredisi başcuruları kredi.com.tr" alt={"araç kredisi başvuru ve arama"} style={{ width: "30%" }}
+                        webp={require("../assets/images/carColor.webp").default} src={require("../assets/images/carColor.png").default}></Image>
                 </div>
                 <div className="justify-content-center col-12 row">
                     <h3><b>Araç Kredisi.</b></h3>
@@ -238,6 +246,8 @@ const getContent = (data) => {
                 <meta property="og:title" content="Konut Kredisi Hesaplama Ve Başvurma" />
                 <meta property="og:url" content={window.location.href} />
                 <meta property="og:description" content="Hayalini kurduğunuz yuvaya kavuşurken çorbada bizim de tuzumuz olsun. Kredinizi bulmanıza yardım edelim." />
+                <meta name="og:keyword" content="konut kredisi, konut kredi başvurusu, konut kredisi hesablama " />
+
                 <meta name="keyword" content="konut kredisi, konut kredi başvurusu, konut kredisi hesablama " />
                 <meta name="twitter:title" content="Konut Kredisi Hesaplama Ve Başvurma" />
                 <meta name="twitter:description" content="Hayalini kurduğunuz yuvaya kavuşurken çorbada bizim de tuzumuz olsun. Kredinizi bulmanıza yardım edelim." />
@@ -247,7 +257,9 @@ const getContent = (data) => {
             </Helmet>
             <div className="col-12 col-md-5 col-lg-5 row  align-content-center justify-content-center">
                 <div className="justify-content-center col-12 row">
-                    <img title="konut kredisi aramaları, başvurularu kredi.com.tr" alt={"konut kredi arama"} style={{ width: "30%" }} src={require("../assets/images/homecolor.png").default}></img>
+                    <Image title="konut kredisi aramaları, başvurularu kredi.com.tr" alt={"konut kredi arama"} style={{ width: "30%" }}
+                        webp={require("../assets/images/homecolor.webp").default}
+                        src={require("../assets/images/homecolor.png").default}></Image>
                 </div>
                 <div className="justify-content-center col-12 row">
                     <h3><b>Konut Kredisi</b></h3>
@@ -270,6 +282,8 @@ const getContent = (data) => {
                 <meta property="og:url" content={window.location.href} />
                 <meta property="og:description" content="İhtiyaç kredisi hayatın her anında lazım olan bir bir kredi türüdür. Bu krediyi bulmak ise kredi.com.tr olarak bizlerin uzmanlık alanıdır." />
                 <meta name="keyword" content="ihtiyaç kredisi, ihtiyaç kredi başvurusu, ihtiyaç kredisi hesablama " />
+                <meta name="og:keyword" content="ihtiyaç kredisi, ihtiyaç kredi başvurusu, ihtiyaç kredisi hesablama " />
+
                 <meta name="twitter:title" content="İhtiyaç Kredisi Hesaplama Ve Başvurma" />
                 <meta name="twitter:description" content="İhtiyaç kredisi hayatın her anında lazım olan bir bir kredi türüdür. Bu krediyi bulmak ise kredi.com.tr olarak bizlerin uzmanlık alanıdır." />
                 <meta name="description" content="İhtiyaç kredisi hayatın her anında lazım olan bir bir kredi türüdür. Bu krediyi bulmak ise kredi.com.tr olarak bizlerin uzmanlık alanıdır." />
@@ -278,7 +292,9 @@ const getContent = (data) => {
             </Helmet>
             <div className="col-12 col-md-5 col-lg-5 row  align-content-center justify-content-center">
                 <div className="justify-content-center col-12 row">
-                    <img title="ihtiyaç kredisi arama,sorgulama ve bulma kredi.com.tr" alt={"ihtiyaç kredisi sorgulama"} style={{ width: "30%" }} src={require("../assets/images/moneycolor.png").default}></img>
+                    <Image title="ihtiyaç kredisi arama,sorgulama ve bulma kredi.com.tr" alt={"ihtiyaç kredisi sorgulama"} style={{ width: "30%" }}
+                        webp={require("../assets/images/moneycolor.webp").default}
+                        src={require("../assets/images/moneycolor.png").default}></Image>
                 </div>
                 <div className="justify-content-center col-12 row">
                     <h3><b>İhtiyaç Kredisi</b></h3>

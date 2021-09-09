@@ -1,6 +1,8 @@
 import React, { createRef, useEffect, useRef, useState } from "react"
 import { Helmet } from "react-helmet"
+import { CarCreditCalculate } from "../Components/calculate-page/CarCreditCalculate"
 import { CreditCalculate } from "../Components/calculate-page/CreditCalculate"
+import { HomeCreditCalculate } from "../Components/calculate-page/HomeCreditCalculate"
 import { HowToPay } from "../Components/calculate-page/HowToPay"
 import HowMuchLoan from "../Components/containers/HowMuchLoan"
 
@@ -13,12 +15,21 @@ import HowMuchLoan from "../Components/containers/HowMuchLoan"
     })
     const [links, setLinks] = useState([
         {
-            name: "Kredi Hesaplama",
-            urlName: "kredi-hesaplama",
-            description: "Bu araç kredi faiz oranı girerek hesaplama yapmanızı sağlar."
-        },
+            name: "İhtiyaç Kredisi Hesaplama.",
+            urlName: "ihtiyac-kredisi-hesaplama",
+            description: "Gereken ihtiyaç kredisi için hesaplama ve analizi yapmanızı sağlıyoruz"
+        }, {
+            name: "Konut Kredisi Hesaplama.",
+            urlName: "konut-kredisi-hesaplama",
+            description: "Konut kredisi hesaplama ve kredi kullanımı hakkında detaylar."
+        }, {
+            name: "Araç Kredisi Hesaplama.",
+            urlName: "arac-kredisi-hesaplama",
+            description: "Araç kredisi hesaplama. Düşündüğünüz kredi miktarını, faiz oranı girerek hesaplayın"
+        }
+        ,
         {
-            name: "Aylık Ne Kadar Ödeyebilirim?",
+            name: "Aylık Ne Kadar Ödeyebilirim?W",
             urlName: "aylik-ne-kadar-odeyebilirim",
             description: "Ne kadar kredi çekebileceğinizi hesaplar. Ve size uygun kredileri bulur"
 
@@ -35,11 +46,11 @@ import HowMuchLoan from "../Components/containers/HowMuchLoan"
             <div className="row col-12 justify-content-center">
                 {
                     !selectedLink?.name &&
-                    <p className="home-title text-center" > <span style={{ fontWeight: "bold" }}>Hesaplama Araçlarımız</span> <br></br> Bu araçlar sizleri kalem,kağıt ve hesap makinesinden kurtarıyor </p>
+                    <h1 className="home-title text-center" > <span style={{ fontWeight: "bold" }}>Hesaplama Araçlarımız</span> <br></br> Bu araçlar sizleri kalem,kağıt ve hesap makinesinden kurtarıyor </h1>
                 }
                 {
                     selectedLink?.name &&
-                    <p className="home-title text-center" > <span style={{ fontWeight: "bold" }}>{selectedLink?.name}</span> <br></br> {selectedLink?.description} </p>
+                    <h1 className="home-title text-center" > <span style={{ fontWeight: "bold" }}>{selectedLink?.name}</span> <br></br> {selectedLink?.description} </h1>
                 }
             </div>
             <div className="row mt-4">
@@ -53,6 +64,8 @@ import HowMuchLoan from "../Components/containers/HowMuchLoan"
                                 <meta property="og:url" content={window.location.href} />
                                 <meta property="og:description" content="Bu sayfa aylık ödeyebileceğiniz kredileri hesaplar ve listeler | kredi.com.tr" />
                                 <meta name="keyword" content="aylık ödeme öğrenme, aylık kredi hesaplama, aylık ne kadar kredi ödenir" />
+                                <meta name="og:keyword" content="aylık ödeme öğrenme, aylık kredi hesaplama, aylık ne kadar kredi ödenir" />
+
                                 <meta name="description" content="Aylık ne kadar çekebileceğinizi hesaplayıp size en uygun krediyi veren bakaları listeliyoruz. Hesaplama, geiliriniz ve giderleriniz baz alarak size onaylanma oranı yüksek kredileri getirir" />
                                 <meta name="robots" content="index,follow" />
                                 <meta property="og:image" itemProp="image" content={require("../assets/images/thn.jpg").default} />
@@ -68,18 +81,56 @@ import HowMuchLoan from "../Components/containers/HowMuchLoan"
                         </>
                     }
                     {
-                        props.UrlName == "kredi-hesaplama" && <>
-                            <CreditCalculate></CreditCalculate>
+                        props.UrlName == "ihtiyac-kredisi-hesaplama" && <>
+                            <CreditCalculate />
 
                             <Helmet>
                                 <meta property="og:type" content="article" />
-                                <meta property="og:title" content="Bu sayfa kredinizi faiz oranıyla beraber hesaplamasını yapar | kredi.com.tr" />
+                                <meta property="og:title" content="Bu sayfa ihtiyac kredisi hesaplama yapılır faiz oranıyla beraber hesaplamasını yapar | kredi.com.tr" />
                                 <meta property="og:url" content={window.location.href} />
-                                <meta property="og:description" content="Çekmek istediğiniz kredinin faiz oranını girerek kredinin bütün detaylarını öğrenin | kredi.com.tr" />
+                                <meta property="og:description" content="Çekmek istediğiniz ihtiyaç kredisi hesaplama, kredinin faiz oranını girerek kredinin bütün detaylarını öğrenin | kredi.com.tr" />
+                                <meta name="og:keyword" content="kredi,hesaplama,faiz oranıyla hesaplama,kredi faiz hesaplama, aylık ödeme hesaplama" />
+
                                 <meta name="keyword" content="kredi,hesaplama,faiz oranıyla hesaplama,kredi faiz hesaplama, aylık ödeme hesaplama" />
-                                <meta name="description" content="Ne kadar kredi ödeyebileceğinizi öğrenin | Bu sayfa ödeyebileceğiniz kredileri hesaplar ve listeler | kredi.com.tr" />
+                                <meta name="description" content="Çekmek istediğiniz ihtiyaç kredisi hesaplama, kredinin faiz oranını girerek kredinin bütün detaylarını öğrenin | kredi.com.tr" />
                                 <meta name="robots" content="index,follow" />
-                                <title>Ne kadar kredi ödeyebileceğinizi öğrenin | Bu sayfa ödeyebileceğiniz kredileri hesaplar ve listeler | kredi.com.tr</title>
+                                <title>Çekmek istediğiniz ihtiyaç kredisi hesaplama, kredinin faiz oranını girerek kredinin bütün detaylarını öğrenin | kredi.com.tr</title>
+                            </Helmet>
+                        </>
+                    }
+                    {
+                        props.UrlName == "konut-kredisi-hesaplama" && <>
+                            <CarCreditCalculate />
+
+                            <Helmet>
+                                <meta property="og:type" content="article" />
+                                <meta property="og:title" content="Bu sayfa konut kredisi hesaplama yapılır faiz oranıyla beraber hesaplamasını yapar | kredi.com.tr" />
+                                <meta property="og:url" content={window.location.href} />
+                                <meta property="og:description" content="Çekmek istediğiniz konut kredisi hesaplama, kredinin faiz oranını girerek kredinin bütün detaylarını öğrenin | kredi.com.tr" />
+                                <meta name="keyword" content="kredi hesaplama,faiz oranıyla hesaplama,kredi faiz hesaplama, aylık ödeme hesaplama" />
+                                <meta name="og:keyword" content="kredi hesaplama,faiz oranıyla hesaplama,kredi faiz hesaplama, aylık ödeme hesaplama" />
+
+                                <meta name="description" content="Çekmek istediğiniz konut kredisi hesaplama, kredinin faiz oranını girerek kredinin bütün detaylarını öğrenin | kredi.com.tr" />
+                                <meta name="robots" content="index,follow" />
+                                <title>Çekmek istediğiniz konut kredisi hesaplama, kredinin faiz oranını girerek kredinin bütün detaylarını öğrenin | kredi.com.tr</title>
+                            </Helmet>
+                        </>
+                    }
+                    {
+                        props.UrlName == "arac-kredisi-hesaplama" && <>
+                            <HomeCreditCalculate />
+
+                            <Helmet>
+                                <meta property="og:type" content="article" />
+                                <meta property="og:title" content="Bu sayfa arac kredisi hesaplama yapılır faiz oranıyla beraber hesaplamasını yapar | kredi.com.tr" />
+                                <meta property="og:url" content={window.location.href} />
+                                <meta property="og:description" content="Çekmek istediğiniz arac kredisi hesaplama, kredinin faiz oranını girerek kredinin bütün detaylarını öğrenin | kredi.com.tr" />
+                                <meta name="keyword" content="kredi hesaplama,faiz oranıyla hesaplama,kredi faiz hesaplama, aylık ödeme hesaplama,araç kredisi" />
+                                <meta name="og:keyword" content="kredi hesaplama,faiz oranıyla hesaplama,kredi faiz hesaplama, aylık ödeme hesaplama,araç kredisi" />
+
+                                <meta name="description" content="Çekmek istediğiniz konut kredisi hesaplama, kredinin faiz oranını girerek kredinin bütün detaylarını öğrenin | kredi.com.tr" />
+                                <meta name="robots" content="index,follow" />
+                                <title>Çekmek istediğiniz araç kredisi hesaplama, kredinin faiz oranını girerek kredinin bütün detaylarını öğrenin | kredi.com.tr</title>
                             </Helmet>
                         </>
                     }
@@ -109,7 +160,7 @@ import HowMuchLoan from "../Components/containers/HowMuchLoan"
                             if (item.urlName == props.UrlName) {
                                 active = "active"
                             }
-                            return (<a key={key} href={props.UrlName == "-" ? ("/hesaplama/" + item.urlName) : ("/hesaplama/" + item.urlName)} className={"list-group-item col-12 text-center mb-2 " + active}>{item.name}</a>)
+                            return (<a key={key} href={props.UrlName == "-" ? ("/hesaplama/" + item.urlName) : ("/hesaplama/" + item.urlName)} className={"list-group-item col-12 text-center mb-3 " + active}>{item.name}</a>)
                         })}
                     </ul>
                 </div>

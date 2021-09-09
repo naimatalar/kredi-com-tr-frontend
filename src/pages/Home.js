@@ -16,8 +16,10 @@ import { DispositContainer } from "../Components/containers/DispositContainer";
 import { GetNoneToken } from "../datacrud/datacrud";
 import { PopulerBankCampaing } from "../Components/containers/PopulerBankCampaing";
 import { HowToPay } from "../Components/calculate-page/HowToPay";
- const Home = (props) => {
 
+import Image from "react-image-webp";
+
+ const Home = (props) => {
     const [addsPopup, setAddsPopup] = useState(false)
     const [sss, setSss] = useState([])
     const [blog, setBlog] = useState([])
@@ -45,7 +47,7 @@ import { HowToPay } from "../Components/calculate-page/HowToPay";
                     <button onClick={() => { setAddsPopup(false) }} className="lv-close-button">X</button>
                     <div className="col-12">
                         <div className="row justify-content-center" >
-                            <img title="kredi.com.tr" alt={"logo"} style={{ width: "50%", objectFit: "contain" }} src={require("../assets/images/lg.png").default}></img>
+                            <Image title="kredi.com.tr" alt={"logo"} style={{ width: "50%", objectFit: "contain" }} webp={require("../assets/images/lg.webp").default} src={require("../assets/images/lg.png").default}></Image>
                         </div>
                     </div>
                     <div className="col-12 mt-4">
@@ -72,15 +74,15 @@ import { HowToPay } from "../Components/calculate-page/HowToPay";
             </>
         }
 
-        <div className="row">
+        <div className="row mt-4">
             <div>
 
             </div>
 
 
 
-            <div className="col-12">
-                <p className="home-title" style={{ marginTop: 0 }}>Kolayca <span style={{ fontWeight: "bold" }}>Arayın,</span> Pratik Şekilde <span style={{ fontWeight: "bold" }}>Hesaplayın,</span> Hızlıca <span style={{ fontWeight: "bold" }}>Başvurun!</span>  </p>
+            <div className="col-12 mt-3 mb-3 text-center">
+                <h1 className="home-title" style={{ marginTop: 0 }}>Kolayca <span style={{ fontWeight: "bold" }}>Arayın,</span> Pratik Şekilde <span style={{ fontWeight: "bold" }}>Hesaplayın,</span> Hızlıca <span style={{ fontWeight: "bold" }}>Başvurun!</span>  </h1>
             </div>
             <div style={{ paddingRight: 5, marginBottom: 20 }} className="col-lg-5 col-md-6 loan-search-container">
                 <LoanSearch Loans={props.Loans}></LoanSearch>
@@ -104,7 +106,8 @@ import { HowToPay } from "../Components/calculate-page/HowToPay";
                 <div className="d-lg-none d-md-flex row adds-first-big pt-4 pb-4" >
                     <div className="row  m-0 p-0 justify-content-center">
                         <div className="row justify-content-center">
-                            <img title="kredi kartları krediler ve mevduatlar kredi.com.tr de" alt={"kredi.com.tr logo"} style={{ width: "50%", objectFit: "contain" }} src={require("../assets/images/lg.png").default}></img>
+                            <Image title="kredi kartları krediler ve mevduatlar kredi.com.tr de" alt={"kredi.com.tr logo"} style={{ width: "50%", objectFit: "contain" }} 
+                            webp={require("../assets/images/lg.webp").default}src={require("../assets/images/lg.png").default}></Image>
                         </div>
                         <div className="col-12" style={{ textAlign: "center" }}>
                             <b style={{ textAlign: "center" }}>Reklam Ve Tanıtım Alanı</b>
@@ -195,7 +198,9 @@ import { HowToPay } from "../Components/calculate-page/HowToPay";
             <div className="d-lg-none d-md-flex row adds-first-big pt-4 pb-4" >
                 <div className="row  m-0 p-0 justify-content-center">
                     <div className="row justify-content-center">
-                        <img title="kredi.com.tr ile artık bankaların ürünleri parmaklarınızın ucunda" alt={"logo kredi.com.tr"} style={{ width: "50%", objectFit: "contain" }} src={require("../assets/images/lg.png").default}></img>
+                        <Image title="kredi.com.tr ile artık bankaların ürünleri parmaklarınızın ucunda" alt={"logo kredi.com.tr"} style={{ width: "50%", objectFit: "contain" }}
+                         webp={require("../assets/images/lg.webp").default}
+                         src={require("../assets/images/lg.png").default}></Image>
                     </div>
                     <div className="col-12" style={{ textAlign: "center" }}>
                         <b style={{ textAlign: "center" }}>Reklam Ve Tanıtım Alanı</b>

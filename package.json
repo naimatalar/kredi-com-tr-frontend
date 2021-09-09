@@ -21,6 +21,7 @@
     "react-dom": "^17.0.2",
     "react-dropdown": "^1.9.2",
     "react-helmet": "^6.1.0",
+    "react-image-webp": "^0.7.0",
     "react-perfect-scrollbar": "^1.5.8",
     "react-responsive": "^8.2.0",
     "react-router-dom": "^5.2.0",
@@ -37,10 +38,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "postbuild": "react-snap"
+    "eject": "react-scripts eject"
+    
   },
-
   "eslintConfig": {
     "extends": [
       "react-app",
