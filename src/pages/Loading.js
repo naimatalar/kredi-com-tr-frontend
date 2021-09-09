@@ -7,7 +7,7 @@ function Loading(props) {
         start()
     }, [])
     function start() {
-       var pat= props.location.pathname.toString().split("/");
+       var pat= window.location.pathname.toString().split("/");
        console.log(pat[pat.length-1])
     }
 
