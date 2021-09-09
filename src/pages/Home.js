@@ -16,7 +16,7 @@ import { DispositContainer } from "../Components/containers/DispositContainer";
 import { GetNoneToken } from "../datacrud/datacrud";
 import { PopulerBankCampaing } from "../Components/containers/PopulerBankCampaing";
 import { HowToPay } from "../Components/calculate-page/HowToPay";
-export const Home = (props) => {
+ const Home = (props) => {
 
     const [addsPopup, setAddsPopup] = useState(false)
     const [sss, setSss] = useState([])
@@ -323,3 +323,4 @@ export const Home = (props) => {
         </div>
     </>)
 }
+export default Home

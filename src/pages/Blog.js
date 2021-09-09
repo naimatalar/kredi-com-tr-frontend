@@ -3,7 +3,7 @@ import { apiurl, GetNoneToken } from "../datacrud/datacrud";
 import { BottomScrollListener, useBottomScrollListener } from 'react-bottom-scroll-listener';
 import { Helmet } from "react-helmet";
 
-export const Blog = (props) => {
+ const Blog = (props) => {
     const [blog, setBlog] = useState([]);
     const [page, setPage] = useState(1);
     const [isBottom, setIsBottum] = useState(true);
@@ -204,3 +204,4 @@ export const Blog = (props) => {
 
     </div>)
 }
+export default Blog

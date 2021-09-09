@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import { apiurl, GetNoneToken, PostNoneToken } from "../datacrud/datacrud";
 import { loanRedirect } from "../Components/RedirectComponent";
 
-export const LoanBank = (props) => {
+ const LoanBank = (props) => {
     const [bank, setBank] = useState({})
     const [loanType, setLoanType] = useState({})
     const [loanTermsDropdown, setLoanTermsDropdown] = useState([])
@@ -427,3 +427,4 @@ export const LoanBank = (props) => {
 }
 
 
+export default LoanBank

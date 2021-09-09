@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react"
 import { Helmet } from "react-helmet"
 import { creditCartRedirect } from "../Components/RedirectComponent"
 import { apiurl, GetNoneToken } from "../datacrud/datacrud"
-export const CreditCartDetail = (props) => {
+ const CreditCartDetail = (props) => {
     const [data, setData] = useState({})
     const [attributas, setAttributes] = useState([])
 
@@ -136,3 +136,4 @@ export const CreditCartDetail = (props) => {
 
     )
 }
+export default CreditCartDetail

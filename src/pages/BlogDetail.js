@@ -4,7 +4,7 @@ import { apiurl, GetNoneToken } from "../datacrud/datacrud";
 import { LoanRate } from "../Components/containers/LoanRate";
 import { Helmet } from "react-helmet";
 
-export const BlogDetail = (props) => {
+const BlogDetail = (props) => {
 
     const [data, setData] = useState({});
     const [blog, setBlog] = useState([]);
@@ -153,3 +153,4 @@ export const BlogDetail = (props) => {
 
     )
 }
+export default BlogDetail

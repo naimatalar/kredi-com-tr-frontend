@@ -8,7 +8,7 @@ import { DispositContainer } from "../Components/containers/DispositContainer";
 import { dispositRedirect } from "../Components/RedirectComponent";
 import { Helmet } from "react-helmet";
 
-export const DispositSearchResult = (props) => {
+ const DispositSearchResult = (props) => {
     var [data, setData] = useState([])
 
     const [currency, setCurrency] = useState("")
@@ -322,3 +322,4 @@ export const DispositSearchResult = (props) => {
         </>
     )
 }
+export default DispositSearchResult

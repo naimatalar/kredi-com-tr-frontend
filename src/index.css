@@ -2,11 +2,13 @@
   font-family: 'neris';
   src: url('./assets/fonts/nersis.otf') 
   format('opentype');
+  font-display: block;
 }
 @font-face {
   font-family: 'gravity-bold';
   src: url('./assets/fonts/gravitybold.otf') 
   format('opentype');
+  font-display: block;
 }
 
 * ,body * {

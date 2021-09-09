@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react"
 import { apiurl, GetNoneToken } from "../datacrud/datacrud"
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp';
-export const Faq = () => {
+ const Faq = () => {
     const [data, setData] = useState([])
     const [openId, setOpenId] = useState("")
     const [blog, setBlog] = useState([]);
@@ -97,3 +97,4 @@ export const Faq = () => {
         </div>
     )
 }
+export default Faq

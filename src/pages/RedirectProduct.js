@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react"
 import CurrencyInput from "react-currency-input"
 import { apiurl, GetNoneToken } from "../datacrud/datacrud"
 
-export const RedirectProduct = (props) => {
+ const RedirectProduct = (props) => {
     const [loanData, setLoanData] = useState({})
     const [creditCartData, setCreditCart] = useState({})
     const [dispositData, setDispositData] = useState({})
@@ -163,3 +163,4 @@ export const RedirectProduct = (props) => {
         </div>
     )
 }
+export default RedirectProduct

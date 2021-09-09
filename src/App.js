@@ -1,38 +1,41 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Suspense, lazy} from "react";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Redirect,
 } from "react-router-dom";
-import bankdemodata from "./bankdemodata";
-import loantypedemodata from "./loantypedemodata";
 
 import Footer from "./Components/Footer";
 
+
+
+// const {Banks}= lazy(() => import("./pages/Banks"));
+// const CreditCart = lazy(() => import("./pages/CreditCart"));
+// const {Home} = lazy(() => import("./pages/Home"));
+
+// import { Banks } from "./pages/Banks";
+
 import NavigationTree from "./Components/navigationTree";
-import { Banks } from "./pages/Banks";
-import CreditCart from "./pages/CreditCart";
-import { Home } from "./pages/Home";
-import { LoanBank } from "./pages/LoanBank";
-import Loan from "./pages/Loan";
-import { apiurl, GetNoneToken, PostNoneToken } from "./datacrud/datacrud";
+// import CreditCart from "./pages/CreditCart";
+// import  Home  from "./pages/Home";
+// import  LoanBank  from "./pages/LoanBank";
+// import Loan from "./pages/Loan";
+import {  GetNoneToken } from "./datacrud/datacrud";
 import { SearchLoanPage } from "./pages/SearchLoanPage";
-import Head from "next/head";
-import { DispositSearchPage } from "./pages/DispositSearchPage";
-import { DispositSearchResult } from "./pages/DispositSearchResult";
-import { RedirectProduct } from "./pages/RedirectProduct";
-import { Blog } from "./pages/Blog";
-import { BlogDetail } from "./pages/BlogDetail";
-import { CreditCartDetail } from "./pages/CreditCartDetail";
-import { CalculatePage } from "./pages/CalculatePage";
-import { Faq } from "./pages/Faq";
-import homepage from "./Components/Schduler/Homepage";
+// import DispositSearchPage  from "./pages/DispositSearchPage";
+// import  DispositSearchResult  from "./pages/DispositSearchResult";
+// import  RedirectProduct  from "./pages/RedirectProduct";
+// import  Blog  from "./pages/Blog";
+// import  BlogDetail  from "./pages/BlogDetail";
+// import  CreditCartDetail  from "./pages/CreditCartDetail";
+// import CalculatePage  from "./pages/CalculatePage";
+// import  Faq  from "./pages/Faq";
 import Homepage from "./Components/Schduler/Homepage";
-import axios from "axios";
-import { route } from "next/dist/next-server/server/router";
-import CreditCartCampaing from "./pages/CreditCartCampaing";
-import CreditCartCampaingDetail from "./pages/CreditCartCampaingDetail";
+
+// import CreditCartCampaing from "./pages/CreditCartCampaing";
+// import CreditCartCampaingDetail from "./pages/CreditCartCampaingDetail";
+
 import Loading from "./pages/Loading";
 export default function App(props) {
   const [bankNavigation, setBankNavigation] = useState([]);
@@ -41,7 +44,22 @@ export default function App(props) {
   const [creditCartName, setCreditCartName] = useState([]);
   const [blg, setBlg] = useState([]);
   const [sss_, setSss_] = useState([]);
-
+const Banks= lazy(() => import("./pages/Banks"));
+const CreditCart = lazy(() => import("./pages/CreditCart"));
+const Home = lazy(() => import("./pages/Home"));
+const LoanBank = lazy(() => import("./pages/LoanBank"));
+const Loan = lazy(() => import("./pages/Loan"));
+const DispositSearchPage = lazy(() => import("./pages/DispositSearchPage"));
+const DispositSearchResult = lazy(() => import("./pages/DispositSearchResult"));
+const RedirectProduct = lazy(() => import("./pages/RedirectProduct"));
+const Blog = lazy(() => import("./pages/Blog"));
+const BlogDetail = lazy(() => import("./pages/BlogDetail"));
+const CreditCartDetail = lazy(() => import("./pages/CreditCartDetail"));
+const CalculatePage = lazy(() => import("./pages/CalculatePage"));
+const Faq = lazy(() => import("./pages/Faq"));
+// const Homepage = lazy(() => import("./pages/Homepage"));
+const CreditCartCampaing = lazy(() => import("./pages/CreditCartCampaing"));
+const CreditCartCampaingDetail = lazy(() => import("./pages/CreditCartCampaingDetail"));
   useEffect(() => {
 
     start();
@@ -57,7 +75,7 @@ export default function App(props) {
     setBankNavigation(hp.Bank)
 
   }
-
+ 
 
 
   return (
@@ -66,6 +84,7 @@ export default function App(props) {
       <NavigationTree BankNavigation={bankNavigation} LoanNavigation={loanNavigation}></NavigationTree>
 
       <div style={{ width: "100%", overflow: "hidden" }}>
+        <Suspense fallback={<Loading></Loading>}>
         <Switch>
 
           <Route exact path="/" render={(props) => <div className="container"> <Home Loans={loanNavigation} {...props} Banks={bankNavigation} /></div>}>
@@ -203,6 +222,7 @@ export default function App(props) {
 
 
         </Switch>
+        </Suspense>
         {/* <div style={{ textAlign: "center", color: "red", textDecoration: "underline" }}>Platformumuz yapım aşamasındadır.<br></br>Faiz oranları, vadeler, kredi kartı fırsatları şu anlık <b style={{ color: "red" }}>gerçek bilgiler değildir.</b><br></br>Gerçek bilgiler için bankanın web sitelerini ziyaret edebilirsiniz.</div> */}
       </div>
 

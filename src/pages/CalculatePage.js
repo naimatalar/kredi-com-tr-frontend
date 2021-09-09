@@ -5,7 +5,7 @@ import { HowToPay } from "../Components/calculate-page/HowToPay"
 import HowMuchLoan from "../Components/containers/HowMuchLoan"
 
 
-export const CalculatePage = (props) => {
+ const CalculatePage = (props) => {
     const [selectedLink, setSelectedLinks] = useState({
         name: "",
         urlName: "",
@@ -117,3 +117,4 @@ export const CalculatePage = (props) => {
         </div>
     )
 }
+export default CalculatePage
