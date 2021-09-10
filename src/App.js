@@ -60,6 +60,9 @@ export default function App(props) {
   // const Homepage = lazy(() => import("./pages/Homepage"));
   const CreditCartCampaing = lazy(() => import("./pages/CreditCartCampaing"));
   const CreditCartCampaingDetail = lazy(() => import("./pages/CreditCartCampaingDetail"));
+  require('react-dropdown/style.css');
+
+  
   useEffect(() => {
 
     start();

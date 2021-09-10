@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import CurrencyInput from "react-currency-input";
 import Dropdown from 'react-dropdown';
-import 'react-dropdown/style.css';
+
 import { GetNoneToken, PostNoneToken } from "../../datacrud/datacrud";
 export const LoanSearch = (props) => {
     const [loansOption, setLoanOption] = useState([])

@@ -5,6 +5,7 @@ import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 
+import 'react-dropdown/style.css';
 import "./suneditor.min.css"
 import { hydrate, render } from 'react-dom';
 
@@ -16,7 +17,6 @@ import { hydrate, render } from 'react-dom';
 //   render(<App />, rootElement);
   // "postbuild": "react-snap"
 // }
-
 
 
 
