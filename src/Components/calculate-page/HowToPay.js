@@ -4,6 +4,7 @@ import { apiurl, GetNoneToken } from "../../datacrud/datacrud"
 import calculator from "../calculator"
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp';
+import Rimage from "../Rimage";
 export const HowToPay = () => {
     const [mountlyCome, setMountlyCome] = useState()
     const [kira, setKira] = useState()
@@ -168,12 +169,12 @@ export const HowToPay = () => {
 
                         {
                             resultData.map((item, key) => {
-                                debugger
+                                
                                 return (
                                     <div key={key} className="col-12 row align-items-center how-cal-items">
                                         <div className="col-3 p-0 text-center">
 
-                                            <img alt={item.bankUrlName} src={apiurl + item.bankLogoUrl} style={{ width: "70%" }}></img>
+                                            <Rimage alt={item.bankUrlName} src={ item.bankLogoUrl} style={{ width: "70%" }}></Rimage>
                                         </div>
                                         <div className="col-7 p-0 text-center">
 

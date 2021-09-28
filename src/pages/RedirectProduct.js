@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
 import CurrencyInput from "react-currency-input"
 import Image from "react-image-webp"
+import Rimage from "../Components/Rimage"
 import { apiurl, GetNoneToken } from "../datacrud/datacrud"
 
  const RedirectProduct = (props) => {
@@ -50,7 +51,7 @@ import { apiurl, GetNoneToken } from "../datacrud/datacrud"
 
     return (
         <div className="redirect-page-master">
-            <div className="row">
+            <div className="row m-0 p-0 justify-content-center align-items-baseline">
                 <div className="col-12 row justify-content-center mt-5 mb-3">
                     <Image className="redirect-product-logo" 
                     webp={require("../assets/images/lg.webp").default}
@@ -68,9 +69,9 @@ import { apiurl, GetNoneToken } from "../datacrud/datacrud"
 
                 {t == "0" &&
                     <>
-                        <div className="col-12 row justify-content-center">
+                        <div className="col-12 row justify-content-center mt-5 mb-5">
 
-                            <img className="redirect-bank-logo" src={apiurl + loanData.bankLogoUrl}></img>
+                            <Rimage className="redirect-bank-logo" src={loanData.bankLogoUrl}></Rimage>
                         </div>
 
                         <div className="col-12 row justify-content-center">
@@ -106,9 +107,9 @@ import { apiurl, GetNoneToken } from "../datacrud/datacrud"
 
                 {t == "1" &&
                     <>
-                        <div className="col-12 row justify-content-center">
+                        <div className="col-12 row justify-content-center mt-5 mb-5">
 
-                            <img className="redirect-bank-logo"  src={apiurl + creditCartData.bankLogoUrl}></img>
+                            <Rimage className="redirect-bank-logo"  src={ creditCartData.bankLogoUrl}></Rimage>
                         </div>
 
                         <div className="col-12 row justify-content-center text-center">
@@ -121,9 +122,9 @@ import { apiurl, GetNoneToken } from "../datacrud/datacrud"
 
                 {t == "2" &&
                     <>
-                        <div className="col-12 row justify-content-center">
+                        <div className="col-12 row justify-content-center mt-5 mb-5">
 
-                            <img className="redirect-bank-logo"  src={apiurl + dispositData.bankLogoUrl}></img>
+                            <Rimage className="redirect-bank-logo"  src={ dispositData.bankLogoUrl}></Rimage>
                         </div>
                         <div className="col-12 row justify-content-center">
                             <div>

@@ -14,6 +14,7 @@ export const Loan = (props) => {
     const [terms, setTerms] = useState([])
     const [termsValue, setTermsValue] = useState()
     const [howMuchCalculate, setHowMuchCalculate] = useState()
+    const [isValid, setIsValid] = useState(true)
 
 
     useEffect(() => {
@@ -38,12 +39,17 @@ export const Loan = (props) => {
             term: termsValue
         }
 
+        if (data.amount > 0 && data.term && loan.urlName) {
+            setIsValid(true)
+            let prm = new URLSearchParams()
+            prm.set("amount", data.amount)
+            prm.set("term", data.term)
 
-        let prm = new URLSearchParams()
-        prm.set("amount", data.amount)
-        prm.set("term", data.term)
+            props.history.push("/" + loan.urlName + "-arama-hesaplama?" + prm)
+        } else {
+            setIsValid(false)
+        }
 
-        props.history.push("/" + loan.urlName + "-arama-hesaplama?" + prm)
 
     }
     return (
@@ -83,7 +89,11 @@ export const Loan = (props) => {
                                     />
                                 </div>
                                 <div className="col-12 " style={{ justifyontent: "flex-end", marginTop: 12 }}>
-                                    <button onClick={(x) => { calculate() }} className="default-button" type="submit">ARA</button>
+                                    <button onClick={(x) => { calculate() }} className="default-button" type="submit">Kredi Hesapla</button>
+                                </div>
+                                <div className="col-12 text-center">
+                                    {!isValid && <b style={{ color: "red" }}>***Bilgileri eksiksiz doldurunuz</b>}
+
                                 </div>
                             </div>
                         </div>

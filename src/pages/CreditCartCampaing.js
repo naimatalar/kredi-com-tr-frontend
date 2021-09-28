@@ -1,6 +1,7 @@
 import React, { createRef, useEffect, useState } from 'react';
 import { BottomScrollListener } from 'react-bottom-scroll-listener';
 import { Helmet } from 'react-helmet';
+import Rimage from '../Components/Rimage';
 import { apiurl, GetNoneToken } from '../datacrud/datacrud';
 
 const CreditCartCampaing = (props) => {
@@ -176,16 +177,16 @@ const CreditCartCampaing = (props) => {
 
             <Helmet>
                 <meta property="og:type" content="article" />
-                <meta property="og:title" content="KREDİ.COM.TR | Kredi kartı kampanyalarına hemen başvur." />
+                <meta property="og:title" content=" Kredi Kartı Kampanyaları, Başvuru,Karşılaştıma ve Hesaplama" />
                 <meta property="og:url" content={window.location.href} />
-                <meta property="og:description" content="KREDİ.COM.TR | Düzinelerce kredi kartına ait binlerce kampanya. Yemek, alışveriş, akaryakıt ve daha birçok alanda kampanya başvurmanız için sizleri bekliyor" />
+                <meta property="og:description" content="Düzinelerce kredi kartına ait binlerce kampanya. Yemek, alışveriş, akaryakıt ve daha birçok alanda kampanya başvurmanız için sizleri bekliyor" />
                 <meta name="keyword" content="kredi, kredi kartı, kredi başvurusu, kredi faiz oranı, kredi kartı başvurusu" />
                 <meta name="og:keyword" content="kredi, kredi kartı, kredi başvurusu, kredi faiz oranı, kredi kartı başvurusu" />
 
-                <meta name="description" content="KREDİ.COM.TR | Düzinelerce kredi kartına ait binlerce kampanya. Yemek, alışveriş, akaryakıt ve daha birçok alanda kampanya başvurmanız için sizleri bekliyor." />
+                <meta name="description" content=" Düzinelerce kredi kartına ait binlerce kampanya. Yemek, alışveriş, akaryakıt ve daha birçok alanda kampanya başvurmanız için sizleri bekliyor." />
                 <meta name="robots" content="index,follow" />
 
-                <title>KREDİ.COM.TR | Kredi kartı kampanyalarına hemen başvur.</title>
+                <title>Kredi Kartı Kampanyaları, Başvuru,Karşılaştıma ve Hesaplama.</title>
             </Helmet>
 
 
@@ -262,7 +263,7 @@ const CreditCartCampaing = (props) => {
                                     <div key={key} style={{ marginBottom: 13, background: bg, padding: 10 }}>
                                         <label style={{ marginBottom: 0, cursor: "pointer" }}>
                                             <input value={item.name} className="bankCheckbox" checked={bank.includes(item.name)} onChange={(element) => changeFilter(element)} style={{ width: 22, height: 22 }} type="checkbox"></input>
-                                            <img alt={item.name + "bütün kredi kartları listele"} title={item.name + " kredi kartları listele"} style={{ width: 120, marginLeft: 10, marginTop: -13 }} src={apiurl + item.logoUrl}></img>
+                                            <Rimage alt={item.name + "bütün kredi kartları listele"} title={item.name + " kredi kartları listele"} style={{ width: 120, marginLeft: 10, marginTop: -13 }} src={item.logoUrl}></Rimage>
                                         </label>
                                     </div>
                                 )
@@ -288,7 +289,7 @@ const CreditCartCampaing = (props) => {
                             {data?.map((item, key) => {
                                 return (<div key={key} className="pb-2 pt-2 col-12 row align-items-center blog-list-item justify-content-between">
                                     <div className="col-12 col-md-2">
-                                        <img className="blog-image" src={apiurl + item.imageUrl}></img>
+                                        <Rimage className="blog-image" src={ item.imageUrl}></Rimage>
                                     </div>
                                     <div className="col-12 col-md-10" style={{ color: "black" }}>
                                         <div style={{ color: "black", fontSize: 20 }}> {item.title}</div>

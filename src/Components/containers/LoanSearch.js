@@ -11,6 +11,7 @@ export const LoanSearch = (props) => {
     const [amount, setAmount] = useState("")
     const [loanType, setLoanType] = useState()
     const [propsLoan, setPropsLoan] = useState([])
+    const [isValid, setIsValid] = useState(true)
 
 
     useEffect(() => {
@@ -47,13 +48,20 @@ export const LoanSearch = (props) => {
         }
 
 
-        if (data.loanTypeId) {
+        debugger
+
+        if (data.loanTypeId && data.term && data.amount > 0) {
+            setIsValid(true)
             var urlName = propsLoan.find(x => x.id == data.loanTypeId)?.urlName
+
 
             let prm = new URLSearchParams()
             prm.set("amount", data.amount)
             prm.set("term", data.term)
+
             window.location.replace("/" + urlName + "-arama-hesaplama?" + prm)
+        } else {
+            setIsValid(false)
         }
     }
 
@@ -117,10 +125,13 @@ export const LoanSearch = (props) => {
                                     </div>
 
                                     <div className="col-6 ">
-                                        &nbsp;
                                     </div>
                                     <div className="col-6 " style={{ justifyontent: "flex-end", marginTop: 12 }}>
                                         <button onClick={(x) => { calculate() }} className="default-button" >ARA</button>
+                                    </div>
+                                    <div className="col-12 text-center mt-3">
+                                        {!isValid && <b style={{ color: "red" }}>***Bilgileri eksiksiz doldurunuz</b>}
+
                                     </div>
                                 </div>
                             </div>

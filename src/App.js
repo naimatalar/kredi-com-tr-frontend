@@ -60,9 +60,11 @@ export default function App(props) {
   // const Homepage = lazy(() => import("./pages/Homepage"));
   const CreditCartCampaing = lazy(() => import("./pages/CreditCartCampaing"));
   const CreditCartCampaingDetail = lazy(() => import("./pages/CreditCartCampaingDetail"));
-  require('react-dropdown/style.css');
+  const [loading, setLoading] = useState(false);
 
-  
+ 
+
+
   useEffect(() => {
 
     start();
@@ -76,146 +78,102 @@ export default function App(props) {
     setBlogNavigation(hp.blogs)
     setLoanNavigation(hp.loanType)
     setBankNavigation(hp.Bank)
+    setLoading(true);
 
   }
 
+  if (loading == false) {
+    <div></div>
+  }
 
 
-  return (
-    <Router>
+  else {
 
-      <NavigationTree BankNavigation={bankNavigation} LoanNavigation={loanNavigation}></NavigationTree>
+    return (
+      <Router>
 
-      <div style={{ width: "100%", overflow: "hidden" }}>
-        <Suspense fallback={<Loading></Loading>}>
-          <Switch>
+        <NavigationTree BankNavigation={bankNavigation} LoanNavigation={loanNavigation}></NavigationTree>
+        <Suspense fallback={<div></div>}>
+          <div style={{ width: "100%", overflow: "hidden" }}>
 
-            <Route exact path="/" render={(props) => <div className="container"> <Home Loans={loanNavigation} {...props} Banks={bankNavigation} /></div>}>
-            </Route>
+            <Switch>
 
-
-            {loanNavigation.map((item, key) => {
-              return (
-                <Route key={key} path={"/" + item.urlName} render={(props) => <Loan {...props} Loan={item} LoanId={item.id}></Loan>}>
-
-                </Route>
-              )
-            })}
+              <Route exact path="/" render={(props) => <div className="container"> <Home Loans={loanNavigation} {...props} Banks={bankNavigation} /></div>}>
+              </Route>
 
 
-
-            <Route path="/vadeli-mevduati-hesaplama-ve-basvuru" render={(props) => < DispositSearchResult {...props} />}>
-
-            </Route>
-            {loanNavigation.map((item, key) => {
-              return (
-                <Route key={key} path={"/" + item.urlName + "-arama-hesaplama"} render={(props) => <SearchLoanPage Loan={item} Loans={loanNavigation} {...props} ></SearchLoanPage>}>
-
-                </Route>
-              )
-            })}
-            {loanNavigation.map((item, key) => {
-              return (
-                <Route key={key} path={"/" + item.urlName + "-basvuru"} render={(props) => <RedirectProduct {...props} ></RedirectProduct>}>
-
-                </Route>
-              )
-            })}
-
-            <Route path="/soru-cevap" render={(props) => < Faq {...props} />}>
-
-            </Route>
-
-
-
-            <Route path="/kredi-karti/ticari-kredi-kartlari">
-              <CreditCart cartType="corporate" />
-            </Route>
-            <Route path="/kredi-karti/mil-veren-kredi-kartlari">
-              <CreditCart cartType="miles" />
-            </Route>
-            <Route path="/kredi-karti/puan-veren-kredi-kartlari">
-              <CreditCart cartType="point" />
-            </Route>
-            <Route path="/kredi-karti">
-              <CreditCart cartType="all" />
-            </Route>
-            <Route path="/hesaplama/ihtiyca-kredi-hesaplama">
-              <CalculatePage UrlName="ihtiyca-kredi-hesaplama" />
-
-            </Route>
-
-
-
-            <Route path="/hesaplama/aylik-ne-kadar-odeyebilirim">
-              <CalculatePage UrlName="aylik-ne-kadar-odeyebilirim" />
-            </Route>
-            <Route path="/hesaplama/ihtiyac-kredisi-hesaplama">
-              <CalculatePage UrlName="ihtiyac-kredisi-hesaplama" />
-            </Route>
-            <Route path="/hesaplama/arac-kredisi-hesaplama">
-              <CalculatePage UrlName="arac-kredisi-hesaplama" />
-            </Route>
-            <Route path="/hesaplama/konut-kredisi-hesaplama">
-              <CalculatePage UrlName="konut-kredisi-hesaplama" />
-            </Route>
-
-            <Route path="/hesaplama">
-              <CalculatePage UrlName="-" />
-            </Route>
-
-            <Route path={"/vadeli-mevduati-basvuru"} render={(props) => <RedirectProduct  {...props} ></RedirectProduct>}>
-            </Route>
-            {
-              bankNavigation.map((item, key) => {
+              {loanNavigation.map((item, key) => {
                 return (
-                  <Route key={key} path={'/bankalar/' + item.bankUrlName} render={(props) => <Banks {...props} Banks={bankNavigation} BankId={item.id}></Banks>}>
+                  <Route key={key} path={"/" + item.urlName} render={(props) => <Loan {...props} Loan={item} LoanId={item.id}></Loan>}>
+
                   </Route>
                 )
-              })
-            }
-            {
-              bankNavigation.map((item, key) => {
+              })}
+
+
+
+              <Route path="/vadeli-mevduati-hesaplama-ve-basvuru" render={(props) => < DispositSearchResult {...props} />}>
+
+              </Route>
+              {loanNavigation.map((item, key) => {
                 return (
-                  <Route key={key} path={'/bankalar/' + item.bankUrlName + "-kredi-hesaplama-ve-basvuru"}
-                    render={(props) => <LoanBank  {...props} BankId={item.id}></LoanBank>} >
+                  <Route key={key} path={"/" + item.urlName + "-arama-hesaplama"} render={(props) => <SearchLoanPage Loan={item} Loans={loanNavigation} {...props} ></SearchLoanPage>}>
+
                   </Route>
                 )
-              })
-            }
+              })}
+              {loanNavigation.map((item, key) => {
+                return (
+                  <Route key={key} path={"/" + item.urlName + "-basvuru"} render={(props) => <RedirectProduct {...props} ></RedirectProduct>}>
+
+                  </Route>
+                )
+              })}
+
+              <Route path="/soru-cevap" render={(props) => < Faq {...props} />}>
+
+              </Route>
 
 
 
-            <Route exact path={"/kredi-karti-kampanyalari/:slug"} render={(props) => <CreditCartCampaingDetail {...props} ></CreditCartCampaingDetail>}>
+              <Route path="/kredi-karti/ticari-kredi-kartlari">
+                <CreditCart cartType="corporate" />
+              </Route>
+              <Route path="/kredi-karti/mil-veren-kredi-kartlari">
+                <CreditCart cartType="miles" />
+              </Route>
+              <Route path="/kredi-karti/puan-veren-kredi-kartlari">
+                <CreditCart cartType="point" />
+              </Route>
+              <Route path="/kredi-karti">
+                <CreditCart cartType="all" />
+              </Route>
+              <Route path="/hesaplama/ihtiyca-kredi-hesaplama">
+                <CalculatePage UrlName="ihtiyca-kredi-hesaplama" />
 
-            </Route>
-
-            <Route path="/kredi-karti-kampanyalari" exact render={(props) => <CreditCartCampaing {...props} ></CreditCartCampaing>}>
-            </Route>
-            <Route exact path="/haberler-bilgiler">
-              <Blog Banks={bankNavigation} ></Blog>
-            </Route>
-
-
-
-            <Route exact path={'/haberler-bilgiler/:slug'}
-              render={(props) => <BlogDetail  {...props} ></BlogDetail>} >
-
-            </Route>
-
-
-            {creditCartName?.map((item, key) => {
-
-              return (
-                <Route key={key + "55d6"} path={"/" + item.bankUrlName + "/" + item.urlName} render={(props) => <CreditCartDetail {...props} data={item} ></CreditCartDetail>}>
-
-                </Route>
-              )
-            })}
+              </Route>
 
 
 
-            <Route path="/bankalar">
+              <Route path="/hesaplama/aylik-ne-kadar-odeyebilirim">
+                <CalculatePage UrlName="aylik-ne-kadar-odeyebilirim" />
+              </Route>
+              <Route path="/hesaplama/ihtiyac-kredisi-hesaplama">
+                <CalculatePage UrlName="ihtiyac-kredisi-hesaplama" />
+              </Route>
+              <Route path="/hesaplama/arac-kredisi-hesaplama">
+                <CalculatePage UrlName="arac-kredisi-hesaplama" />
+              </Route>
+              <Route path="/hesaplama/konut-kredisi-hesaplama">
+                <CalculatePage UrlName="konut-kredisi-hesaplama" />
+              </Route>
+
+              <Route path="/hesaplama">
+                <CalculatePage UrlName="-" />
+              </Route>
+
+              <Route path={"/vadeli-mevduati-basvuru"} render={(props) => <RedirectProduct  {...props} ></RedirectProduct>}>
+              </Route>
               {
                 bankNavigation.map((item, key) => {
                   return (
@@ -224,44 +182,100 @@ export default function App(props) {
                   )
                 })
               }
+              {
+                bankNavigation.map((item, key) => {
+                  return (
+                    <Route key={key} path={'/bankalar/' + item.bankUrlName + "-kredi-hesaplama-ve-basvuru"}
+                      render={(props) => <LoanBank  {...props} BankId={item.id}></LoanBank>} >
+                    </Route>
+                  )
+                })
+              }
 
 
-            </Route>
-            <Route path="/vadeli-mevduat-sorgulama" render={(props) => <DispositSearchPage {...props} />}>
 
-            </Route>
+              <Route exact path={"/kredi-karti-kampanyalari/:slug"} render={(props) => <CreditCartCampaingDetail {...props} ></CreditCartCampaingDetail>}>
 
-            {/* <Route path="*" render={(props) => <Loading {...props}></Loading>}>
+              </Route>
+
+              <Route path="/kredi-karti-kampanyalari" exact render={(props) => <CreditCartCampaing {...props} ></CreditCartCampaing>}>
+              </Route>
+              <Route exact path="/haberler-bilgiler">
+                <Blog Banks={bankNavigation} ></Blog>
+              </Route>
+
+
+
+              <Route path={'/haberler-bilgiler/:slug'}
+                render={(props) => <BlogDetail  {...props} ></BlogDetail>} >
+
+              </Route>
+
+
+              {creditCartName?.map((item, key) => {
+
+                return (
+                  <Route exact key={key + "55d6"} path={"/" + item.bankUrlName + "/" + item.urlName} render={(props) => <CreditCartDetail {...props} data={item} ></CreditCartDetail>}>
+
+                  </Route>
+                )
+              })}
+
+
+
+              <Route path="/bankalar">
+                {
+                  bankNavigation.map((item, key) => {
+                    return (
+                      <Route key={key} path={'/bankalar/' + item.bankUrlName} render={(props) => <Banks {...props} Banks={bankNavigation} BankId={item.id}></Banks>}>
+                      </Route>
+                    )
+                  })
+                }
+
+
+              </Route>
+              <Route path="/vadeli-mevduat-sorgulama" render={(props) => <DispositSearchPage {...props} />}>
+
+              </Route>
+
+              {/* <Route path="*" render={(props) => <Loading {...props}></Loading>}>
 
           </Route> */}
 
 
-          </Switch>
+            </Switch>
+
+
+            {/* <div style={{ textAlign: "center", color: "red", textDecoration: "underline" }}>Platformumuz yapım aşamasındadır.<br></br>Faiz oranları, vadeler, kredi kartı fırsatları şu anlık <b style={{ color: "red" }}>gerçek bilgiler değildir.</b><br></br>Gerçek bilgiler için bankanın web sitelerini ziyaret edebilirsiniz.</div> */}
+          </div>
+
+          <div className="footer">
+
+            <Footer></Footer>
+            <div className="footer-copyright text-center py-2" style={{ fontSize: 12 }}>© 2020 Copyright:
+              <a href="/"> kredi.com.tr</a>
+            </div>
+          </div>
+
+          <Route exact path={"/kredi-karti-basvuru"} render={(props) => <RedirectProduct {...props}  ></RedirectProduct>}>
+          </Route>
+          <Route exact path={"/mevduat-basvuru"} render={(props) => <RedirectProduct {...props}  ></RedirectProduct>}>
+          </Route>
+
+          <Route exact path="/setdata" render={(props) => <Homepage></Homepage>}>
+
+          </Route>
+
         </Suspense>
-        {/* <div style={{ textAlign: "center", color: "red", textDecoration: "underline" }}>Platformumuz yapım aşamasındadır.<br></br>Faiz oranları, vadeler, kredi kartı fırsatları şu anlık <b style={{ color: "red" }}>gerçek bilgiler değildir.</b><br></br>Gerçek bilgiler için bankanın web sitelerini ziyaret edebilirsiniz.</div> */}
-      </div>
 
-      <div className="footer">
+      </Router >
+    );
 
-        <Footer></Footer>
-        <div className="footer-copyright text-center py-2" style={{ fontSize: 12 }}>© 2020 Copyright:
-          <a href="/"> kredi.com.tr</a>
-        </div>
-      </div>
-
-      <Route path={"/kredi-karti-basvuru/"} render={(props) => <RedirectProduct {...props}  ></RedirectProduct>}>
-      </Route>
-      <Route path={"/mevduat-basvuru"} render={(props) => <RedirectProduct {...props}  ></RedirectProduct>}>
-      </Route>
-
-      <Route exact path="/setdata" render={(props) => <Homepage></Homepage>}>
-
-      </Route>
+  }
+  return(<></>)
 
 
-      
-    </Router >
-  );
 }
 
 

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { Helmet } from "react-helmet"
 import { creditCartRedirect } from "../Components/RedirectComponent"
+import Rimage from "../Components/Rimage"
 import { apiurl, GetNoneToken } from "../datacrud/datacrud"
  const CreditCartDetail = (props) => {
     const [data, setData] = useState({})
@@ -44,7 +45,7 @@ import { apiurl, GetNoneToken } from "../datacrud/datacrud"
             </Helmet>
             <div className="row credit-cart-content" >
                 <div className="col-12 col-md-4">
-                    <img src={apiurl + data.logo} alt={ data.name + " Kredi Kartı"} style={{ width: "90%" }}></img>
+                    <Rimage src={data.logo} alt={ data.name + " Kredi Kartı"} style={{ width: "90%" }}></Rimage>
                 </div>
                 <div className="col-12 col-md-8 row cart-master-info pt-4">
                     <div className="row col-12" style={{

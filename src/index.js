@@ -2,11 +2,11 @@ import React from 'react';
 
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import 'bootstrap/dist/css/bootstrap.min.css';
+
 import './index.css';
 
 import 'react-dropdown/style.css';
-import "./suneditor.min.css"
+
 import { hydrate, render } from 'react-dom';
 
 
@@ -15,7 +15,7 @@ import { hydrate, render } from 'react-dom';
 //   hydrate(<App />, rootElement);
 // } else {
 //   render(<App />, rootElement);
-  // "postbuild": "react-snap"
+//   "postbuild": "react-snap"
 // }
 
 

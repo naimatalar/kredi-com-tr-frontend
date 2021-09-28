@@ -5,6 +5,7 @@ import CurrencyInput from "react-currency-input";
 import Dropdown from 'react-dropdown';
 import { loanRedirect } from "../Components/RedirectComponent";
 import Image from "react-image-webp";
+import Rimage from "../Components/Rimage";
 export const SearchLoanPage = (props) => {
   const [data, setData] = useState([])
   const [noData, setNoData] = useState(false)
@@ -152,12 +153,12 @@ export const SearchLoanPage = (props) => {
                 {
                   isPopuler != "" &&
                   <div className="populer-mark">
-                    <Image style={{ width: 32 }} webp={require("../assets/images/special.webp").default} src={require("../assets/images/special.png").default} /> Sponsorlu
+                    <img style={{ width: 32 }} webp={require("../assets/images/special.webp").default} src={require("../assets/images/special.png").default} /> Sponsorlu
                   </div>
                 }
                 <div className="col-3 mt-2">
                   <div className="mb-2">
-                    <img title={item?.loanInfo?.bankName + " " + item?.loanInfo?.loanName} alt={item?.loanInfo?.bankName + " " + item?.loanInfo?.loanName + " sorgulama"} src={apiurl + item?.loanInfo?.bankLogoUrl} style={{ width: "100%" }}></img>
+                    <Rimage title={item?.loanInfo?.bankName + " " + item?.loanInfo?.loanName} alt={item?.loanInfo?.bankName + " " + item?.loanInfo?.loanName + " sorgulama"} src={item?.loanInfo?.bankLogoUrl} style={{ width: "100%" }}></Rimage>
                   </div>
 
                   <div className="mb-2" style={{ color: "grey", textAlign: "center" }}>{item?.loanInfo?.loanName}</div>

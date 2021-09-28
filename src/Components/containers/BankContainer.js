@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { apiConstant } from "../../datacrud/datacrud"
+import Rimage from "../Rimage";
 
 export const BankContainer = (props) => {
 
@@ -31,7 +32,7 @@ export const BankContainer = (props) => {
 
                 return (
                     <a key={key} href={"/bankalar/" + item.bankUrlName} style={{ cursor: "pointer" }} className="col-2 banklist">
-                        <img title={item.bankName + " ve kredi.com.tr çözüm ortaklığı"} alt={item.bankName + " çözüm ortaklığı"} style={{ cursor: "pointer" }} src={apiConstant + "/StaticF" + item.logoUrl} style={{ width: "100%" }}></img>
+                        <Rimage title={item.bankName + " ve kredi.com.tr çözüm ortaklığı"} alt={item.bankName + " çözüm ortaklığı"} style={{ cursor: "pointer" }} src={item.logoUrl} style={{ width: "100%" }}></Rimage>
                     </a>
                 )
 

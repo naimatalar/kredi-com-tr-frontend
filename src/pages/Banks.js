@@ -23,6 +23,7 @@ import { DispositMatrixContainer } from "../Components/containers/DispositMatrix
 import BankLoanContainer from "../Components/BankLoanContainer";
 import DispositSelectContainer from "../Components/DispositSelectContainer";
 import Image from "react-image-webp";
+import Rimage from "../Components/Rimage";
 export const Banks = (props) => {
     const [bank, setBank] = useState({})
     const [activeLoanType, setActiveLoanType] = useState({ id: null })
@@ -100,28 +101,28 @@ export const Banks = (props) => {
             <Helmet>
 
                 <meta property="og:type" content="article" />
-                <meta property="og:title" content={"KREDİ.COM.TR | " + (bank.bankName ?? "") + ": Kredi Ve Kredi Kartı Fırsatları"} />
+                <meta property="og:title" content={ (bank.bankName ?? "") + ": Kredi Ve Kredi Kartı Fırsatları"} />
                 <meta property="og:url" content={window.location.href} />
 
                 <meta property="og:description" content={(bank.bankName ?? "") + " bankaya ait kredileri sorgulayabilir, vadeli mevduat hesabı oluşturabilirsiniz. Ayrıca " + (bank.bankName ?? "") + " bankasına ait kredi kartlarını listeledik  ."} />
                 <meta name="og:keyword" content={"Bankalar," + bank.bankName + " , kredi kartı, faiz oranı, kredi hesaplama"} />
-                <meta name="twitter:title" content={"KREDİ.COM.TR | " + (bank.bankName ?? "") + ": Kredi, Kredi Kartı ve Mevduat Fırsatları"} />
+                <meta name="twitter:title" content={(bank.bankName ?? "") + ": Kredi, Kredi Kartı ve Mevduat Fırsatları"} />
 
-                <meta name="twitter:description" content={"KREDİ.COM.TR | " + (bank.bankName ?? "") + " bankaya ait kredileri sorgulayabilir, vadeli mevduat hesabı oluşturabilirsiniz. Ayrıca " + (bank.bankName ?? "") + " bankasına ait kredi kartlarını listeledik  ."} />
+                <meta name="twitter:description" content={ (bank.bankName ?? "") + " bankaya ait kredileri sorgulayabilir, vadeli mevduat hesabı oluşturabilirsiniz. Ayrıca " + (bank.bankName ?? "") + " bankasına ait kredi kartlarını listeledik  ."} />
 
-                <meta name="description" content={"KREDİ.COM.TR | " + (bank.bankName ?? "") + " bankaya ait kredileri sorgulayabilirsiniz. Ayrıca " + (bank.bankName ?? "") + " bankasına ait kredi kartlarını listeledik  ."} />
+                <meta name="description" content={(bank.bankName ?? "") + " bankaya ait kredileri sorgulayabilirsiniz. Ayrıca " + (bank.bankName ?? "") + " bankasına ait kredi kartlarını listeledik  ."} />
                 <meta name="robots" content="index,follow" />
-                <meta property="og:image" itemProp="image" content={apiurl + bank?.logoUrl} />
-                <link rel="apple-touch-icon" href={apiurl + bank?.logoUrl} />
+                <meta property="og:image" itemProp="image" content={bank?.logoUrl} />
+                <link rel="apple-touch-icon" href={bank?.logoUrl} />
 
-                <title>{"KREDİ.COM.TR | " + (bank.bankName ?? "") + ": Kredi, Kredi Kartı ve Mevduat Başvuru"} </title>
+                <title>{ (bank.bankName ?? "") + ": Kredi, Kredi Kartı ve Mevduat Başvuru"} </title>
 
             </Helmet>
             <div className="row bank-label">
                 <div className="col-12">
                     <div className="row justify-content-center">
 
-                        <div className="col-md-3 col-lg-3 col-sm-6 col-8 m-2">{bank.logoUrl == undefined ? "" : <img src={apiurl + bank.logoUrl} style={{ width: "100%" }} alt={bank.bankName + " Bütün ürünleri krediler kredi kartı mevduat"} title={bank.bankName + " kredi, kredi kartı ve mevduat ürünleri"}></img>}</div>
+                        <div className="col-md-3 col-lg-3 col-sm-6 col-8 m-2">{bank.logoUrl == undefined ? "" : <Rimage src={ bank.logoUrl} style={{ width: "100%" }} alt={bank.bankName + " Bütün ürünleri krediler kredi kartı mevduat"} title={bank.bankName + " kredi, kredi kartı ve mevduat ürünleri"}></Rimage>}</div>
                     </div>
                 </div>
             </div>
@@ -160,7 +161,7 @@ export const Banks = (props) => {
 
 
                                                             <div className="col-6">
-                                                                <img alt={bank.bankName + " bankaya ait " + each.name + " kredi kartı"} title={bank.bankName + "  " + each.name + " kredi kartı özellikleri"} src={apiurl + each.logoUrl} style={{ width: "100%" }}></img>
+                                                                <Rimage alt={bank.bankName + " bankaya ait " + each.name + " kredi kartı"} title={bank.bankName + "  " + each.name + " kredi kartı özellikleri"} src={each.logoUrl} style={{ width: "100%" }}></Rimage>
                                                             </div>
                                                             <div className="col-6">
                                                                 <div className="col-12">

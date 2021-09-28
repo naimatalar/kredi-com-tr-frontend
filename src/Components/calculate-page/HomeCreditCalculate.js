@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import CurrencyInput from "react-currency-input"
 import Image from "react-image-webp"
 import calculator from "../calculator"
+import Rimage from "../Rimage"
 
 export const HomeCreditCalculate = () => {
     const [loanType, setLoanType] = useState("konut")

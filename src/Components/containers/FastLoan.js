@@ -7,7 +7,8 @@ import 'react-dropdown/style.css';
 import calculator from "../calculator";
 import { apiurl, GetNoneToken } from "../../datacrud/datacrud";
 import { loanRedirect } from "../RedirectComponent";
-export const FastLoan = () => {
+import Rimage from "../Rimage";
+export const FastLoan = (props) => {
 
 
     const [fastLoanData, setFastLoadnData] = useState([
@@ -38,10 +39,15 @@ export const FastLoan = () => {
 
 
 
-    }, [])
+    }, [props])
     const start = async () => {
-        var data = await GetNoneToken("FastLoans/GetAllSite").then(x => { return x.data }).catch(x => { return false })
-        setFastLoadnData(data)
+        if (props.data) {
+            setFastLoadnData(props.data)
+        } else {
+            var data = await GetNoneToken("FastLoans/GetAllSite").then(x => { return x.data }).catch(x => { return false })
+            setFastLoadnData(data)
+        }
+
 
 
 
@@ -153,7 +159,7 @@ const FastLoanList = (props) => {
         setFastLoadnData(filtering);
         setRefresh(new Date().getTime())
     }
-   
+
     return (
 
         <div className="col-12 fast-loan-item" >
@@ -166,7 +172,7 @@ const FastLoanList = (props) => {
                             precision="0"
                             prefix="₺"
                             value={amount ?? fastLoanData.amount}
-                            onChange={(element) => { chanheVals(fastLoanData.id, fastLoanData.term, element); setAmount(element) }} style={{ padding: 3, width: "100%"}} />
+                            onChange={(element) => { chanheVals(fastLoanData.id, fastLoanData.term, element); setAmount(element) }} style={{ padding: 3, width: "100%" }} />
                         {fastLoanData.alertShow &&
                             < span style={{ textAlign: "center", color: "red" }} className="fast-loan-warning">{fastLoanData.alert}</span>
 
@@ -211,7 +217,7 @@ const FastLoanList = (props) => {
             <div className="row" style={{ paddingBottom: 8 }}>
                 <div className="col-4 text-center" >
 
-                    <img title={fastLoanData.bankName + " banka " + fastLoanData.loanType + " hızlı başvuru"} alt={fastLoanData.bankName + " banka " + fastLoanData.loanType + " başvuru"} src={apiurl + fastLoanData.logo} style={{ width: "100%",height: 23  }}></img>
+                    <Rimage title={fastLoanData.bankName + " banka " + fastLoanData.loanType + " hızlı başvuru"} alt={fastLoanData.bankName + " banka " + fastLoanData.loanType + " başvuru"} src={fastLoanData.logo} style={{ width: "100%", height: 23 }}></Rimage>
                     <b style={{ color: "red" }}>{fastLoanData.loanType}</b>
                 </div>
 
@@ -222,7 +228,7 @@ const FastLoanList = (props) => {
                 </div>
                 <div className="col-4">
                     <div className="col-12 m-0 p-0">
-                        <a style={{fontWeight:"bold",color:"blue"}} href={"/bankalar/"+fastLoanData.bankUrlName+"-kredi-hesaplama-ve-basvuru?amount=" + (amount ?? fastLoanData.amount) + "&term=" + fastLoanData.term?.toString() + "&loanId=" + fastLoanData.interestRateId}>Detay</a>
+                        <a style={{ fontWeight: "bold", color: "blue" }} href={"/bankalar/" + fastLoanData.bankUrlName + "-kredi-hesaplama-ve-basvuru?amount=" + (amount ?? fastLoanData.amount) + "&term=" + fastLoanData.term?.toString() + "&loanId=" + fastLoanData.interestRateId}>Detay</a>
                     </div>
                     <div className="col-12 m-0 p-0">
                         <span>Faiz Oranı:</span> {fastLoanData.rate}

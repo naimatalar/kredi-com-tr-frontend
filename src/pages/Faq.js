@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react"
 import { apiurl, GetNoneToken } from "../datacrud/datacrud"
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp';
+import Rimage from "../Components/Rimage";
  const Faq = () => {
     const [data, setData] = useState([])
     const [openId, setOpenId] = useState("")
@@ -76,7 +77,7 @@ import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp';
                         <div  key={key} className="col-12 row mb-3 blog-detail-item">
 
                             <div className="col-3 p-0">
-                                <img src={apiurl + item.imageUrl} style={{ width: "100%" }}></img>
+                                <Rimage src={item.imageUrl} style={{ width: "100%" }}></Rimage>
                             </div>
                             <div  className="col-7 p-0 pl-2 pr-1" style={{ fontSize: 13, color: "black" }}>
                                 {item.title}

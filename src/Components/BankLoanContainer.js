@@ -6,18 +6,19 @@ function BankLoanContainer(props) {
     const [selectedLoanOptions, setSelectedLoanOptions] = useState({ rate: null, amount: null, term: null })
     const [activeLoanType, setActiveLoanType] = useState({ id: null })
     const [loanTermsDropdonw, setLoanTermsDropdown] = useState([])
+    const [isValid, setIsValid] = useState(true)
 
-    useEffect(()=>{
+    useEffect(() => {
         setActiveLoanType(props.Bank.loans[0] || [])
-        
+
         if (props.Bank.loans > 0) {
-            
+
             updateSelectedLoanOption(props.Bank.loans[0]?.rate, null, null)
 
         } else {
             updateSelectedLoanOption(0, null, null)
         }
-    },[])
+    }, [])
     const selectLoanType = (loanId) => {
 
         let existControl = []
@@ -64,13 +65,19 @@ function BankLoanContainer(props) {
     }
     const redirectLoanBank = (rate = null, amount = null, term = null) => {
 
-        let prm = new URLSearchParams()
-        prm.set("amount", selectedLoanOptions.amount)
-        prm.set("term", selectedLoanOptions.term)
-        prm.set("loanId", activeLoanType.id)
-        // props.history.push("/bankalar/" + props.Bank.bankUrlName + "-kredi-hesaplama-ve-basvuru?" + prm);
-        window.history.pushState({},"","/bankalar/" + props.Bank.bankUrlName + "-kredi-hesaplama-ve-basvuru?" + prm)
-        window.history.go()
+        if (selectedLoanOptions.amount > 0 && selectedLoanOptions.term && activeLoanType.id) {
+            setIsValid(true)
+            let prm = new URLSearchParams()
+            prm.set("amount", selectedLoanOptions.amount)
+            prm.set("term", selectedLoanOptions.term)
+            prm.set("loanId", activeLoanType.id)
+            // props.history.push("/bankalar/" + props.Bank.bankUrlName + "-kredi-hesaplama-ve-basvuru?" + prm);
+            window.history.pushState({}, "", "/bankalar/" + props.Bank.bankUrlName + "-kredi-hesaplama-ve-basvuru?" + prm)
+            window.history.go()
+        } else {
+            setIsValid(false)
+        }
+
     }
 
     var loanUrlNameControl = []
@@ -144,8 +151,19 @@ function BankLoanContainer(props) {
 
                         </div>
                         <div className="justify-content col-5 mt-3">
-                            <button onClick={() => { redirectLoanBank() }} className="default-button justify-content-center" type="submit">Hesapla</button>
+                            <button onClick={() => { redirectLoanBank() }} className="default-button justify-content-center" type="submit">Kredi Hesapla</button>
 
+
+                        </div>
+                        <div className="col-12 text-center">
+                            {!isValid && <b style={{
+                                color: "red",
+                                background: "#ffffff94",
+                                width: "100%",
+                                display: "block",
+                                borderRadius: 10,
+                                border: "1px solid white"
+                            }}>***Bilgileri eksiksiz doldurunuz</b>}
 
                         </div>
 

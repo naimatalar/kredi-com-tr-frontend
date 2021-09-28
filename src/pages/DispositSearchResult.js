@@ -7,6 +7,7 @@ import { DispositContainer } from "../Components/containers/DispositContainer";
 // import { Helmet } from "react-helmet";
 import { dispositRedirect } from "../Components/RedirectComponent";
 import { Helmet } from "react-helmet";
+import Rimage from "../Components/Rimage";
 
  const DispositSearchResult = (props) => {
     var [data, setData] = useState([])
@@ -176,7 +177,7 @@ import { Helmet } from "react-helmet";
                                                 }
                                                 <div className="col-3">
                                                     <div className="mb-2">
-                                                        <img alt={item.bankName + " Vadeli Mevduat Hesapları"} title={item.bankName + " Vadeli Mevduat Hesaplarını Gör"} src={apiurl + item.bankLogoUrl} style={{ width: "100%" }}></img>
+                                                        <Rimage alt={item.bankName + " Vadeli Mevduat Hesapları"} title={item.bankName + " Vadeli Mevduat Hesaplarını Gör"} src={item.bankLogoUrl} style={{ width: "100%" }}></Rimage>
                                                     </div>
 
                                                     <div className="mb-2" style={{ color: "grey", textAlign: "center" }}>{item.dispositName}</div>

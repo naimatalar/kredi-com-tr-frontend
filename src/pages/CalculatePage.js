@@ -29,7 +29,7 @@ import HowMuchLoan from "../Components/containers/HowMuchLoan"
         }
         ,
         {
-            name: "Aylık Ne Kadar Ödeyebilirim?W",
+            name: "Aylık Ne Kadar Ödeyebilirim?",
             urlName: "aylik-ne-kadar-odeyebilirim",
             description: "Ne kadar kredi çekebileceğinizi hesaplar. Ve size uygun kredileri bulur"
 

@@ -2,6 +2,7 @@ import React, { createRef, useCallback, useEffect, useRef, useState } from "reac
 import { apiurl, GetNoneToken } from "../datacrud/datacrud";
 import { BottomScrollListener, useBottomScrollListener } from 'react-bottom-scroll-listener';
 import { Helmet } from "react-helmet";
+import Rimage from "../Components/Rimage";
 
  const Blog = (props) => {
     const [blog, setBlog] = useState([]);
@@ -57,15 +58,15 @@ import { Helmet } from "react-helmet";
 
         <Helmet>
             <meta property="og:type" content="article" />
-            <meta property="og:title" content="KREDİ.COM.TR | Finans Dünyasını Takip Edip Sizlerle Paylaşıyoruz." />
+            <meta property="og:title" content="Finans Dünyasını Takip Edip Sizlerle Paylaşıyoruz." />
             <meta property="og:url" content={window.location.href} />
-            <meta property="og:description" content="KREDİ.COM.TR | En uygun kredi fırsatlarını kredi.com.tr ayrıcalığı ile sizlerle buluşturuyoruz. Finans dünyasını yakından takip edip sizleri haberdar ediyoruz." />
+            <meta property="og:description" content="En uygun kredi fırsatlarını kredi.com.tr ayrıcalığı ile sizlerle buluşturuyoruz. Finans dünyasını yakından takip edip sizleri haberdar ediyoruz." />
                      <meta name="og:keyword" content="kredi, kredi kartı, kredi başvurusu, kredi faiz oranı, kredi kartı başvurusu" />
 
             <meta name="keyword" content="kredi, kredi kartı, kredi başvurusu, kredi faiz oranı, kredi kartı başvurusu" />
-            <meta name="description" content="KREDİ.COM.TR | En uygun kredi fırsatlarını kredi.com.tr ayrıcalığı ile sizlerle buluşturuyoruz. Finans dünyasını yakından takip edip sizleri haberdar ediyoruz." />
+            <meta name="description" content="En uygun kredi fırsatlarını kredi.com.tr ayrıcalığı ile sizlerle buluşturuyoruz. Finans dünyasını yakından takip edip sizleri haberdar ediyoruz." />
             <meta name="robots" content="index,follow" />
-            <title>KREDİ.COM.TR | Finans dünyasını takip edip sizlerle paylaşıyoruz.</title>
+            <title>Finans dünyasını takip edip sizlerle paylaşıyoruz.</title>
         </Helmet>
 
 
@@ -83,7 +84,7 @@ import { Helmet } from "react-helmet";
                           
                             return (<div key={key} className="pb-2 pt-2 col-12 row align-items-center blog-list-item justify-content-between">
                                 <div className="col-12 col-md-3">
-                                    <img alt={item.title} title={item.title} className="blog-image" src={apiurl + item.imageUrl}></img>
+                                    <Rimage alt={item.title} title={item.title} className="blog-image" src={item.imageUrl}></Rimage>
                                 </div>
                                 <div className="col-12 col-md-8" style={{ color: "black" }}>
                                     <div style={{ color: "black", fontSize: 20 }}> {item.title}</div>
@@ -162,7 +163,7 @@ import { Helmet } from "react-helmet";
                     {props.Banks.slice(0, 5).map((item, key) => {
                         return (
                             <div key={key} className="row mb-4" style={{ borderTop: " 1px solid #dadada", paddingTop: 9 }}>
-                                <div className="col-3 p-1"><img src={apiurl + item.logoUrl} alt={item.bankName + " bilgiler"} title={item.bankName + " bilgiler"} style={{ width: "100%" }}></img> </div>
+                                <div className="col-3 p-1"><Rimage src={ item.logoUrl} alt={item.bankName + " bilgiler"} title={item.bankName + " bilgiler"} style={{ width: "100%" }}></Rimage> </div>
                                 <div className="col-3 p-0" style={{
                                     color: "black",
                                     fontSize: 9,

@@ -1066,3 +1066,58 @@ overflow: hidden;
        -webkit-filter: grayscale(100%);
   filter: grayscale(100%);
   }
+  .credit-cart-title-container{
+    border: 1px solid #bac8cf;
+    padding: 5px 0 15px 0px;
+    border-radius: 5px;
+  }
+  .pps>div{
+    height: 25px;
+    background: #e8e8e8;
+    border: 3px dotted #d1d1d1;
+  }
+  .ppt>div{
+    height: 37px;
+    background: #e8e8e8;
+    border: 4px dotted #d1d1d1;
+  }
+  .ppts{
+    background: #e4e4e4;
+    border: 4px dotted #c3c3c3;
+  }
+  .pptsv{
+    width: 95%;
+    background: #e4e4e4;
+    height: 100%;
+    border: 5px dotted #c3c3c3;
+  }
+  .pspt{
+    background: #e4e4e4;
+    border: 5px dotted #c3c3c3;
+  }
+  .filter-button{
+    position: fixed;
+    background: #ffffff;
+    width: 73px;
+    padding-left: 10px;
+    left: 0;
+    z-index: 9999;
+    color: black;
+    padding-bottom: 4px;
+    border-top-right-radius: 27px;
+    padding-top: 5px;
+    top: 67px;
+    border: 3px solid #f5d224;
+    cursor: pointer;
+  }
+  .mobil-filter{
+    position: fixed;
+    z-index: 99999;
+    background: white;
+    top: 0;
+    height: 100%;
+  }
+  .filter-mobil-scroll{
+    overflow: scroll;
+    height: 100%;
+  }

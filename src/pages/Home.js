@@ -25,7 +25,15 @@ const Home = (props) => {
     const [sss, setSss] = useState([])
     const [blog, setBlog] = useState([])
     const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions(0));
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(true)
+    const [populerLoansData, setPopulerLoansData] = useState([])
+    const [bankCamping, setBankCamping] = useState()
+    const [selectedDisposit, setSelectedDisposit] = useState([])
+    const [bankLoanRates, setBankLoanRates] = useState([])
+    const [fatLoan, setFatLoan] = useState([])
+    const [slider, setSlider] = useState([])
+
+
     function getWindowDimensions() {
         const { innerWidth: width, innerHeight: height } = window;
         return {
@@ -44,20 +52,34 @@ const Home = (props) => {
         return () => window.removeEventListener('resize', handleResize);
     }, [])
     const start = async () => {
-        var sss_ = await GetNoneToken("Faqs/GetAllSite").then(x => { return x.data }).catch(x => { return false })
+        var indexData = await GetNoneToken("HomePageData/indexData").then(x => { return x.data }).catch(x => { return false })
+
+        let sss_ = indexData.faq
+
+        setPopulerLoansData(indexData.populerLoans)
+        setBankCamping(indexData.bankCamping)
+        setSelectedDisposit(indexData.selectedDisposit)
+        setBankLoanRates(indexData.bankLoanRates)
+        setFatLoan(indexData.fatLoan)
+        setSlider(indexData.slider)
+
+        // await GetNoneToken("Faqs/GetAllSite").then(x => { return x.data }).catch(x => { return false })
         if (sss_) {
             setSss(sss_)
         }
-        var blg = await GetNoneToken("Blogs/GetAllWebSite").then(x => { return x.data }).catch(x => { return false })
+        let blg = indexData.blogData
 
+        // await GetNoneToken("Blogs/GetAllWebSite").then(x => { return x.data }).catch(x => { return false })
         if (blg) {
             setBlog(blg)
         }
-        setLoading(true)
+
+        setLoading(false)
+
     }
 
     return (<>
-        {loading == false && <Loading></Loading>}
+
         {
             addsPopup && <> <div onClick={() => { setAddsPopup(false) }} className="lv-shadow"></div>
                 <div className="lv-master">
@@ -91,23 +113,29 @@ const Home = (props) => {
             </>
         }
 
-        {loading && <>
-            <div className="row mt-4">
 
-                <div>
+        <div className="row mt-4">
 
-                </div>
+            <div>
+
+            </div>
 
 
 
-                <div className="col-12 mt-3 mb-3 text-center">
-                    <h1 className="home-title" style={{ marginTop: 0 }}>Kolayca <span style={{ fontWeight: "bold" }}>Arayın,</span> Pratik Şekilde <span style={{ fontWeight: "bold" }}>Hesaplayın,</span> Hızlıca <span style={{ fontWeight: "bold" }}>Başvurun!</span>  </h1>
-                </div>
+            <div className="col-12 mt-3 mb-3 text-center">
+                <h1 className="home-title" style={{ marginTop: 0 }}>Kolayca <span style={{ fontWeight: "bold" }}>Kredi Ara</span>, Pratik Şekilde <span style={{ fontWeight: "bold" }}>Kredi Hesapla</span> , Hızlıca <span style={{ fontWeight: "bold" }}>Kredi Başvur!</span>  </h1>
+            </div>
+            <div className="row">
+
+
                 <div style={{ paddingRight: 5, marginBottom: 20 }} className="col-lg-5 col-md-6 loan-search-container">
                     <LoanSearch Loans={props.Loans}></LoanSearch>
                 </div>
                 <div style={{ paddingRight: 5, marginBottom: 20 }} className="col-lg-5 col-md-6 " >
-                    <PopulerLoans></PopulerLoans>
+                    <PopulerLoans loading={loading} data={populerLoansData}></PopulerLoans>
+                    
+
+
                 </div>
                 <div className="col-lg-2 col-md-12 p-0" style={{ marginBottom: 20 }}  >
                     <div className="d-none d-lg-flex row adds-first-big" >
@@ -146,209 +174,210 @@ const Home = (props) => {
                         </div>
                     </div>
                 </div>
+            </div>
+
+        </div>
+        <div className="col-12  mb-4">
+            <PopulerBankCampaing loading={loading} data={bankCamping}></PopulerBankCampaing>
+
+        </div>
+        <div className="row col-12">
+            <div className="col-12 col-md-7 col-lg-7 mt-3">
+                <HowToPay></HowToPay>
 
 
             </div>
-            <div className="col-12  mb-4">
-                <PopulerBankCampaing></PopulerBankCampaing>
-            </div>
-            <div className="row col-12">
-                <div className="col-12 col-md-7 col-lg-7 mt-3">
-                    <HowToPay></HowToPay>
+            <div className="col-12 col-md-5 col-lg-5 mt-3">
+                <p className="home-title" >En çok kazandıran <span style={{ fontWeight: "bold" }}>vadeli mevduat seçeneklerini </span> sizin için seçtik.</p>
 
-
-                </div>
-                <div className="col-12 col-md-5 col-lg-5 mt-3">
-                    <p className="home-title" >En çok kazandıran <span style={{ fontWeight: "bold" }}>vadeli mevduat seçeneklerini </span> sizin için seçtik.</p>
-
-                    <div className="mb-3" style={{
-                        padding: 7,
-                        background: "linear-gradient(45deg, #077a683b, transparent)"
-                    }}>
-                        <i style={{ color: " #505050", fontWeight: "bold" }}> En Çok Tercih Edilen Mevduat Hesapları</i>
-
-                    </div>
-                    <div className="row">
-                        <DispositContainer Big></DispositContainer>
-                    </div>
+                <div className="mb-3" style={{
+                    padding: 7,
+                    background: "linear-gradient(45deg, #077a683b, transparent)"
+                }}>
+                    <i style={{ color: " #505050", fontWeight: "bold" }}> En Çok Tercih Edilen Mevduat Hesapları</i>
 
                 </div>
-            </div>
-
-
-            <div className=" mb-4 bt-4">
+                <div className="row">
+                    <DispositContainer data={selectedDisposit} Big></DispositContainer>
+                </div>
 
             </div>
-            <div className="row">
-                <div className="col-12" style={{ marginBottom: 15 }}>
-                    <p className="home-title" > <span style={{ fontWeight: "bold" }}>Kredi ve kredi kartları ile ilgili en güncel verileri analiz edip, <br /></span> Çeşitli <span style={{ fontWeight: "bold" }}>Hesap Araçlarımızla </span> bütce hesabınızı kolayca yapın.  </p>
-                </div>
-                <div style={{ paddingRight: 5, marginBottom: 20 }} className="col-lg-5 col-md-6">
-                    <LoanRate />
+        </div>
 
-                </div>
 
-                <div className="col-lg-3 d-none d-lg-block" style={{ marginBottom: 20 }}  >
+        <div className=" mb-4 bt-4">
 
-                    <div className="d-none d-lg-flex row adds-first-big" >
-                        <div className="row  m-0 p-0 justify-content-center">
-
-                            <img title="kredi.com.tr online kredi, kredi kartı ve mevduat başvuruları" alt={"kredi.com.tr "} style={{ width: "80%", objectFit: "contain" }} src={require("../assets/images/lg.png").default}></img>
-                            <b style={{ textAlign: "center" }}>Reklam Ve Tanıtım Alanı</b>
-                        </div>
-                        <div className="row  m-0 p-0 justify-content-center">
-
-                            <span style={{ textAlign: "center", textAlign: "center", color: " #181818", fontSize: 12 }}>Aylık 3MN web trafiğine sahip sitemizde tanıtım ve reklamlarınızı yayınlayalım. Ürün ya da hizmetinizi parmaklarınızın ucuna taşıyalım. </span>
-                        </div>
-                        <div className="row  m-0 p-0 justify-content-center">
-
-                            <button onClick={() => { setAddsPopup(true) }} className="default-button">&nbsp; İLETİŞİM &nbsp;</button>
-                        </div>
-
-                    </div>
-                </div>
-                <div className="col-lg-4 col-md-6" style={{ marginBottom: 20 }}  >
-                    <FastLoan></FastLoan>
-                </div>
+        </div>
+        <div className="row">
+            <div className="col-12" style={{ marginBottom: 15 }}>
+                <p className="home-title" > <span style={{ fontWeight: "bold" }}>Kredi ve kredi kartları ile ilgili en güncel verileri analiz edip, <br /></span> Çeşitli <span style={{ fontWeight: "bold" }}>Hesap Araçlarımızla </span> bütce hesabınızı kolayca yapın.  </p>
             </div>
-            <div className="row">
+            <div style={{ paddingRight: 5, marginBottom: 20 }} className="col-lg-5 col-md-6">
+                <LoanRate data={bankLoanRates} />
 
+            </div>
 
-                <div className="d-lg-none d-md-flex row adds-first-big pt-4 pb-4" >
+            <div className="col-lg-3 d-none d-lg-block" style={{ marginBottom: 20 }}  >
+
+                <div className="d-none d-lg-flex row adds-first-big" >
                     <div className="row  m-0 p-0 justify-content-center">
-                        <div className="row justify-content-center">
-                            <Image title="kredi.com.tr ile artık bankaların ürünleri parmaklarınızın ucunda" alt={"logo kredi.com.tr"} style={{ width: "50%", objectFit: "contain" }}
-                                webp={require("../assets/images/lg.webp").default}
-                                src={require("../assets/images/lg.png").default}></Image>
-                        </div>
-                        <div className="col-12" style={{ textAlign: "center" }}>
-                            <b style={{ textAlign: "center" }}>Reklam Ve Tanıtım Alanı</b>
-                        </div>
-                    </div>
-                    <div className="col-12 mt-2">
-                        <div className="row  m-0 p-0 justify-content-center">
 
-                            <span style={{ textAlign: "center", textAlign: "center", color: " #181818", fontSize: 12 }}>Aylık 3MN web trafiğine sahip sitemizde tanıtım ve reklamlarınızı yayınlayalım. Ürün ya da hizmetinizi parmaklarınızın ucuna taşıyalım. </span>
-                        </div>
+                        <img title="kredi.com.tr online kredi, kredi kartı ve mevduat başvuruları" alt={"kredi.com.tr "} style={{ width: "80%", objectFit: "contain" }} src={require("../assets/images/lg.png").default}></img>
+                        <b style={{ textAlign: "center" }}>Reklam Ve Tanıtım Alanı</b>
                     </div>
-                    <div className="col-12 mt-3">
-                        <div className="row  m-0 p-0 justify-content-center">
+                    <div className="row  m-0 p-0 justify-content-center">
 
-                            <button onClick={() => { setAddsPopup(true) }} style={{ width: 156 }} className="default-button">&nbsp; İLETİŞİM &nbsp;</button>
-                        </div>
+                        <span style={{ textAlign: "center", textAlign: "center", color: " #181818", fontSize: 12 }}>Aylık 3MN web trafiğine sahip sitemizde tanıtım ve reklamlarınızı yayınlayalım. Ürün ya da hizmetinizi parmaklarınızın ucuna taşıyalım. </span>
                     </div>
-                </div>
+                    <div className="row  m-0 p-0 justify-content-center">
 
-            </div>
-            <div className="row middle-menu-content">
-                <div className="col-12">
-                    <p className="home-title" >Düzinelerce <span style={{ fontWeight: "bold" }}>kredi ödeme seçenekleri </span> ve bol kazandırıp çok uçuran <span style={{ fontWeight: "bold" }}>kredi kartları </span> parmaklarınızın ucunda! </p>
-                </div>
-                <div className="container">
-                    <MiddleMenu Loans={props.Loans}></MiddleMenu>
+                        <button onClick={() => { setAddsPopup(true) }} className="default-button">&nbsp; İLETİŞİM &nbsp;</button>
+                    </div>
+
                 </div>
             </div>
-            <div className="container slider-content">
+            <div className="col-lg-4 col-md-6" style={{ marginBottom: 20 }}  >
+                <FastLoan data={fatLoan}></FastLoan>
+            </div>
+        </div>
+        <div className="row">
 
-                <Slider></Slider>
 
+            <div className="d-lg-none d-md-flex row adds-first-big pt-4 pb-4" >
+                <div className="row  m-0 p-0 justify-content-center">
+                    <div className="row justify-content-center">
+                        <Image title="kredi.com.tr ile artık bankaların ürünleri parmaklarınızın ucunda" alt={"logo kredi.com.tr"} style={{ width: "50%", objectFit: "contain" }}
+                            webp={require("../assets/images/lg.webp").default}
+                            src={require("../assets/images/lg.png").default}></Image>
+                    </div>
+                    <div className="col-12" style={{ textAlign: "center" }}>
+                        <b style={{ textAlign: "center" }}>Reklam Ve Tanıtım Alanı</b>
+                    </div>
+                </div>
+                <div className="col-12 mt-2">
+                    <div className="row  m-0 p-0 justify-content-center">
+
+                        <span style={{ textAlign: "center", textAlign: "center", color: " #181818", fontSize: 12 }}>Aylık 3MN web trafiğine sahip sitemizde tanıtım ve reklamlarınızı yayınlayalım. Ürün ya da hizmetinizi parmaklarınızın ucuna taşıyalım. </span>
+                    </div>
+                </div>
+                <div className="col-12 mt-3">
+                    <div className="row  m-0 p-0 justify-content-center">
+
+                        <button onClick={() => { setAddsPopup(true) }} style={{ width: 156 }} className="default-button">&nbsp; İLETİŞİM &nbsp;</button>
+                    </div>
+                </div>
             </div>
 
-            <div className="row " style={{
+        </div>
+        <div className="row middle-menu-content">
+            <div className="col-12">
+                <p className="home-title" >Düzinelerce <span style={{ fontWeight: "bold" }}>kredi ödeme seçenekleri </span> ve bol kazandırıp çok uçuran <span style={{ fontWeight: "bold" }}>kredi kartları </span> parmaklarınızın ucunda! </p>
+            </div>
+            <div className="container">
+                <MiddleMenu Loans={props.Loans}></MiddleMenu>
+            </div>
+        </div>
+        <div className="container slider-content">
 
-            }}>
-                <div className="container">
+            <Slider data={slider}></Slider>
 
-                    <div className="row">
-                        <div className="col-lg-6 col-md-6 col-sm-12 imghide" style={{ paddingRight: 36 }}>
-                            <h3>Sık Sorulan Sorular</h3>
-                            {sss?.map((item, key) => {
+        </div>
 
-                                return (<div key={key} style={{ padding: 5 }}>
+        <div className="row " style={{
 
-                                    <div>
+        }}>
+            <div className="container">
 
-                                        <h6 style={{ fontWeight: "bold" }}>* {item.question}</h6>
+                <div className="row">
+                    <div className="col-lg-6 col-md-6 col-sm-12 imghide" style={{ paddingRight: 36 }}>
+                        <h3>Sık Sorulan Sorular</h3>
+                        {sss?.map((item, key) => {
 
+                            return (<div key={key} style={{ padding: 5 }}>
+
+                                <div>
+
+                                    <h6 style={{ fontWeight: "bold" }}>* {item.question}</h6>
+
+                                </div>
+                                <div dangerouslySetInnerHTML={{ __html: item.ansver }} className="faq-3time">
+                                    {/* <h6 style={{ color: "black", fontSize: 13 }}>*{item.ansver}</h6> */}
+                                </div>
+                            </div>)
+                        })}
+
+
+                        <div style={{ padding: 5 }}>
+                            <a href="/soru-cevap" style={{ fontWeight: "bold", textDecoration: "underline", color: "#007bff" }}>SIK SORULAN SORULAR SAYFASINA GİT</a>
+                        </div>
+                    </div>
+                    <div className="col-lg-6 col-md-6 col-sm-12 imghide">
+                        <h3>Blog</h3>
+                        <div >
+                            {blog?.map((item, key) => {
+
+                                return (
+                                    <div key={key} style={{ padding: 5 }}>
+                                        <h6><b>* {item.title}</b> </h6>
+                                        <div className="maxhg" style={{ color: "black", paddingBottom: 23 }} dangerouslySetInnerHTML={{ __html: item.content }}></div>
+
+                                        <p><b><a style={{ color: "#007bff" }} href={"/haberler-bilgiler/" + item.urlName}>Devamını Oku...</a></b></p>
                                     </div>
-                                    <div dangerouslySetInnerHTML={{ __html: item.ansver }} className="faq-3time">
-                                        {/* <h6 style={{ color: "black", fontSize: 13 }}>*{item.ansver}</h6> */}
-                                    </div>
-                                </div>)
+                                )
                             })}
 
-
-                            <div style={{ padding: 5 }}>
-                                <a href="/soru-cevap" style={{ fontWeight: "bold", textDecoration: "underline", color: "#007bff" }}>SIK SORULAN SORULAR SAYFASINA GİT</a>
-                            </div>
                         </div>
-                        <div className="col-lg-6 col-md-6 col-sm-12 imghide">
-                            <h3>Blog</h3>
-                            <div >
-                                {blog?.map((item, key) => {
 
-                                    return (
-                                        <div key={key} style={{ padding: 5 }}>
-                                            <h6><b>* {item.title}</b> </h6>
-                                            <div className="maxhg" style={{ color: "black", paddingBottom: 23 }} dangerouslySetInnerHTML={{ __html: item.content }}></div>
-
-                                            <p><b><a style={{ color: "#007bff" }} href={"/haberler-bilgiler/" + item.urlName}>Devamını Oku...</a></b></p>
-                                        </div>
-                                    )
-                                })}
-
-                            </div>
-
-                            <div style={{ padding: 5 }}>
-                                <a href="/haberler-bilgiler" style={{ fontWeight: "bold", textDecoration: "underline", color: "#007bff" }}>BLOG SAYFASINA GİT</a>
-                            </div>
+                        <div style={{ padding: 5 }}>
+                            <a href="/haberler-bilgiler" style={{ fontWeight: "bold", textDecoration: "underline", color: "#007bff" }}>BLOG SAYFASINA GİT</a>
                         </div>
                     </div>
                 </div>
             </div>
-            <div className="row about-content" >
-                <div className="container">
+        </div>
+        <div className="row about-content" >
+            <div className="container">
 
-                    <div className="row">
-                        <div className="col-12" style={{ paddingRight: 36 }}>
-                            <h3>kredi.com.tr</h3>
-                            <p style={{ color: "black" }}>
-                                Kredi ve kredi kartı ile geniş bilgi ve deneyimlerimizin sonucunda geliştirdiğimiz hesaplama,
-                                başvuru ve karşılaştırmalarla kredi.com.tr; kullanıcılara güncel bilgilerle hizmet verir.
-                                Akıllı ödeme ve bütçe hesaplamasıyla ne kadar kredi çekebileceğinizi ve aylık ne kadar ödeyebileceğinizi hesaplayıp,
-                                bütçenize en uygun kredi ve kredi kartlarını seçiminize sunar.
-                            </p>
-                            <p><b><a href="" style={{ color: "#333333" }}>Devamını Oku...</a></b></p>
+                <div className="row">
+                    <div className="col-12" style={{ paddingRight: 36 }}>
+                        <h3>kredi.com.tr</h3>
+                        <p style={{ color: "black" }}>
+                            Kredi ve kredi kartı ile geniş bilgi ve deneyimlerimizin sonucunda geliştirdiğimiz hesaplama,
+                            başvuru ve karşılaştırmalarla kredi.com.tr; kullanıcılara güncel bilgilerle hizmet verir.
+                            Akıllı ödeme ve bütçe hesaplamasıyla ne kadar kredi çekebileceğinizi ve aylık ne kadar ödeyebileceğinizi hesaplayıp,
+                            bütçenize en uygun kredi ve kredi kartlarını seçiminize sunar.
+                        </p>
+                        <p><b><a href="" style={{ color: "#333333" }}>Devamını Oku...</a></b></p>
 
-                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div className="row">
+            <div >
+
+                <div className="row">
+
+                    <div className="col-lg-6 col-md-6" >
+                        <HowMuchLoan></HowMuchLoan>
+                    </div>
+                    <div className="col-lg-6 col-md-6" >
+                        <EmailPost></EmailPost>
                     </div>
                 </div>
 
-
             </div>
+        </div>
+        <div className="row" style={{ justifyContent: "center", marginTop: 100 }}>
+            {windowDimensions.width > 800 &&
+                <BankContainer Banks={props.Banks}></BankContainer>
+            }
 
-            <div className="row">
-                <div >
+        </div>
 
-                    <div className="row">
-
-                        <div className="col-lg-6 col-md-6" >
-                            <HowMuchLoan></HowMuchLoan>
-                        </div>
-                        <div className="col-lg-6 col-md-6" >
-                            <EmailPost></EmailPost>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-            <div className="row" style={{ justifyContent: "center", marginTop: 100 }}>
-                {windowDimensions.width > 800 &&
-                    <BankContainer Banks={props.Banks}></BankContainer>
-                }
-
-            </div>
-        </>}
     </>)
 }
 export default Home

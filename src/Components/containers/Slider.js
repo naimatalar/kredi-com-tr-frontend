@@ -3,7 +3,8 @@ import { Slide } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css'
 import { NavItem } from 'reactstrap';
 import { apiurl, GetNoneToken } from '../../datacrud/datacrud';
-const Slider = () => {
+import Rimage from '../Rimage';
+const Slider = (props) => {
   const [images, setImages] = useState([])
   // const images = [
   //   {
@@ -16,15 +17,20 @@ const Slider = () => {
   // ]
   useEffect(() => {
     start();
-  }, [])
+  }, [props])
   const start = async () => {
-    var data = await GetNoneToken("Sliders/GetAllSite").then(x => { return x.data }).catch(x => { return false })
-    setImages(data)
-   
+    if (props.data) {
+      setImages(props.data)
+    } else {
+      var data = await GetNoneToken("Sliders/GetAllSite").then(x => { return x.data }).catch(x => { return false })
+      setImages(data)
+    }
+
+
   }
 
   return (
-    <div className={images.length > 0 ?"slide-container":""}>
+    <div className={images.length > 0 ? "slide-container" : ""}>
       {
         images.length > 0 &&
 
@@ -36,12 +42,12 @@ const Slider = () => {
               return (<div key={index} className="each-fade" >
                 <div className="fadeImage" >
                   {each.redirectUrl == "" &&
-                    <img src={apiurl + each.url} style={{ width: "100%" }}></img>
+                    <Rimage src={each.url} style={{ width: "100%" }}></Rimage>
 
                   }
                   {each.redirectUrl != "" &&
                     <a href={each.redirectUrl} target="_blank">
-                      <img alt={each.name} title={each.name} src={apiurl + each.url} style={{ width: "100%" }}></img>
+                      <Rimage alt={each.name} title={each.name} src={each.url} style={{ width: "100%" }}></Rimage>
 
                     </a>
 

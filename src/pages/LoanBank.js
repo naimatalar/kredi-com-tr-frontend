@@ -6,6 +6,7 @@ import Dropdown from 'react-dropdown';
 import { Link } from "react-router-dom";
 import { apiurl, GetNoneToken, PostNoneToken } from "../datacrud/datacrud";
 import { loanRedirect } from "../Components/RedirectComponent";
+import Rimage from "../Components/Rimage";
 
  const LoanBank = (props) => {
     const [bank, setBank] = useState({})
@@ -111,7 +112,7 @@ import { loanRedirect } from "../Components/RedirectComponent";
                     <div className="col-12 col-lg-4 col-md-4" style={{ borderRight: "1px solid #b1b1b1" }}>
                         <div className="row">
                             <div className="col-12">
-                                <img title={bank?.bankName + " banka " + loanType?.loanName + "kredisi sorgulama soçuçları  kredi.com.tr"} alt={"logo"} style={{ width: "100%" }} src={apiurl + bank.logoUrl}></img>
+                                <Rimage title={bank?.bankName + " banka " + loanType?.loanName + "kredisi sorgulama soçuçları  kredi.com.tr"} alt={"logo"} style={{ width: "100%" }} src={ bank.logoUrl}></Rimage>
                             </div>
 
                         </div>

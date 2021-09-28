@@ -26,6 +26,7 @@
     "react-responsive": "^8.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
+    "react-share": "^4.4.0",
     "react-slideshow-image": "^3.4.6",
     "react-transition-group": "^4.2.0",
     "reactstrap": "^8.9.0",
@@ -39,7 +40,6 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
-    
   },
   "eslintConfig": {
     "extends": [

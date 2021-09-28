@@ -2,11 +2,13 @@ import React, { useEffect, useState } from "react";
 import {
     Link
 } from "react-router-dom";
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
+import "../assets/bts.css"
 import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, DropdownItem, Dropdown, DropdownToggle, DropdownMenu } from 'reactstrap';
 import { bankdemodata } from "../bankdemodata";
 import { apiurl } from "../datacrud/datacrud";
 import Image from "react-image-webp";
+import Rimage from "./Rimage";
 const NavigationTree = (props) => {
     const [collapsed, setCollapsed] = useState(true);
     const toggleNavbar = () => setCollapsed(!collapsed);
@@ -150,7 +152,7 @@ const NavigationTree = (props) => {
                                                 <Nav className="row drop-nav-ul" style={{}}>
                                                     {props.BankNavigation.map((item, key) => {
                                                         return (
-                                                            <NavItem key={key} title={item.bankName} className="drop-item col-6"><a href={"/bankalar/" + item.bankUrlName} ><img alt={item.bankName + " kredi.com.tr"} style={{ width: "80%", padding: 3, marginBottom: 5 }} src={apiurl + item.logoUrl}></img> </a></NavItem>
+                                                            <NavItem key={key} title={item.bankName} className="drop-item col-6"><a href={"/bankalar/" + item.bankUrlName} ><Rimage alt={item.bankName + " kredi.com.tr"} style={{ width: "80%", padding: 3, marginBottom: 5 }} src={ item.logoUrl}></Rimage> </a></NavItem>
 
                                                         )
 
@@ -233,7 +235,7 @@ const NavigationTree = (props) => {
                                                     {props.BankNavigation.map((item, key) => {
                                                         return (
                                                             <div key={key} >
-                                                                <a href={"/bankalar/" + item.bankUrlName} ><img alt={"bankalar " + item.bankName + " kredi.com.tr"} style={{ width: 170, padding: 3, marginBottom: 5 }} src={apiurl + item.logoUrl}></img> </a>                                                        </div>
+                                                                <a href={"/bankalar/" + item.bankUrlName} ><Rimage alt={"bankalar " + item.bankName + " kredi.com.tr"} style={{ width: 170, padding: 3, marginBottom: 5 }} src={item.logoUrl}></Rimage> </a>                                                        </div>
 
                                                         )
                                                     })}
