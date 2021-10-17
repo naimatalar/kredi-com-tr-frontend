@@ -3,10 +3,12 @@ import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { creditCartRedirect } from '../Components/RedirectComponent';
 import Rimage from '../Components/Rimage';
+import Seo from '../Components/Seo';
 import { apiurl, GetNoneToken } from '../datacrud/datacrud';
 
 const CreditCartCampaingDetail = (props) => {
     const [data, setData] = useState()
+    const [titleList, setTitleList] = useState([])
     var HtmlToReactParser = require('html-to-react').Parser;
 
     useEffect(() => {
@@ -16,31 +18,24 @@ const CreditCartCampaingDetail = (props) => {
     const start = async () => {
         let prm = new URLSearchParams(props.location.search)
         var id = prm.get("src")
-
+        var tl = await GetNoneToken("OnlyCalculates/getTen/10").then(x => { return x.data }).catch(x => { return false })
+        setTitleList(tl)
         let ccData = await GetNoneToken("CreditCartCampaigns/GetByCartUrlName?id=" + id).then(x => { return x.data }).catch(x => { return false })
         console.log(ccData)
         setData(ccData)
+
     }
 
     return (
         <div className="container">
-            <Helmet>
-                <meta name="og:image" content={data?.imageUrl}></meta>
-                <meta name="twitter:image" content={data?.imageUrl}></meta>
-                <meta property="og:type" content="article" />
-                <meta property="og:title" content={data?.cartName +" Kredi Kartı "+data?.title} />
-                <meta property="og:url" content={window.location.href} />
-                <meta property="og:description" content={data?.bankName + " " + data?.cartName + " Kredi Kartı kampanyası, " + (data?.yearlyUsingAmount == 0 ? "Ücretsiz" : data?.yearlyUsingAmount + " TL")} />
-                <meta name="keyword" content="kredi, kredi kartı, kredi başvurusu, kredi faiz oranı, kredi kartı başvurusu" />
-                <meta name="og:keyword" content="kredi, kredi kartı,kredi kartı kampanyası, kredi hesaplama, kredi başvurusu, kredi faiz oranı, kredi kartı başvurusu" />
+            {
+                data?.title &&
+                <Seo title={"Kampanya: " + data?.title} description={data?.bankName + " " + data?.cartName + " Kredi Kartı kampanyası, " + (data?.yearlyUsingAmount == 0 ? "Ücretsiz" : data?.yearlyUsingAmount + " TL")}
+                    logo={apiurl + data?.imageUrl} keyword="kredi, kredi kartı, kredi başvurusu, kredi faiz oranı, kredi kartı başvurusu"
+                />
+            }
 
-                <meta name="twitter:title" content={data?.cartName +" Kredi Kartı "+data?.title} />
-                <meta name="twitter:description" content={data?.bankName + " " + data?.cartName + " Kredi Kartı kampanyası, " + (data?.yearlyUsingAmount == 0 ? "Ücretsiz" : data?.yearlyUsingAmount + " TL")} />
-                <meta name="description" content={data?.bankName + " " + data?.cartName + " Kredi Kartı kampanyası, " + (data?.yearlyUsingAmount == 0 ? "Ücretsiz" : data?.yearlyUsingAmount + " TL")} />
-                <meta name="robots" content="index,follow" />
-                <title>{data?.cartName +" Kredi Kartı "+data?.title}</title>
 
-            </Helmet>
             <div className="row mt-4">
                 <div className="row col-12 mb-3 justify-content-center text-center">
 
@@ -145,7 +140,17 @@ const CreditCartCampaingDetail = (props) => {
                 </div>
 
             </div>
+            <div className="row">
+                <div className="col-12  mb-4 mt-3">
+                    {
+                        titleList.map((item, key) => {
+                            return (<a className="calculate-a" href={"/kredi-hesaplama-detaylari/" + item.urlName}>{item.title}</a>)
 
+                        })
+                    }
+
+                </div>
+            </div>
 
         </div>
     );

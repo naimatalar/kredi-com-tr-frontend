@@ -10,6 +10,7 @@ import Image from "react-image-webp";
 import Rimage from "../Components/Rimage";
 import Loading from "./Loading";
 import ModalComponent from "../Components/modalComponent";
+import Seo from "../Components/Seo"
 export const CreditCart = (props) => {
     const [mainKrediKartData, setMainKrediKartData] = useState([])
     const [banklistFilter, setBanklistFilter] = useState([{ name: "", logoUrl: "" }])
@@ -109,22 +110,27 @@ export const CreditCart = (props) => {
 
     return (
         <div className="ccartcontent">
-            <Helmet>
-                <meta name="og:image" content={require("../assets/images/logo192.png").default}></meta>
-                <meta name="twitter:image" content={require("../assets/images/logo192.png").default}></meta>
-                <meta property="og:type" content="article" />
-                <meta property="og:title" content="Mil Kazandıran Ve Puan Veren Kredi Kartları | KREDİ.COM.TR" />
-                <meta property="og:url" content={window.location.href} />
-                <meta property="og:description" content="Onlarca kredi kartlarını listeledik. Mil veren kredi kartları Bol bol uçuk kazandırıyor. Diğer yandan puan biriktirilen kredi kartları ile harcayarak kazanıyorsunuz." />
-                <meta name="keyword" content="kredi, kredi kartı, kredi başvurusu, kredi faiz oranı, kredi kartı başvurusu" />
-                <meta name="og:keyword" content="kredi, kredi kartı, kredi başvurusu, kredi faiz oranı, kredi kartı başvurusu" />
+            {
+                props.cartType == "all" &&
+                <Seo keyword="kredi kartı,kampanyalar, kredi kartı kampanyaları," title="Kredi Kartları" description="En uygun kredi kartlarını yıllık kullanım ücretleri, kredi kartı avantajları  ve kredi kartı kampanyalarını görebilirsiniz." />
 
-                <meta name="twitter:title" content="Mil Kazandıran Ve Puan Veren Kredi Kartları" />
-                <meta name="twitter:description" content="Onlarca kredi kartlarını listeledik. Mil veren kredi kartları Bol bol uçuk kazandırıyor. Diğer yandan puan biriktirilen kredi kartları ile harcayarak kazanıyorsunuz." />
-                <meta name="description" content="Onlarca kredi kartlarını listeledik. Mil veren kredi kartları Bol bol uçuk kazandırıyor. Diğer yandan puan biriktirilen kredi kartları ile harcayarak kazanıyorsunuz." />
-                <meta name="robots" content="index,follow" />
-                <title>{"Mil Kazandıran Ve Puan Veren Kredi Kartları | KREDİ.COM.TR"} </title>
-            </Helmet>
+            }
+            {
+                props.cartType == "miles" &&
+                <Seo keyword="kredi kartı, mil kazandıran kredi kartları, kredi kartı fırsatı" title="Mil Kazandıran Kredi Kartları" description="Harcadıkça uçuş mili kazandıran kredi kartları kullanım ücretleri ve kampanyaları." />
+
+            }
+            {
+                props.cartType == "point" &&
+                <Seo keyword="kredi kartı, puan kazandıran kredi kartı, kredi kartları kampanyası" title="Puan Kazandıran Kredi Kartları" description="Alışveriş yaptıkça bol bol puan kazandıran kredi kartları kampanyaları ve bütün fırsatlarıyla sizlerle." />
+
+            }
+            {
+                props.cartType == "corporate" &&
+                <Seo keyword="kredi kartı, ticari kredi kartı, ticari kredi kartları kampanya" title="Ticari Kredi Kartları" description="Ticari kredi kartlarıyla iş yerinizin bütün harcamalarını yapabileceğiniz, harcadıkça kazanacağınız kredi kartları." />
+
+            }
+
             <div className="ccbanner" style={{ overflow: "hidden" }}>
 
             </div>
@@ -218,7 +224,7 @@ export const CreditCart = (props) => {
 
                     </div>
                     <div className="col-12 mb-5 row justify-content-between" style={{ padding: 0 }}>
-                        <button onClick={() => { changeFilter(); setShowFilter(false)}} className="default-button" style={{ width: "45%" }}>Filtrele</button>
+                        <button onClick={() => { changeFilter(); setShowFilter(false) }} className="default-button" style={{ width: "45%" }}>Filtrele</button>
                         <button onClick={() => { setShowFilter(false) }} className="default-button" style={{
                             width: "45%", backgroundColor: "rgb(155 122 0)",
                             border: "1px solid #c58800"
@@ -299,6 +305,23 @@ export const CreditCart = (props) => {
                         <div className="text-center mt-3 mb-5 credit-cart-title-container">
                             <h1 style={{ color: "#5e5e5e" }}>Kredi Kartı Başvuru Ve Kampanyalar</h1>
                             <h3>Size En uygun Olanı Seçebilirsiniz</h3>
+                            {
+                                props.cartType == "all" &&
+                                <p className="text-dark">Bütün bankaların kredi kartlarını kampanyalar, yıllık kullanım ücretleri ve avantajlarıyla birlikte sizler için araştırıp listeledik. Harcadıkça mil kazandırdan, alışverişlerde puan biritiren yüzlerce kredi kartı parmaklarınızın ucunda</p>
+                            }
+                            {
+                                props.cartType == "miles" &&
+                                <p className="text-dark">Alışveriş yaptıkça mil kazandıran kredi kartlarını sizler için araştırdık. Bütün bankaların kredi kartlarını, kampanyalar ve kullanım ücretleriyle beraber listeledik. Size en ugun olanı aşağıdan inceleyip başvurabilirsiniz. </p>
+                            }
+    {
+                                props.cartType == "point" &&
+                                <p className="text-dark">Puan kazandıran kredi kartları ile alışverişlerinizde kazandığınız puanları, yakıt, ev ihtiyaçları, eğlence ve ihtiyaç duyduğunuz herşey için kullanabilirsiniz. En çok puan veren kredi kartlarını sizler için araştırdık. Aşağıdan inceleyip başvurabilirsiniz </p>
+                            }
+                              {
+                                props.cartType == "corporate" &&
+                                <p className="text-dark">İş yerinizin harcamalarını yapacağınız ticari kredi kartlarını sizler için listeledik. Onlarca ticari kredi kartlarında en uygun ve en avantajlı kredi kartlarını rahatlıkla bulabilmeniz için bütün bankaların kartlarını sizler için araştırıp listeledik. </p>
+                            }  
+
                         </div>
                         <div className="mt-2">
                             {

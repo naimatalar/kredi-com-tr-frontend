@@ -80,16 +80,7 @@ const NavigationTree = (props) => {
 
                                     </div>
                                     <div style={{ display: "flex", justifyContent: "flex-end" }}>
-                                        <a style={{
-                                            fontSize: 13,
-                                            fontWeight: "normal",
-                                            border: "none",
-                                            fontFamily: "sans-serif",
-                                            border: "1px solid #077a68",
-                                            borderRadius: 6,
-                                            padding: "3px 9px 2px 10px",
-
-                                        }} className="nav-link" href="/hesaplama/aylik-ne-kadar-odeyebilirim">Ne Kadar Kredi Çekebilirim?</a>
+                                        <a  className="nav-link fls" href="/kredi-bulucu">Kredi Bulucu!</a>
 
                                     </div>
                                     <div style={{ display: "flex", justifyContent: "flex-end", marginLeft: 30 }}>

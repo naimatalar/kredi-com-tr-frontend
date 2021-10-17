@@ -22,7 +22,10 @@ import NavigationTree from "./Components/navigationTree";
 // import  LoanBank  from "./pages/LoanBank";
 // import Loan from "./pages/Loan";
 import { GetNoneToken } from "./datacrud/datacrud";
+import { SearchLoanPage2 } from "./pages/SearchLoanPage2";
 import { SearchLoanPage } from "./pages/SearchLoanPage";
+import { OnlyCalculate } from "./pages/OnlyCalculate";
+
 // import DispositSearchPage  from "./pages/DispositSearchPage";
 // import  DispositSearchResult  from "./pages/DispositSearchResult";
 // import  RedirectProduct  from "./pages/RedirectProduct";
@@ -37,6 +40,7 @@ import Homepage from "./Components/Schduler/Homepage";
 // import CreditCartCampaingDetail from "./pages/CreditCartCampaingDetail";
 
 import Loading from "./pages/Loading";
+import MounthlyCalculate from "./pages/MounthlyCalculate";
 export default function App(props) {
   const [bankNavigation, setBankNavigation] = useState([]);
   const [loanNavigation, setLoanNavigation] = useState([]);
@@ -57,12 +61,14 @@ export default function App(props) {
   const CreditCartDetail = lazy(() => import("./pages/CreditCartDetail"));
   const CalculatePage = lazy(() => import("./pages/CalculatePage"));
   const Faq = lazy(() => import("./pages/Faq"));
-  // const Homepage = lazy(() => import("./pages/Homepage"));
   const CreditCartCampaing = lazy(() => import("./pages/CreditCartCampaing"));
   const CreditCartCampaingDetail = lazy(() => import("./pages/CreditCartCampaingDetail"));
+  const FindLoan = lazy(() => import("./pages/FindLoan"));
+  const About = lazy(() => import("./pages/About"));
+
   const [loading, setLoading] = useState(false);
 
- 
+
 
 
   useEffect(() => {
@@ -72,14 +78,12 @@ export default function App(props) {
   }, [])
 
   const start = async () => {
-
     var hp = await GetNoneToken("HomePageData/getHomePageData").then(x => { return x.data }).catch(x => { return false })
     setCreditCartName(hp.creditCarts)
     setBlogNavigation(hp.blogs)
     setLoanNavigation(hp.loanType)
     setBankNavigation(hp.Bank)
     setLoading(true);
-
   }
 
   if (loading == false) {
@@ -100,8 +104,17 @@ export default function App(props) {
 
               <Route exact path="/" render={(props) => <div className="container"> <Home Loans={loanNavigation} {...props} Banks={bankNavigation} /></div>}>
               </Route>
-
-
+              
+              <Route exact path="/about" render={(props) => <div className="container"> <About Loans={loanNavigation} {...props} Banks={bankNavigation} /></div>}>
+              </Route>
+              <Route exact path="/kredi-bulucu" render={(props) => <div className="container"> <FindLoan Loans={loanNavigation} {...props} Banks={bankNavigation} /></div>}>
+              </Route>
+              <Route exact path="/kredi-bulucu/:slug" render={(props) => <div className="container"> <FindLoan Loans={loanNavigation} {...props} Banks={bankNavigation} /></div>}>
+              </Route>
+              {/* <Route exact path="/kredi-bulucu/:slug/:slug" render={(props) => <div className="container"> <FindLoan Loans={loanNavigation} {...props} Banks={bankNavigation} /></div>}>
+              </Route> */}
+              <Route exact path="/gelire-gore-kredi-hesapla/:slug" render={(props) => <div className="container"> <MounthlyCalculate Loans={loanNavigation} {...props} Banks={bankNavigation} /></div>}>
+              </Route>
               {loanNavigation.map((item, key) => {
                 return (
                   <Route key={key} path={"/" + item.urlName} render={(props) => <Loan {...props} Loan={item} LoanId={item.id}></Loan>}>
@@ -186,7 +199,7 @@ export default function App(props) {
                 bankNavigation.map((item, key) => {
                   return (
                     <Route key={key} path={'/bankalar/' + item.bankUrlName + "-kredi-hesaplama-ve-basvuru"}
-                      render={(props) => <LoanBank  {...props} BankId={item.id}></LoanBank>} >
+                      render={(props) => <LoanBank  {...props} BankId={item.id} Banks={bankNavigation}></LoanBank>} >
                     </Route>
                   )
                 })
@@ -197,6 +210,8 @@ export default function App(props) {
               <Route exact path={"/kredi-karti-kampanyalari/:slug"} render={(props) => <CreditCartCampaingDetail {...props} ></CreditCartCampaingDetail>}>
 
               </Route>
+
+
 
               <Route path="/kredi-karti-kampanyalari" exact render={(props) => <CreditCartCampaing {...props} ></CreditCartCampaing>}>
               </Route>
@@ -212,6 +227,13 @@ export default function App(props) {
               </Route>
 
 
+              <Route path={"/kredi-hesaplama/:slug"} render={(props) => <SearchLoanPage2  {...props} ></SearchLoanPage2>}>
+
+              </Route>
+
+              <Route path={"/kredi-hesaplama-detaylari/:slug"} render={(props) => <OnlyCalculate {...props} ></OnlyCalculate>}>
+
+              </Route>
               {creditCartName?.map((item, key) => {
 
                 return (
@@ -273,7 +295,7 @@ export default function App(props) {
     );
 
   }
-  return(<></>)
+  return (<></>)
 
 
 }

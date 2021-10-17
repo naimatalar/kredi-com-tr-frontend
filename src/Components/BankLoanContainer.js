@@ -9,11 +9,14 @@ function BankLoanContainer(props) {
     const [isValid, setIsValid] = useState(true)
 
     useEffect(() => {
-        setActiveLoanType(props.Bank.loans[0] || [])
+        if (props.Loans.length>0) {
+                setActiveLoanType(props?.Loans[0])
+        }
+    
 
-        if (props.Bank.loans > 0) {
+        if (props?.Loans > 0) {
 
-            updateSelectedLoanOption(props.Bank.loans[0]?.rate, null, null)
+            updateSelectedLoanOption(props.Loans[0]?.rate, null, null)
 
         } else {
             updateSelectedLoanOption(0, null, null)
@@ -34,7 +37,7 @@ function BankLoanContainer(props) {
 
     const updateSelectedLoanOption = (rate = null, amount = null, term = null) => {
 
-        var ss = props.Bank.loans.find(x => {
+        var ss = props.Loans.find(x => {
 
             if (
                 x.minAmount <= parseInt((amount != null ? amount : selectedLoanOptions.amount)) &&

@@ -8,7 +8,9 @@ import { LoanRate } from "../Components/containers/LoanRate";
 import { Helmet } from "react-helmet";
 import { NextSeo } from 'next-seo';
 import Head from 'next/head'
+import { LoanSearchLabel } from "../Components/containers/LoanSearchLabel";
 import { LoanSearch } from "../Components/containers/LoanSearch";
+
 import MiddleMenu from "../Components/containers/MiddleMenu";
 import { PopulerLoans } from "../Components/containers/PopulerLoans";
 import Slider from "../Components/containers/Slider";
@@ -17,8 +19,13 @@ import { GetNoneToken } from "../datacrud/datacrud";
 import { PopulerBankCampaing } from "../Components/containers/PopulerBankCampaing";
 import { HowToPay } from "../Components/calculate-page/HowToPay";
 import Loading from "../pages/Loading";
-
 import Image from "react-image-webp";
+import FindLoan from "./FindLoan";
+import SharedButtons from "../Components/SharedButtons";
+import Rimage from "../Components/Rimage";
+import { Slide } from 'react-slideshow-image';
+import 'react-slideshow-image/dist/styles.css'
+
 
 const Home = (props) => {
     const [addsPopup, setAddsPopup] = useState(false)
@@ -32,6 +39,9 @@ const Home = (props) => {
     const [bankLoanRates, setBankLoanRates] = useState([])
     const [fatLoan, setFatLoan] = useState([])
     const [slider, setSlider] = useState([])
+    const [titleList, setTitleList] = useState([])
+    const [findl, setFindL] = useState(false)
+    const [creditCart, setCreditCart] = useState([]);
 
 
     function getWindowDimensions() {
@@ -47,6 +57,10 @@ const Home = (props) => {
         function handleResize() {
             setWindowDimensions(getWindowDimensions());
         }
+        if (window.location.pathname.includes("kredi-bulucu")) {
+            setFindL(true)
+        }
+
 
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
@@ -55,7 +69,8 @@ const Home = (props) => {
         var indexData = await GetNoneToken("HomePageData/indexData").then(x => { return x.data }).catch(x => { return false })
 
         let sss_ = indexData.faq
-
+        var tl = await GetNoneToken("OnlyCalculates/getTen/10").then(x => { return x.data }).catch(x => { return false })
+        setTitleList(tl)
         setPopulerLoansData(indexData.populerLoans)
         setBankCamping(indexData.bankCamping)
         setSelectedDisposit(indexData.selectedDisposit)
@@ -63,6 +78,10 @@ const Home = (props) => {
         setFatLoan(indexData.fatLoan)
         setSlider(indexData.slider)
 
+        let creditCart = await GetNoneToken("CreditCarts/GetOnlyFive").then(x => { return x.data }).catch(x => { return false })
+
+        setCreditCart(creditCart)
+        console.log(creditCart)
         // await GetNoneToken("Faqs/GetAllSite").then(x => { return x.data }).catch(x => { return false })
         if (sss_) {
             setSss(sss_)
@@ -113,74 +132,180 @@ const Home = (props) => {
             </>
         }
 
-
-        <div className="row mt-4">
-
-            <div>
-
+        {
+            findl &&
+            <div className="find-loan-container">
+                <FindLoan></FindLoan>
             </div>
+
+        }
+
+        <div className="row mt-4" >
 
 
 
             <div className="col-12 mt-3 mb-3 text-center">
                 <h1 className="home-title" style={{ marginTop: 0 }}>Kolayca <span style={{ fontWeight: "bold" }}>Kredi Ara</span>, Pratik Şekilde <span style={{ fontWeight: "bold" }}>Kredi Hesapla</span> , Hızlıca <span style={{ fontWeight: "bold" }}>Kredi Başvur!</span>  </h1>
             </div>
-            <div className="row">
+            {windowDimensions.width < 800 &&
+                <div className="row justify-content-center col-12 mb-4" style={{marginTop:-10}}>
+                    <a style={{fontSize:17}} className="nav-link fls" href="/kredi-bulucu">Kredi Bulucu!</a>
 
 
-                <div style={{ paddingRight: 5, marginBottom: 20 }} className="col-lg-5 col-md-6 loan-search-container">
+                </div>}
+            {windowDimensions.width > 800 &&
+                <div className=" col-12 p-0">
+
+                    <LoanSearchLabel Loans={props.Loans}></LoanSearchLabel>
+
+                </div>
+
+            }
+
+
+            <div className="row justify-content-between col-12 m-0 p-0">
+
+                {windowDimensions.width < 800 && <div style={{ paddingRight: 5, marginBottom: 20 }} className="col-lg-5 col-md-6 loan-search-container">
                     <LoanSearch Loans={props.Loans}></LoanSearch>
-                </div>
-                <div style={{ paddingRight: 5, marginBottom: 20 }} className="col-lg-5 col-md-6 " >
-                    <PopulerLoans loading={loading} data={populerLoansData}></PopulerLoans>
-                    
+                </div>}
+
+                {/*<div style={{ paddingRight: 5, marginBottom: 20 }} className="col-lg-5 col-md-5 " >
+                   <PopulerLoans loading={loading} data={populerLoansData}></PopulerLoans> 
 
 
+
+                </div>*/}
+                <div className="col-12 col-lg-5 col-md-5 p-0 m-0" style={{ marginBottom: 20 }}  >
+                    <FastLoan data={fatLoan} loading={loading}></FastLoan>
                 </div>
-                <div className="col-lg-2 col-md-12 p-0" style={{ marginBottom: 20 }}  >
-                    <div className="d-none d-lg-flex row adds-first-big" >
-                        <div className="row  m-0 p-0 justify-content-center">
-                            <img title="kredi.com.tr kredi, kredi kartı vadeli mevduat" alt={"logo kredi.com"} style={{ width: "80%", objectFit: "contain" }} src={require("../assets/images/lg.png").default}></img>
-                            <b style={{ textAlign: "center" }}>Reklam Ve Tanıtım Alanı</b>
-                        </div>
-                        <div className="row  m-0 p-0 justify-content-center">
-                            <span style={{ textAlign: "center", textAlign: "center", color: " #181818", fontSize: 12 }}>Aylık 3MN web trafiğine sahip sitemizde tanıtım ve reklamlarınızı yayınlayalım. Ürün ya da hizmetinizi parmaklarınızın ucuna taşıyalım. </span>
-                        </div>
-                        <div className="row  m-0 p-0 justify-content-center">
-                            <button onClick={() => { setAddsPopup(true) }} className="default-button">&nbsp; İLETİŞİM &nbsp;</button>
+                {loading &&
+                    <div className="row col-12  col-lg-7 col-md-7 cs-card justify-content-between">
+                        <div className="col-5 m-1"> &nbsp;</div>
+                        <div className="col-5 m-1">&nbsp;</div>
+                        <div className="col-12 m-1"> &nbsp;</div>
+                    </div>
+                }
+                <div className="col-12 col-lg-7 col-md-7 p-0 m-0  row">
+                    <div className="col-12 cnts m-0 p-0">
+
+                        <div className="slide-container container credit-cart-slider-container">
+
+                            {!loading && <Slide indicators={true} pauseOnHover={true} duration={2500} transitionDuration={800}>
+                                {
+
+                                    creditCart.map((each, index) => {
+                                        return (<div key={index}  >
+                                            <div className="each-fade" style={{ padding: 22 }} >
+                                                <div className="row">
+                                                    <div className="col-6">
+                                                        <Rimage alt={" bankaya ait " + each.name + " kredi kartı"} title={each.name + " kredi kartı özellikleri"} src={each.logoUrl} style={{ width: "100%" }}></Rimage>
+                                                    </div>
+
+
+                                                    <div className="col-6">
+                                                        <div className="col-12">
+                                                            <h3 style={{ color: "black", fontWeight: "bold" }}>{each.name}</h3>
+
+                                                            <b style={{ color: "#535656" }}> Yıllık Ücret : </b>
+
+
+                                                            ₺{each.yearlyUsingAmount}
+                                                        </div>
+                                                        <div className="container mt-3">
+                                                            <div className="row">
+                                                                <div className="col-12">
+                                                                    <a className="default-button" style={{
+                                                                        padding: 3,
+                                                                        fontSize: 15,
+                                                                        fontWeight: "bold",
+                                                                        width: "100%",
+                                                                        display: "block",
+                                                                        textAlign: "center",
+                                                                        color: "white",
+                                                                    }} href={"/" + each.bankUrlName + "/" + each.urlName}>DETAY</a>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+
+
+                                                    </div>
+                                                </div>
+                                                <div className="container">
+
+                                                    <div className="row">
+                                                        <div className="col-12">
+                                                            <hr></hr>
+                                                            <h5 className="text-center text-dark"> <b>Özellikler</b></h5>
+                                                            {
+                                                                each.cartInfoJson?.map((jitem, jkey) => {
+                                                                    if (jkey < 7) {
+                                                                        return (
+                                                                            <div className="row" key={jkey}>
+                                                                                <div className="col-6 text-dark">{jitem.key} : </div>
+                                                                                <div className="col-6 text-dark"> {jitem.value} </div>
+
+                                                                            </div>
+                                                                        )
+                                                                    }
+
+                                                                })
+                                                            }
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>)
+                                    })
+
+                                }
+
+                            </Slide>}
                         </div>
                     </div>
-                    <div className="d-lg-none d-md-flex row adds-first-big pt-4 pb-4" >
+                </div>
+
+
+            </div>
+
+        </div>
+        {/* <div className="row">
+            <div className="col-lg-2 col-md-12 p-0" style={{ marginBottom: 20 }}  >
+
+                <div className=" row adds-first-big pt-4 pb-4" >
+                    <div className="row  m-0 p-0 justify-content-center">
+                        <div className="row justify-content-center">
+                            <Image title="kredi kartları krediler ve mevduatlar kredi.com.tr de" alt={"kredi.com.tr logo"} style={{ width: "50%", objectFit: "contain" }}
+                                webp={require("../assets/images/lg.webp").default} src={require("../assets/images/lg.png").default}></Image>
+                        </div>
+                        <div className="col-12" style={{ textAlign: "center" }}>
+                            <b style={{ textAlign: "center" }}>Kredi Bulucu</b>
+                        </div>
+                        <div className="row  m-0 p-0 justify-content-center mt-5">
+                            <img title="kredi bulucu" alt={"logo kredi.com"} style={{ width: 150, objectFit: "contain", borderRadius: 5, boxShadow: "1px 1px 7px 1px black" }} src={require("../assets/images/kblc.jpg").default}></img>
+                        </div>
+                    </div>
+                    <div className="col-12 mt-2">
                         <div className="row  m-0 p-0 justify-content-center">
-                            <div className="row justify-content-center">
-                                <Image title="kredi kartları krediler ve mevduatlar kredi.com.tr de" alt={"kredi.com.tr logo"} style={{ width: "50%", objectFit: "contain" }}
-                                    webp={require("../assets/images/lg.webp").default} src={require("../assets/images/lg.png").default}></Image>
-                            </div>
-                            <div className="col-12" style={{ textAlign: "center" }}>
-                                <b style={{ textAlign: "center" }}>Reklam Ve Tanıtım Alanı</b>
-                            </div>
-                        </div>
-                        <div className="col-12 mt-2">
-                            <div className="row  m-0 p-0 justify-content-center">
 
-                                <span style={{ textAlign: "center", textAlign: "center", color: " #181818", fontSize: 12 }}>Aylık 3MN web trafiğine sahip sitemizde tanıtım ve reklamlarınızı yayınlayalım. Ürün ya da hizmetinizi parmaklarınızın ucuna taşıyalım. </span>
-                            </div>
+                            <span style={{ textAlign: "center", textAlign: "center", color: " #181818", fontSize: 20 }}>Kredi bulucu ile  gelir ve giderlerinizi girerek size en uygun krediyi bulun.. </span>
                         </div>
-                        <div className="col-12 mt-3">
-                            <div className="row  m-0 p-0 justify-content-center">
+                    </div>
+                    <div className="col-12 mt-3">
+                        <div className="row  m-0 p-0 justify-content-center">
 
-                                <button onClick={() => { setAddsPopup(true) }} style={{ width: 156 }} className="default-button">&nbsp; İLETİŞİM &nbsp;</button>
-                            </div>
+                            <a href="/kredi-bulucu" style={{ color: "white", width: 150 }} className="default-button text-center">&nbsp; BAŞLA &nbsp;</a>
                         </div>
                     </div>
                 </div>
             </div>
-
-        </div>
+        </div> */}
         <div className="col-12  mb-4">
             <PopulerBankCampaing loading={loading} data={bankCamping}></PopulerBankCampaing>
 
         </div>
+
         <div className="row col-12">
             <div className="col-12 col-md-7 col-lg-7 mt-3">
                 <HowToPay></HowToPay>
@@ -212,7 +337,7 @@ const Home = (props) => {
             <div className="col-12" style={{ marginBottom: 15 }}>
                 <p className="home-title" > <span style={{ fontWeight: "bold" }}>Kredi ve kredi kartları ile ilgili en güncel verileri analiz edip, <br /></span> Çeşitli <span style={{ fontWeight: "bold" }}>Hesap Araçlarımızla </span> bütce hesabınızı kolayca yapın.  </p>
             </div>
-            <div style={{ paddingRight: 5, marginBottom: 20 }} className="col-lg-5 col-md-6">
+            <div style={{ paddingRight: 5, marginBottom: 20 }} className="col-lg-4 col-md-4">
                 <LoanRate data={bankLoanRates} />
 
             </div>
@@ -236,8 +361,14 @@ const Home = (props) => {
 
                 </div>
             </div>
-            <div className="col-lg-4 col-md-6" style={{ marginBottom: 20 }}  >
+            {/* <div className="col-lg-4 col-md-6" style={{ marginBottom: 20 }}  >
                 <FastLoan data={fatLoan}></FastLoan>
+            </div> */}
+            <div style={{ paddingRight: 5, marginBottom: 20 }} className="col-lg-5 col-md-5 " >
+                <PopulerLoans loading={loading} data={populerLoansData}></PopulerLoans>
+
+
+
             </div>
         </div>
         <div className="row">
@@ -333,6 +464,17 @@ const Home = (props) => {
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+        <div className="row">
+            <div className="col-12  mb-4 mt-3 justify-content-center row">
+                {
+                    titleList.map((item, key) => {
+                        return (<a className="calculate-a" href={"/kredi-hesaplama-detaylari/" + item.urlName}>{item.title}</a>)
+
+                    })
+                }
+
             </div>
         </div>
         <div className="row about-content" >

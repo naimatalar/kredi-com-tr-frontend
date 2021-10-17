@@ -45,7 +45,9 @@ export const Loan = (props) => {
             prm.set("amount", data.amount)
             prm.set("term", data.term)
 
-            props.history.push("/" + loan.urlName + "-arama-hesaplama?" + prm)
+            // props.history.push("/" + loan.urlName + "-arama-hesaplama?" + prm)
+            window.history.pushState({}, "", "/kredi-hesaplama/" + data.amount + "-tl-" + data.term + "-ay-vade-" + loan.urlName)
+            window.history.go()
         } else {
             setIsValid(false)
         }
@@ -224,7 +226,7 @@ const getContent = (data) => {
                 <meta name="keyword" content="araç kredisi, araç kredi başvurusu, araç kredisi hesablama " />
                 <meta name="og:keyword" content="araç kredisi, araç kredi başvurusu, araç kredisi hesablama " />
 
-                <meta name="twitter:title" content="Kobi Kredisi Hesaplama Ve Başvurma" />
+                <meta name="twitter:title" content="Araç Kredisi Hesaplama Ve Başvurma" />
                 <meta name="twitter:description" content="Hayalinizdeki aracı almak için krediye ihtiyaç duyuyorsanız doğru yerdesiniz. Sizin için birçok fırsat bulabiliriz." />
                 <meta name="description" content="Hayalinizdeki aracı almak için krediye ihtiyaç duyuyorsanız doğru yerdesiniz. Sizin için birçok fırsat bulabiliriz." />
                 <meta name="robots" content="index,follow" />

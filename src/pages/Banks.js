@@ -37,6 +37,7 @@ export const Banks = (props) => {
     const [currencyIcon, setCurrencyIcon] = useState("")
     const [bankContainerCount, setBankContainerCount] = useState()
     const [amountss, setAmountss] = useState()
+    const [loans, setLoans] = useState([])
 
     const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions(0));
 
@@ -62,7 +63,11 @@ export const Banks = (props) => {
     const start = async () => {
 
         let bankData = await GetNoneToken("Banks/GetAllBankSiteById/" + props.BankId).then(x => { return x.data }).catch(x => { return false })
+        let loans = await GetNoneToken("Banks/GetBankLoanTerm/" + props.BankId).then(x => { return x.data }).catch(x => { return false })
 
+
+
+        setLoans(loans)
         setBank(bankData)
 
         setCreditCarts(bankData.creditCart)
@@ -87,6 +92,13 @@ export const Banks = (props) => {
         setBankContainerCount(containercnt)
 
 
+        setTimeout( async() => {
+            let creditc = await GetNoneToken("Banks/GetBankCreditCArtByBankId/" + props.BankId).then(x => { return x.data }).catch(x => { return false })
+
+            setCreditCarts(creditc)
+
+
+        }, 1000);
         // changeLoanTypeTab()
     }
 
@@ -101,37 +113,37 @@ export const Banks = (props) => {
             <Helmet>
 
                 <meta property="og:type" content="article" />
-                <meta property="og:title" content={ (bank.bankName ?? "") + ": Kredi Ve Kredi Kartı Fırsatları"} />
+                <meta property="og:title" content={(bank.bankName ?? "") + ": Kredi Ve Kredi Kartı Fırsatları"} />
                 <meta property="og:url" content={window.location.href} />
 
                 <meta property="og:description" content={(bank.bankName ?? "") + " bankaya ait kredileri sorgulayabilir, vadeli mevduat hesabı oluşturabilirsiniz. Ayrıca " + (bank.bankName ?? "") + " bankasına ait kredi kartlarını listeledik  ."} />
                 <meta name="og:keyword" content={"Bankalar," + bank.bankName + " , kredi kartı, faiz oranı, kredi hesaplama"} />
                 <meta name="twitter:title" content={(bank.bankName ?? "") + ": Kredi, Kredi Kartı ve Mevduat Fırsatları"} />
 
-                <meta name="twitter:description" content={ (bank.bankName ?? "") + " bankaya ait kredileri sorgulayabilir, vadeli mevduat hesabı oluşturabilirsiniz. Ayrıca " + (bank.bankName ?? "") + " bankasına ait kredi kartlarını listeledik  ."} />
+                <meta name="twitter:description" content={(bank.bankName ?? "") + " bankaya ait kredileri sorgulayabilir, vadeli mevduat hesabı oluşturabilirsiniz. Ayrıca " + (bank.bankName ?? "") + " bankasına ait kredi kartlarını listeledik  ."} />
 
                 <meta name="description" content={(bank.bankName ?? "") + " bankaya ait kredileri sorgulayabilirsiniz. Ayrıca " + (bank.bankName ?? "") + " bankasına ait kredi kartlarını listeledik  ."} />
                 <meta name="robots" content="index,follow" />
                 <meta property="og:image" itemProp="image" content={bank?.logoUrl} />
                 <link rel="apple-touch-icon" href={bank?.logoUrl} />
 
-                <title>{ (bank.bankName ?? "") + ": Kredi, Kredi Kartı ve Mevduat Başvuru"} </title>
+                <title>{(bank.bankName ?? "") + ": Kredi, Kredi Kartı ve Mevduat Başvuru"} </title>
 
             </Helmet>
             <div className="row bank-label">
                 <div className="col-12">
                     <div className="row justify-content-center">
 
-                        <div className="col-md-3 col-lg-3 col-sm-6 col-8 m-2">{bank.logoUrl == undefined ? "" : <Rimage src={ bank.logoUrl} style={{ width: "100%" }} alt={bank.bankName + " Bütün ürünleri krediler kredi kartı mevduat"} title={bank.bankName + " kredi, kredi kartı ve mevduat ürünleri"}></Rimage>}</div>
+                        <div className="col-md-3 col-lg-3 col-sm-6 col-8 m-2">{bank.logoUrl == undefined ? "" : <Rimage src={bank.logoUrl} style={{ width: "100%" }} alt={bank.bankName + " Bütün ürünleri krediler kredi kartı mevduat"} title={bank.bankName + " kredi, kredi kartı ve mevduat ürünleri"}></Rimage>}</div>
                     </div>
                 </div>
             </div>
             <div className="master-content ">
 
                 <div className="row">
-                    {bank?.loans?.length > 0 &&
+                    {loans?.length > 0 &&
 
-                        <BankLoanContainer Bank={bank} Loans={bank?.loans}></BankLoanContainer>
+                        <BankLoanContainer Bank={bank} Loans={loans}></BankLoanContainer>
                     }
 
 

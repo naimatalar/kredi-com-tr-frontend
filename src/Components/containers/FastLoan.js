@@ -9,7 +9,7 @@ import { apiurl, GetNoneToken } from "../../datacrud/datacrud";
 import { loanRedirect } from "../RedirectComponent";
 import Rimage from "../Rimage";
 export const FastLoan = (props) => {
-
+    const [loading, setLoading] = useState(true)
 
     const [fastLoanData, setFastLoadnData] = useState([
         {
@@ -32,6 +32,8 @@ export const FastLoan = (props) => {
             redirectUrl: null,
             bankId: null
         }])
+
+
     useEffect(() => {
 
 
@@ -43,9 +45,11 @@ export const FastLoan = (props) => {
     const start = async () => {
         if (props.data) {
             setFastLoadnData(props.data)
+
         } else {
             var data = await GetNoneToken("FastLoans/GetAllSite").then(x => { return x.data }).catch(x => { return false })
             setFastLoadnData(data)
+
         }
 
 
@@ -64,10 +68,26 @@ export const FastLoan = (props) => {
                         Hızlı Başvur
                     </p>
                 </div>
+                {
+                    props?.loading &&
+                    <div>
+                        <div className="rw-loading">
+
+                        </div>
+                        <div className="rw-loading">
+
+                        </div>
+                        <div className="rw-loading">
+
+                        </div>
+                    </div>
+
+
+                }
                 <div className="container" style={{ padding: 0 }}>
                     <div className="row row-container" style={{ padding: "0px 12px 0px 10px" }}>
                         {
-
+                            !props?.loading &&
                             fastLoanData.sort((a, b) => { return a.orderBy - b.orderBy }).map((item, index) => {
                                 if (item.id == null) {
                                     return (<span key={index}></span>)
