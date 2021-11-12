@@ -1,33 +1,34 @@
 import React, { useEffect, useState } from "react";
 import { propTypes } from "react-currency-input";
-import { BankContainer } from "../Components/containers/BankContainer";
-import EmailPost from "../Components/containers/EmailPost";
-import { FastLoan } from "../Components/containers/FastLoan";
-import HowMuchLoan from "../Components/containers/HowMuchLoan";
-import { LoanRate } from "../Components/containers/LoanRate";
+import { BankContainer } from "../../Components/containers/BankContainer";
+import EmailPost from "../../Components/containers/EmailPost";
+import { FastLoan } from "../../Components/containers/FastLoan";
+import HowMuchLoan from "../../Components/containers/HowMuchLoan";
+import { LoanRate } from "../../Components/containers/LoanRate";
 import { Helmet } from "react-helmet";
 import { NextSeo } from 'next-seo';
 import Head from 'next/head'
-import { LoanSearchLabel } from "../Components/containers/LoanSearchLabel";
-import { LoanSearch } from "../Components/containers/LoanSearch";
+import { LoanSearchLabel } from "../../Components/containers/LoanSearchLabel";
+import { LoanSearch } from "../../Components/containers/LoanSearch";
 
-import MiddleMenu from "../Components/containers/MiddleMenu";
-import { PopulerLoans } from "../Components/containers/PopulerLoans";
-import Slider from "../Components/containers/Slider";
-import { DispositContainer } from "../Components/containers/DispositContainer";
-import { GetNoneToken } from "../datacrud/datacrud";
-import { PopulerBankCampaing } from "../Components/containers/PopulerBankCampaing";
-import { HowToPay } from "../Components/calculate-page/HowToPay";
-import Loading from "../pages/Loading";
+import MiddleMenu from "../../Components/containers/MiddleMenu";
+import { PopulerLoans } from "../../Components/containers/PopulerLoans";
+import Slider from "../../Components/containers/Slider";
+import { DispositContainer } from "../../Components/containers/DispositContainer";
+import { GetNoneToken } from "../../datacrud/datacrud";
+import { PopulerBankCampaing } from "../../Components/containers/PopulerBankCampaing";
+import { HowToPay } from "../../Components/calculate-page/HowToPay";
+import Loading from "../../pages/Loading";
 import Image from "react-image-webp";
-import FindLoan from "./FindLoan";
-import SharedButtons from "../Components/SharedButtons";
-import Rimage from "../Components/Rimage";
+import FindLoan from "../FindLoan";
+import SharedButtons from "../../Components/SharedButtons";
+import Rimage from "../../Components/Rimage";
 import { Slide } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css'
+import Seo from "../../Components/Seo";
 
 
-const Home = (props) => {
+const PersonalLoan = (props) => {
     const [addsPopup, setAddsPopup] = useState(false)
     const [sss, setSss] = useState([])
     const [blog, setBlog] = useState([])
@@ -42,6 +43,7 @@ const Home = (props) => {
     const [titleList, setTitleList] = useState([])
     const [findl, setFindL] = useState(false)
     const [creditCart, setCreditCart] = useState([]);
+    const [randomTys, setRandomTys] = useState(Math.floor((Math.random() * 3) + 1))
 
 
     function getWindowDimensions() {
@@ -78,7 +80,7 @@ const Home = (props) => {
         setFatLoan(indexData.fatLoan)
         setSlider(indexData.slider)
 
-        let creditCart = await GetNoneToken("CreditCarts/GetOnlyFive").then(x => { return x.data }).catch(x => { return false })
+        // let creditCart = await GetNoneToken("CreditCarts/GetOnlyFive").then(x => { return x.data }).catch(x => { return false })
 
         setCreditCart(creditCart)
 
@@ -105,7 +107,7 @@ const Home = (props) => {
                     <button onClick={() => { setAddsPopup(false) }} className="lv-close-button">X</button>
                     <div className="col-12">
                         <div className="row justify-content-center" >
-                            <Image title="kredi.com.tr" alt={"logo"} style={{ width: "50%", objectFit: "contain" }} webp={require("../assets/images/lg.webp").default} src={require("../assets/images/lg.png").default}></Image>
+                            <Image title="kredi.com.tr" alt={"logo"} style={{ width: "50%", objectFit: "contain" }} webp={require("../../assets/images/lg.webp").default} src={require("../../assets/images/lg.png").default}></Image>
                         </div>
                     </div>
                     <div className="col-12 mt-4">
@@ -145,7 +147,7 @@ const Home = (props) => {
 
 
             <div className="col-12 mt-3 mb-3 text-center">
-                <h1 className="home-title" style={{ marginTop: 0 }}>Kolayca <span style={{ fontWeight: "bold" }}>Kredi Ara</span>, Pratik Şekilde <span style={{ fontWeight: "bold" }}>Kredi Hesapla</span> , Hızlıca <span style={{ fontWeight: "bold" }}>Kredi Başvur!</span>  </h1>
+                <h1 className="home-title" style={{ marginTop: 0 }}>İhtiyaç Kredini <span style={{ fontWeight: "bold" }}> Ara</span>, Oranları <span style={{ fontWeight: "bold" }}>Listele</span> , Anında <span style={{ fontWeight: "bold" }}> Başvur!</span>  </h1>
             </div>
             {windowDimensions.width < 800 &&
                 <div className="row justify-content-center col-12 mb-4" style={{ marginTop: -10 }}>
@@ -153,9 +155,7 @@ const Home = (props) => {
 
 
                 </div>}
-            {/* {windowDimensions.width > 800 &&
-              
-            } */}
+
             <div className=" col-12 p-0">
 
                 <LoanSearchLabel Loans={props.Loans}></LoanSearchLabel>
@@ -163,18 +163,117 @@ const Home = (props) => {
             </div>
 
 
-            <div className="row justify-content-between col-12 m-0 p-0">
+            <div className="col-12 ab-fonts  mb-3">
+                <div className="row justify-content-center">
+                    {randomTys == 1 &&
+                        <>
+
+                            <a href="/kredi-hesaplama/20000-tl-36-ay-vade-ihtiyac-kredisi" className="col-12 col-md-3 col-lg-3 m-3">
+                                <h3>20.000 TL Ve 36 Ay Vade</h3>
+                                <p>36 ay vade ile hesaplanmış 20.000 TL tutarında kredi veren bankalar</p>
+                            </a>
+                            <a href="/kredi-hesaplama/30000-tl-12-ay-vade-ihtiyac-kredisi" className="col-12 col-md-3 col-lg-3 m-3">
+                                <h3>30.000 TL Ve 12 Ay Vade</h3>
+                                <p>12 ay vade ile hesaplanmış 30.000 TL tutarında kredi veren bankalar</p>
+                            </a>
+                            <a href="/kredi-hesaplama/35000-tl-18-ay-vade-ihtiyac-kredisi" className="col-12 col-md-3 col-lg-3 m-3">
+                                <h3>35.000 TL Ve 18 Ay Vade</h3>
+                                <p>18 ay vade ile hesaplanmış 35.000 TL tutarında kredi veren bankalar</p>
+                            </a>
+                            <a href="/kredi-hesaplama/40000-tl-24-ay-vade-ihtiyac-kredisi" className="col-12 col-md-3 col-lg-3 m-3">
+                                <h3>40.000 TL Ve 24 Ay Vade</h3>
+                                <p>24 ay vade ile hesaplanmış 40.000 TL tutarında kredi veren bankalar</p>
+                            </a>
+
+                            <a href="/kredi-hesaplama/60000-tl-36-ay-vade-ihtiyac-kredisi" className="col-12 col-md-3 col-lg-3 m-3">
+                                <h3>60.000 TL Ve 36 Ay Vade</h3>
+                                <p>36 ay vade ile hesaplanmış 60.000 TL tutarında kredi veren bankalar</p>
+                            </a>
+                            <a href="/kredi-hesaplama/65000-tl-24-ay-vade-ihtiyac-kredisi" className="col-12 col-md-3 col-lg-3 m-3">
+                                <h3>65.000 TL Ve 24 Ay Vade</h3>
+                                <p>36 ay vade ile hesaplanmış 65.000 TL tutarında kredi veren bankalar</p>
+                            </a>
+                        </>
+                    }
+                    {randomTys == 2 &&
+                        <>
+
+                            <a href="/kredi-hesaplama/25000-tl-12-ay-vade-ihtiyac-kredisi" className="col-12 col-md-3 col-lg-3 m-3">
+                                <h3>25.000 TL Ve 12 Ay Vade</h3>
+                                <p>12 ay vade ile hesaplanmış 25.000 TL tutarında kredi veren bankalar</p>
+                            </a>
+                            <a href="/kredi-hesaplama/30000-tl-18-ay-vade-ihtiyac-kredisi" className="col-12 col-md-3 col-lg-3 m-3">
+                                <h3>30.000 TL Ve 18 Ay Vade</h3>
+                                <p>18 ay vade ile hesaplanmış 30.000 TL tutarında kredi veren bankalar</p>
+                            </a>
+                            <a href="/kredi-hesaplama/40000-tl-24-ay-vade-ihtiyac-kredisi" className="col-12 col-md-3 col-lg-3 m-3">
+                                <h3>40.000 TL Ve 24 Ay Vade</h3>
+                                <p>24 ay vade ile hesaplanmış 40.000 TL tutarında kredi veren bankalar</p>
+                            </a>
+                            <a href="/kredi-hesaplama/44000-tl-18-ay-vade-ihtiyac-kredisi" className="col-12 col-md-3 col-lg-3 m-3">
+                                <h3>45.000 TL Ve 18 Ay Vade</h3>
+                                <p>18 ay vade ile hesaplanmış 45.000 TL tutarında kredi veren bankalar</p>
+                            </a>
+
+                            <a href="/kredi-hesaplama/65000-tl-24-ay-vade-ihtiyac-kredisi" className="col-12 col-md-3 col-lg-3 m-3">
+                                <h3>65.000 TL Ve 24 Ay Vade</h3>
+                                <p>24 ay vade ile hesaplanmış 65.000 TL tutarında kredi veren bankalar</p>
+                            </a>
+                            <a href="/kredi-hesaplama/70-tl-18-ay-vade-ihtiyac-kredisi" className="col-12 col-md-3 col-lg-3 m-3">
+                                <h3>70.000 TL Ve 24 Ay Vade</h3>
+                                <p>18 ay vade ile hesaplanmış 70.000 TL tutarında kredi veren bankalar</p>
+                            </a>
+                        </>
+                    }
+                    {randomTys == 3 &&
+                        <>
+
+                            <a href="/kredi-hesaplama/25000-tl-12-ay-vade-ihtiyac-kredisi" className="col-12 col-md-3 col-lg-3 m-3">
+                                <h3>15.000 TL Ve 12 Ay Vade</h3>
+                                <p>12 ay vade ile hesaplanmış 15.000 TL tutarında kredi veren bankalar</p>
+                            </a>
+                            <a href="/kredi-hesaplama/10000-tl-24-ay-vade-ihtiyac-kredisi" className="col-12 col-md-3 col-lg-3 m-3">
+                                <h3>10.000 TL Ve 18 Ay Vade</h3>
+                                <p>18 ay vade ile hesaplanmış 10.000 TL tutarında kredi veren bankalar</p>
+                            </a>
+                            <a href="/kredi-hesaplama/30000-tl-36-ay-vade-ihtiyac-kredisi" className="col-12 col-md-3 col-lg-3 m-3">
+                                <h3>30.000 TL Ve 36 Ay Vade</h3>
+                                <p>36 ay vade ile hesaplanmış 30.000 TL tutarında kredi veren bankalar</p>
+                            </a>
+                            <a href="/kredi-hesaplama/40000-tl-24-ay-vade-ihtiyac-kredisi" className="col-12 col-md-3 col-lg-3 m-3">
+                                <h3>40.000 TL Ve 24 Ay Vade</h3>
+                                <p>24 ay vade ile hesaplanmış 40.000 TL tutarında kredi veren bankalar</p>
+                            </a>
+
+                            <a href="/kredi-hesaplama/65000-tl-24-ay-vade-ihtiyac-kredisi" className="col-12 col-md-3 col-lg-3 m-3">
+                                <h3>65.000 TL Ve 24 Ay Vade</h3>
+                                <p>24 ay vade ile hesaplanmış 65.000 TL tutarında kredi veren bankalar</p>
+                            </a>
+                            <a href="/kredi-hesaplama/70-tl-18-ay-vade-ihtiyac-kredisi" className="col-12 col-md-3 col-lg-3 m-3">
+                                <h3>70.000 TL Ve 24 Ay Vade</h3>
+                                <p>18 ay vade ile hesaplanmış 70.000 TL tutarında kredi veren bankalar</p>
+                            </a>
+                        </>
+                    }
+
+
+
+
+
+
+                </div>
+            </div>
+            <div className="row mb-3">
+                <FindLoan Loans={props.Loans} {...props} Banks={props.Banks} />
+            </div>
+       
+            {/* <div className="row justify-content-between col-12 m-0 p-0">
 
                 {windowDimensions.width < 800 && <div style={{ paddingRight: 5, marginBottom: 20 }} className="col-lg-5 col-md-6 loan-search-container">
-                    {/* <LoanSearch Loans={props.Loans}></LoanSearch> */}
+                    <LoanSearch Loans={props.Loans}></LoanSearch>
                 </div>}
 
-                {/*<div style={{ paddingRight: 5, marginBottom: 20 }} className="col-lg-5 col-md-5 " >
-                   <PopulerLoans loading={loading} data={populerLoansData}></PopulerLoans> 
 
-
-
-                </div>*/}
                 <div className="col-12 col-lg-5 col-md-5 p-0 m-0" style={{ marginBottom: 20 }}  >
                     <FastLoan data={fatLoan} loading={loading}></FastLoan>
                 </div>
@@ -185,7 +284,9 @@ const Home = (props) => {
                         <div className="col-12 m-1"> &nbsp;</div>
                     </div>
                 }
-                <div className="col-12 col-lg-7 col-md-7 p-0 m-0  row">
+           
+
+                <div className="col-12 col-lg-7 col-md-7 p-0 m-0  row mt-4">
                     <div className="col-12 cnts m-0 p-0">
 
                         <div className="slide-container container credit-cart-slider-container">
@@ -267,7 +368,7 @@ const Home = (props) => {
                 </div>
 
 
-            </div>
+            </div> */}
 
         </div>
         {/* <div className="row">
@@ -277,13 +378,13 @@ const Home = (props) => {
                     <div className="row  m-0 p-0 justify-content-center">
                         <div className="row justify-content-center">
                             <Image title="kredi kartları krediler ve mevduatlar kredi.com.tr de" alt={"kredi.com.tr logo"} style={{ width: "50%", objectFit: "contain" }}
-                                webp={require("../assets/images/lg.webp").default} src={require("../assets/images/lg.png").default}></Image>
+                                webp={require("../../assets/images/lg.webp").default} src={require("../../assets/images/lg.png").default}></Image>
                         </div>
                         <div className="col-12" style={{ textAlign: "center" }}>
                             <b style={{ textAlign: "center" }}>Kredi Bulucu</b>
                         </div>
                         <div className="row  m-0 p-0 justify-content-center mt-5">
-                            <img title="kredi bulucu" alt={"logo kredi.com"} style={{ width: 150, objectFit: "contain", borderRadius: 5, boxShadow: "1px 1px 7px 1px black" }} src={require("../assets/images/kblc.jpg").default}></img>
+                            <img title="kredi bulucu" alt={"logo kredi.com"} style={{ width: 150, objectFit: "contain", borderRadius: 5, boxShadow: "1px 1px 7px 1px black" }} src={require("../../assets/images/kblc.jpg").default}></img>
                         </div>
                     </div>
                     <div className="col-12 mt-2">
@@ -306,7 +407,7 @@ const Home = (props) => {
 
         </div>
 
-        <div className="row col-12">
+        {/* <div className="row col-12">
             <div className="col-12 col-md-7 col-lg-7 mt-3">
                 <HowToPay></HowToPay>
 
@@ -327,7 +428,7 @@ const Home = (props) => {
                 </div>
 
             </div>
-        </div>
+        </div> */}
 
 
         <div className=" mb-4 bt-4">
@@ -347,7 +448,7 @@ const Home = (props) => {
                 <div className="d-none d-lg-flex row adds-first-big" >
                     <div className="row  m-0 p-0 justify-content-center">
 
-                        <img title="kredi.com.tr online kredi, kredi kartı ve mevduat başvuruları" alt={"kredi.com.tr "} style={{ width: "80%", objectFit: "contain" }} src={require("../assets/images/lg.png").default}></img>
+                        <img title="kredi.com.tr online kredi, kredi kartı ve mevduat başvuruları" alt={"kredi.com.tr "} style={{ width: "80%", objectFit: "contain" }} src={require("../../assets/images/lg.png").default}></img>
                         <b style={{ textAlign: "center" }}>Reklam Ve Tanıtım Alanı</b>
                     </div>
                     <div className="row  m-0 p-0 justify-content-center">
@@ -378,8 +479,8 @@ const Home = (props) => {
                 <div className="row  m-0 p-0 justify-content-center">
                     <div className="row justify-content-center">
                         <Image title="kredi.com.tr ile artık bankaların ürünleri parmaklarınızın ucunda" alt={"logo kredi.com.tr"} style={{ width: "50%", objectFit: "contain" }}
-                            webp={require("../assets/images/lg.webp").default}
-                            src={require("../assets/images/lg.png").default}></Image>
+                            webp={require("../../assets/images/lg.webp").default}
+                            src={require("../../assets/images/lg.png").default}></Image>
                     </div>
                     <div className="col-12" style={{ textAlign: "center" }}>
                         <b style={{ textAlign: "center" }}>Reklam Ve Tanıtım Alanı</b>
@@ -407,13 +508,12 @@ const Home = (props) => {
             <div className="container">
                 <MiddleMenu Loans={props.Loans}></MiddleMenu>
             </div>
-            <div className="row justify-content-center col-12 mt-3"><a style={{fontSize:20,fontWeight:"bold"}} href="/kredi-hesaplama">Kredi Hesaplama</a></div>
         </div>
-        <div className="container slider-content">
+        {/* <div className="container slider-content">
 
             <Slider data={slider}></Slider>
 
-        </div>
+        </div> */}
 
         <div className="row " style={{
 
@@ -478,26 +578,7 @@ const Home = (props) => {
 
             </div>
         </div>
-        <div className="row about-content" >
-            <div className="container">
 
-                <div className="row">
-                    <div className="col-12" style={{ paddingRight: 36 }}>
-                        <h3>kredi.com.tr</h3>
-                        <p style={{ color: "black" }}>
-                            Kredi ve kredi kartı ile geniş bilgi ve deneyimlerimizin sonucunda geliştirdiğimiz hesaplama,
-                            başvuru ve karşılaştırmalarla kredi.com.tr; kullanıcılara güncel bilgilerle hizmet verir.
-                            Akıllı ödeme ve bütçe hesaplamasıyla ne kadar kredi çekebileceğinizi ve aylık ne kadar ödeyebileceğinizi hesaplayıp,
-                            bütçenize en uygun kredi ve kredi kartlarını seçiminize sunar.
-                        </p>
-                        <p><b><a href="" style={{ color: "#333333" }}>Devamını Oku...</a></b></p>
-
-                    </div>
-                </div>
-            </div>
-
-
-        </div>
 
         <div className="row">
             <div >
@@ -513,14 +594,15 @@ const Home = (props) => {
                 </div>
 
             </div>
+            <Seo title={"İhtiyaç Kredisi Hesaplama Ve Başvuru"} description={"İhtiyaç duyduğunuz kredi miktarını vade seçerek hesaplayın. Hesaplama sonucunda bankaların faiz oranlarıyla birlikte hesaplama yapılıp listelenir. Size en uygun krediyi seçip başvurabilirsiniz. "} />
+
         </div>
         <div className="row" style={{ justifyContent: "center", marginTop: 100 }}>
             {windowDimensions.width > 800 &&
                 <BankContainer Banks={props.Banks}></BankContainer>
             }
-
         </div>
 
     </>)
 }
-export default Home
+export default PersonalLoan

@@ -38,7 +38,7 @@ export const CreditCart = (props) => {
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
 
-    }, [props.cartType])
+    }, [])
     const start = async () => {
 
 
@@ -143,24 +143,27 @@ export const CreditCart = (props) => {
                     </div>
                 </div>
                 <div className="row">
-                    <div className="col-12" style={{ textAlign: "center" }}>
-                        <ul className="cart-type-nav">
-                            <li className={props.cartType == "all" ? "active" : ""}>
-                                <Link to="/kredi-karti"><Image alt="Bütün kredi kartlarını" title="Bütün kredi kartlarını listele ve bul" style={{ width: 20, marginRight: 5 }} webp={require("../assets/images/debit.webp").default} src={require("../assets/images/debit.png").default}></Image>Tüm Kartlar</Link>
-                            </li>
-                            <li className={props.cartType == "miles" ? "active" : ""}>
-                                <Link to="/kredi-karti/mil-veren-kredi-kartlari"> <Image alt="Mil veren kredi kartlarını listele ve bul" title="Kullandıkça mil veren kredi kartlarını listeler" style={{ width: 18, marginRight: 5 }} webp={require("../assets/images/fly-color.webp").default} src={require("../assets/images/fly-color.png").default}></Image>Mil Veren Kartlar</Link>
-                            </li>
-                            <li className={props.cartType == "point" ? "active" : ""}>
-                                <Link to="/kredi-karti/puan-veren-kredi-kartlari">  <Image alt="Puan veren kartlarını listele ve bul" title="Puan biriktirip harcadıkça kazandıran puan veren kredi kartları" style={{ width: 18, marginRight: 5 }} webp={require("../assets/images/scorecolor.webp").default} src={require("../assets/images/scorecolor.png").default}></Image>Puan Veren Kartlar</Link>
-                            </li>
-                            <li className={props.cartType == "corporate" ? "active" : ""}>
-                                <Link to="/kredi-karti/ticari-kredi-kartlari">
-                                    <Image alt="Ticari kredi kartlarını bul" title="Ticari kredi kartları ile alışverişi kazançlı hale getiren ticari kredi kartları" style={{ width: 18, marginRight: 5 }} webp={require("../assets/images/corporatecolor.webp").default} src={require("../assets/images/corporatecolor.png").default}></Image>Ticari Kartlar</Link>
-                            </li>
-                        </ul>
+                    {windowDimensions.width > 600 &&
+                        <div className="col-12" style={{ textAlign: "center" }}>
+                            <ul className="cart-type-nav">
+                                <li className={props.cartType == "all" ? "active" : ""}>
+                                    <a href="/kredi-karti"><Image alt="Bütün kredi kartlarını" title="Bütün kredi kartlarını listele ve bul" style={{ width: 20, marginRight: 5 }} webp={require("../assets/images/debit.webp").default} src={require("../assets/images/debit.png").default}></Image>Tüm Kartlar</a>
+                                </li>
+                                <li className={props.cartType == "miles" ? "active" : ""}>
+                                    <a href="/kredi-karti/mil-veren-kredi-kartlari"> <Image alt="Mil veren kredi kartlarını listele ve bul" title="Kullandıkça mil veren kredi kartlarını listeler" style={{ width: 18, marginRight: 5 }} webp={require("../assets/images/fly-color.webp").default} src={require("../assets/images/fly-color.png").default}></Image>Mil Veren Kartlar</a>
+                                </li>
+                                <li className={props.cartType == "point" ? "active" : ""}>
+                                    <a href="/kredi-karti/puan-veren-kredi-kartlari">  <Image alt="Puan veren kartlarını listele ve bul" title="Puan biriktirip harcadıkça kazandıran puan veren kredi kartları" style={{ width: 18, marginRight: 5 }} webp={require("../assets/images/scorecolor.webp").default} src={require("../assets/images/scorecolor.png").default}></Image>Puan Veren Kartlar</a>
+                                </li>
+                                <li className={props.cartType == "corporate" ? "active" : ""}>
+                                    <a href="/kredi-karti/ticari-kredi-kartlari">
+                                        <Image alt="Ticari kredi kartlarını bul" title="Ticari kredi kartları ile alışverişi kazançlı hale getiren ticari kredi kartları" style={{ width: 18, marginRight: 5 }} webp={require("../assets/images/corporatecolor.webp").default} src={require("../assets/images/corporatecolor.png").default}></Image>Ticari Kartlar</a>
+                                </li>
+                            </ul>
 
-                    </div>
+                        </div>}
+
+
                 </div>
             </div>
             {showFilter && windowDimensions.width < 800 && <div className="col-12 mobil-filter">
@@ -232,6 +235,29 @@ export const CreditCart = (props) => {
                     </div>
                 </div>
             </div>}
+            <div className="container-fluid">
+                <div className="col-12 p-0 mt-3 ">
+                    {windowDimensions.width < 600 &&
+                        <div className="col-11 p-0 text-center" style={{ textAlign: "center" }}>
+                            <ul className="cart-type-nav2 row p-0 text-center justify-content-between">
+                                <li  className={(props.cartType == "all" ? "active" : "") + " col-6  p-0"}>
+                                    <a href="/kredi-karti"><Image alt="Bütün kredi kartlarını" title="Bütün kredi kartlarını listele ve bul" style={{ width: 20, marginRight: 5 }} webp={require("../assets/images/debit.webp").default} src={require("../assets/images/debit.png").default}></Image>Tüm Kartlar</a>
+                                </li>
+                                <li className={(props.cartType == "miles" ? "active" : "") + " col-6 p-0"}>
+                                    <a href="/kredi-karti/mil-veren-kredi-kartlari"> <Image alt="Mil veren kredi kartlarını listele ve bul" title="Kullandıkça mil veren kredi kartlarını listeler" style={{ width: 18, marginRight: 5 }} webp={require("../assets/images/fly-color.webp").default} src={require("../assets/images/fly-color.png").default}></Image>Mil Veren Kartlar</a>
+                                </li>
+                                <li className={(props.cartType == "point" ? "active" : "") + " col-6 p-0 "}>
+                                    <a href="/kredi-karti/puan-veren-kredi-kartlari">  <Image alt="Puan veren kartlarını listele ve bul" title="Puan biriktirip harcadıkça kazandıran puan veren kredi kartları" style={{ width: 18, marginRight: 5 }} webp={require("../assets/images/scorecolor.webp").default} src={require("../assets/images/scorecolor.png").default}></Image>Puan Veren Kartlar</a>
+                                </li>
+                                <li className={(props.cartType == "corporate" ? "active" : "") + " col-6 p-0"}>
+                                    <a href="/kredi-karti/ticari-kredi-kartlari">
+                                        <Image alt="Ticari kredi kartlarını bul" title="Ticari kredi kartları ile alışverişi kazançlı hale getiren ticari kredi kartları" style={{ width: 18, marginRight: 5 }} webp={require("../assets/images/corporatecolor.webp").default} src={require("../assets/images/corporatecolor.png").default}></Image>Ticari Kartlar</a>
+                                </li>
+                            </ul>
+
+                        </div>}
+                </div>
+            </div>
             <div style={{ maxWidth: 1200, margin: "0 auto", padding: 20, minHeight: "400px" }}>
 
                 <div className="row">
@@ -313,14 +339,14 @@ export const CreditCart = (props) => {
                                 props.cartType == "miles" &&
                                 <p className="text-dark">Alışveriş yaptıkça mil kazandıran kredi kartlarını sizler için araştırdık. Bütün bankaların kredi kartlarını, kampanyalar ve kullanım ücretleriyle beraber listeledik. Size en ugun olanı aşağıdan inceleyip başvurabilirsiniz. </p>
                             }
-    {
+                            {
                                 props.cartType == "point" &&
                                 <p className="text-dark">Puan kazandıran kredi kartları ile alışverişlerinizde kazandığınız puanları, yakıt, ev ihtiyaçları, eğlence ve ihtiyaç duyduğunuz herşey için kullanabilirsiniz. En çok puan veren kredi kartlarını sizler için araştırdık. Aşağıdan inceleyip başvurabilirsiniz </p>
                             }
-                              {
+                            {
                                 props.cartType == "corporate" &&
                                 <p className="text-dark">İş yerinizin harcamalarını yapacağınız ticari kredi kartlarını sizler için listeledik. Onlarca ticari kredi kartlarında en uygun ve en avantajlı kredi kartlarını rahatlıkla bulabilmeniz için bütün bankaların kartlarını sizler için araştırıp listeledik. </p>
-                            }  
+                            }
 
                         </div>
                         <div className="mt-2">

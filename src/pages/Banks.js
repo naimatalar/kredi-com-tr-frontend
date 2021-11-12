@@ -24,6 +24,7 @@ import BankLoanContainer from "../Components/BankLoanContainer";
 import DispositSelectContainer from "../Components/DispositSelectContainer";
 import Image from "react-image-webp";
 import Rimage from "../Components/Rimage";
+import { BankLoanSearchLabel } from "../Components/containers/BankLoanSearchLabel";
 export const Banks = (props) => {
     const [bank, setBank] = useState({})
     const [activeLoanType, setActiveLoanType] = useState({ id: null })
@@ -92,7 +93,7 @@ export const Banks = (props) => {
         setBankContainerCount(containercnt)
 
 
-        setTimeout( async() => {
+        setTimeout(async () => {
             let creditc = await GetNoneToken("Banks/GetBankCreditCArtByBankId/" + props.BankId).then(x => { return x.data }).catch(x => { return false })
 
             setCreditCarts(creditc)
@@ -139,12 +140,21 @@ export const Banks = (props) => {
                 </div>
             </div>
             <div className="master-content ">
-
                 <div className="row">
-                    {loans?.length > 0 &&
+                    <div className="col-12">
+                        {loans?.length > 0 &&
 
+                            <BankLoanSearchLabel Bank={bank} Loans={loans}></BankLoanSearchLabel>
+                        }
+
+                        {/* <BankLoanSearchLabel Bank={bank} Loans={loans}></BankLoanSearchLabel> */}
+                    </div>
+                </div>
+                <div className="row">
+                    {/* {loans?.length > 0 &&
+                      
                         <BankLoanContainer Bank={bank} Loans={loans}></BankLoanContainer>
-                    }
+                    } */}
 
 
                     {bankContainerCount == 1 &&
@@ -274,8 +284,15 @@ export const Banks = (props) => {
                                     </Slide>
                                 </div>
                             </div>
+
                         </div>
                     }
+                   
+                        {disposits.length > 0 &&
+                            <DispositSelectContainer Disposit={disposits} Bank={bank}></DispositSelectContainer>
+                        }
+                    
+
                     {bankContainerCount == 3 &&
                         <h4 className="home-title mt-5" > Bütün verilerimizi analiz edip  <span style={{ fontWeight: "bold" }}>bankata ait vadeli mevduat hesaplarını </span> ve  daha nice vadeli mevduat hesaplarını sizlerle buluşturduk.   </h4>
 

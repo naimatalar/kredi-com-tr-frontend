@@ -41,6 +41,13 @@ import Homepage from "./Components/Schduler/Homepage";
 
 import Loading from "./pages/Loading";
 import MounthlyCalculate from "./pages/MounthlyCalculate";
+import PersonalLoan from "./pages/homePages/PersonalLoan";
+import CarLoan from "./pages/homePages/CarLoan";
+import HomeLoan from "./pages/homePages/HomeLoan";
+import BusinesLoan from "./pages/homePages/BusinesLoan";
+import KediHesaplama from "./pages/kredi-hesaplama";
+
+
 export default function App(props) {
   const [bankNavigation, setBankNavigation] = useState([]);
   const [loanNavigation, setLoanNavigation] = useState([]);
@@ -66,6 +73,9 @@ export default function App(props) {
   const FindLoan = lazy(() => import("./pages/FindLoan"));
   const About = lazy(() => import("./pages/About"));
 
+
+
+
   const [loading, setLoading] = useState(false);
 
 
@@ -87,7 +97,7 @@ export default function App(props) {
   }
 
   if (loading == false) {
-    <div></div>
+  return( <div></div>)
   }
 
 
@@ -104,17 +114,20 @@ export default function App(props) {
 
               <Route exact path="/" render={(props) => <div className="container"> <Home Loans={loanNavigation} {...props} Banks={bankNavigation} /></div>}>
               </Route>
-              
+
               <Route exact path="/about" render={(props) => <div className="container"> <About Loans={loanNavigation} {...props} Banks={bankNavigation} /></div>}>
               </Route>
               <Route exact path="/kredi-bulucu" render={(props) => <div className="container"> <FindLoan Loans={loanNavigation} {...props} Banks={bankNavigation} /></div>}>
               </Route>
               <Route exact path="/kredi-bulucu/:slug" render={(props) => <div className="container"> <FindLoan Loans={loanNavigation} {...props} Banks={bankNavigation} /></div>}>
               </Route>
-              {/* <Route exact path="/kredi-bulucu/:slug/:slug" render={(props) => <div className="container"> <FindLoan Loans={loanNavigation} {...props} Banks={bankNavigation} /></div>}>
-              </Route> */}
+              <Route exact path="/kredi-bulucu/:slug/:slug" render={(props) => <div className="container"> <FindLoan Loans={loanNavigation} {...props} Banks={bankNavigation} /></div>}>
+              </Route>
               <Route exact path="/gelire-gore-kredi-hesapla/:slug" render={(props) => <div className="container"> <MounthlyCalculate Loans={loanNavigation} {...props} Banks={bankNavigation} /></div>}>
               </Route>
+              <Route exact path="/kredi-hesaplama" render={(props) => <div className="container"> <KediHesaplama Loans={loanNavigation} {...props} Banks={bankNavigation} /></div>}>
+              </Route>
+
               {loanNavigation.map((item, key) => {
                 return (
                   <Route key={key} path={"/" + item.urlName} render={(props) => <Loan {...props} Loan={item} LoanId={item.id}></Loan>}>
@@ -123,8 +136,14 @@ export default function App(props) {
                 )
               })}
 
-
-
+              <Route exact path="/ihtiyac-kredisi-hesaplama" render={(props) => <div className="container"> <PersonalLoan Loans={loanNavigation} {...props} Banks={bankNavigation} /></div>}>
+              </Route>
+              <Route exact path="/tasit-kredisi-hesaplama" render={(props) => <div className="container"> <CarLoan Loans={loanNavigation} {...props} Banks={bankNavigation} /></div>}>
+              </Route>
+              <Route exact path="/konut-kredisi-hesaplama" render={(props) => <div className="container"> <HomeLoan Loans={loanNavigation} {...props} Banks={bankNavigation} /></div>}>
+              </Route>
+              <Route exact path="/kobi-kredisi-hesaplama" render={(props) => <div className="container"> <BusinesLoan Loans={loanNavigation} {...props} Banks={bankNavigation} /></div>}>
+              </Route>
               <Route path="/vadeli-mevduati-hesaplama-ve-basvuru" render={(props) => < DispositSearchResult {...props} />}>
 
               </Route>

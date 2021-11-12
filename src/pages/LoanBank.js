@@ -53,14 +53,17 @@ const LoanBank = (props) => {
                 setTableHeaderWidth(tableHeader.current.offsetWidth);
             }
         }
-        start()
+        if (loanId) {
+            start()
+        }
+
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
     }, [])
 
     const start = async () => {
         let bankData = await GetNoneToken("Banks/GetAllBankSiteMinById/" + props.BankId + "/" + loanId).then(x => { return x.data }).catch(x => { return false })
-        console.log(bankData)
+
         if (bankData) {
             let lt = bankData.loans.find((x) => { return x.id == loanId })
             setLoanTermsDropdown(bankData.terms)
@@ -122,11 +125,7 @@ const LoanBank = (props) => {
     return (
 
         <div>
-            <Seo
-                description={`Bu kredi hesaplama ${amount} tutarında ,${term} vade ile hesaplanmıştır. Hesaplanan kredinin ödeme planı aşağıdadır `}
-                title={`${bank.bankName} ${loanType?.loanName} Kredi Hesaplama Ve Başvuru`}
-                keyword={`${loanType?.bankName},${loanType?.loanName} hesapla, hesapla, kredi hesaplama, başvuru, ${bank.bankName} hesaplama,${loanType?.loanName} başvuru `}
-            />
+
             <div className="master-content">
                 <div className="row  mb-5" style={{ background: "white" }} >
                     <div className="col-12 col-lg-4 col-md-4" style={{ borderRight: "1px solid #b1b1b1" }}>
@@ -649,7 +648,14 @@ const LoanBank = (props) => {
 
                 </div>
             </div>
-        </div >)
+            <Seo
+                description={`Bu kredi hesaplama ${amount} tutarında ,${term} vade ile hesaplanmıştır. Hesaplanan kredinin ödeme planı aşağıdadır `}
+                title={`${bank.bankName} ${loanType?.loanName} Kredi Hesaplama Ve Başvuru`}
+                keyword={`${loanType?.bankName},${loanType?.loanName} hesapla, hesapla, kredi hesaplama, başvuru, ${bank.bankName} hesaplama,${loanType?.loanName} başvuru `}
+            />
+        </div >
+
+    )
 }
 
 

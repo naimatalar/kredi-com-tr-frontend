@@ -156,6 +156,7 @@ body {
   display: flex;
   justify-content: center;
   border-bottom: 1px solid #ada2a2;
+  background-color: #00205ac7;
 }
 
 .loan-tabs {
@@ -167,6 +168,14 @@ body {
   font-weight: bold;
   font-size: 14px;
   margin-right: 11px;
+  filter: brightness(0) invert(1);
+  padding-bottom: 20px;
+  padding-top: 0;
+  padding: 0 30px 22px 28px;
+  margin-right: 20px;
+  background-color: #ffffff5c;
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
 }
 
 .active-loan-tab {
@@ -177,6 +186,7 @@ body {
   border-bottom-right-radius: 0;
   background: #ffffff;
   color: #151515;
+  filter: unset;
 }
 
 .bank-label {
@@ -214,6 +224,19 @@ body {
   padding: 8px;
   display: block;
   font-size: 14px;
+}
+
+.item-loan-name-bank {
+  margin-top: -14px;
+  font-size: 22px;
+}
+
+.tshadow {
+  text-shadow: 1px 1px 1px black;
+}
+
+.active-loan-tab .item-loan-name-bank {
+  text-shadow: unset;
 }
 
 .nav-link {
@@ -361,7 +384,6 @@ a:active {
 }
 
 .bank-loan-content {
-  padding: 36px 0 38px 0px;
   border-radius: 6px;
   box-shadow: 0px 2px 5px 1px black;
   background-image: url('./assets/images/krediArat.webp');
@@ -377,13 +399,14 @@ a:active {
 }
 
 .bank-loan-tab-link {
-  background: #1f1f1f6e;
+  background: #b8e00b;
   padding-top: 6px;
+  background-image: url('./assets/images/repead-bg.png');
+  background-size: 50px
 }
 
 .bank-loan-lightview {
   background: #08080857;
-  width: 90%;
   margin: 0 auto;
   padding-bottom: 80px;
   border-top-right-radius: 7px;
@@ -399,8 +422,9 @@ a:active {
 }
 
 .bank-loan-text>h4, .bank-loan-text>span {
-  color: #c30808;
-  text-shadow: 1px 1px 1px #c58206;
+  color: white;
+  text-shadow: 1px 1px 1px #000000;
+  font-size: 30px;
 }
 
 .dropdownArrow {
@@ -1082,11 +1106,18 @@ img {
   .disposit-bank-container {
     zoom: 0.6;
   }
-  .container-find-loan-line{
-    zoom: .5;
+  .container-find-loan-line {
+    zoom: .8;
   }
-  .container-find-loan-line *{
+  .container-find-loan-line * {
     font-size: 15px;
+  }
+  .bank-loan-content * {
+    zoom: .85
+  }
+  .credit-cart-head * {
+    zoom: .92;
+    margin-top: 5px;
   }
 }
 
@@ -1706,20 +1737,21 @@ ol ol {
   color: rgb(0, 110, 255)
 }
 
-.ab-fonts a{
- background-color: rgb(236, 236, 236);
-padding: 10px;
-border-radius: 5px;
-border: 1px solid rgb(189, 189, 189);
+.ab-fonts a {
+  background-color: rgb(236, 236, 236);
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid rgb(189, 189, 189);
 }
-.lrtt a{
-  background-color: unset;
-    padding: unset;
-    border-radius: unset;
-    border: unset;
 
+.lrtt a {
+  background-color: unset;
+  padding: unset;
+  border-radius: unset;
+  border: unset;
 }
-.container-find-loan-line{
+
+.container-find-loan-line {
   background-image: url('./assets/images/repead-bg.png');
   background-size: 50px;
   padding: 0px 0 0px 0px;
@@ -1728,73 +1760,116 @@ border: 1px solid rgb(189, 189, 189);
   border: 1px solid #868686;
   background-color: #d5f64dfc;
 }
-.btn-frs{
- 
 
+.btn-frs {
   font-weight: bold;
   font-size: 25px;
 }
-.tab-content{
+
+.tab-content {
   background: white;
 }
-.nav-tabs .nav-link{
+
+.nav-tabs .nav-link {
   background: #a5a4a56b;
-    font-weight: bold;
-    min-width: 177px;
-    text-align: center;
-    margin-top: 11px;
+  font-weight: bold;
+  min-width: 177px;
+  text-align: center;
+  margin-top: 11px;
 }
-.container-find-loan-line>ul{
+
+.container-find-loan-line>ul {
   background-color: #00205ac7;
 }
-.container-find-loan-line>ul>li>a{
+
+.container-find-loan-line>ul>li>a {
   text-shadow: 1px 1px 1px black;
   color: white !important;
   font-size: 21px;
 }
-.container-find-loan-line>ul>li>.active{
+
+.container-find-loan-line>ul>li>.active {
   text-shadow: none;
   color: #087a68 !important;
 }
-.container-find-loan-line>ul>li>a:hover{
+
+.container-find-loan-line>ul>li>a:hover {
   background-color: white;
   text-shadow: none;
   color: #087a68 !important;
-
 }
-.icon-div img{
+
+.icon-div img {
   filter: brightness(0) invert(1);
 }
-.container-find-loan-line>ul>li:hover img,.container-find-loan-line>ul>li>.active img {
-  filter: unset !important
 
+.container-find-loan-line>ul>li:hover img, .container-find-loan-line>ul>li>.active img {
+  filter: unset !important
 }
-.drpd-find *{
+
+.drpd-find * {
   font-size: 25px;
 }
-.drpd-find .Dropdown-arrow{
- top:23px;
- border-width: 8px 8px 0;
-}
- .bc-card{
 
-
+.drpd-find .Dropdown-arrow {
+  top: 23px;
+  border-width: 8px 8px 0;
 }
-.card-noyan{
+
+.card-noyan {
   overflow: hidden;
 }
 
-.rw-loading{
+.rw-loading {
   background: #d4d4d4;
   width: 100%;
   height: 118px;
   margin-bottom: 13px;
   border: 5px dotted #9f9f9f;
 }
-.cs-card div{
+
+.cs-card div {
   background: #d4d4d4;
   border: 5px dotted #9f9f9f;
 }
-.Dropdown-menu{
+
+.Dropdown-menu {
   min-height: 300px;
+}
+
+.loan-search-label-st-font * {
+  font-size: 25px;
+}
+
+.none-c-div div {
+  background-color: #d4d4d4;
+  border: 3px dashed #7f7f7f;
+  margin-top: 18px;
+  padding: 13px;
+}
+
+.cart-type-nav2 li {
+  list-style: none;
+  margin-bottom: 5px;
+  background-color: rgb(230, 230, 230);
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  border:2px solid white
+}
+
+.cart-type-nav2 {
+  margin-left: 5px;
+}
+.cart-type-nav2 .active img {
+  filter: brightness(0) invert(1);
+
+}
+.cart-type-nav2 .active a{
+  color: white;
+}
+.cart-type-nav2 .active{
+  background-color: #077a68;
 }

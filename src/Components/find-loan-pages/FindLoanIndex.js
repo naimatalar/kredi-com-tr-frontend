@@ -1,8 +1,9 @@
 import React from 'react';
+import { LoanSearchLabel } from '../containers/LoanSearchLabel';
 import Seo from '../Seo';
 
 function FindLoanIndex(props) {
-    
+
     return (
         <>
             <Seo keyword={`kredi hesaplama,kredi başvuru,hesaplama`} title={"Kredi Hesaplama ve Uygun Kredi Bulma"} description={"Gelir ve gider kalemlerinize göre kredi hesaplama ve ihtiyaç kredisi bulmanızı sağlayan hesaplama aracımız ile kredinizi bulun."} />
@@ -37,7 +38,7 @@ function FindLoanIndex(props) {
                         </div>
                     </div>
                 </div>
-
+         
                 <div className="row justify-content-center mt-5  cl-content-font">
                     <div className="col-12 row mt-2 justify-content-center ">
                         <div className="col-12 text-center">
@@ -54,7 +55,6 @@ function FindLoanIndex(props) {
                         <p>Aylık gelir ve gider kalemlerine göre kredi hesaplama yaparken, gelir ve gider arasındaki farka göre çekebileceğiniz en yüksek miktar ve en düşük tutar belirlenir. Bu tutarlar belirlendikten sonra kredi.com.tr tarafından geliştirilen kredi hesaplama formülü uygulanır. Bu formül %95 oranında doğru kredi hesaplaması yapabilen bir algoritmadır.
                         </p>
                         <p> Yapılan hesaplama sonucunda kredi.com.tr bankalara ait verileri tarıyor. Bankaların faiz oranları vade ve vergilerle beraber hazırlanmış bir ödeme planı sunuyor.Bu hesaplamanın önemi ise kredi çekmek isteyen kişinin gerçek hayatta ne aylık ne kadar ödeyebileceğini belirlemesidir.  </p>
-
 
 
                     </div>

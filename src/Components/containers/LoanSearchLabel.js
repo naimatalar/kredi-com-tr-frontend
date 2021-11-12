@@ -6,6 +6,7 @@ import { TabContent, TabPane, Nav, NavItem, NavLink, Card, Button, CardTitle, Ca
 import { GetNoneToken, PostNoneToken } from "../../datacrud/datacrud";
 import classnames from 'classnames';
 import Image from "react-image-webp";
+import { Link } from "react-router-dom";
 export const LoanSearchLabel = (props) => {
     const [loansOption, setLoanOption] = useState([])
     const [terms, setTerms] = useState([])
@@ -15,7 +16,7 @@ export const LoanSearchLabel = (props) => {
     const [loanType, setLoanType] = useState()
     const [propsLoan, setPropsLoan] = useState([])
     const [isValid, setIsValid] = useState(true)
-    const [activeTab, setActiveTab] = useState('0');
+    const [activeTab, setActiveTab] = useState(props?.SelectedTab || '0');
 
     const toggle = tab => {
         if (activeTab !== tab) setActiveTab(tab);
@@ -24,7 +25,7 @@ export const LoanSearchLabel = (props) => {
     useEffect(() => {
         start();
 
-    }, [props.Loans])
+    }, [])
     const loanTypeOnChange = async (id) => {
 
         var terms = await GetNoneToken("InterestRates/GetLoanTerms/" + id).then(x => { return x.data }).catch(x => { return false })
@@ -84,9 +85,19 @@ export const LoanSearchLabel = (props) => {
 
             ln.push({ label: item.loanName, value: item.id })
         })
+        
         setPropsLoan(props.Loans)
         setLoanOption(ln)
-        loanTypeOnChange(ln[0].value)
+        if (activeTab !== "0") {
+            ln.map((item, key) => {
+                if (key.toString() == activeTab) {
+                    loanTypeOnChange(item.value)
+                }
+            })
+        } else {
+            loanTypeOnChange(ln[0].value)
+
+        }
 
     }
     return (
@@ -98,11 +109,30 @@ export const LoanSearchLabel = (props) => {
                 <Nav tabs className="justify-content-center">
 
                     {loansOption.map((item, key) => {
+                        // if (key.toString() == activeTab) {
+                        //     loanTypeOnChange(item.value)
+                        // }
+                        let urlName = ""
+                        if (item.label.includes("İhtiyaç")) {
+                            urlName = "ihtiyac-kredisi"
+
+                        } else if (item.label.includes("Taşıt")) {
+                            urlName = "tasit-kredisi"
+
+                        } else if (item.label.includes("Konut")) {
+                            urlName = "konut-kredisi"
+
+                        } else if (item.label.includes("Kobi")) {
+                            urlName = "kobi-kredisi"
+
+                        }
+
                         return (
                             <NavItem key={key}>
-                                <NavLink
-                                    className={classnames({ active: activeTab === key.toString() })}
-                                    onClick={() => { toggle(key.toString()); loanTypeOnChange(item.value) }}
+                                <a
+                                    className={classnames({ active: activeTab === key.toString() }) + " nav-link"}
+                                    href={"/" + urlName + "-hesaplama"}
+                                // onClick={() => { toggle(key.toString()); loanTypeOnChange(item.value) }}
                                 >
                                     <div className="icon-div">
                                         {item.label.includes("İhtiyaç") &&
@@ -129,7 +159,7 @@ export const LoanSearchLabel = (props) => {
 
                                     {item.label}
 
-                                </NavLink>
+                                </a>
                             </NavItem>)
                     })}
 
@@ -140,10 +170,11 @@ export const LoanSearchLabel = (props) => {
                     <TabPane tabId="0">
                         {activeTab == "0" &&
                             <div key="0" className="row p-0">
+                                <div className="col-12 text-center text-dark"><h3 className="text-dark">Ne Kadar İhitiyaç Kredisi Çekmek İstiyorsunuz?</h3>
+                                    <h5 className="mt-2 mb-4 text-dark"><b>Çekmek istediğini tutar ve vadeyi girin</b></h5></div>
+                                <div className="col-12  col-md-4 col-lg-4 loan-search-label-st-font">
 
-                                <div className="col-12  col-md-4 col-lg-4 ">
-
-                                    <CurrencyInput style={{ width: "100%", maxWidth: "100%", fontSize: 25 }} placeholder="Tutar Giriniz" className="col-7"
+                                    <CurrencyInput style={{ width: "100%", maxWidth: "100%" }} placeholder="Tutar Giriniz" className="col-7"
                                         decimalSeparator=","
                                         thousandSeparator="."
                                         precision="0"
@@ -154,7 +185,7 @@ export const LoanSearchLabel = (props) => {
                                     />
                                     {/* <input type="text" ></input> */}
                                 </div>
-                                <div className="col-12 col-md-4 col-lg-4 drpd-find">
+                                <div className="col-12 col-md-4 col-lg-4 drpd-find loan-search-label-st-font">
                                     <Dropdown
                                         options={terms}
                                         onChange={(d) => { termListOnChange(d.value) }}
@@ -164,8 +195,8 @@ export const LoanSearchLabel = (props) => {
 
                                     />
                                 </div>
-                                <div className=" col-md-4 col-lg-4 row justify-content-left">
-                                    <div className="col-12 ">
+                                <div className=" col-md-4 col-lg-4 row justify-content-left m-0 p-0 mt-2 mt-md-0 mt-lg-0">
+                                    <div className="col-12 loan-search-label-st-font">
                                         <button onClick={(x) => { calculate() }} className="default-button btn-frs">Kredi Hesapla</button>
                                     </div>
                                 </div>
@@ -179,7 +210,8 @@ export const LoanSearchLabel = (props) => {
                         {activeTab == "1" &&
 
                             <div key="1" className="row p-0">
-
+                                <div className="col-12 text-center text-dark"><h3 className="text-dark">Araç Sahibi Olmak Yada Araç Yenilemek Mi İstiyorsunuz?</h3>
+                                    <h5 className="mt-2 mb-4 text-dark"><b>Araç kredinizi hesaplamak için tutar ve vade giriniz.</b></h5></div>
                                 <div className="col-12  col-md-4 col-lg-4 ">
 
                                     <CurrencyInput style={{ width: "100%", maxWidth: "100%", fontSize: 25 }} placeholder="Tutar Giriniz" className="col-7"
@@ -220,7 +252,8 @@ export const LoanSearchLabel = (props) => {
 
 
                             <div key="2" className="row p-0">
-
+                                <div className="col-12 text-center text-dark"><h3 className="text-dark">Artık Konut Sahibi Olma Vaktim Geldi Mi Diyorsunuz?</h3>
+                                    <h5 className="mt-2 mb-4 text-dark"><b>Çekmek istediğiniz tutarı girerek konut kredinizi hesaplayın</b></h5></div>
                                 <div className="col-12  col-md-4 col-lg-4 ">
 
                                     <CurrencyInput style={{ width: "100%", maxWidth: "100%", fontSize: 25 }} placeholder="Tutar Giriniz" className="col-7"
@@ -259,7 +292,8 @@ export const LoanSearchLabel = (props) => {
                     <TabPane tabId="3" >
                         {activeTab == "3" &&
                             <div key="3" className="row p-0">
-
+                                <div className="col-12 text-center text-dark"><h3 className="text-dark">Yeni Bir İş Mi Yapıyorsunuz Yada İşinizi Mi Büyütüyorsunuz ?</h3>
+                                    <h5 className="mt-2 mb-4 text-dark"><b>İşinize gerek konut kredisini tutar ve vade girerek hesaplayın.</b></h5></div>
                                 <div className="col-12  col-md-4 col-lg-4 ">
 
                                     <CurrencyInput style={{ width: "100%", maxWidth: "100%", fontSize: 25 }} placeholder="Tutar Giriniz" className="col-7"

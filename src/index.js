@@ -10,13 +10,13 @@ import 'react-dropdown/style.css';
 import { hydrate, render } from 'react-dom';
 
 
-// const rootElement = document.getElementById("kredicomtr");
-// if (rootElement.hasChildNodes()) {
-//   hydrate(<App />, rootElement);
-// } else {
-//   render(<App />, rootElement);
-//   "postbuild": "react-snap"
-// }
+const rootElement = document.getElementById("kredicomtr");
+if (rootElement.hasChildNodes()) {
+  hydrate(<App />, rootElement);
+} else {
+  render(<App />, rootElement);
+ 
+}
 
 
 

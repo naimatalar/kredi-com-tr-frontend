@@ -61,7 +61,7 @@ export const DispositMatrixContainer = (props) => {
 
     }
     var Headers = matrixData?.header?.map((item, key) => {
-debugger
+
         return (
             <div key={key}>
                 {key == 0 &&

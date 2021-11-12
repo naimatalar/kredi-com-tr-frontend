@@ -21,7 +21,7 @@ const CreditCartCampaingDetail = (props) => {
         var tl = await GetNoneToken("OnlyCalculates/getTen/10").then(x => { return x.data }).catch(x => { return false })
         setTitleList(tl)
         let ccData = await GetNoneToken("CreditCartCampaigns/GetByCartUrlName?id=" + id).then(x => { return x.data }).catch(x => { return false })
-        console.log(ccData)
+ 
         setData(ccData)
 
     }

@@ -41,30 +41,15 @@ export const OnlyCalculate = (props) => {
 
         setCreditCart(creditCart)
         setLoanOption(lns)
-        // 15000-tl-15-ay-vade-ihtiyac-kredisi
+       
         let path = window.location.pathname.split("/")
-        let pathData = path[path.length - 1]
+        let pathData = path[2]
         setPathName(pathData)
+        
         let ccData = await GetNoneToken("OnlyCalculates/GetAllWebSiteByUrlName/" + pathData).then(x => { return x.data }).catch(x => { return false })
         setPdata(ccData)
         setAllLoans(Loans)
-        // setAmount(amount)
-        // setLoanName(pathSelectedLoan.loanName)
-        // loanTypeOnChange(pathSelectedLoan.id)
-        // setTermsValue(term)
-        // setStaticTerm(term)
 
-        // var d = {
-        //   loanTypeId: pathSelectedLoan.id,
-        //   amount: amount,
-        //   term: term
-        // }
-        // var terms = await PostNoneToken("InterestRates/GetLoanSearchResult", d).then(x => { return x.data }).catch(x => { return false })
-
-        // setData(terms)
-        // if (terms?.length == 0) {
-        //   setNoData(true)
-        // }
 
     }
 

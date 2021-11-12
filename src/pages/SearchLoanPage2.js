@@ -35,10 +35,13 @@ export const SearchLoanPage2 = (props) => {
     setLoanOption(lns)
     // 15000-tl-15-ay-vade-ihtiyac-kredisi
     let path = window.location.pathname.split("/")
-    let pathData = path[path.length - 1]
+    let pathData = path[2]
     let amount = pathData.split("-")[0] || 0
     let term = pathData.split("-")[2] || 0
     let pathSelectedLoan = Loans.find(x => { return x.urlName == pathData.split("-")[5] + "-" + pathData.split("-")[6] })
+    
+
+
     setAllLoans(Loans)
     setAmount(amount)
     setLoanName(pathSelectedLoan.loanName)

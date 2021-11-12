@@ -60,7 +60,7 @@ import HowMuchLoan from "../Components/containers/HowMuchLoan"
                             <HowToPay></HowToPay>
                             <Helmet>
                                 <meta property="og:type" content="article" />
-                                <meta property="og:title" content="Aylık ne kadar kredi ödeyebileceğinizi öğrenin | kredi.com.tr" />
+                                <meta property="og:title" content="Aylık Ne Kadar Kredi Ödeyebileceğinizi Öğrenin" />
                                 <meta property="og:url" content={window.location.href} />
                                 <meta property="og:description" content="Bu sayfa aylık ödeyebileceğiniz kredileri hesaplar ve listeler | kredi.com.tr" />
                                 <meta name="keyword" content="aylık ödeme öğrenme, aylık kredi hesaplama, aylık ne kadar kredi ödenir" />
@@ -86,7 +86,7 @@ import HowMuchLoan from "../Components/containers/HowMuchLoan"
 
                             <Helmet>
                                 <meta property="og:type" content="article" />
-                                <meta property="og:title" content="Bu sayfa ihtiyac kredisi hesaplama yapılır faiz oranıyla beraber hesaplamasını yapar | kredi.com.tr" />
+                                <meta property="og:title" content="İhtiyaç Kredisi Hesaplamanızı Yapın" />
                                 <meta property="og:url" content={window.location.href} />
                                 <meta property="og:description" content="Çekmek istediğiniz ihtiyaç kredisi hesaplama, kredinin faiz oranını girerek kredinin bütün detaylarını öğrenin | kredi.com.tr" />
                                 <meta name="og:keyword" content="kredi,hesaplama,faiz oranıyla hesaplama,kredi faiz hesaplama, aylık ödeme hesaplama" />
@@ -104,7 +104,7 @@ import HowMuchLoan from "../Components/containers/HowMuchLoan"
 
                             <Helmet>
                                 <meta property="og:type" content="article" />
-                                <meta property="og:title" content="Bu sayfa konut kredisi hesaplama yapılır faiz oranıyla beraber hesaplamasını yapar | kredi.com.tr" />
+                                <meta property="og:title" content="Konut Kredisi Hesaplama Yapın" />
                                 <meta property="og:url" content={window.location.href} />
                                 <meta property="og:description" content="Çekmek istediğiniz konut kredisi hesaplama, kredinin faiz oranını girerek kredinin bütün detaylarını öğrenin | kredi.com.tr" />
                                 <meta name="keyword" content="kredi hesaplama,faiz oranıyla hesaplama,kredi faiz hesaplama, aylık ödeme hesaplama" />
@@ -122,7 +122,7 @@ import HowMuchLoan from "../Components/containers/HowMuchLoan"
 
                             <Helmet>
                                 <meta property="og:type" content="article" />
-                                <meta property="og:title" content="Bu sayfa arac kredisi hesaplama yapılır faiz oranıyla beraber hesaplamasını yapar | kredi.com.tr" />
+                                <meta property="og:title" content="Araç Kredisi Hesaplama Nasıl Yapılır" />
                                 <meta property="og:url" content={window.location.href} />
                                 <meta property="og:description" content="Çekmek istediğiniz arac kredisi hesaplama, kredinin faiz oranını girerek kredinin bütün detaylarını öğrenin | kredi.com.tr" />
                                 <meta name="keyword" content="kredi hesaplama,faiz oranıyla hesaplama,kredi faiz hesaplama, aylık ödeme hesaplama,araç kredisi" />

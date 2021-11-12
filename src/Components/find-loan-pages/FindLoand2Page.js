@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { HowToPay } from '../calculate-page/HowToPay';
 import { BankContainer } from '../containers/BankContainer';
 import { FastLoan } from '../containers/FastLoan';
+import { LoanSearchLabel } from '../containers/LoanSearchLabel';
 import { PriceSplitter } from '../PriceSplitter';
 import Seo from '../Seo';
 import { priceShow } from './Prices/prices';
@@ -9,22 +10,25 @@ import { priceShow } from './Prices/prices';
 function FindLoand2Page(props) {
     const [amount, setAmount] = useState()
     const [bAmount, setBAmount] = useState()
+    const [listHref, setListHref] = useState([])
+    const [randomTys, setRandomTys] = useState(Math.floor((Math.random() * 3) + 1))
 
     useEffect(() => {
-        var amount = window.location.pathname.split("/")[window.location.pathname.split("/").length - 1].split("-")[2]
+        var amount = window.location.pathname.split("/")[2].split("-")[2]
         setAmount(parseInt(amount))
         setBAmount(parseInt(amount) / 10)
+        let lh = []
+        {
+            for (let index = 0; index < 8; index++) {
+
+                lh.push((index + 1) * (parseInt(amount) / 10))
+            }
+        }
+        setListHref(lh)
+
 
     }, [])
-    let listHref = []
-    {
-        for (let index = 0; index < 8; index++) {
 
-            listHref.push((index + 1) * bAmount)
-        }
-    }
-
- 
 
 
     return (
@@ -32,15 +36,15 @@ function FindLoand2Page(props) {
             <Seo keyword={`kredi hesaplama,kredi başvuru,hesaplama`} title={PriceSplitter(amount) + " TL Maaş İle Kredi Hesaplama"} description={`Aylık ${PriceSplitter(amount)} ₺ maaş ile ne kadar kredi çekebileceğinizi hesaplayın, öğrenin ve hesaplanan krediye başvuru yapın. Seçtiğiniz gelir(maaş) ve gideriniz sistem tarafından size en uygun kredinin bulunması için kredi hesaplama yapar.`} />
 
             <div className="container">
-                <div className="row justify-content-center find-lcontent">
+                <div className="row justify-content-center find-lcontent mb-5">
                     <div className="col-12 row mt-2 justify-content-center mt-4">
-                        <h1>Aylık{PriceSplitter(amount)} ₺ Gelir İle Kredi Hesaplama</h1>
+                        <h1>Aylık {PriceSplitter(amount)} ₺ Gelir İle Kredi Hesaplama</h1>
                         <p className="text-center">Aylık {PriceSplitter(amount)} ₺ geliriniz bulunuyor. Bu geliriniz ile kredi hesaplama yapılması için aşağıdan ortalama aylık giderinizi seçiniz. Seçiminiz sonunda size en uygun krediler hesaplanacak. </p>
 
                     </div>
                     <div className="col-12 mt-3">
 
-                        <h2>{PriceSplitter(amount) } ₺ Gelirinize Aylık Gider Ekleyin"?</h2>
+                        <h2>{PriceSplitter(amount)} ₺ Gelirinize Aylık Gider Ekleyin"?</h2>
                         <hr className="title-hr mt-1" />
                     </div>
 
@@ -68,8 +72,14 @@ function FindLoand2Page(props) {
 
                     </div>
                 </div>
+              
+
+                        <LoanSearchLabel Loans={props.Loans}></LoanSearchLabel>
+
+              
+
                 {
-                    priceShow()[amount]
+                    priceShow(amount)[amount]
                 }
 
                 <div className="row mt-4">
@@ -85,7 +95,7 @@ function FindLoand2Page(props) {
                 </div>
                 <div className="row justify-content-center mt-5">
 
-                <BankContainer Banks={props.Banks}></BankContainer>
+                    <BankContainer Banks={props.Banks}></BankContainer>
 
                 </div>
 
