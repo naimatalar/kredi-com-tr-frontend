@@ -4,7 +4,7 @@ import { BottomScrollListener, useBottomScrollListener } from 'react-bottom-scro
 import { Helmet } from "react-helmet";
 import Rimage from "../Components/Rimage";
 
- const Blog = (props) => {
+const Blog = (props) => {
     const [blog, setBlog] = useState([]);
     const [page, setPage] = useState(1);
     const [isBottom, setIsBottum] = useState(true);
@@ -61,7 +61,7 @@ import Rimage from "../Components/Rimage";
             <meta property="og:title" content="Finans Dünyasını Takip Edip Sizlerle Paylaşıyoruz." />
             <meta property="og:url" content={window.location.href} />
             <meta property="og:description" content="En uygun kredi fırsatlarını kredi.com.tr ayrıcalığı ile sizlerle buluşturuyoruz. Finans dünyasını yakından takip edip sizleri haberdar ediyoruz." />
-                     <meta name="og:keyword" content="kredi, kredi kartı, kredi başvurusu, kredi faiz oranı, kredi kartı başvurusu" />
+            <meta name="og:keyword" content="kredi, kredi kartı, kredi başvurusu, kredi faiz oranı, kredi kartı başvurusu" />
 
             <meta name="keyword" content="kredi, kredi kartı, kredi başvurusu, kredi faiz oranı, kredi kartı başvurusu" />
             <meta name="description" content="En uygun kredi fırsatlarını kredi.com.tr ayrıcalığı ile sizlerle buluşturuyoruz. Finans dünyasını yakından takip edip sizleri haberdar ediyoruz." />
@@ -81,21 +81,31 @@ import Rimage from "../Components/Rimage";
                         <div className="mb-4"><h4 style={{ color: "black", textAlign: "center" }}> Sizin için <b>araştırıyor, analiz ediyor ve paylaşıyoruz</b>.</h4></div>
 
                         {blog?.map((item, key) => {
-                          
-                            return (<div key={key} className="pb-2 pt-2 col-12 row align-items-center blog-list-item justify-content-between">
-                                <div className="col-12 col-md-3">
-                                    <Rimage alt={item.title} title={item.title} className="blog-image" src={item.imageUrl}></Rimage>
-                                </div>
-                                <div className="col-12 col-md-8" style={{ color: "black" }}>
-                                    <div style={{ color: "black", fontSize: 20 }}> {item.title}</div>
-                                    <div> <i style={{ color: "grey", fontSize: 12 }}>{item.date} </i></div>
+                            debugger
+                            return (
+
+                                <div key={key} className="pb-2 pt-2 col-12 row align-items-center blog-list-item justify-content-between">
+                                    <div className="col-12 col-md-3">
+                                        <Rimage alt={item.title} title={item.title} className="blog-image" src={item.imageUrl}></Rimage>
+                                    </div>
+                                    <div className="col-12 col-md-8" style={{ color: "black" }}>
+                                        <div style={{ color: "black", fontSize: 20 }}> {item.title}</div>
+                                        <div style={{
+                                            color: "#276a5f",
+                                            fontSize: "13px",
+                                            lineHeight: "16px"
+                                        }}>{item.metaDescription}</div>
+                                        <div> <i style={{ color: "grey", fontSize: 12 }}>{item.date} </i></div>
+
+                                    </div>
+                                    <div className="col-12 col-md-1 text-center" style={{ color: "black" }}>
+                                        <a style={{ width: "100%", display: "block" }} href={"/haberler-bilgiler/" + item.urlName}>OKU</a>
+                                    </div>
 
                                 </div>
-                                <div className="col-12 col-md-1 text-center" style={{ color: "black" }}>
-                                    <a style={{ width: "100%", display: "block" }} href={"/haberler-bilgiler/"+item.urlName}>OKU</a>
-                                </div>
 
-                            </div>)
+
+                            )
                         })}
                         {
                             loanding &&
@@ -163,7 +173,7 @@ import Rimage from "../Components/Rimage";
                     {props.Banks.slice(0, 5).map((item, key) => {
                         return (
                             <div key={key} className="row mb-4" style={{ borderTop: " 1px solid #dadada", paddingTop: 9 }}>
-                                <div className="col-3 p-1"><Rimage src={ item.logoUrl} alt={item.bankName + " bilgiler"} title={item.bankName + " bilgiler"} style={{ width: "100%" }}></Rimage> </div>
+                                <div className="col-3 p-1"><Rimage src={item.logoUrl} alt={item.bankName + " bilgiler"} title={item.bankName + " bilgiler"} style={{ width: "100%" }}></Rimage> </div>
                                 <div className="col-3 p-0" style={{
                                     color: "black",
                                     fontSize: 9,

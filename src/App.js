@@ -105,7 +105,6 @@ export default function App(props) {
 
     return (
       <Router>
-
         <NavigationTree BankNavigation={bankNavigation} LoanNavigation={loanNavigation}></NavigationTree>
         <Suspense fallback={<div></div>}>
           <div style={{ width: "100%", overflow: "hidden" }}>

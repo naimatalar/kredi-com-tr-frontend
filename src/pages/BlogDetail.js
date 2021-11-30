@@ -49,7 +49,7 @@ const BlogDetail = (props) => {
 
                     <meta name="twitter:card" content="summary_large_image" />
                     <meta name="twitter:title" content={data?.title} />
-                    <meta name="twitter:description" content="kredi.com.tr Kolayca Arayın, Pratik Şekilde Hesaplayın, Hızlıca Başvurun" />
+                    <meta name="twitter:description" content={data?.metaDescription} />
                     <meta name="twitter:url" content={window.location.href} />
                     <meta name="twitter:image" content={apiurl + data?.imageUrl} />
 
