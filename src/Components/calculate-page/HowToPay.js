@@ -101,7 +101,7 @@ export const HowToPay = () => {
 
     }
     return (
-        <div className="row">
+        <div className="row justify-content-center">
             <div className="col-12 mb-3 mt-3"><h2>Ne Kadar Kredi Çekebilirim? </h2><hr className="title-hr mt-1"></hr></div>
 
             <div className="row col-12">

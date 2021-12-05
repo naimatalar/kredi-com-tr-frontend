@@ -43,7 +43,7 @@ export const CreditCalculate = () => {
 
             <div className={"row calculate-page-calculate-container col-12 " + (loading == true ? "add-blur" : "")} onSubmit={() => { return false }}>
 
-                <div className="col-6">
+                <div className="col-12 col-md-6 col-lg-6">
                     {/* <div className="col-12 mb-2">
                         <label style={{ width: 120 }}><b>Kredi Türü: &nbsp;</b> </label>
                         <select value={loanType} onChange={(e) => { setLoanType(e.target.value) }} style={{ padding: 5, width: 191 }}>
@@ -67,7 +67,7 @@ export const CreditCalculate = () => {
                         <input value={rate} onChange={(e) => { setRate(e.target.value) }} type="text" placeholder=" örnek: 1.75"></input>
                     </div>
                 </div>
-                <div className="col-6">
+                <div className="col-12 col-md-6 col-lg-6">
                     <div className="col-12">
                         <button className="default-button" disabled={loading}
                             onClick={() => { calculatenw() }} style={{ color: "white" }}>Hesapla</button></div>
@@ -79,7 +79,8 @@ export const CreditCalculate = () => {
                         }}>Temizle</button></div>
 
                 </div>
-            </div> </div>
+            </div>
+             </div>
 
         {
             calculateResult.totalpayment != 0 && calculateResult.totalFaiz != 0 && calculateResult.totalVergi != 0 &&
@@ -228,7 +229,7 @@ export const CreditCalculate = () => {
             </div>
 
         }
-        <div className="row col-12 mt-3">
+        <div className=" col-12 mt-3">
 
             <h3>İhtiyaç Kredi Hesaplama Nasıl Yapılır?</h3>
             <p >İhtiyaç Kredisi hesaplama kredis faiz oranına göre hesaplanır. Genel Hesaplama formülü; <br>
@@ -236,7 +237,7 @@ export const CreditCalculate = () => {
                 <br></br>
                 <Image alt="kredi Hesapla" src={require("../../assets/images/kredihesap.jpg").default}
                 webp={require("../../assets/images/kredihesap.webp").default}
-                 style={{ width: 450 }}></Image>
+                 style={{ width: "100%" }}></Image>
                 <br></br>
                 <br></br>
                 İhtiyaç kredilerinde Maliye Bakanlığı tarafından her taksitte, faiz üzerinden KKDF ve BSMV tahsil eder. Bu ödemeler banklalar tarafından kişiden tahsil edilir ve ilgili kuruma ödenir.

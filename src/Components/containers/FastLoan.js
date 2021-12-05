@@ -41,22 +41,18 @@ export const FastLoan = (props) => {
 
 
 
-    }, [props])
+    }, [props.data])
     const start = async () => {
         if (props.data) {
             setFastLoadnData(props.data)
 
         } else {
+            
             var data = await GetNoneToken("FastLoans/GetAllSite").then(x => { return x.data }).catch(x => { return false })
             setFastLoadnData(data)
 
         }
-
-
-
-
     }
-
 
 
     return (
@@ -188,6 +184,7 @@ const FastLoanList = (props) => {
                     <div className="col-12" style={{ padding: 0 }}><b>Tutar</b></div>
                     <div>
                         <CurrencyInput
+                        
                             thousandSeparator="."
                             precision="0"
                             prefix="₺"
@@ -202,6 +199,7 @@ const FastLoanList = (props) => {
                 <div className="col-4 ">
                     <div className="col-12" style={{ padding: 0 }}><b>Vade</b></div>
                     <Dropdown
+                    
                         options={fastLoanData.loanTerms.sort((a, b) => a.value - b.value)}
                         value={fastLoanData.term?.toString()}
                         onChange={(val) => { chanheVals(fastLoanData.id, val.value, fastLoanData.amount) }}

@@ -65,16 +65,7 @@ export const PopulerBankCampaing = (props) => {
                             width: 240,
                             height: 55
                         }} src={data?.bankLogoUrl}></Rimage>
-                        <a style={{
-                            fontSize: 18,
-                            width: 150,
-                            padding: 8,
-                            textAlign: "center",
-                            marginTop: 10,
-                            float: "right",
-                            color: "white",
-                            display: "block",
-                        }} className="default-button" href={data?.outerUrl}>Hemen Başvur</a>
+                        <a className="default-button bank-camp-btn" href={data?.outerUrl}>Hemen Başvur</a>
                     </div>
 
                 </div>

@@ -7,7 +7,7 @@ import { HowToPay } from "../Components/calculate-page/HowToPay"
 import HowMuchLoan from "../Components/containers/HowMuchLoan"
 
 
- const CalculatePage = (props) => {
+const CalculatePage = (props) => {
     const [selectedLink, setSelectedLinks] = useState({
         name: "",
         urlName: "",
@@ -100,7 +100,7 @@ import HowMuchLoan from "../Components/containers/HowMuchLoan"
                     }
                     {
                         props.UrlName == "konut-kredisi-hesaplama" && <>
-                            <CarCreditCalculate />
+                            <HomeCreditCalculate />
 
                             <Helmet>
                                 <meta property="og:type" content="article" />
@@ -118,8 +118,8 @@ import HowMuchLoan from "../Components/containers/HowMuchLoan"
                     }
                     {
                         props.UrlName == "arac-kredisi-hesaplama" && <>
-                            <HomeCreditCalculate />
 
+                            <CarCreditCalculate />
                             <Helmet>
                                 <meta property="og:type" content="article" />
                                 <meta property="og:title" content="Araç Kredisi Hesaplama Nasıl Yapılır" />
@@ -142,7 +142,7 @@ import HowMuchLoan from "../Components/containers/HowMuchLoan"
                             <p>Hesaplama sayfamız, sadece kredi ya da finansal konular değil; sizlere, sayılarla ve formüllerle uğraşıp efor sarfetmenize gerek olmadan sonuçları sunmayı hedefler.</p>
                             <p>Kullanıcının formüller yazmasınza, hesap makinasını eline almasına gerek yok. <br></br>
                                 Hesaplama sayfamız, kullanıcıdan belirli bilgileri alır ve hesaplar. </p>
-                            <div className="row col-12">
+                            <div className="col-12 p-0">
 
                                 <CreditCalculate></CreditCalculate>
                             </div>

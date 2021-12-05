@@ -954,7 +954,7 @@ img {
 
 .calculate-pages-s {
   background: white;
-  padding: 31px;
+
   border-right: 1px solid #504d4d;
 }
 
@@ -1045,6 +1045,16 @@ img {
   font-weight: bold;
   color: #037cc7;
 }
+.bank-camp-btn{
+  font-size: 18px;
+  width: 150px;
+  padding: 8px;
+  text-align: center;
+  margin-top: 10px;
+  float: right;
+  color: white;
+  display: block;
+}
 
 @media (max-width: 900px) {
   .debit-buttons button span {
@@ -1061,6 +1071,10 @@ img {
   }
   .div-table-row * {
     font-size: 10px;
+  }
+
+  .bank-camp-btn{
+ width: 100%;
   }
   .loan-search-list-item * {
     zoom: 80%;
@@ -1113,7 +1127,7 @@ img {
     font-size: 15px;
   }
   .bank-loan-content * {
-    zoom: .85
+    zoom: .80
   }
   .credit-cart-head * {
     zoom: .92;
@@ -1441,7 +1455,7 @@ ol ol {
 
 .low-10-href a, .big-10-href a {
   display: block;
-  margin-right: 50px;
+  margin: 15px 15px 0 15px;
   width: 100px;
   height: 100px;
   border-radius: 50%;
@@ -1572,17 +1586,16 @@ ol ol {
 }
 
 .fls {
-  color: rgb(0, 141, 141);
-  -webkit-animation: flash linear 1s infinite;
-  animation: flash linear 2s infinite;
-  font-weight: bold;
-  font-size: 13px;
-  font-weight: normal;
-  border: 1px solid rgb(255, 178, 5);
+  color: rgb(204 26 5);
+  animation: flash linear 1.5s infinite;
+  font-size: 14px;
+  border: 1px solid rgb(43 128 255);
   font-family: sans-serif;
   border-radius: 6px;
   padding: 3px 9px 2px 10px;
   margin-right: 5px;
+  background: #0029ff14;
+  font-weight: bold;
 }
 
 @-webkit-keyframes flash {
@@ -1590,7 +1603,7 @@ ol ol {
     opacity: 1;
   }
   50% {
-    opacity: .1;
+    opacity: .5;
   }
   100% {
     opacity: 1;
@@ -1872,4 +1885,10 @@ ol ol {
 }
 .cart-type-nav2 .active{
   background-color: #077a68;
+}
+.showfilter-false{
+  display: none;
+}
+.showfilter-true{
+  display: block;
 }

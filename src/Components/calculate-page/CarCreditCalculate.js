@@ -39,12 +39,12 @@ export const CarCreditCalculate = () => {
 
     return (<div>
 
-        <div className="row col-12 ">
+        <div className=" col-12 ">
             {loading == true && <img style={{ marginTop: -30 }} alt="loading" className="ld-but" src={require("../../assets/images/loading.gif").default}></img>}
 
             <div className={"row calculate-page-calculate-container col-12 " + (loading == true ? "add-blur" : "")} onSubmit={() => { return false }}>
 
-                <div className="col-6">
+                <div className="col-12 col-md-6 col-lg-6">
                     {/* <div className="col-12 mb-2">
                         <label style={{ width: 120 }}><b>Kredi Türü: &nbsp;</b> </label>
                         <select value={loanType} onChange={(e) => { setLoanType(e.target.value) }} style={{ padding: 5, width: 191 }}>
@@ -68,7 +68,7 @@ export const CarCreditCalculate = () => {
                         <input value={rate} onChange={(e) => { setRate(e.target.value) }} type="text" placeholder=" örnek: 1.75"></input>
                     </div>
                 </div>
-                <div className="col-6">
+                <div className="col-12 col-md-6 col-lg-6 mt-4">
                     <div className="col-12">
                         <button className="default-button" disabled={loading}
                             onClick={() => { calculatenw() }} style={{ color: "white" }}>Hesapla</button></div>
@@ -229,14 +229,14 @@ export const CarCreditCalculate = () => {
             </div>
 
         }
-        <div className="row col-12 mt-3">
+        <div className=" col-12 mt-3">
 
             <h3>Araç Kredi Hesaplama Yapılırken Nelere Dikkat Edilir?</h3>
             <p >Araç Kredisi hesaplama kredinin türüne göre değişiklik gösterir. Genel Hesaplama formülü; <br>
             </br>
                 <br></br>
                 <Image alt="kredi Hesapla" webp={require("../../assets/images/kredihesap.webp").default}
-                    src={require("../../assets/images/kredihesap.jpg").default} style={{ width: 450 }}
+                    src={require("../../assets/images/kredihesap.jpg").default} style={{ width: "100%" }}
 
                 />
                 <br></br>

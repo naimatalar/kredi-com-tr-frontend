@@ -61,7 +61,6 @@ const Home = (props) => {
             setFindL(true)
         }
 
-
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
     }, [])
@@ -70,13 +69,7 @@ const Home = (props) => {
 
         let sss_ = indexData.faq
         var tl = await GetNoneToken("OnlyCalculates/getTen/10").then(x => { return x.data }).catch(x => { return false })
-        setTitleList(tl)
-        setPopulerLoansData(indexData.populerLoans)
-        setBankCamping(indexData.bankCamping)
-        setSelectedDisposit(indexData.selectedDisposit)
-        setBankLoanRates(indexData.bankLoanRates)
-        setFatLoan(indexData.fatLoan)
-        setSlider(indexData.slider)
+
 
         let creditCart = await GetNoneToken("CreditCarts/GetOnlyFive").then(x => { return x.data }).catch(x => { return false })
 
@@ -92,7 +85,13 @@ const Home = (props) => {
         if (blg) {
             setBlog(blg)
         }
-
+        setTitleList(tl)
+        setPopulerLoansData(indexData.populerLoans)
+        setBankCamping(indexData.bankCamping)
+        setSelectedDisposit(indexData.selectedDisposit)
+        setBankLoanRates(indexData.bankLoanRates)
+        setFatLoan(indexData.fatLoan)
+        setSlider(indexData.slider)
         setLoading(false)
 
     }
@@ -158,7 +157,7 @@ const Home = (props) => {
             } */}
             <div className=" col-12 p-0">
 
-                <LoanSearchLabel Loans={props.Loans}></LoanSearchLabel>
+                <LoanSearchLabel loading={loading} Loans={props.Loans}></LoanSearchLabel>
 
             </div>
 
@@ -176,7 +175,7 @@ const Home = (props) => {
 
                 </div>*/}
                 <div className="col-12 col-lg-5 col-md-5 p-0 m-0" style={{ marginBottom: 20 }}  >
-                    <FastLoan data={fatLoan} loading={loading}></FastLoan>
+                    <FastLoan  data={fatLoan} loading={loading}></FastLoan>
                 </div>
                 {loading &&
                     <div className="row col-12  col-lg-7 col-md-7 cs-card justify-content-between">
@@ -192,7 +191,6 @@ const Home = (props) => {
 
                             {!loading && <Slide indicators={true} pauseOnHover={true} duration={2500} transitionDuration={800}>
                                 {
-
                                     creditCart.map((each, index) => {
                                         return (<div key={index}  >
                                             <div className="each-fade" style={{ padding: 22 }} >
@@ -200,15 +198,10 @@ const Home = (props) => {
                                                     <div className="col-6">
                                                         <Rimage alt={" bankaya ait " + each.name + " kredi kartı"} title={each.name + " kredi kartı özellikleri"} src={each.logoUrl} style={{ width: "100%" }}></Rimage>
                                                     </div>
-
-
                                                     <div className="col-6">
                                                         <div className="col-12">
                                                             <h3 style={{ color: "black", fontWeight: "bold" }}>{each.name}</h3>
-
                                                             <b style={{ color: "#535656" }}> Yıllık Ücret : </b>
-
-
                                                             ₺{each.yearlyUsingAmount}
                                                         </div>
                                                         <div className="container mt-3">
@@ -224,15 +217,11 @@ const Home = (props) => {
                                                                         color: "white",
                                                                     }} href={"/" + each.bankUrlName + "/" + each.urlName}>DETAY</a>
                                                                 </div>
-
                                                             </div>
                                                         </div>
-
-
                                                     </div>
                                                 </div>
                                                 <div className="container">
-
                                                     <div className="row">
                                                         <div className="col-12">
                                                             <hr></hr>
@@ -244,35 +233,26 @@ const Home = (props) => {
                                                                             <div className="row" key={jkey}>
                                                                                 <div className="col-6 text-dark">{jitem.key} : </div>
                                                                                 <div className="col-6 text-dark"> {jitem.value} </div>
-
                                                                             </div>
                                                                         )
                                                                     }
-
                                                                 })
                                                             }
                                                         </div>
-
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>)
                                     })
-
                                 }
-
                             </Slide>}
                         </div>
                     </div>
                 </div>
-
-
             </div>
-
         </div>
         {/* <div className="row">
-            <div className="col-lg-2 col-md-12 p-0" style={{ marginBottom: 20 }}  >
-
+            <div className="col-lg-2 col-md-12 p-0" style={{ marginBottom: 20 }}>
                 <div className=" row adds-first-big pt-4 pb-4" >
                     <div className="row  m-0 p-0 justify-content-center">
                         <div className="row justify-content-center">
@@ -288,13 +268,11 @@ const Home = (props) => {
                     </div>
                     <div className="col-12 mt-2">
                         <div className="row  m-0 p-0 justify-content-center">
-
                             <span style={{ textAlign: "center", textAlign: "center", color: " #181818", fontSize: 20 }}>Kredi bulucu ile  gelir ve giderlerinizi girerek size en uygun krediyi bulun.. </span>
                         </div>
                     </div>
                     <div className="col-12 mt-3">
                         <div className="row  m-0 p-0 justify-content-center">
-
                             <a href="/kredi-bulucu" style={{ color: "white", width: 150 }} className="default-button text-center">&nbsp; BAŞLA &nbsp;</a>
                         </div>
                     </div>
@@ -303,14 +281,11 @@ const Home = (props) => {
         </div> */}
         <div className="col-12  mb-4">
             <PopulerBankCampaing loading={loading} data={bankCamping}></PopulerBankCampaing>
-
         </div>
 
-        <div className="row col-12">
-            <div className="col-12 col-md-7 col-lg-7 mt-3">
+        <div className="row justify-content-center">
+            <div className=" row col-12 col-md-7 col-lg-7 mt-3">
                 <HowToPay></HowToPay>
-
-
             </div>
             <div className="col-12 col-md-5 col-lg-5 mt-3">
                 <p className="home-title" >En çok kazandıran <span style={{ fontWeight: "bold" }}>vadeli mevduat seçeneklerini </span> sizin için seçtik.</p>

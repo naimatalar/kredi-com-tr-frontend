@@ -36,7 +36,7 @@ export const Banks = (props) => {
     const [calculateDisposit, setCalculateDisposit] = useState({ rate: 0, amount: 0, term: 0 })
     const [calculateDispositResult, setCalculateDispositResult] = useState({ netAmount: "", totalAmount: "", term: "", id: "", rate: "", amount: "" })
     const [currencyIcon, setCurrencyIcon] = useState("")
-    const [bankContainerCount, setBankContainerCount] = useState()
+    const [bankContainerCount, setBankContainerCount] = useState(0)
     const [amountss, setAmountss] = useState()
     const [loans, setLoans] = useState([])
 
@@ -141,7 +141,7 @@ export const Banks = (props) => {
             </div>
             <div className="master-content ">
                 <div className="row">
-                    <div className="col-12">
+                    <div className="col-12 p-0">
                         {loans?.length > 0 &&
 
                             <BankLoanSearchLabel Bank={bank} Loans={loans}></BankLoanSearchLabel>
@@ -165,7 +165,7 @@ export const Banks = (props) => {
                     }
                     {creditCarts.length > 0 &&
 
-                        <div className="col-12 col-lg-6 col-md-6 row mt-5 ">
+                        <div className="col-12 row mt-5 ">
                             <div className="col-12">
                                 <h4 style={{ color: "#464646", borderBottom: "1px solid #464646" }} className="text-center"> Bankaya Ait <b title={bank.bankName + "kredi kartı"}>{creditCarts.length} Adet Kredi Kartı</b> Bulunuyor!</h4>
 
@@ -176,7 +176,8 @@ export const Banks = (props) => {
                                     <Slide indicators={true} pauseOnHover={true} duration={2500} transitionDuration={800}>
                                         {
 
-                                            creditCarts.map((each, index) => {
+                                            creditCarts?.map((each, index) => {
+                                                debugger
                                                 return (<div key={index}  >
                                                     <div className="each-fade" style={{ padding: 22 }} >
                                                         <div className="row">
@@ -225,8 +226,20 @@ export const Banks = (props) => {
                                                                         </div>
                                                                     </div>
                                                                 </div>
+                                                                {windowDimensions.width > 700 &&
+
+                                                                    <div className="row justify-content-center">
+                                                                        {each.cartProperties?.map((jitem, jkey) => {
+                                                                            return (<div className="col-6 row mt-1">
+                                                                                <div className="col-12"><b>{jitem.key}</b></div>
+                                                                                <div className="col-12 text-dark">{jitem.value}</div>
 
 
+                                                                            </div>)
+                                                                        })
+                                                                        }
+                                                                    </div>
+                                                                }
                                                             </div>
                                                         </div>
                                                         <div className="container">
@@ -287,11 +300,9 @@ export const Banks = (props) => {
 
                         </div>
                     }
-                   
-                        {disposits.length > 0 &&
-                            <DispositSelectContainer Disposit={disposits} Bank={bank}></DispositSelectContainer>
-                        }
-                    
+
+
+
 
                     {bankContainerCount == 3 &&
                         <h4 className="home-title mt-5" > Bütün verilerimizi analiz edip  <span style={{ fontWeight: "bold" }}>bankata ait vadeli mevduat hesaplarını </span> ve  daha nice vadeli mevduat hesaplarını sizlerle buluşturduk.   </h4>

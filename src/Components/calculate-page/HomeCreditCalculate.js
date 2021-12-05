@@ -44,7 +44,7 @@ export const HomeCreditCalculate = () => {
 
             <div className={"row calculate-page-calculate-container col-12 " + (loading == true ? "add-blur" : "")} onSubmit={() => { return false }}>
 
-                <div className="col-6">
+                <div className="col-12 col-md-6 col-lg-6">
                     {/* <div className="col-12 mb-2">
                         <label style={{ width: 120 }}><b>Kredi Türü: &nbsp;</b> </label>
                         <select value={loanType} onChange={(e) => { setLoanType(e.target.value) }} style={{ padding: 5, width: 191 }}>
@@ -68,7 +68,7 @@ export const HomeCreditCalculate = () => {
                         <input value={rate} onChange={(e) => { setRate(e.target.value) }} type="text" placeholder=" örnek: 1.75"></input>
                     </div>
                 </div>
-                <div className="col-6">
+                <div className="col-12 col-md-6 col-lg-6 mt-4">
                     <div className="col-12">
                         <button className="default-button" disabled={loading}
                             onClick={() => { calculatenw() }} style={{ color: "white" }}>Hesapla</button></div>
@@ -229,7 +229,7 @@ export const HomeCreditCalculate = () => {
             </div>
 
         }
-        <div className="row col-12 mt-3">
+        <div className=" col-12 mt-3">
 
             <h3>Konut Kredi Hesaplama Formülü Nasıldır?</h3>
             <p >Konut Kredi hesaplama faiz oranına göre hesaplanır vergiler tahsil edilmez. Genel Hesaplama formülü; <br>
@@ -237,7 +237,7 @@ export const HomeCreditCalculate = () => {
                 <br></br>
                 <Image alt="kredi Hesapla" src={require("../../assets/images/kredihesap.jpg").default}
                 webp={require("../../assets/images/kredihesap.webp").default}
-                style={{ width: 450 }}></Image>
+                style={{ width: "100%" }}></Image>
                 <br></br>
                 <br></br>
                 Konut Kredilerinde Maliye Bakanlığı  faiz üzerinden uygulanan KKDF ve BSMV tahsil edilmez. Bu ödemeler sadece ihtiyaç kredilerinde bankalar tarafından tahsil edilir.

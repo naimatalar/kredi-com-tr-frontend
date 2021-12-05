@@ -98,9 +98,9 @@ const HomeLoan = (props) => {
         setLoading(false)
 
     }
-
+    
     return (<>
-            <Seo title={"Evini Seç Kredini Hesapla Hemen Başvur."} description={"Ev almak için kredi arayıp başvuru yapabilirsiniz. Bütün bankaların faiz oranları karşılatırılıp hesaplanır. Tutar ve vadenizle beraber size en uygun araç kredilerini sizin için bulur. Hemen başvurun"} />
+        <Seo title={"Evini Seç Kredini Hesapla Hemen Başvur."} description={"Ev almak için kredi arayıp başvuru yapabilirsiniz. Bütün bankaların faiz oranları karşılatırılıp hesaplanır. Tutar ve vadenizle beraber size en uygun araç kredilerini sizin için bulur. Hemen başvurun"} />
 
         {
             addsPopup && <> <div onClick={() => { setAddsPopup(false) }} className="lv-shadow"></div>
@@ -156,14 +156,14 @@ const HomeLoan = (props) => {
 
 
                 </div>}
-       
-                <div className=" col-12 p-0">
 
-                    <LoanSearchLabel SelectedTab={"2"} Loans={props.Loans}></LoanSearchLabel>
+            <div className=" col-12 p-0">
 
-                </div>
+                <LoanSearchLabel SelectedTab={"2"} Loans={props.Loans}></LoanSearchLabel>
 
-            
+            </div>
+
+
             <div className="col-12 ab-fonts  mb-3">
                 <div className="row justify-content-center">
                     {randomTys == 1 &&
@@ -238,7 +238,7 @@ const HomeLoan = (props) => {
                             </a>
                         </>
                     }
-                    {randomTys == 3 && 
+                    {randomTys == 3 &&
                         <>
 
                             <a href="/kredi-hesaplama/200000-tl-120-ay-vade-tasit-kredisi" className="col-12 col-md-3 col-lg-3 m-3 text-center">
@@ -282,8 +282,8 @@ const HomeLoan = (props) => {
 
                 </div>
             </div>
-  
-             <div className="row justify-content-between col-12 m-0 p-0">
+
+            <div className="row justify-content-between col-12 m-0 p-0">
 
                 {windowDimensions.width < 800 && <div style={{ paddingRight: 5, marginBottom: 20 }} className="col-lg-5 col-md-6 loan-search-container">
                     <LoanSearch Loans={props.Loans}></LoanSearch>
@@ -300,7 +300,7 @@ const HomeLoan = (props) => {
                         <div className="col-12 m-1"> &nbsp;</div>
                     </div>
                 }
-           
+
 
                 <div className="col-12 col-lg-7 col-md-7 p-0 m-0  row mt-4">
                     <div className="col-12 cnts m-0 p-0">
@@ -384,7 +384,7 @@ const HomeLoan = (props) => {
                 </div>
 
 
-            </div> 
+            </div>
 
         </div>
         {/* <div className="row">
@@ -423,7 +423,7 @@ const HomeLoan = (props) => {
 
         </div> */}
 
-         <div className="row col-12">
+        <div className="row col-12">
             <div className="col-12 col-md-7 col-lg-7 mt-3">
                 <HowToPay></HowToPay>
 
@@ -444,13 +444,13 @@ const HomeLoan = (props) => {
                 </div>
 
             </div>
-        </div> 
+        </div>
 
 
         <div className=" mb-4 bt-4">
 
         </div>
-       
+
         <div className="row middle-menu-content">
             <div className="col-12">
                 <p className="home-title" >Düzinelerce <span style={{ fontWeight: "bold" }}>kredi ödeme seçenekleri </span> ve bol kazandırıp çok uçuran <span style={{ fontWeight: "bold" }}>kredi kartları </span> parmaklarınızın ucunda! </p>

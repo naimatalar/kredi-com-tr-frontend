@@ -98,7 +98,7 @@ const CarLoan = (props) => {
         setLoading(false)
 
     }
-
+  
     return (<>
             <Seo title={"Aracını Bul Kredini Hesapla Hemen Başvur."} description={"Kredi ile araç sahibi olmak isteyenler için araç kredisi hesaplama aracımız sizlerle. Tutar ve vadenizle beraber size en uygun araç kredilerini sizin için bulur. Hemen başvurun"} />
 

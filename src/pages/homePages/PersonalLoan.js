@@ -98,7 +98,7 @@ const PersonalLoan = (props) => {
         setLoading(false)
 
     }
-
+    
     return (<>
 
         {

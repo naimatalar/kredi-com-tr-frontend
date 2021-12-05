@@ -60,8 +60,8 @@ export const Loan = (props) => {
             <div className="container-fluid">
                 <div className="loan-search-container-label pt-5">
                     {/* <h3 className="loan-page-title">{loan.loanName.toLocaleUpperCase()} ARA</h3> */}
-                    <div className="row loan-search-content-label">
-                        <div className="col-12 col-md-7 col-lg-7 row d-flex d-lg-none d-md-none">
+                    <div className="row loan-search-content-label justify-content-center">
+                        <div className="col-12 col-md-7 col-lg-7 row d-flex d-lg-none d-md-none justify-content-center">
                             {getContent(loan.urlName)}
 
                         </div>

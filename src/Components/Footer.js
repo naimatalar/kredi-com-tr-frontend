@@ -25,7 +25,7 @@ const Footer = () => {
 
                             <h4 className="text-center">Kredi Başvuru Merkezi</h4>
                         </div>
-                        <div className="col-md-2 mt-md-0 mt-3">
+                        <div className="col-md-2 mt-md-0 mt-5">
                             <h5 className="text-uppercase">kredi.com.tr</h5>
 
                             <ul className="list-unstyled">

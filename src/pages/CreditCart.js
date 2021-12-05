@@ -166,7 +166,7 @@ export const CreditCart = (props) => {
 
                 </div>
             </div>
-            {showFilter && windowDimensions.width < 800 && <div className="col-12 mobil-filter">
+            {windowDimensions.width < 800 && <div className={"col-12 mobil-filter showfilter-"+showFilter}>
                 <div className="filter-mobil-scroll">
                     <div onClick={() => { setShowFilter(false) }} style={{ color: "red", float: "right" }}>Kapat</div>
                     <h5 class="mb-4"><b style={{ color: " rgb(82, 82, 82)", fontStyle: "italic" }}>Filtreleme</b></h5>

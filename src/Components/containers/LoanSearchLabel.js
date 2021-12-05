@@ -8,6 +8,7 @@ import classnames from 'classnames';
 import Image from "react-image-webp";
 import { Link } from "react-router-dom";
 export const LoanSearchLabel = (props) => {
+    
     const [loansOption, setLoanOption] = useState([])
     const [terms, setTerms] = useState([])
     const [termsValue, setTermsValue] = useState()
@@ -85,7 +86,7 @@ export const LoanSearchLabel = (props) => {
 
             ln.push({ label: item.loanName, value: item.id })
         })
-        
+
         setPropsLoan(props.Loans)
         setLoanOption(ln)
         if (activeTab !== "0") {
@@ -166,37 +167,16 @@ export const LoanSearchLabel = (props) => {
 
 
                 </Nav>
-                <TabContent activeTab={activeTab} className="pt-4 pb-4 pl-3 repead-bg">
+                <TabContent activeTab={activeTab} className="pt-4 pb-4  repead-bg">
                     <TabPane tabId="0">
                         {activeTab == "0" &&
-                            <div key="0" className="row p-0">
+                            <div key="0" className="row p-3">
                                 <div className="col-12 text-center text-dark"><h3 className="text-dark">Ne Kadar İhitiyaç Kredisi Çekmek İstiyorsunuz?</h3>
                                     <h5 className="mt-2 mb-4 text-dark"><b>Çekmek istediğini tutar ve vadeyi girin</b></h5></div>
-                                <div className="col-12  col-md-4 col-lg-4 loan-search-label-st-font">
-
-                                    <CurrencyInput style={{ width: "100%", maxWidth: "100%" }} placeholder="Tutar Giriniz" className="col-7"
-                                        decimalSeparator=","
-                                        thousandSeparator="."
-                                        precision="0"
-                                        onChange={(x) => { setAmount(x) }}
-                                        value={amount}
-
-                                        prefix="₺"
-                                    />
-                                    {/* <input type="text" ></input> */}
-                                </div>
-                                <div className="col-12 col-md-4 col-lg-4 drpd-find loan-search-label-st-font">
-                                    <Dropdown
-                                        options={terms}
-                                        onChange={(d) => { termListOnChange(d.value) }}
-                                        placeholder="Vade"
-                                        arrowClassName="dropdownArrow"
-
-
-                                    />
-                                </div>
+                                <Inputs loading={props.loading} setAmount={setAmount} amount={amount} termListOnChange={termListOnChange} terms={terms} />
                                 <div className=" col-md-4 col-lg-4 row justify-content-left m-0 p-0 mt-2 mt-md-0 mt-lg-0">
                                     <div className="col-12 loan-search-label-st-font">
+
                                         <button onClick={(x) => { calculate() }} className="default-button btn-frs">Kredi Hesapla</button>
                                     </div>
                                 </div>
@@ -212,31 +192,11 @@ export const LoanSearchLabel = (props) => {
                             <div key="1" className="row p-0">
                                 <div className="col-12 text-center text-dark"><h3 className="text-dark">Araç Sahibi Olmak Yada Araç Yenilemek Mi İstiyorsunuz?</h3>
                                     <h5 className="mt-2 mb-4 text-dark"><b>Araç kredinizi hesaplamak için tutar ve vade giriniz.</b></h5></div>
-                                <div className="col-12  col-md-4 col-lg-4 ">
-
-                                    <CurrencyInput style={{ width: "100%", maxWidth: "100%", fontSize: 25 }} placeholder="Tutar Giriniz" className="col-7"
-                                        decimalSeparator=","
-                                        thousandSeparator="."
-                                        precision="0"
-                                        onChange={(x) => { setAmount(x) }}
-                                        value={amount}
-
-                                        prefix="₺"
-                                    />
-                                    {/* <input type="text" ></input> */}
-                                </div>
-                                <div className="col-12 col-md-4 col-lg-4 drpd-find">
-                                    <Dropdown
-                                        options={terms}
-                                        onChange={(d) => { termListOnChange(d.value) }}
-                                        placeholder="Vade"
-                                        arrowClassName="dropdownArrow"
+                                <Inputs loading={props.loading} setAmount={setAmount} amount={amount} termListOnChange={termListOnChange} terms={terms} />
 
 
-                                    />
-                                </div>
                                 <div className=" col-md-4 col-lg-4 row justify-content-left">
-                                    <div className="col-12 ">
+                                    <div className="col-12 mt-1">
                                         <button onClick={(x) => { calculate() }} className="default-button btn-frs">Kredi Hesapla</button>
                                     </div>
                                 </div>
@@ -254,31 +214,11 @@ export const LoanSearchLabel = (props) => {
                             <div key="2" className="row p-0">
                                 <div className="col-12 text-center text-dark"><h3 className="text-dark">Artık Konut Sahibi Olma Vaktim Geldi Mi Diyorsunuz?</h3>
                                     <h5 className="mt-2 mb-4 text-dark"><b>Çekmek istediğiniz tutarı girerek konut kredinizi hesaplayın</b></h5></div>
-                                <div className="col-12  col-md-4 col-lg-4 ">
-
-                                    <CurrencyInput style={{ width: "100%", maxWidth: "100%", fontSize: 25 }} placeholder="Tutar Giriniz" className="col-7"
-                                        decimalSeparator=","
-                                        thousandSeparator="."
-                                        precision="0"
-                                        onChange={(x) => { setAmount(x) }}
-                                        value={amount}
-
-                                        prefix="₺"
-                                    />
-                                    {/* <input type="text" ></input> */}
-                                </div>
-                                <div className="col-12 col-md-4 col-lg-4 drpd-find">
-                                    <Dropdown
-                                        options={terms}
-                                        onChange={(d) => { termListOnChange(d.value) }}
-                                        placeholder="Vade"
-                                        arrowClassName="dropdownArrow"
+                                <Inputs loading={props.loading} setAmount={setAmount} amount={amount} termListOnChange={termListOnChange} terms={terms} />
 
 
-                                    />
-                                </div>
                                 <div className=" col-md-4 col-lg-4 row justify-content-left">
-                                    <div className="col-12 ">
+                                    <div className="col-12 mt-2">
                                         <button onClick={(x) => { calculate() }} className="default-button btn-frs">Kredi Hesapla</button>
                                     </div>
                                 </div>
@@ -294,31 +234,11 @@ export const LoanSearchLabel = (props) => {
                             <div key="3" className="row p-0">
                                 <div className="col-12 text-center text-dark"><h3 className="text-dark">Yeni Bir İş Mi Yapıyorsunuz Yada İşinizi Mi Büyütüyorsunuz ?</h3>
                                     <h5 className="mt-2 mb-4 text-dark"><b>İşinize gerek konut kredisini tutar ve vade girerek hesaplayın.</b></h5></div>
-                                <div className="col-12  col-md-4 col-lg-4 ">
-
-                                    <CurrencyInput style={{ width: "100%", maxWidth: "100%", fontSize: 25 }} placeholder="Tutar Giriniz" className="col-7"
-                                        decimalSeparator=","
-                                        thousandSeparator="."
-                                        precision="0"
-                                        onChange={(x) => { setAmount(x) }}
-                                        value={amount}
-
-                                        prefix="₺"
-                                    />
-                                    {/* <input type="text" ></input> */}
-                                </div>
-                                <div className="col-12 col-md-4 col-lg-4 drpd-find">
-                                    <Dropdown
-                                        options={terms}
-                                        onChange={(d) => { termListOnChange(d.value) }}
-                                        placeholder="Vade"
-                                        arrowClassName="dropdownArrow"
+                                <Inputs loading={props.loading} setAmount={setAmount} amount={amount} termListOnChange={termListOnChange} terms={terms} />
 
 
-                                    />
-                                </div>
                                 <div className=" col-md-4 col-lg-4 row justify-content-left">
-                                    <div className="col-12 ">
+                                    <div className="col-12 mt-1">
                                         <button onClick={(x) => { calculate() }} className="default-button btn-frs">Kredi Hesapla</button>
                                     </div>
                                 </div>
@@ -337,3 +257,38 @@ export const LoanSearchLabel = (props) => {
     )
 
 }
+
+
+function Inputs(props) {
+
+    return (
+        <>
+            
+                    <div className="col-12  col-md-4 col-lg-4 mt-2 loan-search-label-st-font">
+
+                        <CurrencyInput  id="sgdf" inputmode="numeric" style={{ width: "100%", maxWidth: "100%" }} placeholder="Tutar Giriniz" className="col-7"
+                            decimalSeparator=","
+                            thousandSeparator="."
+                            precision="0"
+                            onChange={(x) => { props.setAmount(x) }}
+                            value={props.amount}
+
+                            prefix="₺"
+                        />
+                      
+                    </div>
+                    <div className="col-12 col-md-4 col-lg-4 mt-2 drpd-find loan-search-label-st-font">
+                        <Dropdown
+                            options={props.terms}
+                            onChange={(d) => { props.termListOnChange(d.value) }}
+                            placeholder="Vade"
+                            arrowClassName="dropdownArrow"
+
+
+                        />
+                    </div>
+     
+        </>
+    );
+}
+

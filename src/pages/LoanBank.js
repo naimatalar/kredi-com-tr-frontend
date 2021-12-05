@@ -24,6 +24,7 @@ const LoanBank = (props) => {
     const [amt, setAmt] = useState(new URLSearchParams(props.location.search).get("amount"))
     const [trm, setTrm] = useState(new URLSearchParams(props.location.search).get("term"))
     const [randomTys, setRandomTys] = useState(Math.floor((Math.random() * 5) + 1))
+    const [rateStatic, setRateStatic] = useState()
 
     const [creditCart, setCreditCart] = useState([])
 
@@ -71,6 +72,7 @@ const LoanBank = (props) => {
             setBank(bankData)
 
             var plan = calculator(parseFloat(lt?.rate), parseInt(amount), parseInt(trm), 5, 15)
+            setRateStatic(lt?.rate)
             setCalculateResult(plan)
         }
         let creditCart = await GetNoneToken("CreditCarts/GetOnlyFive").then(x => { return x.data }).catch(x => { return false })
@@ -80,14 +82,14 @@ const LoanBank = (props) => {
     }
 
     const calculate = () => {
-        var plan = calculator(parseFloat(loanType?.rate), parseInt(amount), parseInt(trm), 5, 15)
-        setCalculateResult(plan)
+        // var plan = calculator(parseFloat(loanType?.rate), parseInt(amount), parseInt(trm), 5, 15)
+        // setCalculateResult(plan)
         let prm = new URLSearchParams(props.location.search)
-        prm.set("amount", amount)
+        prm.set("amount", amt)
         prm.set("term", trm)
         prm.set("loanId", loanId)
-        props.history.push(window.location.pathname + "?" + prm)
-        //  window.location.replace("amount="+amount+"&term="+term+"&&loanId="+loanId)
+        // props.history.push(window.location.pathname + "?" + prm)
+         window.location.replace(window.location.pathname + "?" + prm)
     }
 
     const updateSelectedLoanOption = (r = null, a = null, t = null) => {
@@ -104,8 +106,6 @@ const LoanBank = (props) => {
             }
 
         });
-
-
         if (ss) {
             setLoanTermsDropdown(ss.terms)
             setLoanType(ss)
@@ -159,8 +159,8 @@ const LoanBank = (props) => {
                                 <Dropdown
                                     options={loanTermsDropdown || []}
                                     onChange={(val) => { updateSelectedLoanOption(null, null, val.value) }}
-                                    placeholder="Vade"
-                                    value={trm}
+                                    placeholder="Vade Seçiniz"
+                                    value={isNaN(parseInt(trm).toString()) ? "":parseInt(trm).toString()}
                                     arrowClassName="dropdownArrow"
                                 />
 
@@ -186,7 +186,7 @@ const LoanBank = (props) => {
 
                             <div className="col-12 col-lg-6 pt-2 pb-2">
                                 <b className=" col-6" style={{ color: "#797979" }}>Faiz Oranı:</b>
-                                <b className="col-6" style={{ color: "black" }}>   {loanType?.rate}</b>
+                                <b className="col-6" style={{ color: "black" }}>   {rateStatic}</b>
                             </div>
                             <div className="col-12 col-lg-6 pt-2 pb-2">
                                 <b className=" col-6" style={{ color: "#797979" }}>Toplam Faiz:</b>
@@ -321,7 +321,7 @@ const LoanBank = (props) => {
                         <h2 style={{ color: "black" }}>Başvuru Detayı</h2>
                         <hr className="title-hr" />
                         <p style={{ color: "black", fontSize: 18 }}> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Hesaplamanın sonucunda, <b>{PriceSplitter(amount)} TL</b> tutarındaki <b>{loanType?.loanName}</b>,  aylık vadesine göre listelenmiştir. Çekmek istediğiniz kredi
-                            <b>{loanType?.rate}</b> faiz oranıyla hesaplanmıştır. Bu durumda <b>{term}</b> ay boyunca aylık {PriceSplitter((calcuateResult.totalpayment).toFixed(0))} TL ödeme yapılacaktır. Vergiler faiz oranıyla birlikte hesaplanmıştır. Aylık {PriceSplitter((calcuateResult.totalpayment).toFixed(0))} TL tutarın içinde BSMV(Banka ve Sigorta Muameleleri Vergisi) ve KKDF (Kaynak Kullanımı Destekleme Fonu) dahil edilmiştr.
+                            <b>{rateStatic}</b> faiz oranıyla hesaplanmıştır. Bu durumda <b>{term}</b> ay boyunca aylık {PriceSplitter((calcuateResult.totalpayment).toFixed(0))} TL ödeme yapılacaktır. Vergiler faiz oranıyla birlikte hesaplanmıştır. Aylık {PriceSplitter((calcuateResult.totalpayment).toFixed(0))} TL tutarın içinde BSMV(Banka ve Sigorta Muameleleri Vergisi) ve KKDF (Kaynak Kullanımı Destekleme Fonu) dahil edilmiştr.
                             Bu ücretler banka tarafından tahsil edilip devlete iade edilir. </p>
 
                     </div>
