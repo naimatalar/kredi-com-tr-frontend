@@ -6,7 +6,11 @@ function FindLoanIndex(props) {
 
     return (
         <>
-            <Seo keyword={`kredi hesaplama,kredi başvuru,hesaplama`} title={"Kredi Hesaplama ve Uygun Kredi Bulma"} description={"Gelir ve gider kalemlerinize göre kredi hesaplama ve ihtiyaç kredisi bulmanızı sağlayan hesaplama aracımız ile kredinizi bulun."} />
+            {
+                props.Seo != false &&
+                <Seo keyword={`kredi hesaplama,kredi başvuru,hesaplama`} title={"Kredi Hesaplama ve Uygun Kredi Bulma"} description={"Gelir ve gider kalemlerinize göre kredi hesaplama ve ihtiyaç kredisi bulmanızı sağlayan hesaplama aracımız ile kredinizi bulun."} />
+
+            }
 
             <div className="container">
                 <div className="row justify-content-center find-lcontent">
@@ -38,7 +42,7 @@ function FindLoanIndex(props) {
                         </div>
                     </div>
                 </div>
-         
+
                 <div className="row justify-content-center mt-5  cl-content-font">
                     <div className="col-12 row mt-2 justify-content-center ">
                         <div className="col-12 text-center">

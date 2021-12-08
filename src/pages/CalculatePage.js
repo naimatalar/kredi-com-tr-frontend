@@ -162,6 +162,7 @@ const CalculatePage = (props) => {
                             }
                             return (<a key={key} href={props.UrlName == "-" ? ("/hesaplama/" + item.urlName) : ("/hesaplama/" + item.urlName)} className={"list-group-item col-12 text-center mb-3 " + active}>{item.name}</a>)
                         })}
+                        <a  href={"/kredi-hesaplama"} className={"list-group-item col-12 text-center mb-3 "}>Kredi Hesaplama</a>
                     </ul>
                 </div>
             </div>

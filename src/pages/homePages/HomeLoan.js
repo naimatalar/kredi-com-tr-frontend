@@ -26,6 +26,7 @@ import Rimage from "../../Components/Rimage";
 import { Slide } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css'
 import Seo from "../../Components/Seo";
+import Exchange from "../../Components/containers/Exchange";
 
 
 const HomeLoan = (props) => {
@@ -100,7 +101,7 @@ const HomeLoan = (props) => {
     }
     
     return (<>
-        <Seo title={"Evini Seç Kredini Hesapla Hemen Başvur."} description={"Ev almak için kredi arayıp başvuru yapabilirsiniz. Bütün bankaların faiz oranları karşılatırılıp hesaplanır. Tutar ve vadenizle beraber size en uygun araç kredilerini sizin için bulur. Hemen başvurun"} />
+        <Seo title={"Ev Kredisi Hesaplama"} description={"Ev almak için kredi arayıp başvuru yapabilirsiniz. Bütün bankaların faiz oranları karşılatırılıp hesaplanır. Tutar ve vadenizle beraber size en uygun araç kredilerini sizin için bulur. Hemen başvurun"} />
 
         {
             addsPopup && <> <div onClick={() => { setAddsPopup(false) }} className="lv-shadow"></div>
@@ -145,7 +146,9 @@ const HomeLoan = (props) => {
 
         <div className="row mt-4" >
 
-
+        <div className="col-12 mb-4">
+                <Exchange />
+            </div>
 
             <div className="col-12 mt-3 mb-3 text-center">
                 <h1 className="home-title" style={{ marginTop: 0 }}>Evini <span style={{ fontWeight: "bold" }}>Seç</span>, Konut Kredini <span style={{ fontWeight: "bold" }}>Hesapla</span> , Başvur <span style={{ fontWeight: "bold" }}>Evini Al!</span>  </h1>

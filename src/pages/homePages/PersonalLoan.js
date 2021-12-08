@@ -26,6 +26,7 @@ import Rimage from "../../Components/Rimage";
 import { Slide } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css'
 import Seo from "../../Components/Seo";
+import Exchange from "../../Components/containers/Exchange";
 
 
 const PersonalLoan = (props) => {
@@ -137,13 +138,15 @@ const PersonalLoan = (props) => {
         {
             findl &&
             <div className="find-loan-container">
-                <FindLoan></FindLoan>
+                <FindLoan Seo={false}></FindLoan>
             </div>
 
         }
 
         <div className="row mt-4" >
-
+        <div className="col-12 mb-4">
+                <Exchange />
+            </div>
 
 
             <div className="col-12 mt-3 mb-3 text-center">
@@ -264,7 +267,7 @@ const PersonalLoan = (props) => {
                 </div>
             </div>
             <div className="row mb-3">
-                <FindLoan Loans={props.Loans} {...props} Banks={props.Banks} />
+                <FindLoan Seo={false} Loans={props.Loans} {...props} Banks={props.Banks} />
             </div>
        
             {/* <div className="row justify-content-between col-12 m-0 p-0">
@@ -594,7 +597,7 @@ const PersonalLoan = (props) => {
                 </div>
 
             </div>
-            <Seo title={"İhtiyaç Kredisi Hesaplama Ve Başvuru"} description={"İhtiyaç duyduğunuz kredi miktarını vade seçerek hesaplayın. Hesaplama sonucunda bankaların faiz oranlarıyla birlikte hesaplama yapılıp listelenir. Size en uygun krediyi seçip başvurabilirsiniz. "} />
+            <Seo title={"İhtiyaç Kredisi Hesaplama"} description={"İhtiyaç duyduğunuz kredi miktarını vade seçerek hesaplayın. Hesaplama sonucunda bankaların faiz oranlarıyla birlikte hesaplama yapılıp listelenir. Size en uygun krediyi seçip başvurabilirsiniz. "} />
 
         </div>
         <div className="row" style={{ justifyContent: "center", marginTop: 100 }}>

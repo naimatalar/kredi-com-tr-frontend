@@ -10,6 +10,8 @@
     "@testing-library/user-event": "^12.1.10",
     "axios": "^0.21.1",
     "bootstrap": "^4.6.0",
+    "country-flag-icons": "^1.4.17",
+    "currency-flags": "^3.2.1",
     "express": "^4.17.1",
     "html-to-react": "^1.4.5",
     "ignore-styles": "^5.0.1",
@@ -26,13 +28,12 @@
     "react-responsive": "^8.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
+    "react-select": "^5.2.1",
     "react-share": "^4.4.0",
     "react-slideshow-image": "^3.4.6",
     "react-transition-group": "^4.2.0",
     "reactstrap": "^8.9.0",
     "web-vitals": "^1.0.1"
-    
-    
   },
   "reactSnap": {
     "inlineCss": true,
@@ -46,7 +47,6 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
-    
   },
   "eslintConfig": {
     "extends": [

@@ -26,6 +26,7 @@ import Rimage from "../../Components/Rimage";
 import { Slide } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css'
 import Seo from "../../Components/Seo";
+import Exchange from "../../Components/containers/Exchange";
 
 
 const CarLoan = (props) => {
@@ -100,7 +101,7 @@ const CarLoan = (props) => {
     }
   
     return (<>
-            <Seo title={"Aracını Bul Kredini Hesapla Hemen Başvur."} description={"Kredi ile araç sahibi olmak isteyenler için araç kredisi hesaplama aracımız sizlerle. Tutar ve vadenizle beraber size en uygun araç kredilerini sizin için bulur. Hemen başvurun"} />
+            <Seo title={"Araç Kredisi Hesapla"} description={"Kredi ile araç sahibi olmak isteyenler için araç kredisi hesaplama aracımız sizlerle. Tutar ve vadenizle beraber size en uygun araç kredilerini sizin için bulur. Hemen başvurun"} />
 
         {
             addsPopup && <> <div onClick={() => { setAddsPopup(false) }} className="lv-shadow"></div>
@@ -144,7 +145,9 @@ const CarLoan = (props) => {
         }
 
         <div className="row mt-4" >
-
+        <div className="col-12 mb-4">
+                <Exchange  />
+            </div>
 
 
             <div className="col-12 mt-3 mb-3 text-center">

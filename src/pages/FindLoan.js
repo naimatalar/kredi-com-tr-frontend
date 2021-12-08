@@ -27,7 +27,7 @@ function FindLoan(props) {
             !loading &&
             <>
                 {pageNumber === 1 &&
-                    <FindLoanIndex Loans={props.Loans} Banks={props.Banks}></FindLoanIndex>
+                    <FindLoanIndex Seo={props.Seo} Loans={props.Loans} Banks={props.Banks}></FindLoanIndex>
 
                 }
                 {pageNumber === 2 &&

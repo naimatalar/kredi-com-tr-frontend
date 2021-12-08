@@ -7,8 +7,9 @@ import { GetNoneToken, PostNoneToken } from "../../datacrud/datacrud";
 import classnames from 'classnames';
 import Image from "react-image-webp";
 import { Link } from "react-router-dom";
+import { PersonPin } from "@material-ui/icons";
 export const LoanSearchLabel = (props) => {
-    
+
     const [loansOption, setLoanOption] = useState([])
     const [terms, setTerms] = useState([])
     const [termsValue, setTermsValue] = useState()
@@ -99,6 +100,10 @@ export const LoanSearchLabel = (props) => {
             loanTypeOnChange(ln[0].value)
 
         }
+        if (props.Term && props.Value) {
+            setTermsValue(props.Term)
+            setAmount(props.Value)
+        }
 
     }
     return (
@@ -173,8 +178,8 @@ export const LoanSearchLabel = (props) => {
                             <div key="0" className="row p-3">
                                 <div className="col-12 text-center text-dark"><h3 className="text-dark">Ne Kadar İhitiyaç Kredisi Çekmek İstiyorsunuz?</h3>
                                     <h5 className="mt-2 mb-4 text-dark"><b>Çekmek istediğini tutar ve vadeyi girin</b></h5></div>
-                                <Inputs loading={props.loading} setAmount={setAmount} amount={amount} termListOnChange={termListOnChange} terms={terms} />
-                                <div className=" col-md-4 col-lg-4 row justify-content-left m-0 p-0 mt-2 mt-md-0 mt-lg-0">
+                                <Inputs Term={termsValue} loading={props.loading} setAmount={setAmount} amount={amount} termListOnChange={termListOnChange} terms={terms} />
+                                <div className=" col-md-4 col-lg-4 row justify-content-left m-0 p-0 mt-2 mt-md-0 mt-lg-0 align-items-center">
                                     <div className="col-12 loan-search-label-st-font">
 
                                         <button onClick={(x) => { calculate() }} className="default-button btn-frs">Kredi Hesapla</button>
@@ -189,14 +194,14 @@ export const LoanSearchLabel = (props) => {
                     <TabPane tabId="1">
                         {activeTab == "1" &&
 
-                            <div key="1" className="row p-0">
+                            <div key="1" className="row p-3">
                                 <div className="col-12 text-center text-dark"><h3 className="text-dark">Araç Sahibi Olmak Yada Araç Yenilemek Mi İstiyorsunuz?</h3>
                                     <h5 className="mt-2 mb-4 text-dark"><b>Araç kredinizi hesaplamak için tutar ve vade giriniz.</b></h5></div>
                                 <Inputs loading={props.loading} setAmount={setAmount} amount={amount} termListOnChange={termListOnChange} terms={terms} />
 
 
-                                <div className=" col-md-4 col-lg-4 row justify-content-left">
-                                    <div className="col-12 mt-1">
+                                <div className="col-md-4 col-lg-4 row justify-content-left m-0 p-0 mt-2 mt-md-0 mt-lg-0 align-items-center">
+                                    <div className="col-12 mt-1 loan-search-label-st-font">
                                         <button onClick={(x) => { calculate() }} className="default-button btn-frs">Kredi Hesapla</button>
                                     </div>
                                 </div>
@@ -211,14 +216,14 @@ export const LoanSearchLabel = (props) => {
                         {activeTab == "2" &&
 
 
-                            <div key="2" className="row p-0">
+                            <div key="2" className="row p-3">
                                 <div className="col-12 text-center text-dark"><h3 className="text-dark">Artık Konut Sahibi Olma Vaktim Geldi Mi Diyorsunuz?</h3>
                                     <h5 className="mt-2 mb-4 text-dark"><b>Çekmek istediğiniz tutarı girerek konut kredinizi hesaplayın</b></h5></div>
                                 <Inputs loading={props.loading} setAmount={setAmount} amount={amount} termListOnChange={termListOnChange} terms={terms} />
 
 
-                                <div className=" col-md-4 col-lg-4 row justify-content-left">
-                                    <div className="col-12 mt-2">
+                                <div className="col-md-4 col-lg-4 row justify-content-left m-0 p-0 mt-2 mt-md-0 mt-lg-0 align-items-center">
+                                    <div className="col-12 mt-1 loan-search-label-st-font">
                                         <button onClick={(x) => { calculate() }} className="default-button btn-frs">Kredi Hesapla</button>
                                     </div>
                                 </div>
@@ -231,14 +236,14 @@ export const LoanSearchLabel = (props) => {
                     </TabPane>
                     <TabPane tabId="3" >
                         {activeTab == "3" &&
-                            <div key="3" className="row p-0">
+                            <div key="3" className="row p-3">
                                 <div className="col-12 text-center text-dark"><h3 className="text-dark">Yeni Bir İş Mi Yapıyorsunuz Yada İşinizi Mi Büyütüyorsunuz ?</h3>
                                     <h5 className="mt-2 mb-4 text-dark"><b>İşinize gerek konut kredisini tutar ve vade girerek hesaplayın.</b></h5></div>
                                 <Inputs loading={props.loading} setAmount={setAmount} amount={amount} termListOnChange={termListOnChange} terms={terms} />
 
 
-                                <div className=" col-md-4 col-lg-4 row justify-content-left">
-                                    <div className="col-12 mt-1">
+                                <div className="col-md-4 col-lg-4 row justify-content-left m-0 p-0 mt-2 mt-md-0 mt-lg-0 align-items-center">
+                                    <div className="col-12 mt-1 loan-search-label-st-font">
                                         <button onClick={(x) => { calculate() }} className="default-button btn-frs">Kredi Hesapla</button>
                                     </div>
                                 </div>
@@ -263,31 +268,31 @@ function Inputs(props) {
 
     return (
         <>
-            
-                    <div className="col-12  col-md-4 col-lg-4 mt-2 loan-search-label-st-font">
 
-                        <CurrencyInput  id="sgdf" inputmode="numeric" style={{ width: "100%", maxWidth: "100%" }} placeholder="Tutar Giriniz" className="col-7"
-                            decimalSeparator=","
-                            thousandSeparator="."
-                            precision="0"
-                            onChange={(x) => { props.setAmount(x) }}
-                            value={props.amount}
+            <div className="col-12  col-md-4 col-lg-4 mt-2 loan-search-label-st-font">
 
-                            prefix="₺"
-                        />
-                      
-                    </div>
-                    <div className="col-12 col-md-4 col-lg-4 mt-2 drpd-find loan-search-label-st-font">
-                        <Dropdown
-                            options={props.terms}
-                            onChange={(d) => { props.termListOnChange(d.value) }}
-                            placeholder="Vade"
-                            arrowClassName="dropdownArrow"
+                <CurrencyInput id="sgdf" inputmode="numeric" style={{ width: "100%", maxWidth: "100%" }} placeholder="Tutar Giriniz" className="col-7"
+                    decimalSeparator=","
+                    thousandSeparator="."
+                    precision="0"
+                    onChange={(x) => { props.setAmount(x) }}
+                    value={props.amount}
 
+                    prefix="₺"
+                />
 
-                        />
-                    </div>
-     
+            </div>
+            <div className="col-12 col-md-4 col-lg-4 mt-2 drpd-find loan-search-label-st-font">
+                <Dropdown
+                    options={props.terms}
+                    onChange={(d) => { props.termListOnChange(d.value) }}
+                    placeholder="Vade"
+                    arrowClassName="dropdownArrow"
+                    value={props.Term?.toString() ?? ""}
+
+                />
+            </div>
+
         </>
     );
 }

@@ -26,6 +26,7 @@ import Rimage from "../../Components/Rimage";
 import { Slide } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css'
 import Seo from "../../Components/Seo";
+import Exchange from "../../Components/containers/Exchange";
 
 
 const BusinesLoan = (props) => {
@@ -144,7 +145,9 @@ const BusinesLoan = (props) => {
 
         <div className="row mt-4" >
 
-
+        <div className="col-12 mb-4">
+                <Exchange />
+            </div>
 
             <div className="col-12 mt-3 mb-3 text-center">
                 <h1 className="home-title" style={{ marginTop: 0 }}>Kredini <span style={{ fontWeight: "bold" }}> Ara</span>, Oranları <span style={{ fontWeight: "bold" }}>Listele</span> , Anında <span style={{ fontWeight: "bold" }}> Başvur!</span>  </h1>
@@ -264,7 +267,7 @@ const BusinesLoan = (props) => {
                 </div>
             </div>
             <div className="row mb-3">
-                <FindLoan Loans={props.Loans} {...props} Banks={props.Banks} />
+                <FindLoan Seo={false} Loans={props.Loans} {...props} Banks={props.Banks} />
             </div>
             {/* <div className="row justify-content-between col-12 m-0 p-0">
 
@@ -593,7 +596,7 @@ const BusinesLoan = (props) => {
                 </div>
 
             </div>
-            <Seo title={"Kobi Kredisi Hesaplama Ve Başvuru"} description={"İşinin için krediye ihtiyaç duyuyorsanız hemen kredinizi hesaplayın. Bütün bankaların faiz oranlarını karşılaştırmalı bir şekilde hesaplama yapın. Size en uygun krediyi seçip başvurabilirsiniz. "} />
+            <Seo title={"Kobi Kredisi Hesaplama"} description={"İşinin için krediye ihtiyaç duyuyorsanız hemen kredinizi hesaplayın. Bütün bankaların faiz oranlarını karşılaştırmalı bir şekilde hesaplama yapın. Size en uygun krediyi seçip başvurabilirsiniz. "} />
 
         </div>
         <div className="row" style={{ justifyContent: "center", marginTop: 100 }}>
