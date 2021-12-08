@@ -115,7 +115,7 @@ export const LoanSearch = (props) => {
                                         </div>
                                         <div className="col-6 ">
 
-                                            <CurrencyInput style={{ width: "100%", maxWidth: "100%" }} placeholder="Tutar Giriniz" className="col-7"
+                                            <CurrencyInput inputmode="numeric" style={{ width: "100%", maxWidth: "100%" }} placeholder="Tutar Giriniz" className="col-7"
                                                 decimalSeparator=","
                                                 thousandSeparator="."
                                                 precision="0"

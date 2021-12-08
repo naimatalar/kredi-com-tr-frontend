@@ -118,7 +118,7 @@ export const OnlyCalculate = (props) => {
                         </div>
                         <div className="col-12  col-md-3 mb-2">
 
-                            <CurrencyInput style={{ width: "100%", maxWidth: "100%" }} placeholder="Tutar Giriniz" className="col-7"
+                            <CurrencyInput inputmode="numeric" style={{ width: "100%", maxWidth: "100%" }} placeholder="Tutar Giriniz" className="col-7"
                                 decimalSeparator=","
                                 thousandSeparator="."
                                 precision="0"

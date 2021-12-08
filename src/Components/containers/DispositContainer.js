@@ -49,7 +49,7 @@ export const DispositContainer = (props) => {
 
 
 
-                                        <CurrencyInput style={{
+                                        <CurrencyInput inputmode="numeric" style={{
                                             padding: 0,
                                             border: "none",
                                             display: "inline",
@@ -76,7 +76,7 @@ export const DispositContainer = (props) => {
                                 <div className="row justify-content-around">
 
                                     <div style={{ color: "black", textAlign: "center", fontWeight: "bold" }}><b style={{ color: "rebeccapurple" }}>Net Kazanç</b> <br></br>
-                                        <CurrencyInput style={{
+                                        <CurrencyInput inputmode="numeric" style={{
                                             padding: 0,
                                             border: "none",
                                             display: "inline",
@@ -95,7 +95,7 @@ export const DispositContainer = (props) => {
                                             value={item.netResult} />
                                     </div>
                                     <div style={{ color: "black", textAlign: "center", fontWeight: "bold" }}><b style={{ color: "rebeccapurple" }}>Toplam Kazanç</b> <br></br>
-                                        <CurrencyInput style={{
+                                        <CurrencyInput inputmode="numeric" style={{
                                             padding: 0,
                                             border: "none",
                                             display: "inline",

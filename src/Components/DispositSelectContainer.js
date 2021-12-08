@@ -121,7 +121,7 @@ function DispositSelectContainer(props) {
                                 <div className="col-12 p-3 row ml-0 mr-0">
                                     <div className="col-6">
                                         <i>Tutar Giriniz</i>
-                                        <CurrencyInput style={{
+                                        <CurrencyInput inputmode="numeric" style={{
                                             float: "left",
                                             width: "100%",
                                             maxWidt: "100%"
@@ -157,7 +157,7 @@ function DispositSelectContainer(props) {
                                             <div className="col-6 mb-2 row ">
                                                 <div style={{ float: "left" }}>
                                                     Net Kazanç :
-                                                    <CurrencyInput style={{
+                                                    <CurrencyInput inputmode="numeric" style={{
                                                         padding: 0,
                                                         border: "none",
                                                         display: "inline",
@@ -189,7 +189,7 @@ function DispositSelectContainer(props) {
                                             <div className="col-6 disposit-total-amount">
                                                 <span style={{ fontWeight: "bold", fontSize: 17 }}>Toplam Kazanç : </span>
 
-                                                <CurrencyInput style={{
+                                                <CurrencyInput inputmode="numeric" style={{
                                                     padding: 0,
                                                     border: "none",
                                                     display: "inline",

@@ -183,7 +183,7 @@ const FastLoanList = (props) => {
                 <div className="col-4 ">
                     <div className="col-12" style={{ padding: 0 }}><b>Tutar</b></div>
                     <div>
-                        <CurrencyInput
+                        <CurrencyInput inputmode="numeric"
                         
                             thousandSeparator="."
                             precision="0"

@@ -129,7 +129,7 @@ import Rimage from "../Components/Rimage";
 
                                     <div className="col-12 col-md-3 mb-2">
                                         <label className="col-12 mb-0">Anapara</label>
-                                        <CurrencyInput style={{ width: "100%", maxWidth: "100%" }} placeholder="Tutar Giriniz" className="col-7"
+                                        <CurrencyInput inputmode="numeric" style={{ width: "100%", maxWidth: "100%" }} placeholder="Tutar Giriniz" className="col-7"
                                             decimalSeparator=","
                                             thousandSeparator="."
                                             precision="0"
@@ -188,7 +188,7 @@ import Rimage from "../Components/Rimage";
                                                     </div>
 
                                                     <div className="mb-2"><b style={{ color: "black" }}>
-                                                        <CurrencyInput style={{
+                                                        <CurrencyInput inputmode="numeric" style={{
                                                             padding: 0,
                                                             border: "none",
                                                             display: "inline",
@@ -219,7 +219,7 @@ import Rimage from "../Components/Rimage";
                                                     </div>
 
                                                     <div className="mb-2">
-                                                        <CurrencyInput style={{
+                                                        <CurrencyInput inputmode="numeric" style={{
                                                             padding: 0,
                                                             border: "none",
                                                             display: "inline",
@@ -252,7 +252,7 @@ import Rimage from "../Components/Rimage";
                                                     </div>
 
                                                     <div style={{ overflow: "hidden" }}>
-                                                        <CurrencyInput style={{
+                                                        <CurrencyInput inputmode="numeric" style={{
                                                             padding: 0,
                                                             border: "none",
                                                             display: "inline",

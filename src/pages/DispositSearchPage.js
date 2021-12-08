@@ -83,7 +83,7 @@ import Image from "react-image-webp";
 
                             <div className="col-12">
                                 <div className="col-12 mb-4">
-                                    <CurrencyInput style={{ width: "100%", maxWidth: "100%" }} placeholder="Tutar Giriniz" className="col-7"
+                                    <CurrencyInput inputmode="numeric" style={{ width: "100%", maxWidth: "100%" }} placeholder="Tutar Giriniz" className="col-7"
                                         decimalSeparator=","
                                         thousandSeparator="."
                                         precision="0"
@@ -166,7 +166,7 @@ import Image from "react-image-webp";
                             <b className="mb-3" style={{ color: "black" }}>Aylık Gelirinizi Girerek Hesaplamaya Başlayın </b>
                             <div style={{ clear: "both" }}></div>
                             <div className="col-8">
-                                <CurrencyInput style={{ width: "100%", maxWidth: "100%" }} placeholder="Tutar Giriniz." className="col-7"
+                                <CurrencyInput inputmode="numeric" style={{ width: "100%", maxWidth: "100%" }} placeholder="Tutar Giriniz." className="col-7"
                                     decimalSeparator=","
                                     thousandSeparator="."
                                     precision="0"

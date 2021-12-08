@@ -271,7 +271,7 @@ function Inputs(props) {
 
             <div className="col-12  col-md-4 col-lg-4 mt-2 loan-search-label-st-font">
 
-                <CurrencyInput id="sgdf" inputmode="numeric" style={{ width: "100%", maxWidth: "100%" }} placeholder="Tutar Giriniz" className="col-7"
+                <CurrencyInput inputmode="numeric" id="sgdf"  style={{ width: "100%", maxWidth: "100%" }} placeholder="Tutar Giriniz" className="col-7"
                     decimalSeparator=","
                     thousandSeparator="."
                     precision="0"

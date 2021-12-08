@@ -72,7 +72,7 @@ export const DispositMatrixContainer = (props) => {
                 }
                 {key != 0 &&
                     <div className="div-table-col" style={{ width: (90 / (matrixData?.header.length - 1)) + "%" }}>
-                        <CurrencyInput style={{
+                        <CurrencyInput inputmode="numeric" style={{
                             padding: 0,
                             border: "none",
                             display: "inline",
@@ -89,7 +89,7 @@ export const DispositMatrixContainer = (props) => {
                             prefix={""}
                             value={item.split("-")[0]} />
                         <div style={{ float: "left", display: "block" }}>- </div>
-                        <CurrencyInput style={{
+                        <CurrencyInput inputmode="numeric" style={{
                             padding: 0,
                             border: "none",
                             display: "inline",

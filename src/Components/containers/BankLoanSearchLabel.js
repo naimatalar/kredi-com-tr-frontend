@@ -148,7 +148,7 @@ export function BankLoanSearchLabel(props) {
 
                         <div className="col-5 ">
 
-                            <CurrencyInput style={{
+                            <CurrencyInput inputmode="numeric" style={{
                                 float: "left",
                                 minWidth: 60,
                             }}

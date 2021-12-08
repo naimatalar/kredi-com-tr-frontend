@@ -142,7 +142,7 @@ export const CalculateCreditPage = (props) => {
                   </div>
 
                   <div className="mb-2">
-                    <CurrencyInput style={{
+                    <CurrencyInput inputmode="numeric" style={{
                       padding: 0,
                       border: "none",
                       display: "inline",
@@ -171,7 +171,7 @@ export const CalculateCreditPage = (props) => {
                   </div>
 
                   <div className="mb-2">
-                    <CurrencyInput style={{
+                    <CurrencyInput inputmode="numeric" style={{
                       padding: 0,
                       border: "none",
                       display: "inline",

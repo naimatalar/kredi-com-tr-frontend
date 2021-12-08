@@ -86,7 +86,7 @@ function Exchange(props) {
             <div className="col-12 col-md-6 row justify-content-center mt-2">
 
                 {/* <div className="col-7 pr-0">
-                    <CurrencyInput style={{ padding: 6 }}></CurrencyInput>
+                    <CurrencyInput inputmode="numeric" style={{ padding: 6 }}></CurrencyInput>
                 </div> */}
                 <div className="col-12 row justify-content-around align-items z-ssom mb-1">
                     <label className="col-5"><b style={{
@@ -125,7 +125,7 @@ function Exchange(props) {
                     />
                 </div>
                 <div className="col-6 pl-0 mt-2">
-                    <CurrencyInput
+                    <CurrencyInput inputmode="numeric"
                         precision="0"
                         thousandSeparator="."
                         suffix={" " + baseCurrecy.value}

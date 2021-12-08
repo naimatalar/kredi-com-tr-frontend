@@ -121,7 +121,7 @@ export const SearchLoanPage2 = (props) => {
             </div>
             <div className="col-12  col-md-3 mb-2">
 
-              <CurrencyInput style={{ width: "100%", maxWidth: "100%" }} placeholder="Tutar Giriniz" className="col-7"
+              <CurrencyInput inputmode="numeric" style={{ width: "100%", maxWidth: "100%" }} placeholder="Tutar Giriniz" className="col-7"
                 decimalSeparator=","
                 thousandSeparator="."
                 precision="0"
@@ -197,7 +197,7 @@ export const SearchLoanPage2 = (props) => {
                   </div>
 
                   <div className="mb-2">
-                    <CurrencyInput style={{
+                    <CurrencyInput inputmode="numeric" style={{
                       padding: 0,
                       border: "none",
                       display: "inline",
@@ -226,7 +226,7 @@ export const SearchLoanPage2 = (props) => {
                   </div>
 
                   <div className="mb-2">
-                    <CurrencyInput style={{
+                    <CurrencyInput inputmode="numeric" style={{
                       padding: 0,
                       border: "none",
                       display: "inline",

@@ -76,7 +76,7 @@ import { apiurl, GetNoneToken } from "../datacrud/datacrud"
 
                         <div className="col-12 row justify-content-center">
                             <div>
-                                <CurrencyInput style={{
+                                <CurrencyInput inputmode="numeric" style={{
                                     padding: 0,
                                     border: "none",
                                     display: "flex",
@@ -128,7 +128,7 @@ import { apiurl, GetNoneToken } from "../datacrud/datacrud"
                         </div>
                         <div className="col-12 row justify-content-center">
                             <div>
-                                <CurrencyInput style={{
+                                <CurrencyInput inputmode="numeric" style={{
                                     padding: 0,
                                     border: "none",
                                     display: "flex",
