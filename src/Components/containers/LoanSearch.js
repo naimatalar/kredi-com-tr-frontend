@@ -6,6 +6,8 @@ import { TabContent, TabPane, Nav, NavItem, NavLink, Card, Button, CardTitle, Ca
 import { GetNoneToken, PostNoneToken } from "../../datacrud/datacrud";
 import classnames from 'classnames';
 import Image from "react-image-webp";
+import { KrediInput } from "../KrediInput";
+import KrediSelect from "../KrediSelect";
 export const LoanSearch = (props) => {
     const [loansOption, setLoanOption] = useState([])
     const [terms, setTerms] = useState([])
@@ -31,7 +33,7 @@ export const LoanSearch = (props) => {
 
         let termsList = [];
         terms?.map((item, key) => {
-            termsList.push({ label: item, value: item })
+            termsList.push({ text: item, value: item })
         })
         setTerms(terms)
         setLoanType(id)
@@ -82,7 +84,7 @@ export const LoanSearch = (props) => {
         let ln = [];
         props.Loans?.map((item, key) => {
 
-            ln.push({ label: item.loanName, value: item.id })
+            ln.push({ text: item.loanName, value: item.id })
         })
         setPropsLoan(props.Loans)
         setLoanOption(ln)
@@ -104,7 +106,7 @@ export const LoanSearch = (props) => {
                                 <div className="container">
                                     <div className="row">
                                         <div className="col-12" style={{ marginBottom: 15 }}>
-                                            <Dropdown
+                                            <KrediSelect
                                                 options={loansOption}
                                                 onChange={(element) => loanTypeOnChange(element.value)}
                                                 placeholder="Kredi Türü Seçiniz"
@@ -115,7 +117,7 @@ export const LoanSearch = (props) => {
                                         </div>
                                         <div className="col-6 ">
 
-                                            <CurrencyInput inputmode="numeric" style={{ width: "100%", maxWidth: "100%" }} placeholder="Tutar Giriniz" className="col-7"
+                                            <KrediInput style={{ width: "100%", maxWidth: "100%" }} placeholder="Tutar Giriniz" className="col-7"
                                                 decimalSeparator=","
                                                 thousandSeparator="."
                                                 precision="0"
@@ -127,11 +129,11 @@ export const LoanSearch = (props) => {
                                             {/* <input type="text" ></input> */}
                                         </div>
                                         <div className="col-6 ">
-                                            <Dropdown
+                                            <KrediSelect
                                                 options={terms}
                                                 onChange={(d) => { termListOnChange(d.value) }}
-                                                placeholder="Vade"
-                                                arrowClassName="dropdownArrow"
+                                                prefix="Vade: "
+                                               
 
                                             />
                                         </div>

@@ -16,6 +16,8 @@ import HowMuchLoan from "../Components/containers/HowMuchLoan";
 import { LoanRate } from "../Components/containers/LoanRate";
 import { DispositContainer } from "../Components/containers/DispositContainer";
 import { FastLoan } from "../Components/containers/FastLoan";
+import { KrediInput } from "../Components/KrediInput";
+import KrediSelect from "../Components/KrediSelect";
 
 const LoanBank = (props) => {
     const [bank, setBank] = useState({})
@@ -142,7 +144,7 @@ const LoanBank = (props) => {
 
                                 <div> <b style={{ color: "black" }}>Tutar</b></div>
 
-                                <CurrencyInput inputmode="numeric" style={{
+                                <KrediInput style={{
                                     float: "left",
                                     minWidth: 60,
                                 }}
@@ -156,12 +158,11 @@ const LoanBank = (props) => {
                                     onChange={(val) => { updateSelectedLoanOption(null, val.replace("₺", "").replace(/\./g, ""), null); setAmt(val.replace("₺", "").replace(/\./g, "")) }}
                                 />
                                 <div> <b style={{ color: "black" }}>Vade</b></div>
-                                <Dropdown
+                                <KrediSelect
                                     options={loanTermsDropdown || []}
                                     onChange={(val) => { updateSelectedLoanOption(null, null, val.value) }}
-                                    placeholder="Vade Seçiniz"
+                                    prefix="Vade: "
                                     value={isNaN(parseInt(trm).toString()) ? "":parseInt(trm).toString()}
-                                    arrowClassName="dropdownArrow"
                                 />
 
                             </div>
@@ -191,7 +192,7 @@ const LoanBank = (props) => {
                             <div className="col-12 col-lg-6 pt-2 pb-2">
                                 <b className=" col-6" style={{ color: "#797979" }}>Toplam Faiz:</b>
                                 <b className="col-6" style={{ color: "black" }}>
-                                    <CurrencyInput inputmode="numeric" style={{
+                                    <KrediInput style={{
                                         padding: 0,
                                         border: "none",
                                         display: "inline",
@@ -211,7 +212,7 @@ const LoanBank = (props) => {
                             <div className="col-12 col-lg-6 pt-2 pb-2">
                                 <b className=" col-6" style={{ color: "#797979" }}>Toplam Vergi:</b>
                                 <b className="col-6" style={{ color: "black" }}>
-                                    <CurrencyInput inputmode="numeric" style={{
+                                    <KrediInput style={{
                                         padding: 0,
                                         border: "none",
                                         display: "inline",
@@ -231,7 +232,7 @@ const LoanBank = (props) => {
                             <div className="col-12 col-lg-6 pt-2 pb-2">
                                 <b className=" col-4" style={{ color: "#797979" }}>Ödenecek Tutar:</b>
                                 <b className="col-8" style={{ color: "black" }}>
-                                    <CurrencyInput inputmode="numeric" style={{
+                                    <KrediInput style={{
                                         padding: 0,
                                         border: "none",
                                         display: "inline",
@@ -251,7 +252,7 @@ const LoanBank = (props) => {
                             <div className="col-12 mt-3">
                                 <h2 style={{ fontSize: 17 }}>
                                     Bu kredi hesaplama  <b>
-                                        <CurrencyInput inputmode="numeric" style={{
+                                        <KrediInput style={{
                                             padding: 0,
                                             border: "none",
                                             display: "inline",
@@ -277,7 +278,7 @@ const LoanBank = (props) => {
                                     <div className="col-4">
                                         <div className=" col-12" style={{ color: "#797979", fontWeight: "bold", fontSize: 18 }}>Aylık Taksit:</div>
                                         <div className="col-12" style={{ color: "black", fontWeight: "bold", fontSize: 25 }}>
-                                            <CurrencyInput inputmode="numeric" style={{
+                                            <KrediInput style={{
                                                 padding: 0,
                                                 border: "none",
                                                 display: "inline",
@@ -356,7 +357,7 @@ const LoanBank = (props) => {
                                                 <div key={key} className="div-table-row" style={color}>
                                                     <div className="div-table-col pl-2" style={{ width: 50 }}>{key + 1}</div>
                                                     <div className="div-table-col">
-                                                        <CurrencyInput inputmode="numeric" style={{
+                                                        <KrediInput style={{
                                                             padding: 0,
                                                             border: "none",
                                                             display: "inline",
@@ -373,7 +374,7 @@ const LoanBank = (props) => {
                                                             value={item.tutar.toFixed(0)} />
                                                     </div>
                                                     <div className="div-table-col">
-                                                        <CurrencyInput inputmode="numeric" style={{
+                                                        <KrediInput style={{
                                                             padding: 0,
                                                             border: "none",
                                                             display: "inline",
@@ -390,7 +391,7 @@ const LoanBank = (props) => {
                                                             value={item.odenen.toFixed(0)} />
                                                     </div>
                                                     <div className="div-table-col">
-                                                        <CurrencyInput inputmode="numeric" style={{
+                                                        <KrediInput style={{
                                                             padding: 0,
                                                             border: "none",
                                                             display: "inline",
@@ -407,7 +408,7 @@ const LoanBank = (props) => {
                                                             value={item.faiz.toFixed(0)} />
                                                     </div>
                                                     <div className="div-table-col">
-                                                        <CurrencyInput inputmode="numeric" style={{
+                                                        <KrediInput style={{
                                                             padding: 0,
                                                             border: "none",
                                                             display: "inline",
@@ -424,7 +425,7 @@ const LoanBank = (props) => {
                                                             value={item.vergi.toFixed(0)} />
                                                     </div>
                                                     <div className="div-table-col">
-                                                        <CurrencyInput inputmode="numeric" style={{
+                                                        <KrediInput style={{
                                                             padding: 0,
                                                             border: "none",
                                                             display: "inline",

@@ -7,6 +7,8 @@ import { Helmet } from "react-helmet";
 import { Nav, NavItem, NavLink, TabContent, TabPane } from "reactstrap";
 import classnames from 'classnames';
 import Image from "react-image-webp";
+import Rimage from "../Components/Rimage";
+import { KrediInput } from "../Components/KrediInput";
 
  
  const DispositSearchPage = (props) => {
@@ -83,7 +85,7 @@ import Image from "react-image-webp";
 
                             <div className="col-12">
                                 <div className="col-12 mb-4">
-                                    <CurrencyInput inputmode="numeric" style={{ width: "100%", maxWidth: "100%" }} placeholder="Tutar Giriniz" className="col-7"
+                                    <KrediInput style={{ width: "100%", maxWidth: "100%" }} placeholder="Tutar Giriniz" className="col-7"
                                         decimalSeparator=","
                                         thousandSeparator="."
                                         precision="0"
@@ -126,9 +128,9 @@ import Image from "react-image-webp";
                             </Helmet>
                             <div className="col-12 col-md-5 col-lg-5 row  align-content-center justify-content-center">
                                 <div className="justify-content-center col-12 row">
-                                    <Image alt="Vadeli mevduat hesapları" title="Vadeli Mevduat Hesaplama Ve Başvurma" style={{ width: "30%" }}
-                                     src={require("../assets/images/moneycolor.png").default}
-                                     src={require("../assets/images/moneycolor.png").default}></Image>
+                                    <img alt="Vadeli mevduat hesapları" title="Vadeli Mevduat Hesaplama Ve Başvurma" style={{ width: "30%" }}
+                                     src={require("../assets/images/moneycolor.png").default}>
+                                   </img>
                                 </div>
                                 <div className="justify-content-center col-12 row">
                                     <h3><b>Mavduat</b></h3>
@@ -166,7 +168,7 @@ import Image from "react-image-webp";
                             <b className="mb-3" style={{ color: "black" }}>Aylık Gelirinizi Girerek Hesaplamaya Başlayın </b>
                             <div style={{ clear: "both" }}></div>
                             <div className="col-8">
-                                <CurrencyInput inputmode="numeric" style={{ width: "100%", maxWidth: "100%" }} placeholder="Tutar Giriniz." className="col-7"
+                                <KrediInput style={{ width: "100%", maxWidth: "100%" }} placeholder="Tutar Giriniz." className="col-7"
                                     decimalSeparator=","
                                     thousandSeparator="."
                                     precision="0"

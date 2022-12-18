@@ -8,6 +8,8 @@ import { DispositContainer } from "../Components/containers/DispositContainer";
 import { dispositRedirect } from "../Components/RedirectComponent";
 import { Helmet } from "react-helmet";
 import Rimage from "../Components/Rimage";
+import { KrediInput } from "../Components/KrediInput";
+import KrediSelect from "../Components/KrediSelect";
 
  const DispositSearchResult = (props) => {
     var [data, setData] = useState([])
@@ -113,11 +115,11 @@ import Rimage from "../Components/Rimage";
                                     <div className="col-12 col-md-3 ">
                                         <label className="col-12 mb-0">Para Birimi</label>
 
-                                        <Dropdown
+                                        <KrediSelect
                                             options={[
-                                                { value: "0", label: "Türk Lirası" },
-                                                { value: "1", label: "Dolar" },
-                                                { value: "2", label: "Euro" },
+                                                { value: "0", text: "Türk Lirası" },
+                                                { value: "1", text: "Dolar" },
+                                                { value: "2", text: "Euro" },
 
                                             ]}
                                             onChange={(element) => { setCurrency(element.value); currencIconChange(element.value) }}
@@ -129,7 +131,7 @@ import Rimage from "../Components/Rimage";
 
                                     <div className="col-12 col-md-3 mb-2">
                                         <label className="col-12 mb-0">Anapara</label>
-                                        <CurrencyInput inputmode="numeric" style={{ width: "100%", maxWidth: "100%" }} placeholder="Tutar Giriniz" className="col-7"
+                                        <KrediInput style={{ width: "100%", maxWidth: "100%" }} placeholder="Tutar Giriniz" className="col-7"
                                             decimalSeparator=","
                                             thousandSeparator="."
                                             precision="0"
@@ -188,7 +190,7 @@ import Rimage from "../Components/Rimage";
                                                     </div>
 
                                                     <div className="mb-2"><b style={{ color: "black" }}>
-                                                        <CurrencyInput inputmode="numeric" style={{
+                                                        <KrediInput style={{
                                                             padding: 0,
                                                             border: "none",
                                                             display: "inline",
@@ -219,7 +221,7 @@ import Rimage from "../Components/Rimage";
                                                     </div>
 
                                                     <div className="mb-2">
-                                                        <CurrencyInput inputmode="numeric" style={{
+                                                        <KrediInput style={{
                                                             padding: 0,
                                                             border: "none",
                                                             display: "inline",
@@ -252,7 +254,7 @@ import Rimage from "../Components/Rimage";
                                                     </div>
 
                                                     <div style={{ overflow: "hidden" }}>
-                                                        <CurrencyInput inputmode="numeric" style={{
+                                                        <KrediInput style={{
                                                             padding: 0,
                                                             border: "none",
                                                             display: "inline",

@@ -99,7 +99,7 @@ const HomeLoan = (props) => {
         setLoading(false)
 
     }
-    
+
     return (<>
         <Seo title={"Ev Kredisi Hesaplama"} description={"Ev almak için kredi arayıp başvuru yapabilirsiniz. Bütün bankaların faiz oranları karşılatırılıp hesaplanır. Tutar ve vadenizle beraber size en uygun araç kredilerini sizin için bulur. Hemen başvurun"} />
 
@@ -146,9 +146,9 @@ const HomeLoan = (props) => {
 
         <div className="row mt-4" >
 
-        <div className="col-12 mb-4">
+            {/* <div className="col-12 mb-4">
                 <Exchange />
-            </div>
+            </div> */}
 
             <div className="col-12 mt-3 mb-3 text-center">
                 <h1 className="home-title" style={{ marginTop: 0 }}>Evini <span style={{ fontWeight: "bold" }}>Seç</span>, Konut Kredini <span style={{ fontWeight: "bold" }}>Hesapla</span> , Başvur <span style={{ fontWeight: "bold" }}>Evini Al!</span>  </h1>
@@ -162,10 +162,57 @@ const HomeLoan = (props) => {
 
             <div className=" col-12 p-0">
 
-                <LoanSearchLabel SelectedTab={"2"} Loans={props.Loans}></LoanSearchLabel>
+                <LoanSearchLabel SelectedTab={"1"} Loans={props.Loans}></LoanSearchLabel>
 
             </div>
+            <div className="col-12 mb-4 clbck">
+                <div>
 
+
+                    <h1>Ev Kredisi Hesaplama</h1>
+                    <img className="imagetts" src={require("../../assets/images/homeloan.jpg").default}></img>
+                    <p>Konut kredileri ile almak istediğiniz evin tamamı yada bir kısmının ödemesi yapmak için kullanılan kredi türüdür</p>
+                    <h2 style={{ fontSize: 21 }}>Konut kredisi gerekli belgeler</h2>
+                    <p>Konut kredisi kullanımı için öncelikle bankaların yaş sınırlaması 18 veya 20 yaş üzerinde olunması gerekmektedir. Almak istediğiniz konutla ilgili istenilen bazı belgeler şunlardır;
+                    </p>
+                    <ul>
+                        <li>
+                        Başvuru Formu 
+                        </li>
+                        <li>
+                            Almak istediğiniz konutun fotokopisi
+                        </li>
+                        <li>
+                            Kimlik Belgesi (Nüfus cüzdanı, pasaport, ehliyet)
+                        </li>
+                        <li>
+                            İkametgah Belgesi yada kişinin adına kayıtlı son tarihli fatura
+                        </li>
+                        <li>
+                            Gelir belgesi
+                        </li>
+
+
+                    </ul>
+                </div>
+                <div className="clearfix"></div>
+                <div>
+                    <h2 style={{ fontSize: 21 }}>Konut Kredisi Nasıl Hesaplanır?</h2>
+                    <p>Konut kredileri bankaların faiz oranları doğrultusunda hesaplanır. Bankaların faiz oranları dışında vergiler harçlar yada damga ücretleri de göz önünde bulundurularak hesaplama yapılmalıdır</p>
+                    <p>Konut kredisi hesaplama formülü ise şöyledir</p>
+                    <img className="imagetts"  style={{ height: 290 }}src={require("../../assets/images/krediArat.jpg").default}></img>
+                    <img style={{ width: 477, height: 84, marginBottom: 10 }} src={require("../../assets/images/kredihesap.jpg").default}></img>
+                    <h2 style={{ fontSize: 21 }}>Konut kredisi kullanırken nelere dikkat edilmeli?</h2>
+
+                    <p>Kredi kullanımı yapmadan önce banka araştırması yapılmalır. Hemen hemen her banka, konut kredileri ile ilgili birçok kampanyalar  uygulamaktadır. </p><p>Bu kampanyalar gerek ödeme kolaylığı gerekse faiz oranlarıyla ilgili olabilmektedir. 
+                        Bankalar ile ilgi araştırma yapıp size uygun kampanyayı bulduğunuzda, kredi kullanımında ek ücretler, vergiler ve diğer harçları öğrenmeniz hesaplama yapmanızda size ışık tutacak en önemli bilgilerdir.
+
+                    </p>
+                </div>
+
+
+
+            </div>
 
             <div className="col-12 ab-fonts  mb-3">
                 <div className="row justify-content-center">
@@ -454,7 +501,7 @@ const HomeLoan = (props) => {
 
         </div>
 
-        <div className="row middle-menu-content">
+   {/*     <div className="row middle-menu-content">
             <div className="col-12">
                 <p className="home-title" >Düzinelerce <span style={{ fontWeight: "bold" }}>kredi ödeme seçenekleri </span> ve bol kazandırıp çok uçuran <span style={{ fontWeight: "bold" }}>kredi kartları </span> parmaklarınızın ucunda! </p>
             </div>
@@ -462,7 +509,7 @@ const HomeLoan = (props) => {
                 <MiddleMenu Loans={props.Loans}></MiddleMenu>
             </div>
         </div>
-        {/* <div className="container slider-content">
+         <div className="container slider-content">
 
             <Slider data={slider}></Slider>
 
@@ -534,7 +581,7 @@ const HomeLoan = (props) => {
 
 
         <div className="row">
-            <div >
+            {/* <div >
 
                 <div className="row">
 
@@ -546,7 +593,7 @@ const HomeLoan = (props) => {
                     </div>
                 </div>
 
-            </div>
+            </div> */}
         </div>
         <div className="row" style={{ justifyContent: "center", marginTop: 100 }}>
             {windowDimensions.width > 800 &&

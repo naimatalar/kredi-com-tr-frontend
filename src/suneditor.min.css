@@ -1053,7 +1053,7 @@
     margin-left:0;
     margin-right:4px
 }
-.sun-editor .se-dialog .se-dialog-inner .se-dialog-form-footer label:first-child{
+.sun-editor .se-dialog .se-dialog-inner .se-dialog-form-footer text:first-child{
     margin-right:16px;
     margin-left:0
 }
@@ -1812,7 +1812,7 @@
 .sun-editor.se-rtl .se-dialog .se-dialog-inner .se-dialog-footer>div>label{
     margin:0 0 0 5px
 }
-.sun-editor.se-rtl .se-dialog .se-dialog-inner .se-dialog-form-footer label:first-child{
+.sun-editor.se-rtl .se-dialog .se-dialog-inner .se-dialog-form-footer text:first-child{
     margin-left:16px;
     margin-right:0
 }

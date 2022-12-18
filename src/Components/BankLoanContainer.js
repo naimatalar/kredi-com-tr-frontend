@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import CurrencyInput from 'react-currency-input';
 import Dropdown from 'react-dropdown';
+import { KrediInput } from './KrediInput';
+import KrediSelect  from './KrediSelect';
 
 function BankLoanContainer(props) {
     const [selectedLoanOptions, setSelectedLoanOptions] = useState({ rate: null, amount: null, term: null })
@@ -123,7 +125,7 @@ function BankLoanContainer(props) {
 
                         <div className="col-5 ">
 
-                            <CurrencyInput inputmode="numeric" style={{
+                            <KrediInput style={{
                                 float: "left",
                                 minWidth: 60,
                             }}
@@ -139,11 +141,10 @@ function BankLoanContainer(props) {
                             />
                         </div>
                         <div className="col-5 ">
-                            <Dropdown
+                            <KrediSelect
                                 options={loanTermsDropdonw?.sort((a, b) => a.value - b.value) || []}
                                 onChange={(val) => updateSelectedLoanOption(null, null, val.value)}
-                                placeholder="Vade"
-                                arrowClassName="dropdownArrow"
+                                prefix="Vade: "
                             />
                         </div>
 

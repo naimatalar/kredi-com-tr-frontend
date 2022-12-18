@@ -140,7 +140,7 @@ const CreditCartCampaingDetail = (props) => {
                 </div>
 
             </div>
-            <div className="row">
+            {/* <div className="row">
                 <div className="col-12  mb-4 mt-3">
                     {
                         titleList.map((item, key) => {
@@ -150,7 +150,7 @@ const CreditCartCampaingDetail = (props) => {
                     }
 
                 </div>
-            </div>
+            </div> */}
 
         </div>
     );

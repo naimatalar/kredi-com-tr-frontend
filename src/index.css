@@ -171,7 +171,7 @@ body {
   filter: brightness(0) invert(1);
   padding-bottom: 20px;
   padding-top: 0;
-  padding: 0 30px 22px 28px;
+  /* padding: 0 30px 22px 28px; */
   margin-right: 20px;
   background-color: #ffffff5c;
   border-top-left-radius: 0.25rem;
@@ -228,7 +228,7 @@ body {
 
 .item-loan-name-bank {
   margin-top: -14px;
-  font-size: 22px;
+  font-size:18px;
 }
 
 .tshadow {
@@ -386,11 +386,11 @@ a:active {
 .bank-loan-content {
   border-radius: 6px;
   box-shadow: 0px 2px 5px 1px black;
-  background-image: url('./assets/images/krediArat.webp');
+  background-image: url('./assets/images/krediArat.jpg');
 }
 
 .bankbackground {
-  background-image: url('./assets/images/kredibanka.webp');
+  background-image: url('./assets/images/kredibanka.png');
 }
 
 .middle-menu-text {
@@ -402,7 +402,8 @@ a:active {
   background: #b8e00b;
   padding-top: 6px;
   background-image: url('./assets/images/repead-bg.png');
-  background-size: 50px
+  background-size: 50px;
+  padding: 0 15px 0 15px;
 }
 
 .bank-loan-lightview {
@@ -431,10 +432,13 @@ a:active {
   border-color: #077a68 transparent transparent;
 }
 
-input[type="text"] {
+input[type="text"],input[type="tel"]{
   padding: 8px;
-  border: 1px solid #cccccc;
+  border: 1px solid #b8b8b8;
   width: 100%;
+}
+.rrs{
+  border: 1px solid #b8b8b8;
 }
 
 ::-webkit-input-placeholder {
@@ -1152,10 +1156,13 @@ img {
     font-size: 15px;
   }
 
-  .bank-loan-content * {
-    zoom: .80
+  .item-loan-name-bank {
+    margin-top: -6px;
+    font-size:9px;
   }
-
+  .loan-tabs img{
+    height: 50px;
+  }
   .credit-cart-head * {
     zoom: .92;
     margin-top: 5px;
@@ -1322,13 +1329,19 @@ h1 {
 }
 
 .calculate-pcnt {
-  background: rgb(129 152 126 / 51%);
-  padding: 29px 0px 13px;
-  box-shadow: 1px 1px 12px 1px black;
-  border: 1px solid #ffffff59;
-  border-radius: 11px;
+  background: linear-gradient(
+    180deg, #023a59a8, #43067b52);
+        padding: 29px 0px 13px;
+        box-shadow: 1px 1px 12px 1px black;
+        border: 1px solid #ffffff59;
+        border-radius: 11px;
+      
 }
-
+.bcst{
+  background-image: url('./assets/images/winbg.jpg');
+  background-size: 100%;
+  border-radius: 10px;
+}
 .calculate-a {
   text-decoration: none !important;
   color: white;
@@ -1966,4 +1979,24 @@ ol ol {
   font-size: 17px;
   color: #404040;
   cursor: pointer;
+}
+.clbck *{
+  color: rgb(32, 32, 32);
+}
+.imagetts{
+  width: 350px;
+    height: 350px;
+    float: right;
+    border-radius: 50%;
+    box-shadow: 2px 3px 8px -1px black;
+    margin: 0 0 0 29px;
+}
+.fast-loan-item .caret-icon{
+  top:0.68rem !important;
+  line-height: 10px;
+  
+}
+.fast-loan-item .rrs__button{
+  line-height: 25px;
+  
 }

@@ -145,9 +145,9 @@ const CarLoan = (props) => {
         }
 
         <div className="row mt-4" >
-        <div className="col-12 mb-4">
+        {/* <div className="col-12 mb-4">
                 <Exchange  />
-            </div>
+            </div> */}
 
 
             <div className="col-12 mt-3 mb-3 text-center">
@@ -162,7 +162,7 @@ const CarLoan = (props) => {
          
                 <div className=" col-12 p-0">
 
-                    <LoanSearchLabel SelectedTab={"1"} Loans={props.Loans}></LoanSearchLabel>
+                    <LoanSearchLabel SelectedTab={"3"} Loans={props.Loans}></LoanSearchLabel>
 
                 </div>
 
@@ -519,7 +519,7 @@ const CarLoan = (props) => {
             </div>
 
         </div>
-        <div className="row middle-menu-content">
+      {/*  <div className="row middle-menu-content">
             <div className="col-12">
                 <p className="home-title" >Düzinelerce <span style={{ fontWeight: "bold" }}>kredi ödeme seçenekleri </span> ve bol kazandırıp çok uçuran <span style={{ fontWeight: "bold" }}>kredi kartları </span> parmaklarınızın ucunda! </p>
             </div>
@@ -527,7 +527,7 @@ const CarLoan = (props) => {
                 <MiddleMenu Loans={props.Loans}></MiddleMenu>
             </div>
         </div>
-        {/* <div className="container slider-content">
+         <div className="container slider-content">
 
             <Slider data={slider}></Slider>
 
@@ -599,7 +599,7 @@ const CarLoan = (props) => {
 
 
         <div className="row">
-            <div >
+            {/* <div >
 
                 <div className="row">
 
@@ -611,7 +611,7 @@ const CarLoan = (props) => {
                     </div>
                 </div>
 
-            </div>
+            </div> */}
         </div>
         <div className="row" style={{ justifyContent: "center", marginTop: 100 }}>
             {windowDimensions.width > 800 &&

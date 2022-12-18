@@ -7,7 +7,9 @@ import { Helmet } from "react-helmet";
 import { HowToPay } from "../Components/calculate-page/HowToPay";
 import { LoanRate } from "../Components/containers/LoanRate";
 import Image from "react-image-webp";
+import { KrediInput } from "../Components/KrediInput";
 
+import KrediSelect from "../Components/KrediSelect";
 export const Loan = (props) => {
     const [loan, setLoan] = useState(props.Loan)
     const [amount, setAmount] = useState()
@@ -27,9 +29,10 @@ export const Loan = (props) => {
 
         let termsList = [];
         terms?.map((item, key) => {
-            termsList.push({ label: item, value: item })
+            termsList.push({ value: item, text: item })
         })
         setTerms(terms)
+
     }
 
     const calculate = async () => {
@@ -70,7 +73,7 @@ export const Loan = (props) => {
 
                             <div className="col-12">
                                 <div className="col-12 mb-4">
-                                    <CurrencyInput inputmode="numeric" style={{ width: "100%", maxWidth: "100%" }} placeholder="Tutar Giriniz" className="col-7"
+                                    <KrediInput style={{ width: "100%", maxWidth: "100%" }} placeholder="Tutar Giriniz" className="col-7"
                                         decimalSeparator=","
                                         thousandSeparator="."
                                         precision="0"
@@ -81,14 +84,33 @@ export const Loan = (props) => {
                                     />
 
                                 </div>
-                                <div className="col-12 mb-4">
-                                    <Dropdown
-                                        options={terms}
+                                <div className="col-12 mb-4 ">
+                                    <KrediSelect
+                                        options={
+                                            terms
+                                        }
                                         onChange={(d) => { setTermsValue(d.value) }}
-                                        placeholder="Vade"
-                                        arrowClassName="dropdownArrow"
-
+                                        value="36"
+                                        prefix="Vade: "
                                     />
+
+                                    {/* {terms.length > 0 &&
+                                        <Picker
+                                            // options={terms}
+                                           
+
+                                            valueGroups={
+                                                {
+                                                    data: terms[0]?.value,
+                                                }
+                                            }
+
+                                            optionGroups={{
+                                                // data: [terms.map(ele=> ele.value)],
+                                                data: terms?.map(ele => { return ele.label })
+
+                                            }}
+                                        />} */}
                                 </div>
                                 <div className="col-12 " style={{ justifyontent: "flex-end", marginTop: 12 }}>
                                     <button onClick={(x) => { calculate() }} className="default-button" type="submit">Kredi Hesapla</button>
@@ -150,7 +172,7 @@ export const Loan = (props) => {
                             <b className="mb-3" style={{ color: "black" }}>Aylık Gelirinizi Girerek Hesaplamaya Başlayın </b>
                             <div style={{ clear: "both" }}></div>
                             <div className="col-8">
-                                <CurrencyInput inputmode="numeric" style={{ width: "100%", maxWidth: "100%" }} placeholder="Tutar Giriniz" className="col-7"
+                                <KrediInput style={{ width: "100%", maxWidth: "100%" }} placeholder="Tutar Giriniz" className="col-7"
                                     decimalSeparator=","
                                     thousandSeparator="."
                                     precision="0"

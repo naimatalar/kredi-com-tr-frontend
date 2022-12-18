@@ -8,6 +8,8 @@ import calculator from "../calculator";
 import { apiurl, GetNoneToken } from "../../datacrud/datacrud";
 import { loanRedirect } from "../RedirectComponent";
 import Rimage from "../Rimage";
+import { KrediInput } from "../KrediInput";
+import KrediSelect from "../KrediSelect";
 export const FastLoan = (props) => {
     const [loading, setLoading] = useState(true)
 
@@ -55,9 +57,7 @@ export const FastLoan = (props) => {
     }
 
 
-    return (
-
-        <div>
+    return  <div>
             <div className="fast-loan-container">
                 <div>
                     <p style={{ textAlign: "center", fontWeight: "bold" }}>
@@ -106,7 +106,7 @@ export const FastLoan = (props) => {
 
             </div>
         </div >
-    )
+    
 
 }
 
@@ -153,14 +153,14 @@ const FastLoanList = (props) => {
         findLoan.alertShow = false;
         findLoan.alert = null;
 
-        if (amount < findLoan.minLoan) {
+        if (amount < 1000) {
             findLoan.alertShow = true;
-            findLoan.alert = "En düşük kredi tutarı " + findLoan.minLoan + " olabilir";
+            findLoan.alert = "En düşük kredi tutarı 1.000₺ olabilir";
         }
 
-        if (amount > findLoan.maxLoan) {
+        if (amount > 100000) {
             findLoan.alertShow = true;
-            findLoan.alert = "En yüksek kredi tutarı " + findLoan.maxLoan + " olabilir";
+            findLoan.alert = "En yüksek kredi tutarı 100.000 ₺ olabilir";
         }
         if (!findLoan.alertShow) {
             var calculateResult = calculator(findLoan.rate, amount, term, 5, 15)
@@ -176,14 +176,12 @@ const FastLoanList = (props) => {
         setRefresh(new Date().getTime())
     }
 
-    return (
-
-        <div className="col-12 fast-loan-item" >
+    return  <div className="col-12 fast-loan-item" >
             <div className="row" style={{ padding: "8px 0 8px 0" }}>
                 <div className="col-4 ">
                     <div className="col-12" style={{ padding: 0 }}><b>Tutar</b></div>
-                    <div>
-                        <CurrencyInput inputmode="numeric"
+                    <div> 
+                        <KrediInput 
                         
                             thousandSeparator="."
                             precision="0"
@@ -198,12 +196,11 @@ const FastLoanList = (props) => {
                 </div>
                 <div className="col-4 ">
                     <div className="col-12" style={{ padding: 0 }}><b>Vade</b></div>
-                    <Dropdown
+                    <KrediSelect
                     
                         options={fastLoanData.loanTerms.sort((a, b) => a.value - b.value)}
                         value={fastLoanData.term?.toString()}
                         onChange={(val) => { chanheVals(fastLoanData.id, val.value, fastLoanData.amount) }}
-                        arrowClassName="dropdownArrow"
                         controlClassName="drowpdownControlFastLoan"
                     />
                 </div>
@@ -256,7 +253,7 @@ const FastLoanList = (props) => {
                 </div>
             </div>
         </div>
-    )
+    
 }
 
 function FastLoanResult(props) {

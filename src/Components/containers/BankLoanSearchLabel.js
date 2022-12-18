@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import CurrencyInput from 'react-currency-input';
 import Dropdown from 'react-dropdown';
 import Image from 'react-image-webp';
+import { KrediInput } from '../KrediInput';
+import KrediSelect from '../KrediSelect';
 
 export function BankLoanSearchLabel(props) {
     const [selectedLoanOptions, setSelectedLoanOptions] = useState({ rate: null, amount: null, term: null })
@@ -89,8 +91,8 @@ export function BankLoanSearchLabel(props) {
         <div className="col-12 bank-loan-content mt-5 bankbackground p-0">
 
             <div className="bank-loan-lightview">
-                <div className="col-12 bank-loan-tab-link p-0">
-                    <ul className="loan-list-content pt-3">
+                <div className="col-12 bank-loan-tab-link ">
+                    <ul className="loan-list-content pt-3 row">
 
                         {props.Loans?.map((item, key) => {
                             let activeClass = ""
@@ -105,11 +107,11 @@ export function BankLoanSearchLabel(props) {
                                 loanUrlNameControl.push(item.loanUrlName)
 
                                 return (
-                                    <li key={key} onClick={() => { selectLoanType(item.loanUrlName) }} className={"loan-tabs text-center " + activeClass} key={key}>
+                                    <li key={key}  onClick={() => { selectLoanType(item.loanUrlName) }} className={"row justify-content-center loan-tabs text-center col-4 col-lg-2 col-md-2 mb-1 mb-lg-0 mb-md-0 " + activeClass} key={key}>
 
                                         {/* <a href="#"></a> */}
                                             {item.loanName.includes("İhtiyaç") &&
-                                                <Image title="İhtiyaç kredisi kredi.com.tr" alt="ihtiyaç kredisi sayfası" style={{ width: "50px" }}
+                                                <Image  title="İhtiyaç kredisi kredi.com.tr" alt="ihtiyaç kredisi sayfası" style={{ width: "50px" }}
                                                     webp={require("../../assets/images/moneycolor.webp").default}
                                                     src={require("../../assets/images/moneycolor.png").default}></Image>
                                             }
@@ -128,7 +130,7 @@ export function BankLoanSearchLabel(props) {
                                                     webp={require("../../assets/images/corporatecolor.webp").default}
                                                     src={require("../../assets/images/corporatecolor.png").default}></Image>
                                             }
-                                            <div className="item-loan-name-bank tshadow">
+                                            <div className="item-loan-name-bank col-12">
                                                 {item.loanName}
                                             </div>
 
@@ -146,9 +148,9 @@ export function BankLoanSearchLabel(props) {
                     <div className="row justify-content-center">
 
 
-                        <div className="col-5 ">
+                        <div className="col-12 col-lg-5 col-md-5 mb-1">
 
-                            <CurrencyInput inputmode="numeric" style={{
+                            <KrediInput style={{
                                 float: "left",
                                 minWidth: 60,
                             }}
@@ -163,22 +165,21 @@ export function BankLoanSearchLabel(props) {
                                 onChange={(val) => updateSelectedLoanOption(null, val.replace("₺", "").replace(/\./g, ""), null)}
                             />
                         </div>
-                        <div className="col-5 ">
-                            <Dropdown
+                        <div className="col-12 col-lg-5 col-md-5 mb-1">
+                            <KrediSelect
                                 options={loanTermsDropdonw?.sort((a, b) => a.value - b.value) || []}
                                 onChange={(val) => updateSelectedLoanOption(null, null, val.value)}
-                                placeholder="Vade"
-                                arrowClassName="dropdownArrow"
+                                prefix="Vade: "
                             />
                         </div>
 
 
 
 
-                        <div className="justify-content col-5 mt-3">
+                        <div className="justify-content col-0 col-md-5 col-lg-5 mt-0 mt-lg-3 mt-md-3">
 
                         </div>
-                        <div className="justify-content col-5 mt-3">
+                        <div className="justify-content col-12 col-md-5 col-lg-5 mt-3">
                             <button onClick={() => { redirectLoanBank() }} className="default-button justify-content-center" type="submit">Kredi Hesapla</button>
 
 

@@ -6,6 +6,7 @@ import Dropdown from 'react-dropdown';
 import { loanRedirect } from "../../Components/RedirectComponent";
 import Rimage from "../../Components/Rimage";
 import Seo from "../../Components/Seo";
+import { KrediInput } from "../KrediInput";
 export const CalculateCreditPage = (props) => {
   const [data, setData] = useState([])
   const [noData, setNoData] = useState(false)
@@ -29,7 +30,7 @@ export const CalculateCreditPage = (props) => {
     var Loans = await GetNoneToken("LoanTypes/GetAllSite").then(x => { return x.data }).catch(x => { return false })
 
     for (const item of Loans) {
-      lns.push({ label: item.loanName, value: item.id })
+      lns.push({ text: item.loanName, value: item.id })
     }
 
     setLoanOption(lns)
@@ -69,7 +70,7 @@ export const CalculateCreditPage = (props) => {
 
     let termsList = [];
     terms?.map((item, key) => {
-      termsList.push({ label: item, value: item })
+      termsList.push({ text: item, value: item })
     })
     setTerms(terms)
     setLoanType(id)
@@ -142,7 +143,7 @@ export const CalculateCreditPage = (props) => {
                   </div>
 
                   <div className="mb-2">
-                    <CurrencyInput inputmode="numeric" style={{
+                    <KrediInput style={{
                       padding: 0,
                       border: "none",
                       display: "inline",
@@ -171,7 +172,7 @@ export const CalculateCreditPage = (props) => {
                   </div>
 
                   <div className="mb-2">
-                    <CurrencyInput inputmode="numeric" style={{
+                    <KrediInput style={{
                       padding: 0,
                       border: "none",
                       display: "inline",

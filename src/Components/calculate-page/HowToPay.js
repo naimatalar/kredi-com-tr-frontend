@@ -6,28 +6,27 @@ import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp';
 import Rimage from "../Rimage";
 import CurrencyInput from "react-currency-input";
+import { KrediInput } from "../KrediInput";
 export const HowToPay = () => {
-    const [mountlyCome, setMountlyCome] = useState()
-    const [kira, setKira] = useState()
-    const [krediKart, setKrediKart] = useState()
-    const [evGiderleri, setEvGiderleri] = useState()
-    const [neKadarKredi, setNeKadarKredi] = useState()
+    const [mountlyCome, setMountlyCome] = useState(0)
+    const [kira, setKira] = useState(0)
+    const [krediKart, setKrediKart] = useState(0)
+    const [evGiderleri, setEvGiderleri] = useState(0)
+    const [neKadarKredi, setNeKadarKredi] = useState(0)
     const [resultData, setResultData] = useState([])
     const [collapseId, setCollepseId] = useState(null)
     const [loading, setLoading] = useState(false)
     const [notFound, setNotFound] = useState(false)
     const [resultMoney, setResultMoney] = useState(0)
 
+
     async function sleep(msec) {
         return new Promise(resolve => setTimeout(resolve, msec));
     }
-    const redirectLoanDetail = async (amount, term, loanId, bankUrlName) => {
 
 
-        window.location.replace("/bankalar/" + bankUrlName + "-kredi-hesaplama-ve-basvuru?amount=" + amount + "&term=" + term + "&loanId=" + loanId);
-    }
     const calculatenw = async () => {
-        setCollepseId(null)
+        setCollepseId(null) 
         setLoading(true)
         setNotFound(false)
         var loanType = await GetNoneToken("BankLoanRates/GetAllPersonelLoanSite").then(x => { return x.data }).catch(x => { return false })
@@ -101,89 +100,180 @@ export const HowToPay = () => {
         setResultData([])
 
     }
+    const lstResult = resultData.map((item, key) => {
+
+        return (
+            <div key={key} className="col-12 row align-items-center how-cal-items">
+                <div className="col-3 p-0 text-center">
+
+                    <Rimage alt={item.bankUrlName} src={item.bankLogoUrl} style={{ width: "70%" }}></Rimage>
+                </div>
+                <div className="col-7 p-0 text-center">
+
+                    Bu bankada <b style={{ color: "#077a68" }}> {item.items.length} adet  ödeyebileceğinzi kredi </b> bulundu.
+                </div>
+                <div className="col-2 p-0">
+                    {
+                        collapseId != item.id &&
+                        <button style={{
+                            border: "1px solid #c3c3c3",
+                            borderRadius: 6,
+                            float: "right"
+                        }} onClick={() => { setCollepseId(item.id) }}> <ArrowDropDownIcon></ArrowDropDownIcon></button>
+
+                    }
+                    {
+                        collapseId == item.id &&
+                        <button style={{
+                            border: "1px solid #c3c3c3",
+                            borderRadius: 6,
+                            float: "right"
+                        }} onClick={() => { setCollepseId(null) }}> <ArrowDropUpIcon></ArrowDropUpIcon></button>
+
+                    }
+                </div>
+                <div className="row justify-content-center m-0 col-12 mt-4">
+
+                    {item.items?.map((jitem, jkey) => {
+                        let color = jkey % 2 == 0 ? { background: "#eeeeee" } : {};
+                        return (
+                            <Collapse style={color} className="pt-2 pb-2 col-12 row justify-content-center" key={jkey} isOpen={collapseId == item.id} >
+
+                                <div className="row col-12">
+                                    <div className="col-3">
+                                        <div className="col-12 text-center font-weight-bold">
+                                            Aylık Ödeme
+                                        </div>
+                                        <div className="col-12 text-center">
+                                            {jitem.mountlyPayment.toFixed(2)}
+
+                                        </div>
+                                    </div>
+                                    <div className="col-1">
+                                        <div className="col-12 text-center font-weight-bold">
+                                            Faiz
+                                        </div>
+                                        <div className="col-12 text-center">
+                                            {jitem.rate}
+
+                                        </div>
+                                    </div>
+                                    <div className="col-2">
+                                        <div className="col-12 text-center font-weight-bold">
+                                            Vade
+                                        </div>
+                                        <div className="col-12 text-center">
+                                            {jitem.term}
+
+                                        </div>
+                                    </div>
+                                    <div className="col-4 ">
+                                        <div className="col-12 text-center font-weight-bold">
+                                            Toplam Geri Ödeme
+                                        </div>
+                                        <div className="col-12 text-center">
+                                            {jitem.totalPayment.toFixed(2)} ₺
+
+                                        </div>
+                                    </div>
+                                    <div className="col-2 row align-items-center justify-content-center">
+                                        <a href={"/bankalar/" + item.bankUrlName + "-kredi-hesaplama-ve-basvuru?amount=" + neKadarKredi + "&term=" + jitem.term + "&loanId=" + jitem.id} style={{ color: "white" }} className="default-button row justify-content-center">İncele</a>
+                                    </div>
+                                </div>
+                            </Collapse>
+                        )
+
+                    })
+
+                    }
+                </div>
+
+            </div>
+        )
+    })
+
     return (
         <div className="row justify-content-center">
             <div className="col-12 mb-3 mt-3"><h2>Ne Kadar Kredi Çekebilirim? </h2><hr className="title-hr mt-1"></hr></div>
 
             <div className="row col-12">
-                <div className="row pt-0 col-12" style={{color:"black"}}>
-                   Bu hesaplama aracımız sizin aylık ödeyebileceğiniz tutarı hesaplar. Size kredi verebilecek olan bankaları bulur. Bu hesaplamayı yaparken aylık gelirinizi ve bir kısım giderlerinizi sisteme girmeniz yeterli olacaktır. Hesaplamayı yaptıktan sonra size en uygun krediyi veren bankayı bulur.                
+                <div className="row pt-0 col-12" style={{ color: "black" }}>
+                    Bu hesaplama aracımız sizin aylık ödeyebileceğiniz tutarı hesaplar. Size kredi verebilecek olan bankaları bulur. Bu hesaplamayı yaparken aylık gelirinizi ve bir kısım giderlerinizi sisteme girmeniz yeterli olacaktır. Hesaplamayı yaptıktan sonra size en uygun krediyi veren bankayı bulur.
                 </div>
 
                 <br></br>
-                
+
                 <div className="row col-12 mt-2">
                     <h4>Hemen Bul</h4>
                 </div>
 
 
                 {loading == true && <img alt="loading" className="ld-but" src={require("../../assets/images/loading.gif").default}></img>}
-                <div className={"col-12 row calculate-page-calculate-container mt-4 " + (loading == true ? "add-blur" : "")} onSubmit={() => { return false }}>
+              
+                <form className={"col-12 row calculate-page-calculate-container mt-4 " + (loading == true ? "add-blur" : "")} onSubmit={() => { return false }}>
 
                     <div className="col-12 col-md-8 col-lg-8">
 
                         <div className="col-12 mb-2">
                             <label style={{ width: 165 }}><b> Ne Nadar Kredi Lazım: &nbsp;</b> </label>
-                            {/* <input value={neKadarKredi} onChange={(e) => { setNeKadarKredi(e.target.value) }} type="text" placeholder=" örnek: 30000"></input> */}
-                            <CurrencyInput require inputmode="numeric"  style={{ width: "100%", maxWidth: "100%" }} placeholder="Tutar Giriniz" className="col-7"
-                            decimalSeparator=","
-                            thousandSeparator="."
-                            precision="0"
-                            onChange={(x) => { setNeKadarKredi(x.replace("₺", "").replace(/\./g, "")) }}
-                            value={neKadarKredi}
-                            prefix="₺"
-                        />
-                       
+                            <KrediInput  require key="fsdfs" style={{ width: "100%", maxWidth: "100%" }} placeholder="Tutar Giriniz" className="col-7"
+                                decimalSeparator=","
+                                thousandSeparator="."
+                                precision="0"
+                                onChange={(x) => { setNeKadarKredi(x.replace("₺", "").replace(/\./g, "")) }}
+                                value={neKadarKredi}
+                                prefix="₺"
+                            />
+
                         </div>
                         <div className="col-12">
                             <label style={{ width: 165 }}><b>Aylık Gelir: &nbsp;</b> </label>
-                            {/* <input value={mountlyCome} onChange={(e) => { setMountlyCome(e.target.value) }} type="text" placeholder=" örnek: 5000"></input> */}
-                            <CurrencyInput require inputmode="numeric"  style={{ width: "100%", maxWidth: "100%" }} placeholder="Tutar Giriniz" className="col-7"
-                            decimalSeparator=","
-                            thousandSeparator="."
-                            precision="0"
-                            onChange={(x) => { setMountlyCome(x.replace("₺", "").replace(/\./g, "")) }}
-                            value={mountlyCome}
-                            prefix="₺"
-                        />
+                            <KrediInput require key="fsdfgdghf" style={{ width: "100%", maxWidth: "100%" }} placeholder="Tutar Giriniz" className="col-7"
+                                decimalSeparator=","
+                                thousandSeparator="."
+                                precision="0"
+                                onChange={(x) => { setMountlyCome(x.replace("₺", "").replace(/\./g, "")) }}
+                                value={mountlyCome}
+                                prefix="₺"
+                            />
                         </div>
 
                         <div className="col-12 mt-2">
                             <label style={{ width: 165 }}><b>Kira: &nbsp;</b> </label>
-                            {/* <input value={kira} onChange={(e) => { setKira(e.target.value) }} type="text" placeholder=" örnek: 1500"></input> */}
-                            <CurrencyInput require inputmode="numeric" style={{ width: "100%", maxWidth: "100%" }} placeholder="Tutar Giriniz" className="col-7"
-                            decimalSeparator=","
-                            thousandSeparator="."
-                            precision="0"
-                            onChange={(x) => { setKira(x.replace("₺", "").replace(/\./g, "")) }}
-                            value={kira}
-                            prefix="₺"
-                        />
+                            <KrediInput require  style={{ width: "100%", maxWidth: "100%" }} placeholder="Tutar Giriniz" className="col-7"
+                                decimalSeparator=","
+                                thousandSeparator="."
+                                precision="0"
+                                onChange={(x) => { setKira(x.replace("₺", "").replace(/\./g, "")) }}
+                                value={kira}
+                                prefix="₺"
+                            />
                         </div>
                         <div className="col-12 mt-2">
                             <label style={{ width: 165 }}><b> Kredi Kartı Gideri : &nbsp;</b> </label>
-                            {/* <input value={krediKart} onChange={(e) => { setKrediKart(e.target.value) }} type="text" placeholder=" örnek: 1000"></input> */}
-                            <CurrencyInput require inputmode="numeric"  style={{ width: "100%", maxWidth: "100%" }} placeholder="Tutar Giriniz" className="col-7"
-                            decimalSeparator=","
-                            thousandSeparator="."
-                            precision="0"
-                            onChange={(x) => { setKrediKart(x.replace("₺", "").replace(/\./g, "")) }}
-                            value={krediKart}
-                            prefix="₺"
-                        />
-                      
+                            <KrediInput require style={{ width: "100%", maxWidth: "100%" }} placeholder="Tutar Giriniz" className="col-7"
+                                decimalSeparator=","
+                                thousandSeparator="."
+                                precision="0"
+                                onChange={(x) => { setKrediKart(x.replace("₺", "").replace(/\./g, "")) }}
+                                value={krediKart}
+                                prefix="₺"
+                            />
+
                         </div>
                         <div className="col-12 mt-2">
                             <label style={{ width: 165 }}><b> Ev Giderleri  : &nbsp;</b> </label>
-                            {/* <input value={evGiderleri} onChange={(e) => { setEvGiderleri(e.target.value) }} type="text" placeholder=" örnek: 1000"></input> */}
-                            <CurrencyInput require inputmode="numeric"  style={{ width: "100%", maxWidth: "100%" }} placeholder="Tutar Giriniz" className="col-7"
-                            decimalSeparator=","
-                            thousandSeparator="."
-                            precision="0"
-                            onChange={(x) => { setEvGiderleri(x.replace("₺", "").replace(/\./g, "")) }}
-                            value={evGiderleri}
-                            prefix="₺"
-                        />
+                           
+                           <KrediInput  style={{ width: "100%", maxWidth: "100%" }} placeholder="Tutar Giriniz" className="col-7"
+                                decimalSeparator=","
+                                thousandSeparator="."
+                                precision="0"
+                                onChange={(x) => { setEvGiderleri(x.replace("₺", "").replace(/\./g, "")) }}
+                                value={evGiderleri}
+                                prefix="₺"
+                           ></KrediInput>
+                            {/* <CurrencyInput  
+                            /> */}
                         </div>
                     </div>
                     <div className="col-md-4 col-lg-4 col-12">
@@ -211,104 +301,14 @@ export const HowToPay = () => {
                         }
 
                         {
-                            resultData.map((item, key) => {
-                                
-                                return (
-                                    <div key={key} className="col-12 row align-items-center how-cal-items">
-                                        <div className="col-3 p-0 text-center">
-
-                                            <Rimage alt={item.bankUrlName} src={ item.bankLogoUrl} style={{ width: "70%" }}></Rimage>
-                                        </div>
-                                        <div className="col-7 p-0 text-center">
-
-                                            Bu bankada <b style={{ color: "#077a68" }}> {item.items.length} adet  ödeyebileceğinzi kredi </b> bulundu.
-                                        </div>
-                                        <div className="col-2 p-0">
-                                            {
-                                                collapseId != item.id &&
-                                                <button style={{
-                                                    border: "1px solid #c3c3c3",
-                                                    borderRadius: 6,
-                                                    float: "right"
-                                                }} onClick={() => { setCollepseId(item.id) }}> <ArrowDropDownIcon></ArrowDropDownIcon></button>
-
-                                            }
-                                            {
-                                                collapseId == item.id &&
-                                                <button style={{
-                                                    border: "1px solid #c3c3c3",
-                                                    borderRadius: 6,
-                                                    float: "right"
-                                                }} onClick={() => { setCollepseId(null) }}> <ArrowDropUpIcon></ArrowDropUpIcon></button>
-
-                                            }
-                                        </div>
-                                        <div className="row justify-content-center m-0 col-12 mt-4">
- 
-                                            {item.items?.map((jitem, jkey) => {
-                                                let color = jkey % 2 == 0 ? { background: "#eeeeee" } : {};
-                                                return (
-                                                    <Collapse  style={color} className="pt-2 pb-2 col-12 row justify-content-center" key={jkey} isOpen={collapseId == item.id} >
-
-                                                        <div className="row col-12">
-                                                            <div className="col-3">
-                                                                <div className="col-12 text-center font-weight-bold">
-                                                                    Aylık Ödeme
-                                                                </div>
-                                                                <div className="col-12 text-center">
-                                                                    {jitem.mountlyPayment.toFixed(2)}
-
-                                                                </div>
-                                                            </div>
-                                                            <div className="col-1">
-                                                                <div className="col-12 text-center font-weight-bold">
-                                                                    Faiz
-                                                                </div>
-                                                                <div className="col-12 text-center">
-                                                                    {jitem.rate}
-
-                                                                </div>
-                                                            </div>
-                                                            <div className="col-2">
-                                                                <div className="col-12 text-center font-weight-bold">
-                                                                    Vade
-                                                                </div>
-                                                                <div className="col-12 text-center">
-                                                                    {jitem.term}
-
-                                                                </div>
-                                                            </div>
-                                                            <div className="col-4 ">
-                                                                <div className="col-12 text-center font-weight-bold">
-                                                                    Toplam Geri Ödeme
-                                                                </div>
-                                                                <div className="col-12 text-center">
-                                                                    {jitem.totalPayment.toFixed(2)} ₺
-
-                                                                </div>
-                                                            </div>
-                                                            <div className="col-2 row align-items-center justify-content-center">
-                                                                <a href={"/bankalar/" + item.bankUrlName + "-kredi-hesaplama-ve-basvuru?amount=" + neKadarKredi + "&term=" + jitem.term + "&loanId=" + jitem.id} style={{ color: "white" }} className="default-button row justify-content-center">İncele</a>
-                                                            </div>
-                                                        </div>
-                                                    </Collapse>
-                                                )
-
-                                            })
-
-                                            }
-                                        </div>
-
-                                    </div>
-                                )
-                            })
+                            lstResult
                         }
                     </div>
-                </div>
+                </form>
             </div>
 
 
         </div>
-
     )
 }
+

@@ -28,8 +28,7 @@ export const PopulerBankCampaing = (props) => {
     }
     var HtmlToReactParser = require('html-to-react').Parser;
 
-    return (
-        <> {!loading &&
+    return <> {!loading &&
 
 
 
@@ -125,5 +124,5 @@ export const PopulerBankCampaing = (props) => {
                 </div>
             </div>
             }  </>
-    )
+    
 }

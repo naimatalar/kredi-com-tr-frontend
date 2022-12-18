@@ -6,6 +6,8 @@ import Dropdown from 'react-dropdown';
 import { loanRedirect } from "../Components/RedirectComponent";
 import Image from "react-image-webp";
 import Rimage from "../Components/Rimage";
+import { KrediInput } from "../Components/KrediInput";
+import KrediSelect from "../Components/KrediSelect";
 export const SearchLoanPage = (props) => {
   const [data, setData] = useState([])
   const [noData, setNoData] = useState(false)
@@ -24,7 +26,7 @@ export const SearchLoanPage = (props) => {
   const start = async () => {
     let lns = [];
     for (const item of props.Loans) {
-      lns.push({ label: item.loanName, value: item.id })
+      lns.push({ text: item.loanName, value: item.id })
     }
     setLoanOption(lns)
     let amount = new URLSearchParams(props.location.search).get("amount") || 0
@@ -33,7 +35,7 @@ export const SearchLoanPage = (props) => {
 
 
     setAmount(amount)
-
+   
     loanTypeOnChange(props.Loan.id)
     setTermsValue(term)
     setStaticTerm(term)
@@ -58,7 +60,7 @@ export const SearchLoanPage = (props) => {
 
     let termsList = [];
     terms?.map((item, key) => {
-      termsList.push({ label: item, value: item })
+      termsList.push({ text: item, value: item })
     })
     setTerms(terms)
     setLoanType(id)
@@ -95,10 +97,10 @@ export const SearchLoanPage = (props) => {
         <div className="col-12 mb-3">
           <div className="row" style={{ background: "#072a7a5c", padding: "29px 0px 13px 0" }}>
             <div className="col-12 col-md-3 mb-2">
-              <Dropdown
+              <KrediSelect
                 options={loansOption}
                 onChange={(element) => loanTypeOnChange(element.value)}
-                placeholder="Kredi Türü Seçiniz"
+                prefix="Kredi Türü: "
                 arrowClassName="dropdownArrow"
                 value={loanType}
               />
@@ -106,7 +108,7 @@ export const SearchLoanPage = (props) => {
             </div>
             <div className="col-12  col-md-3 mb-2">
 
-              <CurrencyInput inputmode="numeric" style={{ width: "100%", maxWidth: "100%" }} placeholder="Tutar Giriniz" className="col-7"
+              <KrediInput style={{ width: "100%", maxWidth: "100%" }} placeholder="Tutar Giriniz" className="col-7"
                 decimalSeparator=","
                 thousandSeparator="."
                 precision="0"
@@ -118,11 +120,10 @@ export const SearchLoanPage = (props) => {
               {/* <input type="text" ></input> */}
             </div>
             <div className="col-12 col-md-3 mb-3">
-              <Dropdown
+              <KrediSelect
                 options={terms}
                 onChange={(d) => { termListOnChange(d.value) }}
-                placeholder="Vade"
-                arrowClassName="dropdownArrow"
+                prefix="Vade: "
                 value={termsValue}
 
               />
@@ -176,7 +177,7 @@ export const SearchLoanPage = (props) => {
                   </div>
 
                   <div className="mb-2">
-                    <CurrencyInput inputmode="numeric" style={{
+                    <KrediInput style={{
                       padding: 0,
                       border: "none",
                       display: "inline",
@@ -205,7 +206,7 @@ export const SearchLoanPage = (props) => {
                   </div>
 
                   <div className="mb-2">
-                    <CurrencyInput inputmode="numeric" style={{
+                    <KrediInput style={{
                       padding: 0,
                       border: "none",
                       display: "inline",

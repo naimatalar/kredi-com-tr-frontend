@@ -145,9 +145,7 @@ const BusinesLoan = (props) => {
 
         <div className="row mt-4" >
 
-        <div className="col-12 mb-4">
-                <Exchange />
-            </div>
+
 
             <div className="col-12 mt-3 mb-3 text-center">
                 <h1 className="home-title" style={{ marginTop: 0 }}>Kredini <span style={{ fontWeight: "bold" }}> Ara</span>, Oranları <span style={{ fontWeight: "bold" }}>Listele</span> , Anında <span style={{ fontWeight: "bold" }}> Başvur!</span>  </h1>
@@ -158,14 +156,16 @@ const BusinesLoan = (props) => {
 
 
                 </div>}
-           
-                <div className=" col-12 p-0">
 
-                    <LoanSearchLabel SelectedTab={"3"}  Loans={props.Loans}></LoanSearchLabel>
+            <div className=" col-12 p-0">
 
-                </div>
+                <LoanSearchLabel SelectedTab={"2"} Loans={props.Loans}></LoanSearchLabel>
 
-            
+            </div>
+
+            {/* <div className="col-12 mb-4">
+                <Exchange />
+            </div> */}
             <div className="col-12 ab-fonts  mb-3">
                 <div className="row justify-content-center">
                     {randomTys == 1 &&
@@ -228,7 +228,7 @@ const BusinesLoan = (props) => {
                             </a>
                         </>
                     }
-                    {randomTys == 3 && 
+                    {randomTys == 3 &&
                         <>
 
                             <a href="/kredi-hesaplama/25000-tl-12-ay-vade-ihtiyac-kredisi" className="col-12 col-md-3 col-lg-3 m-3">
@@ -503,7 +503,7 @@ const BusinesLoan = (props) => {
             </div>
 
         </div>
-        <div className="row middle-menu-content">
+     {/*   <div className="row middle-menu-content">
             <div className="col-12">
                 <p className="home-title" >Düzinelerce <span style={{ fontWeight: "bold" }}>kredi ödeme seçenekleri </span> ve bol kazandırıp çok uçuran <span style={{ fontWeight: "bold" }}>kredi kartları </span> parmaklarınızın ucunda! </p>
             </div>
@@ -511,7 +511,7 @@ const BusinesLoan = (props) => {
                 <MiddleMenu Loans={props.Loans}></MiddleMenu>
             </div>
         </div>
-        {/* <div className="container slider-content">
+         <div className="container slider-content">
 
             <Slider data={slider}></Slider>
 
@@ -583,7 +583,7 @@ const BusinesLoan = (props) => {
 
 
         <div className="row">
-            <div >
+            {/* <div >
 
                 <div className="row">
 
@@ -595,7 +595,7 @@ const BusinesLoan = (props) => {
                     </div>
                 </div>
 
-            </div>
+            </div> */}
             <Seo title={"Kobi Kredisi Hesaplama"} description={"İşinin için krediye ihtiyaç duyuyorsanız hemen kredinizi hesaplayın. Bütün bankaların faiz oranlarını karşılaştırmalı bir şekilde hesaplama yapın. Size en uygun krediyi seçip başvurabilirsiniz. "} />
 
         </div>

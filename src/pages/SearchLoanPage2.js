@@ -6,6 +6,8 @@ import Dropdown from 'react-dropdown';
 import { loanRedirect } from "../Components/RedirectComponent";
 import Rimage from "../Components/Rimage";
 import Seo from "../Components/Seo";
+import { KrediInput } from "../Components/KrediInput";
+import KrediSelect from "../Components/KrediSelect";
 export const SearchLoanPage2 = (props) => {
   const [data, setData] = useState([])
   const [noData, setNoData] = useState(false)
@@ -29,9 +31,9 @@ export const SearchLoanPage2 = (props) => {
     var Loans = await GetNoneToken("LoanTypes/GetAllSite").then(x => { return x.data }).catch(x => { return false })
 
     for (const item of Loans) {
-      lns.push({ label: item.loanName, value: item.id })
+      lns.push({ text: item.loanName, value: item.id })
     }
-
+    setLoanOption([])
     setLoanOption(lns)
     // 15000-tl-15-ay-vade-ihtiyac-kredisi
     let path = window.location.pathname.split("/")
@@ -55,11 +57,17 @@ export const SearchLoanPage2 = (props) => {
       term: term
     }
     var terms = await PostNoneToken("InterestRates/GetLoanSearchResult", d).then(x => { return x.data }).catch(x => { return false })
+    setLoanType("ref") 
+    setLoanType(pathSelectedLoan.id)
+    setLoanType(new Date().toString())
+    
+    setLoanType(pathSelectedLoan.id)
+    
 
     setData(terms)
     if (terms?.length == 0) {
       setNoData(true)
-    }
+    } 
 
   }
 
@@ -69,10 +77,14 @@ export const SearchLoanPage2 = (props) => {
 
     let termsList = [];
     terms?.map((item, key) => {
-      termsList.push({ label: item, value: item })
+      termsList.push({ text: item, value: item })
     })
+    setLoanType("ref") 
+    setLoanType(id)
+    setLoanType(new Date().toString())
     setTerms(terms)
     setLoanType(id)
+   
   }
   const termListOnChange = async (val) => {
 
@@ -110,18 +122,19 @@ export const SearchLoanPage2 = (props) => {
         <div className="col-12 mb-3">
           <div className="row" style={{ background: "#072a7a5c", padding: "29px 0px 13px 0" }}>
             <div className="col-12 col-md-3 mb-2">
-              <Dropdown
+              
+              <KrediSelect
                 options={loansOption}
                 onChange={(element) => loanTypeOnChange(element.value)}
-                placeholder="Kredi Türü Seçiniz"
-                arrowClassName="dropdownArrow"
+                placeholder="Kredi Türü: "
                 value={loanType}
               />
+              
 
             </div>
             <div className="col-12  col-md-3 mb-2">
 
-              <CurrencyInput inputmode="numeric" style={{ width: "100%", maxWidth: "100%" }} placeholder="Tutar Giriniz" className="col-7"
+              <KrediInput style={{ width: "100%", maxWidth: "100%" }} placeholder="Tutar Giriniz" className="col-7"
                 decimalSeparator=","
                 thousandSeparator="."
                 precision="0"
@@ -133,11 +146,10 @@ export const SearchLoanPage2 = (props) => {
               {/* <input type="text" ></input> */}
             </div>
             <div className="col-12 col-md-3 mb-3">
-              <Dropdown
+              <KrediSelect
                 options={terms}
                 onChange={(d) => { termListOnChange(d.value) }}
-                placeholder="Vade"
-                arrowClassName="dropdownArrow"
+                prefix="Vade: "
                 value={termsValue}
 
               />
@@ -197,7 +209,7 @@ export const SearchLoanPage2 = (props) => {
                   </div>
 
                   <div className="mb-2">
-                    <CurrencyInput inputmode="numeric" style={{
+                    <KrediInput style={{
                       padding: 0,
                       border: "none",
                       display: "inline",
@@ -226,7 +238,7 @@ export const SearchLoanPage2 = (props) => {
                   </div>
 
                   <div className="mb-2">
-                    <CurrencyInput inputmode="numeric" style={{
+                    <KrediInput style={{
                       padding: 0,
                       border: "none",
                       display: "inline",

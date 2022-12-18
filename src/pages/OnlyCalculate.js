@@ -5,6 +5,8 @@ import CurrencyInput from "react-currency-input";
 import Dropdown from 'react-dropdown';
 import Seo from "../Components/Seo";
 import Rimage from "../Components/Rimage";
+import { KrediInput } from "../Components/KrediInput";
+import KrediSelect from "../Components/KrediSelect";
 
 export const OnlyCalculate = (props) => {
     const [data, setData] = useState([])
@@ -20,6 +22,7 @@ export const OnlyCalculate = (props) => {
     const [loanName, setLoanName] = useState("")
     const [pathName, setPathName] = useState("")
     const [creditCart, setCreditCart] = useState([]);
+    const [refreshD, setRefreshD] = useState()
 
     const [pDAta, setPdata] = useState({})
     const [titleList, setTitleList] = useState([])
@@ -34,22 +37,27 @@ export const OnlyCalculate = (props) => {
         var Loans = await GetNoneToken("LoanTypes/GetAllSite").then(x => { return x.data }).catch(x => { return false })
         var tl = await GetNoneToken("OnlyCalculates/getTen/10").then(x => { return x.data }).catch(x => { return false })
         setTitleList(tl)
+
+        
         for (const item of Loans) {
-            lns.push({ label: item.loanName, value: item.id })
+            lns.push({ value: item.id, text: item.loanName })
         }
         let creditCart = await GetNoneToken("CreditCarts/GetOnlyFive").then(x => { return x.data }).catch(x => { return false })
 
         setCreditCart(creditCart)
         setLoanOption(lns)
-       
+
         let path = window.location.pathname.split("/")
         let pathData = path[2]
         setPathName(pathData)
-        
+
         let ccData = await GetNoneToken("OnlyCalculates/GetAllWebSiteByUrlName/" + pathData).then(x => { return x.data }).catch(x => { return false })
+
         setPdata(ccData)
+
         setAllLoans(Loans)
 
+        loanTypeOnChange(Loans[0].id)
 
     }
 
@@ -58,10 +66,21 @@ export const OnlyCalculate = (props) => {
         var terms = await GetNoneToken("InterestRates/GetLoanTerms/" + id).then(x => { return x.data }).catch(x => { return false })
 
         let termsList = [];
+
+        termsList.push({ label: "", value: "Seçiniz" })
+        
         terms?.map((item, key) => {
             termsList.push({ label: item, value: item })
         })
+
+        setRefreshD([])
+
+        setTerms([])
+
+        setRefreshD(terms)
+
         setTerms(terms)
+
         setLoanType(id)
     }
     const termListOnChange = async (val) => {
@@ -92,33 +111,38 @@ export const OnlyCalculate = (props) => {
 
 
     return (<div className="container">
-        <Seo keyword={`kredi hesaplama,${loanName},kredi başvuru,${loanName} başvuru,${loanName} hesaplama`} title={pDAta?.title+""} description={pDAta.metaDescription} />
+        
+        <Seo keyword={`kredi hesaplama,${loanName},kredi başvuru,${loanName} başvuru,${loanName} hesaplama`} title={pDAta?.title + ""} description={pDAta.metaDescription} />
         <div className="row mt-3">
 
             <div className="col-12  ">
 
-                <div className="col-12 mb-3">
+                <div className="col-12 mb-3 bcst">
                     <div className="row calculate-pcnt" >
                         <div className="col-12 mb-4 text-center">
                             <b style={{
                                 fontSize: 21,
-                                color: "#5d5d5d",
-                                textShadow: "white 1px 1px 1px"
+                                color: "white",
+                                textShadow: "black 1px 1px 1px"
                             }}>Tutar, Vade Ve Kredi Türünü Seçerek Size En Uygun Krediyi Bulun </b></div>
 
                         <div className="col-12 col-md-3 mb-2">
-                            <Dropdown
-                                options={loansOption}
-                                onChange={(element) => loanTypeOnChange(element.value)}
-                                placeholder="Kredi Türü Seçiniz"
-                                arrowClassName="dropdownArrow"
-                                value={loanType}
-                            />
+                            {loansOption.length > 0 &&
+                                <KrediSelect
+                                    name="selectln"
+                                    options={loansOption}
+                                    onChange={(element) => { loanTypeOnChange(element.value) }}
+                                    prefix="Kredi Türü: "
+
+                                // value={loanType}
+                                />
+                            }
+
 
                         </div>
                         <div className="col-12  col-md-3 mb-2">
 
-                            <CurrencyInput inputmode="numeric" style={{ width: "100%", maxWidth: "100%" }} placeholder="Tutar Giriniz" className="col-7"
+                            <KrediInput style={{ width: "100%", maxWidth: "100%" }} placeholder="Tutar Giriniz" className="col-7"
                                 decimalSeparator=","
                                 thousandSeparator="."
                                 precision="0"
@@ -130,14 +154,17 @@ export const OnlyCalculate = (props) => {
                             {/* <input type="text" ></input> */}
                         </div>
                         <div className="col-12 col-md-3 mb-3">
-                            <Dropdown
-                                options={terms}
-                                onChange={(d) => { termListOnChange(d.value) }}
-                                placeholder="Vade"
-                                arrowClassName="dropdownArrow"
-                                value={termsValue}
+                            {terms.length > 0 &&
+                                <KrediSelect
+                                    options={terms}
+                                    onChange={(d) => { termListOnChange(d.value) }}
+                                    prefix="Vade: "
 
-                            />
+                                    value={termsValue}
+
+                                />
+                            }
+
                         </div>
 
 
@@ -163,7 +190,7 @@ export const OnlyCalculate = (props) => {
                         titleList.map((item, key) => {
 
                             return (
-                                <li key={key} className={(pathName == item.urlName ? "selected-list-item" : "") } style={{ background: "white" }}>
+                                <li key={key} className={(pathName == item.urlName ? "selected-list-item" : "")} style={{ background: "white" }}>
                                     <a href={"/kredi-hesaplama-detaylari/" + item.urlName} style={{
                                         color: " black",
                                         fontSize: 15

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
 import CurrencyInput from "react-currency-input"
 import Image from "react-image-webp"
+import { KrediInput } from "../Components/KrediInput"
 import Rimage from "../Components/Rimage"
 import { apiurl, GetNoneToken } from "../datacrud/datacrud"
 
@@ -76,7 +77,7 @@ import { apiurl, GetNoneToken } from "../datacrud/datacrud"
 
                         <div className="col-12 row justify-content-center">
                             <div>
-                                <CurrencyInput inputmode="numeric" style={{
+                                <KrediInput style={{
                                     padding: 0,
                                     border: "none",
                                     display: "flex",
@@ -128,7 +129,7 @@ import { apiurl, GetNoneToken } from "../datacrud/datacrud"
                         </div>
                         <div className="col-12 row justify-content-center">
                             <div>
-                                <CurrencyInput inputmode="numeric" style={{
+                                <KrediInput style={{
                                     padding: 0,
                                     border: "none",
                                     display: "flex",

@@ -42,7 +42,8 @@ const Home = (props) => {
     const [titleList, setTitleList] = useState([])
     const [findl, setFindL] = useState(false)
     const [creditCart, setCreditCart] = useState([]);
-    const [currencies, setCurrencies] = useState([]);
+    const [howToPay, setHowToPay] = useState();
+    const [loanSearchLabel, setLoanSearchLabel] = useState();
 
 
 
@@ -62,7 +63,9 @@ const Home = (props) => {
         if (window.location.pathname.includes("kredi-bulucu")) {
             setFindL(true)
         }
+        setHowToPay(<HowToPay></HowToPay>)
 
+        setLoanSearchLabel(<LoanSearchLabel loading={loading} Loans={props.Loans}></LoanSearchLabel>)
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
     }, [])
@@ -99,7 +102,9 @@ const Home = (props) => {
     }
 
     return (<>
-
+        <Head>
+            <title>jamirkoy</title>
+        </Head>
         {
             addsPopup && <> <div onClick={() => { setAddsPopup(false) }} className="lv-shadow"></div>
                 <div className="lv-master">
@@ -142,15 +147,13 @@ const Home = (props) => {
         }
 
         <div className="row mt-4" >
-            <div className="col-12 mb-4">
-                <Exchange />
-            </div>
+
 
             <div className="col-12 mt-3 mb-3 text-center">
                 <h1 className="home-title" style={{ marginTop: 0 }}>Kolayca <span style={{ fontWeight: "bold" }}>Kredi Ara</span>, Pratik Şekilde <a href="/kredi-hesaplama" style={{ fontWeight: "bold" }}>Kredi Hesapla</a> , Hızlıca <span style={{ fontWeight: "bold" }}>Kredi Başvur!</span>  </h1>
             </div>
 
-            
+
             {windowDimensions.width < 800 &&
                 <div className="row justify-content-center col-12 mb-4" style={{ marginTop: -10 }}>
                     <a style={{ fontSize: 17 }} className="nav-link fls" href="/kredi-bulucu">Kredi Bulucu!</a>
@@ -162,10 +165,11 @@ const Home = (props) => {
             } */}
             <div className=" col-12 p-0">
 
-                <LoanSearchLabel loading={loading} Loans={props.Loans}></LoanSearchLabel>
-
+                {loanSearchLabel}
             </div>
-
+            <div className="col-12 mb-4">
+                <Exchange />
+            </div>
 
             <div className="row justify-content-between col-12 m-0 p-0">
 
@@ -290,7 +294,10 @@ const Home = (props) => {
 
         <div className="row justify-content-center">
             <div className=" row col-12 col-md-7 col-lg-7 mt-3">
-                <HowToPay></HowToPay>
+
+                {howToPay}
+
+
             </div>
             <div className="col-12 col-md-5 col-lg-5 mt-3">
                 <p className="home-title" >En çok kazandıran <span style={{ fontWeight: "bold" }}>vadeli mevduat seçeneklerini </span> sizin için seçtik.</p>

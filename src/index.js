@@ -15,7 +15,7 @@ if (rootElement.hasChildNodes()) {
   hydrate(<App />, rootElement);
 } else {
   render(<App />, rootElement);
-  // "eject": "react-scripts eject",
+  // "postbuild": "react-snap"
 }
 
 

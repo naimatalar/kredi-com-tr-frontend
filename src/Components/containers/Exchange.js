@@ -6,14 +6,15 @@ import { GetNoneToken } from '../../datacrud/datacrud';
 import "currency-flags/dist/currency-flags.css"
 import CurrencyInput from 'react-currency-input';
 import { PriceSplitter } from '../PriceSplitter';
+import { KrediInput } from '../KrediInput';
 
 
 function Exchange(props) {
     var HtmlToReactParser = require('html-to-react').Parser;
     const [currencies, setCurrencies] = useState([])
-    const [selectOptions, setSelectOptions] = useState([{ value: "", label: "" }])
-    const [baseCurrecy, setBaseCurrency] = useState({ value: "", label: "" })
-    const [convertingCurrecy, setsetConvertingCurrency] = useState({ value: "", label: "" })
+    const [selectOptions, setSelectOptions] = useState([{ value: "", text: "" }])
+    const [baseCurrecy, setBaseCurrency] = useState({ value: "", text: "" })
+    const [convertingCurrecy, setsetConvertingCurrency] = useState({ value: "", text: "" })
     const [moneyValue, setModeyValue] = useState(1)
     const api = "https://api.exchangerate-api.com/v4/latest/USD";
     const [baseResult, setBaseResult] = useState(1)
@@ -86,7 +87,7 @@ function Exchange(props) {
             <div className="col-12 col-md-6 row justify-content-center mt-2">
 
                 {/* <div className="col-7 pr-0">
-                    <CurrencyInput inputmode="numeric" style={{ padding: 6 }}></CurrencyInput>
+                    <KrediInput style={{ padding: 6 }}></CurrencyInput>
                 </div> */}
                 <div className="col-12 row justify-content-around align-items z-ssom mb-1">
                     <label className="col-5"><b style={{
@@ -125,11 +126,11 @@ function Exchange(props) {
                     />
                 </div>
                 <div className="col-6 pl-0 mt-2">
-                    <CurrencyInput inputmode="numeric"
+                    <KrediInput 
                         precision="0"
                         thousandSeparator="."
                         suffix={" " + baseCurrecy.value}
-                        value={amountVal} onChange={(val) => { setAmountVal(val.replace(/\./g, "").replace(" " + baseCurrecy.value, "")) }} style={{ padding: 6 }}></CurrencyInput>
+                        value={amountVal} onChange={(val) => { setAmountVal(val.replace(/\./g, "").replace(" " + baseCurrecy.value, "")) }} style={{ padding: 6 }}></KrediInput>
                 </div>
                 <div className="col-6 mt-2">
                     <button className="default-button" onClick={() => { getResults() }}>Çevir</button>

@@ -14,13 +14,13 @@ export const bankdemodata = [
             maxAmunt: 90000,
             rate: 1.65,
             terms: [
-                { label: "3", value: 3 },
-                { label: "6", value: 6 },
-                { label: "9", value: 9 },
-                { label: "12", value: 12 },
-                { label: "18", value: 18 },
-                { label: "24", value: 24 },
-                { label: "36", value: 36 }
+                { text: "3", value: 3 },
+                { text: "6", value: 6 },
+                { text: "9", value: 9 },
+                { text: "12", value: 12 },
+                { text: "18", value: 18 },
+                { text: "24", value: 24 },
+                { text: "36", value: 36 }
             ]
         },
         {
@@ -31,13 +31,13 @@ export const bankdemodata = [
             maxAmunt: 100000,
             rate: 1.20,
             terms: [
-                { label: "3", value: 3 },
-                { label: "6", value: 6 },
-                { label: "9", value: 9 },
-                { label: "12", value: 12 },
-                { label: "18", value: 18 },
-                { label: "24", value: 24 },
-                { label: "36", value: 36 }
+                { text: "3", value: 3 },
+                { text: "6", value: 6 },
+                { text: "9", value: 9 },
+                { text: "12", value: 12 },
+                { text: "18", value: 18 },
+                { text: "24", value: 24 },
+                { text: "36", value: 36 }
             ]
         }, {
             id: 3,
@@ -47,13 +47,13 @@ export const bankdemodata = [
             maxAmunt: 100000,
             rate: 1.10,
             terms: [
-                { label: "3", value: 3 },
-                { label: "6", value: 6 },
-                { label: "9", value: 9 },
-                { label: "12", value: 12 },
-                { label: "18", value: 18 },
-                { label: "24", value: 24 },
-                { label: "36", value: 36 }
+                { text: "3", value: 3 },
+                { text: "6", value: 6 },
+                { text: "9", value: 9 },
+                { text: "12", value: 12 },
+                { text: "18", value: 18 },
+                { text: "24", value: 24 },
+                { text: "36", value: 36 }
             ]
         },
         ]
@@ -71,13 +71,13 @@ export const bankdemodata = [
             maxAmunt: 90000,
             rate: 1.45, 
             terms: [
-                { label: "3", value: 3 },
-                { label: "6", value: 6 },
-                { label: "9", value: 9 },
-                { label: "12", value: 12 },
-                { label: "18", value: 18 },
-                { label: "24", value: 24 },
-                { label: "36", value: 36 }
+                { text: "3", value: 3 },
+                { text: "6", value: 6 },
+                { text: "9", value: 9 },
+                { text: "12", value: 12 },
+                { text: "18", value: 18 },
+                { text: "24", value: 24 },
+                { text: "36", value: 36 }
             ]
         }, {
             id: 2,
@@ -87,13 +87,13 @@ export const bankdemodata = [
             maxAmunt: 100000,
             rate: 1.20,
             terms: [
-                { label: "3", value: 3 },
-                { label: "6", value: 6 },
-                { label: "9", value: 9 },
-                { label: "12", value: 12 },
-                { label: "18", value: 18 },
-                { label: "24", value: 24 },
-                { label: "36", value: 36 }
+                { text: "3", value: 3 },
+                { text: "6", value: 6 },
+                { text: "9", value: 9 },
+                { text: "12", value: 12 },
+                { text: "18", value: 18 },
+                { text: "24", value: 24 },
+                { text: "36", value: 36 }
             ]
         }, {
             id: 3,
@@ -103,13 +103,13 @@ export const bankdemodata = [
             maxAmunt: 100000,
             rate: 1.10,
             terms: [
-                { label: "3", value: 3 },
-                { label: "6", value: 6 },
-                { label: "9", value: 9 },
-                { label: "12", value: 12 },
-                { label: "18", value: 18 },
-                { label: "24", value: 24 },
-                { label: "36", value: 36 }
+                { text: "3", value: 3 },
+                { text: "6", value: 6 },
+                { text: "9", value: 9 },
+                { text: "12", value: 12 },
+                { text: "18", value: 18 },
+                { text: "24", value: 24 },
+                { text: "36", value: 36 }
             ]
         }]
     },

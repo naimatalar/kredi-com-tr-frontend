@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import CurrencyInput from "react-currency-input"
 import Image from "react-image-webp"
 import calculator from "../calculator"
+import { KrediInput } from "../KrediInput"
 import Rimage from "../Rimage"
 
 export const HomeCreditCalculate = () => {
@@ -58,7 +59,7 @@ export const HomeCreditCalculate = () => {
                     <div className="col-12">
                         <label style={{ width: 120 }}><b>Kredi Tutarı: &nbsp;</b> </label>
                         {/* <input value={amount} required onChange={(e) => { setAmount(e.target.value) }} type="text" placeholder=" örnek: 50000"></input> */}
-                        <CurrencyInput require inputmode="numeric" id="sgdf" style={{ width: "100%", maxWidth: "100%" }} placeholder="Tutar Giriniz" className="col-7"
+                        <KrediInput require id="sgdf" style={{ width: "100%", maxWidth: "100%" }} placeholder="Tutar Giriniz" className="col-7"
                             decimalSeparator=","
                             thousandSeparator="."
                             precision="0"
@@ -70,11 +71,11 @@ export const HomeCreditCalculate = () => {
                     </div>
                     <div className="col-12 mt-2">
                         <label style={{ width: 120 }}><b>Vade: &nbsp;</b> </label>
-                        <input inputmode="numeric" value={term} onChange={(e) => { setTerm(e.target.value) }} type="text" placeholder=" örnek: 36"></input>
+                        <input value={term} onChange={(e) => { setTerm(e.target.value) }} type="text" placeholder=" örnek: 36"></input>
                     </div>
                     <div className="col-12 mt-2">
                         <label style={{ width: 120 }}><b>Faiz Oranı: &nbsp;</b> </label>
-                        <input  inputmode="numeric" value={rate} onChange={(e) => { setRate(e.target.value) }} type="text" placeholder=" örnek: 1.75"></input>
+                        <input  value={rate} onChange={(e) => { setRate(e.target.value) }} type="text" placeholder=" örnek: 1.75"></input>
                     </div>
                 </div>
                 <div className="col-12 col-md-6 col-lg-6 mt-4">
@@ -141,7 +142,7 @@ export const HomeCreditCalculate = () => {
                                     <div key={key} className="div-table-row" style={color}>
                                         <div className="div-table-col pl-2" style={{ width: 50 }}>{key + 1}</div>
                                         <div className="div-table-col">
-                                            <CurrencyInput inputmode="numeric" style={{
+                                            <KrediInput style={{
                                                 padding: 0,
                                                 border: "none",
                                                 display: "inline",
@@ -158,7 +159,7 @@ export const HomeCreditCalculate = () => {
                                                 value={item.tutar.toFixed(0)} />
                                         </div>
                                         <div className="div-table-col">
-                                            <CurrencyInput inputmode="numeric" style={{
+                                            <KrediInput style={{
                                                 padding: 0,
                                                 border: "none",
                                                 display: "inline",
@@ -175,7 +176,7 @@ export const HomeCreditCalculate = () => {
                                                 value={item.odenen.toFixed(0)} />
                                         </div>
                                         <div className="div-table-col">
-                                            <CurrencyInput inputmode="numeric" style={{
+                                            <KrediInput style={{
                                                 padding: 0,
                                                 border: "none",
                                                 display: "inline",
@@ -192,7 +193,7 @@ export const HomeCreditCalculate = () => {
                                                 value={item.faiz.toFixed(0)} />
                                         </div>
                                         <div className="div-table-col">
-                                            <CurrencyInput inputmode="numeric" style={{
+                                            <KrediInput style={{
                                                 padding: 0,
                                                 border: "none",
                                                 display: "inline",
@@ -209,7 +210,7 @@ export const HomeCreditCalculate = () => {
                                                 value={item.vergi.toFixed(0)} />
                                         </div>
                                         <div className="div-table-col">
-                                            <CurrencyInput inputmode="numeric" style={{
+                                            <KrediInput style={{
                                                 padding: 0,
                                                 border: "none",
                                                 display: "inline",

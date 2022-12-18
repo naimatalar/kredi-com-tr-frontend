@@ -177,7 +177,7 @@ export const Banks = (props) => {
                                         {
 
                                             creditCarts?.map((each, index) => {
-                                                debugger
+                                                
                                                 return (<div key={index}  >
                                                     <div className="each-fade" style={{ padding: 22 }} >
                                                         <div className="row">

@@ -99,7 +99,7 @@ const PersonalLoan = (props) => {
         setLoading(false)
 
     }
-    
+
     return (<>
 
         {
@@ -144,9 +144,7 @@ const PersonalLoan = (props) => {
         }
 
         <div className="row mt-4" >
-        <div className="col-12 mb-4">
-                <Exchange />
-            </div>
+
 
 
             <div className="col-12 mt-3 mb-3 text-center">
@@ -165,7 +163,53 @@ const PersonalLoan = (props) => {
 
             </div>
 
+            {/* <div className="col-12 mb-4">
+                <Exchange />
+            </div> */}
 
+            <div className="col-12 mb-4 clbck">
+                <div>
+
+
+                    <h1>İhtiyaç Kredisi Hesaplama</h1>
+                    <img className="imagetts" style={{ height: 290 }} src={require("../../assets/images/kredibanka.png").default}></img>
+                    <p>İhtiyaç kredileri en sık kullanılan kredi türlerindendir. Kullanıcılar ihtiyaç kapsamıda tatil, evlilik bilimum kişisel ihtiyaçlarını karşılamak için ihtiyaç kredilerine başvuruyor.</p>
+                    <h2 style={{ fontSize: 21 }}>İhtiyaç kredisi için gerekli belgeler</h2>
+                    <p>Kredi kullanımı koşulları arasında ilk olarak 18 yaşı doldurulmuş olunması gerekiyor bu yaş sınırı bazı bankalar için 20 olabiliyor.
+                        bunun yanı sıra bankaya bir gelir kaynağı belgelemeniz gerekir. Bunun için ise SSK kaydınız olmalı ve son iş yerinde 3 ayınızı doldurmuş olmanız beklenmektedir. Diğer bir gelir beyanı da  vergi levhası olan bir şirketinizin olmasıdır.
+                    </p>
+                    <ul>
+                        <li>
+                            Nüfus cüzdanı, ehliyet veya pasaport
+                        </li>
+                        <li>
+                            İkametgah belgesi
+                        </li>
+                        <li>
+                           Gelir belgesi (Maaş bordrosu)
+                           Serbest meslek sahibi ya da şirket ortağıysanız güncel vergi levhası, bilanço ve gelir tablosu veya ticaret sicil gazetesi/oda kayıt belgesi.
+                        </li>
+
+                    </ul>
+                </div>
+                <div className="clearfix"></div>
+                <div>
+                    <h2 style={{ fontSize: 21 }}>İhtiyaç Kredisi Nasıl Hesaplanır?</h2>
+                    <p>İhtiyaç kredisi bankaların faiz oranları baz alınarak hesaplanır. Banka faiz oranları dışında BSMV ve KKDF tutarları da banka tarfından devlete aktarılmak üzere kredi kullanıcısından tahsil edilir </p>
+                    <p>Kredi hesaplama formülü ise şöyledir</p>
+                    <img className="imagetts" src={require("../../assets/images/thn.jpg").default}></img>
+                    <img style={{ width: 477, height: 84, marginBottom: 10 }} src={require("../../assets/images/kredihesap.jpg").default}></img>
+                    <h2 style={{ fontSize: 21 }}>Kredi kullanırken nelere dikkat edilmeldir?</h2>
+
+                    <p>Kredi kullanımı yapılırken en önemli noktalardan biri hesaplamalardır. Kredi hesaplama yaparken ilgili bankanınfaiz oranları dışında damga vergi ve hizmet ücretlerinin mevcut olup olmadığı öğrenilmelidir.
+                        Bu ek ücretler öğrenildiğinde hesaplama yaparken devlete verilecek olan BSMV ve KKDF tutarları da hesaba katılarak tam detaylı bir hesaplama yapılabilir. Bankanın faiz oranları ise, kredi kullanıcısının kredi puanına göre değişiklik gösterebilir.
+
+                    </p>
+                </div>
+
+
+
+            </div>
             <div className="col-12 ab-fonts  mb-3">
                 <div className="row justify-content-center">
                     {randomTys == 1 &&
@@ -269,7 +313,7 @@ const PersonalLoan = (props) => {
             <div className="row mb-3">
                 <FindLoan Seo={false} Loans={props.Loans} {...props} Banks={props.Banks} />
             </div>
-       
+
             {/* <div className="row justify-content-between col-12 m-0 p-0">
 
                 {windowDimensions.width < 800 && <div style={{ paddingRight: 5, marginBottom: 20 }} className="col-lg-5 col-md-6 loan-search-container">
@@ -504,14 +548,14 @@ const PersonalLoan = (props) => {
             </div>
 
         </div>
-        <div className="row middle-menu-content">
+        {/* <div className="row middle-menu-content">
             <div className="col-12">
                 <p className="home-title" >Düzinelerce <span style={{ fontWeight: "bold" }}>kredi ödeme seçenekleri </span> ve bol kazandırıp çok uçuran <span style={{ fontWeight: "bold" }}>kredi kartları </span> parmaklarınızın ucunda! </p>
             </div>
             <div className="container">
                 <MiddleMenu Loans={props.Loans}></MiddleMenu>
             </div>
-        </div>
+        </div> */}
         {/* <div className="container slider-content">
 
             <Slider data={slider}></Slider>
@@ -584,7 +628,7 @@ const PersonalLoan = (props) => {
 
 
         <div className="row">
-            <div >
+            {/* <div >
 
                 <div className="row">
 
@@ -596,7 +640,7 @@ const PersonalLoan = (props) => {
                     </div>
                 </div>
 
-            </div>
+            </div> */}
             <Seo title={"İhtiyaç Kredisi Hesaplama"} description={"İhtiyaç duyduğunuz kredi miktarını vade seçerek hesaplayın. Hesaplama sonucunda bankaların faiz oranlarıyla birlikte hesaplama yapılıp listelenir. Size en uygun krediyi seçip başvurabilirsiniz. "} />
 
         </div>

@@ -5,6 +5,7 @@ import { Nav, NavItem, NavLink, TabContent, TabPane } from "reactstrap";
 import classnames from 'classnames';
 import CurrencyInput from 'react-currency-input';
 import { dispositRedirect } from './RedirectComponent';
+import { KrediInput } from './KrediInput';
 
 
 function DispositSelectContainer(props) {
@@ -38,7 +39,7 @@ function DispositSelectContainer(props) {
             rate: calculateDisposit.rate
         }
 
-        let findResult = selectedDisposit.dispositRates.find(x => {
+        let findResult = selectedDisposit?.dispositRates?.find(x => {
 
             if (
                 x.minAmount <= dt.amount &&
@@ -85,7 +86,7 @@ function DispositSelectContainer(props) {
 
 
     return (
-        <div className="col-12 col-lg-6 col-md-6 row mt-5 ml-0 mr-0">
+        <div className="col-12 col-lg-6 col-md-6 row mt-5 ml-0 mr-0 p-0">
             <div className="col-12 row m-0">
                 <div className="disposit-bank-container row align-content-start">
                     {/* <h4 style={{ color: "#464646" }} className="text-center"> Bankaya Ait <b title={bank.bankName + " Mevduat Hesapları "}>Mevduat Hesapları</b> </h4> */}
@@ -121,7 +122,7 @@ function DispositSelectContainer(props) {
                                 <div className="col-12 p-3 row ml-0 mr-0">
                                     <div className="col-6">
                                         <i>Tutar Giriniz</i>
-                                        <CurrencyInput inputmode="numeric" style={{
+                                        <KrediInput style={{
                                             float: "left",
                                             width: "100%",
                                             maxWidt: "100%"
@@ -147,7 +148,7 @@ function DispositSelectContainer(props) {
 
                                 <div className="col-12 row m-0 justify-content-center">
 
-                                    <div className="col-12 row ">
+                                    <div className="col-12 row p-0">
                                         <DispositMatrixContainer selectedData={calculateDispositResult} data={selectedDisposit}></DispositMatrixContainer>
 
                                     </div>
@@ -157,7 +158,7 @@ function DispositSelectContainer(props) {
                                             <div className="col-6 mb-2 row ">
                                                 <div style={{ float: "left" }}>
                                                     Net Kazanç :
-                                                    <CurrencyInput inputmode="numeric" style={{
+                                                    <KrediInput style={{
                                                         padding: 0,
                                                         border: "none",
                                                         display: "inline",
@@ -189,7 +190,7 @@ function DispositSelectContainer(props) {
                                             <div className="col-6 disposit-total-amount">
                                                 <span style={{ fontWeight: "bold", fontSize: 17 }}>Toplam Kazanç : </span>
 
-                                                <CurrencyInput inputmode="numeric" style={{
+                                                <KrediInput style={{
                                                     padding: 0,
                                                     border: "none",
                                                     display: "inline",

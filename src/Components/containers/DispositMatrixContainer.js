@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react"
 import CurrencyInput from "react-currency-input"
+import { KrediInput } from "../KrediInput"
 export const DispositMatrixContainer = (props) => {
     useEffect(() => {
         var selectedData = props.selectedData
@@ -72,7 +73,7 @@ export const DispositMatrixContainer = (props) => {
                 }
                 {key != 0 &&
                     <div className="div-table-col" style={{ width: (90 / (matrixData?.header.length - 1)) + "%" }}>
-                        <CurrencyInput inputmode="numeric" style={{
+                        <KrediInput style={{
                             padding: 0,
                             border: "none",
                             display: "inline",
@@ -89,7 +90,7 @@ export const DispositMatrixContainer = (props) => {
                             prefix={""}
                             value={item.split("-")[0]} />
                         <div style={{ float: "left", display: "block" }}>- </div>
-                        <CurrencyInput inputmode="numeric" style={{
+                        <KrediInput style={{
                             padding: 0,
                             border: "none",
                             display: "inline",

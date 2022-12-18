@@ -8,6 +8,8 @@ import classnames from 'classnames';
 import Image from "react-image-webp";
 import { Link } from "react-router-dom";
 import { PersonPin } from "@material-ui/icons";
+import { KrediInput } from "../KrediInput";
+import KrediSelect from "../KrediSelect";
 export const LoanSearchLabel = (props) => {
 
     const [loansOption, setLoanOption] = useState([])
@@ -34,7 +36,7 @@ export const LoanSearchLabel = (props) => {
 
         let termsList = [];
         terms?.map((item, key) => {
-            termsList.push({ label: item, value: item })
+            termsList.push({ text: item, value: item })
         })
         setTerms(terms)
         setLoanType(id)
@@ -85,7 +87,7 @@ export const LoanSearchLabel = (props) => {
         let ln = [];
         props.Loans?.map((item, key) => {
 
-            ln.push({ label: item.loanName, value: item.id })
+            ln.push({ text: item.loanName, value: item.id })
         })
 
         setPropsLoan(props.Loans)
@@ -119,16 +121,16 @@ export const LoanSearchLabel = (props) => {
                         //     loanTypeOnChange(item.value)
                         // }
                         let urlName = ""
-                        if (item.label.includes("İhtiyaç")) {
+                        if (item.text.includes("İhtiyaç")) {
                             urlName = "ihtiyac-kredisi"
 
-                        } else if (item.label.includes("Taşıt")) {
+                        } else if (item.text.includes("Taşıt")) {
                             urlName = "tasit-kredisi"
 
-                        } else if (item.label.includes("Konut")) {
+                        } else if (item.text.includes("Konut")) {
                             urlName = "konut-kredisi"
 
-                        } else if (item.label.includes("Kobi")) {
+                        } else if (item.text.includes("Kobi")) {
                             urlName = "kobi-kredisi"
 
                         }
@@ -141,29 +143,29 @@ export const LoanSearchLabel = (props) => {
                                 // onClick={() => { toggle(key.toString()); loanTypeOnChange(item.value) }}
                                 >
                                     <div className="icon-div">
-                                        {item.label.includes("İhtiyaç") &&
+                                        {item.text.includes("İhtiyaç") &&
                                             <Image title="İhtiyaç kredisi kredi.com.tr" alt="ihtiyaç kredisi sayfası" style={{ width: "50px" }}
                                                 webp={require("../../assets/images/moneycolor.webp").default}
                                                 src={require("../../assets/images/moneycolor.png").default}></Image>
                                         }
-                                        {item.label.includes("Taşıt") &&
+                                        {item.text.includes("Taşıt") &&
                                             <Image title="Taşıt kredisi kredi.com.tr" alt="Taşıt kredisi sayfası" style={{ width: "50px" }}
                                                 webp={require("../../assets/images/carColor.webp").default}
                                                 src={require("../../assets/images/carColor.png").default}></Image>
                                         }
-                                        {item.label.includes("Konut") &&
+                                        {item.text.includes("Konut") &&
                                             <Image title="Konut kredisi kredi.com.tr" alt="Konut kredisi sayfası" style={{ width: "50px" }}
                                                 webp={require("../../assets/images/homecolor.webp").default}
                                                 src={require("../../assets/images/homecolor.png").default}></Image>
                                         }
-                                        {item.label.includes("Kobi") &&
+                                        {item.text.includes("Kobi") &&
                                             <Image title="Kobi kredisi kredi.com.tr" alt="Kobi kredisi sayfası" style={{ width: "50px", height: 30 }}
                                                 webp={require("../../assets/images/corporatecolor.webp").default}
                                                 src={require("../../assets/images/corporatecolor.png").default}></Image>
                                         }
                                     </div>
 
-                                    {item.label}
+                                    {item.text}
 
                                 </a>
                             </NavItem>)
@@ -271,7 +273,7 @@ function Inputs(props) {
 
             <div className="col-12  col-md-4 col-lg-4 mt-2 loan-search-label-st-font">
 
-                <CurrencyInput inputmode="numeric" id="sgdf"  style={{ width: "100%", maxWidth: "100%" }} placeholder="Tutar Giriniz" className="col-7"
+                <KrediInput type="tel"   id="sgdf"  style={{ width: "100%", maxWidth: "100%" }} placeholder="Tutar Giriniz" className="col-7"
                     decimalSeparator=","
                     thousandSeparator="."
                     precision="0"
@@ -283,11 +285,10 @@ function Inputs(props) {
 
             </div>
             <div className="col-12 col-md-4 col-lg-4 mt-2 drpd-find loan-search-label-st-font">
-                <Dropdown
+                <KrediSelect
                     options={props.terms}
                     onChange={(d) => { props.termListOnChange(d.value) }}
-                    placeholder="Vade"
-                    arrowClassName="dropdownArrow"
+                    prefix="Vade: "
                     value={props.Term?.toString() ?? ""}
 
                 />
