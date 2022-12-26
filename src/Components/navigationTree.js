@@ -100,6 +100,10 @@ const NavigationTree = (props) => {
                                             />
                                         </a>
                                     </div>
+                                    <div style={{ display: "flex", justifyContent: "flex-end",marginRight:15  }}>
+                                        <a  className="btn btn-success cntus" href="/iletisim"><img src={require("../assets/images/mailicon.png").default} style={{width:24,marginTop:-3}}></img> İletişim</a>
+
+                                    </div>
                                 </div>
                                 <Nav style={{ float: "right" }}>
                                     <NavItem onMouseLeave={toggle} onMouseEnter={toggle}>
@@ -246,7 +250,9 @@ const NavigationTree = (props) => {
                                     <NavItem>
                                         <a title="blog" className="mobil-nav-link" href="/haberler-bilgiler">Haberler</a>
                                     </NavItem>
-
+                                    <NavItem>
+                                    <a  className="btn btn-success cntus" href="/iletisim"><img src={require("../assets/images/mailicon.png").default} style={{width:24,marginTop:-3}}></img> İletişim</a>
+                                    </NavItem>
 
 
                                 </Nav>

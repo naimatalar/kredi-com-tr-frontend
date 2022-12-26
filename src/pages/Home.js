@@ -27,6 +27,7 @@ import { Slide } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css'
 import Flags from 'country-flag-icons/react/3x2'
 import Exchange from "../Components/containers/Exchange";
+import HomePageMiniCard from "../Components/HomePageMiniCard";
 const Home = (props) => {
     const [addsPopup, setAddsPopup] = useState(false)
     const [sss, setSss] = useState([])
@@ -103,7 +104,7 @@ const Home = (props) => {
 
     return (<>
         <Head>
-            <title>jamirkoy</title>
+
         </Head>
         {
             addsPopup && <> <div onClick={() => { setAddsPopup(false) }} className="lv-shadow"></div>
@@ -149,17 +150,20 @@ const Home = (props) => {
         <div className="row mt-4" >
 
 
-            <div className="col-12 mt-3 mb-3 text-center">
+            <div className="col-12 mt-3  text-center">
                 <h1 className="home-title" style={{ marginTop: 0 }}>Kolayca <span style={{ fontWeight: "bold" }}>Kredi Ara</span>, Pratik Şekilde <a href="/kredi-hesaplama" style={{ fontWeight: "bold" }}>Kredi Hesapla</a> , Hızlıca <span style={{ fontWeight: "bold" }}>Kredi Başvur!</span>  </h1>
+
+
+
             </div>
 
 
-            {windowDimensions.width < 800 &&
-                <div className="row justify-content-center col-12 mb-4" style={{ marginTop: -10 }}>
-                    <a style={{ fontSize: 17 }} className="nav-link fls" href="/kredi-bulucu">Kredi Bulucu!</a>
+
+            <div className="row justify-content-center col-12 mb-4" style={{ marginTop: -10 }}>
+                <a style={{ fontSize: 17 }} className="nav-link fls" href="/kredi-bulucu">Kredi Bulucu!</a>
 
 
-                </div>}
+            </div>
             {/* {windowDimensions.width > 800 &&
               
             } */}
@@ -167,6 +171,9 @@ const Home = (props) => {
 
                 {loanSearchLabel}
             </div>
+            {/* <div className="row col-12">
+                <HomePageMiniCard></HomePageMiniCard>
+            </div> */}
             <div className="col-12 mb-4">
                 <Exchange />
             </div>
@@ -396,11 +403,11 @@ const Home = (props) => {
             </div>
             <div className="row justify-content-center col-12 mt-3"><a style={{ fontSize: 20, fontWeight: "bold" }} href="/kredi-hesaplama">Kredi Hesaplama</a></div>
         </div>
-        <div className="container slider-content">
+        {/* <div className="container slider-content  d-md-none">
 
             <Slider data={slider}></Slider>
 
-        </div>
+        </div> */}
 
         <div className="row " style={{
 

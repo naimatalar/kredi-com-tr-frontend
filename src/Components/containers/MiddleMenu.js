@@ -4,7 +4,7 @@ import Image from "react-image-webp";
 const MiddleMenu = (props) => {
 
     return (
-        <div className="row">
+        <div className="row justify-content-center">
             {
                 props.Loans.map((item, key) => {
                     if (item.urlName.includes("ihtiyac")) {

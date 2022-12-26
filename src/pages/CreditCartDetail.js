@@ -14,7 +14,9 @@ import { apiurl, GetNoneToken } from "../datacrud/datacrud"
 
     const start = async () => {
 
-        const d = await GetNoneToken("CreditCarts/GetById/" + props.data.id).then(x => { return x.data }).catch(x => { return false })
+        var lnk=window.location.href.split('/')[window.location.href.split("/").length-1]
+        debugger
+        const d = await GetNoneToken("CreditCarts/GetByUrlName/" + lnk).then(x => { return x.data }).catch(x => { return false })
         setData(d)
         try {
 

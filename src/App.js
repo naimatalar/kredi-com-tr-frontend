@@ -72,6 +72,7 @@ export default function App(props) {
   const CreditCartCampaingDetail = lazy(() => import("./pages/CreditCartCampaingDetail"));
   const FindLoan = lazy(() => import("./pages/FindLoan"));
   const About = lazy(() => import("./pages/About"));
+  const ContactUs = lazy(() => import("./pages/ContactUs"));
 
 
 
@@ -115,6 +116,8 @@ export default function App(props) {
               </Route>
 
               <Route exact path="/about" render={(props) => <div className="container"> <About Loans={loanNavigation} {...props} Banks={bankNavigation} /></div>}>
+              </Route>
+                   <Route exact path="/iletisim" render={(props) => <div className="container"> <ContactUs /></div>}>
               </Route>
               <Route exact path="/kredi-bulucu" render={(props) => <div className="container"> <FindLoan Loans={loanNavigation} {...props} Banks={bankNavigation} /></div>}>
               </Route>
@@ -293,7 +296,7 @@ export default function App(props) {
           <div className="footer">
 
             <Footer></Footer>
-            <div className="footer-copyright text-center py-2" style={{ fontSize: 12 }}>© 2020 Copyright:
+            <div className="footer-copyright text-center py-2" style={{ fontSize: 12 }}>© 2009 Copyright:
               <a href="/"> kredi.com.tr</a>
             </div>
           </div>
